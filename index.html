@@ -1,1 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>War Tigers NDA Mock Exam</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f1f5f9;
+      color: #111827;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 22px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 25px;
+    }
+
+    header p {
+      margin: 7px 0 0;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 25px auto;
+      padding: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0 15px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #0f172a;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 12px;
+      background: #e2e8f0;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .question {
+      margin-bottom: 25px;
+    }
+
+    .question h3 {
+      line-height: 1.5;
+    }
+
+    .option {
+      display: block;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background: #f8fafc;
+    }
+
+    .option input {
+      width: auto;
+      margin-right: 8px;
+    }
+
+    .result {
+      text-align: center;
+    }
+
+    .score {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .pass {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .note {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #64748b;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>WAR TIGERS COMPUTERS</h1>
+  <p>NDA MOCK EXAMINATION PORTAL</p>
+</header>
+
+<div class="container">
+
+  <!-- LOGIN PAGE -->
+  <div id="loginPage" class="card">
+
+    <h2>Candidate Login</h2>
+
+    <p>Enter your examination details below.</p>
+
+    <label>Candidate Name</label>
+    <input type="text" id="candidateName" placeholder="Enter your full name">
+
+    <label>Examination Code</label>
+    <input type="text" id="examCode" placeholder="Enter your exam code">
+
+    <button onclick="startExam()">START EXAMINATION</button>
+
+    <div class="note">
+      War Tigers Computers • Mock Examination Portal
+    </div>
+
+  </div>
+
+
+  <!-- EXAM PAGE -->
+  <div id="examPage" class="hidden">
+
+    <div class="topbar">
+      <span id="candidateDisplay"></span>
+      <span id="timer">30:00</span>
+    </div>
+
+    <div class="card">
+
+      <h2>NDA Mock Examination</h2>
+
+      <form id="examForm"></form>
+
+      <button onclick="submitExam()" type="button">
+        SUBMIT EXAMINATION
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- RESULT PAGE -->
+  <div id="resultPage" class="card hidden result">
+
+    <h2>EXAMINATION COMPLETED</h2>
+
+    <p id="resultCandidate"></p>
+
+    <div class="score" id="score"></div>
+
+    <p id="percentage"></p>
+
+    <p class="pass" id="status"></p>
+
+    <button onclick="location.reload()">
+      RETURN TO LOGIN
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  // Temporary test access code.
+  // We will replace this with a proper database/admin system later.
+  const validCode = "NDA2026";
+
+  // Temporary sample questions.
+  // Your authorized question bank will be added later.
+  const questions = [
+    {
+      question: "Nigeria gained independence in which year?",
+      options: ["1957", "1960", "1963", "1970"],
+      answer: 1
+    },
+
+    {
+      question: "Which of these is the capital of Nigeria?",
+      options: ["Kano", "Lagos", "Abuja", "Kaduna"],
+      answer: 2
+    },
+
+    {
+      question: "Which branch of government interprets the law?",
+      options: ["Executive", "Legislature", "Judiciary", "Military"],
+      answer: 2
+    },
+
+    {
+      question: "Choose the word that is closest in meaning to 'Brave'.",
+      options: ["Cowardly", "Courageous", "Weak", "Careless"],
+      answer: 1
+    },
+
+    {
+      question: "How many members are in the United Nations Security Council?",
+      options: ["10", "12", "15", "20"],
+      answer: 2
+    }
+  ];
+
+  let candidate = "";
+  let timeLeft = 30 * 60;
+  let timerInterval;
+
+
+  function startExam() {
+
+    candidate = document.getElementById("candidateName").value.trim();
+    const code = document.getElementById("examCode").value.trim();
+
+    if (candidate === "") {
+      alert("Please enter your name.");
+      return;
+    }
+
+    if (code !== validCode) {
+      alert("Invalid examination code.");
+      return;
+    }
+
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("examPage").classList.remove("hidden");
+
+    document.getElementById("candidateDisplay").textContent =
+      "Candidate: " + candidate;
+
+    loadQuestions();
+    startTimer();
+  }
+
+
+  function loadQuestions() {
+
+    const form = document.getElementById("examForm");
+
+    form.innerHTML = "";
+
+    questions.forEach((q, index) => {
+
+      const questionBox = document.createElement("div");
+
+      questionBox.className = "question";
+
+      let html = `
+        <h3>${index + 1}. ${q.question}</h3>
+      `;
+
+      q.options.forEach((option, optionIndex) => {
+
+        html += `
+          <label class="option">
+            <input
+              type="radio"
+              name="question${index}"
+              value="${optionIndex}"
+            >
+            ${String.fromCharCode(65 + optionIndex)}. ${option}
+          </label>
+        `;
+
+      });
+
+      questionBox.innerHTML = html;
+
+      form.appendChild(questionBox);
+
+    });
+  }
+
+
+  function startTimer() {
+
+    timerInterval = setInterval(() => {
+
+      timeLeft--;
+
+      let minutes = Math.floor(timeLeft / 60);
+      let seconds = timeLeft % 60;
+
+      document.getElementById("timer").textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+
+      if (timeLeft <= 0) {
+
+        clearInterval(timerInterval);
+
+        alert("Time is up. Your examination will be submitted automatically.");
+
+        submitExam();
+      }
+
+    }, 1000);
+  }
+
+
+  function submitExam() {
+
+    clearInterval(timerInterval);
+
+    let score = 0;
+
+    questions.forEach((q, index) => {
+
+      const selected =
+        document.querySelector(
+          `input[name="question${index}"]:checked`
+        );
+
+      if (selected && Number(selected.value) === q.answer) {
+        score++;
+      }
+
+    });
+
+    const percentage =
+      Math.round((score / questions.length) * 100);
+
+    const passMark = 50;
+
+    document.getElementById("examPage").classList.add("hidden");
+    document.getElementById("resultPage").classList.remove("hidden");
+
+    document.getElementById("resultCandidate").textContent =
+      "Candidate: " + candidate;
+
+    document.getElementById("score").textContent =
+      score + " / " + questions.length;
+
+    document.getElementById("percentage").textContent =
+      "Percentage: " + percentage + "%";
+
+    document.getElementById("status").textContent =
+      percentage >= passMark ? "STATUS: PASSED" : "STATUS: FAILED";
+  }
+
+</script>
+
+</body>
+  </html>
