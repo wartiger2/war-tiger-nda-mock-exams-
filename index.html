@@ -1,987 +1,1786 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>War Tigers Computers - Mock Examination Portal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b3d2e">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>War Tigers Computers - Mock Examination Portal</title>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f1f5f9;
-      color: #1e293b;
-    }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    header {
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef3f1;
+    color: #222;
+}
+
+header {
+    background: #0b3d2e;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header p {
+    margin: 6px 0 0;
+    font-size: 14px;
+}
+
+.container {
+    width: 94%;
+    max-width: 700px;
+    margin: 25px auto;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    margin: 7px 0;
+    border: none;
+    border-radius: 8px;
+    background: #0b3d2e;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.secondary {
+    background: #555;
+}
+
+.danger {
+    background: #b00020;
+}
+
+.subject-btn {
+    margin-bottom: 10px;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+.subject-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.subject-list button {
+    margin: 0;
+}
+
+.timer {
+    background: #111;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.progress-container {
+    background: #ddd;
+    height: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 12px 0 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #0b3d2e;
+    transition: width 0.3s;
+}
+
+.question-number {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.option {
+    display: block;
+    padding: 13px;
+    margin: 9px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #f1f1f1;
+}
+
+.option input {
+    width: auto;
+    margin-right: 8px;
+}
+
+.nav-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.result-box {
+    text-align: center;
+    padding: 20px;
+}
+
+.score {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.pass {
+    color: green;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.fail {
+    color: #b00020;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.admin-question {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 10px 0;
+    background: #fafafa;
+}
+
+.admin-question strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.small {
+    font-size: 13px;
+    color: #666;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 13px;
+}
+
+@media (max-width: 500px) {
+    .subject-list {
+        grid-template-columns: 1fr;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 25px;
-    }
-
-    header p {
-      margin: 6px 0 0;
-      font-size: 14px;
-    }
-
-    .container {
-      width: 94%;
-      max-width: 650px;
-      margin: 25px auto;
-    }
-
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-top: 0;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 20px;
-      border: none;
-      border-radius: 8px;
-      background: #0f172a;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    .secondary {
-      background: #64748b;
-    }
-
-    .danger {
-      background: #b91c1c;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .subject-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .subject-btn {
-      margin-top: 0;
-      background: #e2e8f0;
-      color: #0f172a;
-      text-align: left;
-    }
-
-    .subject-btn:hover {
-      background: #cbd5e1;
-    }
-
-    .exam-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-    }
-
-    .timer {
-      background: #fee2e2;
-      color: #991b1b;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .progress {
-      height: 10px;
-      background: #e2e8f0;
-      border-radius: 10px;
-      overflow: hidden;
-      margin: 15px 0;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: #0f172a;
-      transition: width 0.3s;
+        font-size: 21px;
     }
 
     .question {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 20px 0;
+        font-size: 17px;
     }
-
-    .option {
-      display: block;
-      padding: 13px;
-      margin: 10px 0;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .option:hover {
-      background: #f8fafc;
-    }
-
-    .option input {
-      width: auto;
-      margin-right: 10px;
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-    }
-
-    .nav-buttons button {
-      flex: 1;
-    }
-
-    .result {
-      text-align: center;
-    }
-
-    .score {
-      font-size: 40px;
-      font-weight: bold;
-      margin: 15px 0;
-    }
-
-    .pass {
-      color: green;
-      font-weight: bold;
-      font-size: 22px;
-    }
-
-    .fail {
-      color: #b91c1c;
-      font-weight: bold;
-      font-size: 22px;
-    }
-
-    .code-hint {
-      background: #f8fafc;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      margin-top: 15px;
-    }
-
-    footer {
-      text-align: center;
-      color: #64748b;
-      font-size: 13px;
-      margin: 25px 0;
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <header>
+<header>
     <h1>WAR TIGERS COMPUTERS</h1>
     <p>Mock Examination Portal</p>
-  </header>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <!-- LOGIN -->
-    <div id="loginScreen" class="card">
-      <h2>Candidate Login</h2>
+<!-- ================= LOGIN ================= -->
 
-      <label for="candidateName">Candidate Name</label>
-      <input
-        type="text"
-        id="candidateName"
-        placeholder="Enter your full name"
-      >
+<section id="loginScreen" class="screen active">
+    <div class="card">
+        <h2>Candidate Login</h2>
 
-      <button onclick="continueToSubjects()">CONTINUE</button>
+        <input
+            type="text"
+            id="candidateName"
+            placeholder="Enter Candidate Name"
+        >
+
+        <button onclick="continueLogin()">
+            CONTINUE
+        </button>
+
+        <button onclick="showAdminLogin()" style="background:#333;">
+            ADMIN PANEL
+        </button>
     </div>
+</section>
 
 
-    <!-- SUBJECT SELECTION -->
-    <div id="subjectScreen" class="card hidden">
-      <h2>Select Subject</h2>
+<!-- ================= SUBJECT ================= -->
 
-      <p>
-        Candidate:
-        <strong id="displayCandidate"></strong>
-      </p>
+<section id="subjectScreen" class="screen">
+    <div class="card">
+        <h2>Select Subject</h2>
 
-      <div class="subject-list">
+        <p>
+            Candidate:
+            <strong id="displayCandidate"></strong>
+        </p>
 
-        <button class="subject-btn" onclick="selectSubject('English Language')">
-          English Language
-        </button>
+        <div class="subject-list">
 
-        <button class="subject-btn" onclick="selectSubject('Mathematics')">
-          Mathematics
-        </button>
+            <button onclick="selectSubject('English Language')">
+                English Language
+            </button>
 
-        <button class="subject-btn" onclick="selectSubject('Government')">
-          Government
-        </button>
+            <button onclick="selectSubject('Mathematics')">
+                Mathematics
+            </button>
 
-        <button class="subject-btn" onclick="selectSubject('General Knowledge')">
-          General Knowledge
-        </button>
+            <button onclick="selectSubject('Government')">
+                Government
+            </button>
 
-        <button class="subject-btn" onclick="selectSubject('Current Affairs')">
-          Current Affairs
-        </button>
+            <button onclick="selectSubject('General Knowledge')">
+                General Knowledge
+            </button>
 
-        <button class="subject-btn" onclick="selectSubject('Biology')">
-          Biology
-        </button>
+            <button onclick="selectSubject('Current Affairs')">
+                Current Affairs
+            </button>
 
-        <button class="subject-btn" onclick="selectSubject('Chemistry')">
-          Chemistry
-        </button>
+            <button onclick="selectSubject('Biology')">
+                Biology
+            </button>
 
-        <button class="subject-btn" onclick="selectSubject('Physics')">
-          Physics
-        </button>
+            <button onclick="selectSubject('Chemistry')">
+                Chemistry
+            </button>
 
-        <button class="subject-btn" onclick="selectSubject('Economics')">
-          Economics
-        </button>
+            <button onclick="selectSubject('Physics')">
+                Physics
+            </button>
 
-        <button class="subject-btn" onclick="selectSubject('Geography')">
-          Geography
-        </button>
+            <button onclick="selectSubject('Economics')">
+                Economics
+            </button>
 
-      </div>
-    </div>
+            <button onclick="selectSubject('Geography')">
+                Geography
+            </button>
 
-
-    <!-- CODE SCREEN -->
-    <div id="codeScreen" class="card hidden">
-      <h2>Subject Access</h2>
-
-      <p>
-        Candidate:
-        <strong id="codeCandidate"></strong>
-      </p>
-
-      <p>
-        Subject:
-        <strong id="selectedSubject"></strong>
-      </p>
-
-      <label for="examCode">Enter Subject Code</label>
-
-      <input
-        type="text"
-        id="examCode"
-        placeholder="Enter access code"
-      >
-
-      <button onclick="startExam()">START EXAM</button>
-
-      <button class="secondary" onclick="backToSubjects()">
-        BACK TO SUBJECTS
-      </button>
-
-      <div class="code-hint">
-        Demo codes are currently enabled for testing.
-      </div>
-    </div>
-
-
-    <!-- EXAM SCREEN -->
-    <div id="examScreen" class="card hidden">
-
-      <div class="exam-top">
-        <strong id="examSubject"></strong>
-        <div class="timer">
-          Time: <span id="timer">30:00</span>
         </div>
-      </div>
 
-      <div class="progress">
-        <div id="progressBar" class="progress-bar"></div>
-      </div>
+        <button class="secondary" onclick="showScreen('loginScreen')">
+            BACK
+        </button>
+    </div>
+</section>
 
-      <p id="questionNumber"></p>
 
-      <div id="questionText" class="question"></div>
+<!-- ================= CODE SCREEN ================= -->
 
-      <div id="options"></div>
+<section id="codeScreen" class="screen">
+    <div class="card">
 
-      <div class="nav-buttons">
+        <h2>Subject Access</h2>
 
-        <button
-          id="previousBtn"
-          class="secondary"
-          onclick="previousQuestion()"
+        <p>
+            Subject:
+            <strong id="selectedSubjectText"></strong>
+        </p>
+
+        <input
+            type="text"
+            id="subjectCode"
+            placeholder="Enter subject access code"
         >
-          PREVIOUS
+
+        <button onclick="startExam()">
+            START EXAM
         </button>
 
-        <button
-          id="nextBtn"
-          onclick="nextQuestion()"
-        >
-          NEXT
+        <button class="secondary" onclick="showScreen('subjectScreen')">
+            BACK
         </button>
 
-      </div>
+    </div>
+</section>
 
-      <button
-        id="submitBtn"
-        class="danger hidden"
-        onclick="submitExam()"
-      >
-        SUBMIT EXAM
-      </button>
+
+<!-- ================= EXAM ================= -->
+
+<section id="examScreen" class="screen">
+
+    <div class="card">
+
+        <div class="timer">
+            Time Remaining:
+            <span id="timer">30:00</span>
+        </div>
+
+        <p>
+            Candidate:
+            <strong id="examCandidate"></strong>
+        </p>
+
+        <p>
+            Subject:
+            <strong id="examSubject"></strong>
+        </p>
+
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div id="questionNumber" class="question-number"></div>
+
+        <div id="questionText" class="question"></div>
+
+        <div id="optionsContainer"></div>
+
+        <div class="nav-buttons">
+
+            <button onclick="previousQuestion()">
+                ← PREVIOUS
+            </button>
+
+            <button onclick="nextQuestion()">
+                NEXT →
+            </button>
+
+        </div>
+
+        <button onclick="submitExam()" style="background:#b00020;">
+            SUBMIT EXAM
+        </button>
 
     </div>
 
+</section>
 
-    <!-- RESULT SCREEN -->
-    <div id="resultScreen" class="card hidden result">
 
-      <h2>Examination Result</h2>
+<!-- ================= RESULT ================= -->
 
-      <p id="resultCandidate"></p>
+<section id="resultScreen" class="screen">
 
-      <p id="resultSubject"></p>
+    <div class="card result-box">
 
-      <div id="score" class="score"></div>
+        <h2>Examination Result</h2>
 
-      <p id="percentage"></p>
+        <p>
+            Candidate:
+            <strong id="resultCandidate"></strong>
+        </p>
 
-      <p id="status"></p>
+        <p>
+            Subject:
+            <strong id="resultSubject"></strong>
+        </p>
 
-      <button onclick="restartExam()">
-        RETURN TO LOGIN
-      </button>
+        <div class="score">
+            <span id="score"></span>
+        </div>
+
+        <p id="percentage"></p>
+
+        <p id="status"></p>
+
+        <button onclick="restartExam()">
+            TAKE ANOTHER EXAM
+        </button>
 
     </div>
 
-  </div>
+</section>
 
 
-  <footer>
+<!-- ================= ADMIN LOGIN ================= -->
+
+<section id="adminLoginScreen" class="screen">
+
+    <div class="card">
+
+        <h2>🔐 Admin Login</h2>
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="Enter Admin Password"
+        >
+
+        <button onclick="loginAdmin()">
+            LOGIN
+        </button>
+
+        <button class="secondary" onclick="showScreen('loginScreen')">
+            BACK
+        </button>
+
+        <p id="adminLoginMessage"></p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ADMIN PANEL ================= -->
+
+<section id="adminScreen" class="screen">
+
+    <div class="card">
+
+        <h2>🛠️ Admin Panel</h2>
+
+        <p style="text-align:center;">
+            <strong>War Tigers Computers</strong>
+        </p>
+
+        <hr>
+
+        <h3>Question Management</h3>
+
+        <select id="adminSubject" onchange="loadAdminQuestions()">
+
+            <option value="">
+                Select Subject
+            </option>
+
+            <option>English Language</option>
+            <option>Mathematics</option>
+            <option>Government</option>
+            <option>General Knowledge</option>
+            <option>Current Affairs</option>
+            <option>Biology</option>
+            <option>Chemistry</option>
+            <option>Physics</option>
+            <option>Economics</option>
+            <option>Geography</option>
+
+        </select>
+
+        <button onclick="showAddQuestion()">
+            ➕ ADD QUESTION
+        </button>
+
+        <div id="adminQuestionList"></div>
+
+        <button class="secondary" onclick="showScreen('loginScreen')">
+            EXIT ADMIN
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ADD QUESTION ================= -->
+
+<section id="addQuestionScreen" class="screen">
+
+    <div class="card">
+
+        <h2>➕ Add Question</h2>
+
+        <p>
+            Subject:
+            <strong id="addQuestionSubject"></strong>
+        </p>
+
+        <input
+            type="text"
+            id="newQuestion"
+            placeholder="Enter question"
+        >
+
+        <input
+            type="text"
+            id="optionA"
+            placeholder="Option A"
+        >
+
+        <input
+            type="text"
+            id="optionB"
+            placeholder="Option B"
+        >
+
+        <input
+            type="text"
+            id="optionC"
+            placeholder="Option C"
+        >
+
+        <input
+            type="text"
+            id="optionD"
+            placeholder="Option D"
+        >
+
+        <select id="correctAnswer">
+
+            <option value="0">
+                Correct Answer: A
+            </option>
+
+            <option value="1">
+                Correct Answer: B
+            </option>
+
+            <option value="2">
+                Correct Answer: C
+            </option>
+
+            <option value="3">
+                Correct Answer: D
+            </option>
+
+        </select>
+
+        <button onclick="saveNewQuestion()">
+            SAVE QUESTION
+        </button>
+
+        <button class="secondary" onclick="showAdminScreen()">
+            CANCEL
+        </button>
+
+        <p id="questionMessage"></p>
+
+    </div>
+
+</section>
+
+</div>
+
+<footer>
     © 2026 War Tigers Computers
-  </footer>
+</footer>
 
 
-  <!-- JAVASCRIPT STARTS HERE -->
-  <script>
+<script>
 
-    let candidateName = "";
-    let selectedSubject = "";
-    let currentQuestion = 0;
-    let currentQuestions = [];
-    let answers = [];
-    let timeLeft = 30 * 60;
-    let timerInterval = null;
+/* =====================================================
+   BASIC SETTINGS
+===================================================== */
 
+const ADMIN_PASSWORD = "WTADMIN2026";
 
-    /* SUBJECT CODES */
+const PASS_MARK = 50;
 
-    const subjectCodes = {
+const SUBJECT_CODES = {
 
-      "English Language": "ENG2026",
+    "English Language": "ENG2026",
 
-      "Mathematics": "MATH2026",
+    "Mathematics": "MATH2026",
 
-      "Government": "GOV2026",
+    "Government": "GOV2026",
 
-      "General Knowledge": "GK2026",
+    "General Knowledge": "GK2026",
 
-      "Current Affairs": "CA2026",
+    "Current Affairs": "CA2026",
 
-      "Biology": "BIO2026",
+    "Biology": "BIO2026",
 
-      "Chemistry": "CHEM2026",
+    "Chemistry": "CHEM2026",
 
-      "Physics": "PHY2026",
+    "Physics": "PHY2026",
 
-      "Economics": "ECO2026",
+    "Economics": "ECO2026",
 
-      "Geography": "GEO2026"
+    "Geography": "GEO2026"
 
-    };
+};
 
 
-    /* SAMPLE QUESTIONS
-       These are original sample questions for testing.
-    */
+/* =====================================================
+   ORIGINAL SAMPLE QUESTIONS
+===================================================== */
 
-    const questions = [
+const defaultQuestions = {
 
-      {
-        subject: "English Language",
-        question: "Choose the word closest in meaning to 'rapid'.",
-        options: ["Slow", "Fast", "Weak", "Late"],
-        answer: 1
-      },
+"English Language": [
 
-      {
-        subject: "English Language",
-        question: "Which of these is a noun?",
-        options: ["Quickly", "Beautiful", "Teacher", "Run"],
-        answer: 2
-      },
+{
+question: "Choose the word that is closest in meaning to 'rapid'.",
+options: ["Slow", "Fast", "Weak", "Late"],
+answer: 1
+},
 
+{
+question: "Choose the correctly spelled word.",
+options: ["Government", "Goverment", "Governmant", "Goverenment"],
+answer: 0
+},
 
-      {
-        subject: "Mathematics",
-        question: "What is 12 × 5?",
-        options: ["50", "55", "60", "65"],
-        answer: 2
-      },
+{
+question: "Which word is a noun?",
+options: ["Quickly", "Beautiful", "Teacher", "Run"],
+answer: 2
+}
 
-      {
-        subject: "Mathematics",
-        question: "What is 100 ÷ 4?",
-        options: ["20", "25", "30", "40"],
-        answer: 1
-      },
+],
 
 
-      {
-        subject: "Government",
-        question: "Nigeria operates which system of government?",
-        options: [
-          "Federal system",
-          "Monarchy",
-          "Absolute dictatorship",
-          "Theocracy"
-        ],
-        answer: 0
-      },
+"Mathematics": [
+
+{
+question: "What is 12 × 5?",
+options: ["50", "60", "70", "80"],
+answer: 1
+},
+
+{
+question: "What is 100 ÷ 4?",
+options: ["20", "25", "30", "40"],
+answer: 1
+},
+
+{
+question: "If x + 5 = 12, what is x?",
+options: ["5", "6", "7", "8"],
+answer: 2
+}
+
+],
 
 
-      {
-        subject: "General Knowledge",
-        question: "What is the capital of Nigeria?",
-        options: [
-          "Lagos",
-          "Kano",
-          "Abuja",
-          "Ibadan"
-        ],
-        answer: 2
-      },
+"Government": [
+
+{
+question: "Nigeria operates which type of government?",
+options: [
+"Monarchy",
+"Federal system",
+"Absolute monarchy",
+"Military dictatorship"
+],
+answer: 1
+},
+
+{
+question: "What is the supreme law of a country called?",
+options: [
+"Manifesto",
+"Constitution",
+"Policy",
+"Decree"
+],
+answer: 1
+}
+
+],
 
 
-      {
-        subject: "Current Affairs",
-        question: "Which institution is responsible for the admission of cadets into the Nigerian Defence Academy?",
-        options: [
-          "Nigerian Defence Academy",
-          "Federal Road Safety Corps",
-          "Nigerian Ports Authority",
-          "National Assembly"
-        ],
-        answer: 0
-      },
+"General Knowledge": [
+
+{
+question: "What is the capital of Nigeria?",
+options: [
+"Lagos",
+"Abuja",
+"Kano",
+"Kaduna"
+],
+answer: 1
+},
+
+{
+question: "Which planet is known as the Red Planet?",
+options: [
+"Earth",
+"Venus",
+"Mars",
+"Jupiter"
+],
+answer: 2
+}
+
+],
 
 
-      {
-        subject: "Biology",
-        question: "Which organ pumps blood around the human body?",
-        options: [
-          "Liver",
-          "Heart",
-          "Kidney",
-          "Lung"
-        ],
-        answer: 1
-      },
+"Current Affairs": [
+
+{
+question: "Which organization is responsible for maintaining international peace and security?",
+options: [
+"United Nations",
+"FIFA",
+"WHO",
+"ECOWAS"
+],
+answer: 0
+},
+
+{
+question: "What does ECOWAS stand for?",
+options: [
+"Economic Community of West African States",
+"European Community of West African States",
+"Economic Council of African States",
+"East Community of West African States"
+],
+answer: 0
+}
+
+],
 
 
-      {
-        subject: "Chemistry",
-        question: "What is the chemical symbol for oxygen?",
-        options: [
-          "Ox",
-          "O",
-          "C",
-          "Og"
-        ],
-        answer: 1
-      },
+"Biology": [
+
+{
+question: "Which organ pumps blood around the human body?",
+options: [
+"Lungs",
+"Heart",
+"Kidney",
+"Brain"
+],
+answer: 1
+},
+
+{
+question: "Plants manufacture their food through which process?",
+options: [
+"Respiration",
+"Digestion",
+"Photosynthesis",
+"Excretion"
+],
+answer: 2
+}
+
+],
 
 
-      {
-        subject: "Physics",
-        question: "Which force pulls objects toward the Earth?",
-        options: [
-          "Friction",
-          "Magnetism",
-          "Gravity",
-          "Tension"
-        ],
-        answer: 2
-      },
+"Chemistry": [
+
+{
+question: "What is the chemical symbol for oxygen?",
+options: [
+"Ox",
+"O",
+"C",
+"H"
+],
+answer: 1
+},
+
+{
+question: "Water has the chemical formula:",
+options: [
+"CO2",
+"H2O",
+"O2",
+"NaCl"
+],
+answer: 1
+}
+
+],
 
 
-      {
-        subject: "Economics",
-        question: "What basic economic problem arises because resources are limited?",
-        options: [
-          "Scarcity",
-          "Inflation",
-          "Export",
-          "Taxation"
-        ],
-        answer: 0
-      },
+"Physics": [
+
+{
+question: "What is the SI unit of force?",
+options: [
+"Joule",
+"Watt",
+"Newton",
+"Pascal"
+],
+answer: 2
+},
+
+{
+question: "Which force pulls objects toward the Earth?",
+options: [
+"Friction",
+"Gravity",
+"Magnetism",
+"Pressure"
+],
+answer: 1
+}
+
+],
 
 
-      {
-        subject: "Geography",
-        question: "Which is the largest continent?",
-        options: [
-          "Africa",
-          "Europe",
-          "Asia",
-          "Australia"
-        ],
-        answer: 2
-      }
+"Economics": [
 
-    ];
+{
+question: "What is the basic economic problem caused by limited resources?",
+options: [
+"Inflation",
+"Scarcity",
+"Taxation",
+"Trade"
+],
+answer: 1
+},
+
+{
+question: "When demand increases while supply remains constant, price generally:",
+options: [
+"Falls",
+"Rises",
+"Disappears",
+"Remains zero"
+],
+answer: 1
+}
+
+],
 
 
-    /* LOGIN */
+"Geography": [
 
-    function continueToSubjects() {
+{
+question: "Which is the largest continent by land area?",
+options: [
+"Africa",
+"Europe",
+"Asia",
+"Australia"
+],
+answer: 2
+},
 
-      const nameInput =
-        document.getElementById("candidateName").value.trim();
+{
+question: "The Sahara Desert is located mainly in:",
+options: [
+"South America",
+"Africa",
+"Asia",
+"Europe"
+],
+answer: 1
+}
 
-      if (nameInput === "") {
+]
 
-        alert("Please enter the candidate name.");
+};
 
-        return;
-      }
 
-      candidateName = nameInput;
+/* =====================================================
+   APPLICATION VARIABLES
+===================================================== */
 
-      document.getElementById("displayCandidate").textContent =
-        candidateName;
+let candidateName = "";
 
-      document.getElementById("loginScreen").classList.add("hidden");
+let selectedSubject = "";
 
-      document.getElementById("subjectScreen").classList.remove("hidden");
+let currentQuestions = [];
+
+let currentQuestion = 0;
+
+let answers = [];
+
+let timeLeft = 30 * 60;
+
+let timerInterval = null;
+
+
+/* =====================================================
+   LOAD QUESTIONS FROM LOCAL STORAGE
+===================================================== */
+
+function getQuestions() {
+
+    const saved =
+        localStorage.getItem("warTigersQuestions");
+
+    if (saved) {
+
+        try {
+
+            return JSON.parse(saved);
+
+        } catch (error) {
+
+            console.log("Saved questions could not be loaded.");
+
+        }
 
     }
 
-
-    /* SELECT SUBJECT */
-
-    function selectSubject(subject) {
-
-      selectedSubject = subject;
-
-      document.getElementById("codeCandidate").textContent =
-        candidateName;
-
-      document.getElementById("selectedSubject").textContent =
-        selectedSubject;
-
-      document.getElementById("subjectScreen").classList.add("hidden");
-
-      document.getElementById("codeScreen").classList.remove("hidden");
-
-      document.getElementById("examCode").value = "";
-
-    }
+    return JSON.parse(JSON.stringify(defaultQuestions));
+}
 
 
-    /* BACK TO SUBJECTS */
-
-    function backToSubjects() {
-
-      document.getElementById("codeScreen").classList.add("hidden");
-
-      document.getElementById("subjectScreen").classList.remove("hidden");
-
-    }
+let questions = getQuestions();
 
 
-    /* START EXAM */
+function saveQuestions() {
 
-    function startExam() {
+    localStorage.setItem(
+        "warTigersQuestions",
+        JSON.stringify(questions)
+    );
 
-      const code =
-        document.getElementById("examCode").value.trim().toUpperCase();
-
-      const correctCode =
-        subjectCodes[selectedSubject];
-
-      if (code !== correctCode) {
-
-        alert("Incorrect subject code. Please check the code and try again.");
-
-        return;
-      }
+}
 
 
-      currentQuestions =
-        questions.filter(function(q) {
+/* =====================================================
+   SCREEN CONTROL
+===================================================== */
 
-          return q.subject === selectedSubject;
+function showScreen(id) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+            screen.classList.remove("active");
 
         });
 
+    document
+        .getElementById(id)
+        .classList.add("active");
 
-      if (currentQuestions.length === 0) {
+}
 
-        alert("Questions for this subject have not been added yet.");
+
+/* =====================================================
+   CANDIDATE LOGIN
+===================================================== */
+
+function continueLogin() {
+
+    const name =
+        document
+        .getElementById("candidateName")
+        .value
+        .trim();
+
+    if (!name) {
+
+        alert("Please enter your candidate name.");
 
         return;
-      }
-
-
-      currentQuestion = 0;
-
-      answers = new Array(currentQuestions.length).fill(null);
-
-      timeLeft = 30 * 60;
-
-
-      document.getElementById("codeScreen").classList.add("hidden");
-
-      document.getElementById("examScreen").classList.remove("hidden");
-
-      document.getElementById("examSubject").textContent =
-        selectedSubject;
-
-
-      showQuestion();
-
-      startTimer();
 
     }
 
+    candidateName = name;
 
-    /* DISPLAY QUESTION */
+    document
+        .getElementById("displayCandidate")
+        .textContent = candidateName;
 
-    function showQuestion() {
+    showScreen("subjectScreen");
 
-      const q = currentQuestions[currentQuestion];
-
-      document.getElementById("questionNumber").textContent =
-        "Question " +
-        (currentQuestion + 1) +
-        " of " +
-        currentQuestions.length;
+}
 
 
-      document.getElementById("questionText").textContent =
-        q.question;
+/* =====================================================
+   SUBJECT SELECTION
+===================================================== */
+
+function selectSubject(subject) {
+
+    selectedSubject = subject;
+
+    document
+        .getElementById("selectedSubjectText")
+        .textContent = subject;
+
+    document
+        .getElementById("subjectCode")
+        .value = "";
+
+    showScreen("codeScreen");
+
+}
 
 
-      const optionsDiv =
-        document.getElementById("options");
+/* =====================================================
+   START EXAM
+===================================================== */
 
-      optionsDiv.innerHTML = "";
+function startExam() {
 
+    const enteredCode =
+        document
+        .getElementById("subjectCode")
+        .value
+        .trim()
+        .toUpperCase();
 
-      q.options.forEach(function(option, index) {
+    const correctCode =
+        SUBJECT_CODES[selectedSubject].toUpperCase();
 
-        const label =
-          document.createElement("label");
+    if (enteredCode !== correctCode) {
 
-        label.className = "option";
+        alert("Invalid subject access code.");
 
+        return;
 
-        const radio =
-          document.createElement("input");
+    }
 
-        radio.type = "radio";
+    currentQuestions =
+        questions[selectedSubject] || [];
 
-        radio.name = "answer";
+    if (currentQuestions.length === 0) {
 
-        radio.value = index;
-
-        radio.checked =
-          answers[currentQuestion] === index;
-
-
-        radio.addEventListener("change", function() {
-
-          answers[currentQuestion] = index;
-
-        });
-
-
-        label.appendChild(radio);
-
-        label.appendChild(
-          document.createTextNode(" " + option)
+        alert(
+            "There are currently no questions available for this subject."
         );
 
-        optionsDiv.appendChild(label);
-
-      });
-
-
-      document.getElementById("previousBtn").disabled =
-        currentQuestion === 0;
-
-
-      if (currentQuestion === currentQuestions.length - 1) {
-
-        document.getElementById("nextBtn").classList.add("hidden");
-
-        document.getElementById("submitBtn").classList.remove("hidden");
-
-      } else {
-
-        document.getElementById("nextBtn").classList.remove("hidden");
-
-        document.getElementById("submitBtn").classList.add("hidden");
-
-      }
-
-
-      const progress =
-        ((currentQuestion + 1) /
-        currentQuestions.length) * 100;
-
-
-      document.getElementById("progressBar").style.width =
-        progress + "%";
+        return;
 
     }
 
+    currentQuestion = 0;
 
-    /* NEXT QUESTION */
+    answers =
+        new Array(currentQuestions.length).fill(null);
 
-    function nextQuestion() {
+    timeLeft = 30 * 60;
 
-      if (currentQuestion < currentQuestions.length - 1) {
+    document
+        .getElementById("examCandidate")
+        .textContent = candidateName;
 
-        currentQuestion++;
+    document
+        .getElementById("examSubject")
+        .textContent = selectedSubject;
 
-        showQuestion();
+    showScreen("examScreen");
 
-      }
+    startTimer();
 
-    }
+    displayQuestion();
 
-
-    /* PREVIOUS QUESTION */
-
-    function previousQuestion() {
-
-      if (currentQuestion > 0) {
-
-        currentQuestion--;
-
-        showQuestion();
-
-      }
-
-    }
+}
 
 
-    /* TIMER */
+/* =====================================================
+   TIMER
+===================================================== */
 
-    function startTimer() {
+function startTimer() {
 
-      clearInterval(timerInterval);
+    clearInterval(timerInterval);
 
-      updateTimer();
+    updateTimer();
 
-
-      timerInterval = setInterval(function() {
+    timerInterval = setInterval(() => {
 
         timeLeft--;
 
         updateTimer();
 
-
         if (timeLeft <= 0) {
 
-          clearInterval(timerInterval);
+            clearInterval(timerInterval);
 
-          alert("Time is up. Your exam will be submitted automatically.");
+            alert("Time is up. Your exam will be submitted.");
 
-          submitExam();
+            submitExam();
 
         }
 
-      }, 1000);
+    }, 1000);
 
-    }
+}
 
 
-    function updateTimer() {
+function updateTimer() {
 
-      const minutes =
+    const minutes =
         Math.floor(timeLeft / 60);
 
-      const seconds =
+    const seconds =
         timeLeft % 60;
 
-
-      document.getElementById("timer").textContent =
-        String(minutes).padStart(2, "0") +
-        ":" +
+    document
+        .getElementById("timer")
+        .textContent =
+        String(minutes).padStart(2, "0")
+        + ":"
+        +
         String(seconds).padStart(2, "0");
+
+}
+
+
+/* =====================================================
+   DISPLAY QUESTION
+===================================================== */
+
+function displayQuestion() {
+
+    const q =
+        currentQuestions[currentQuestion];
+
+    document
+        .getElementById("questionNumber")
+        .textContent =
+        "Question "
+        +
+        (currentQuestion + 1)
+        +
+        " of "
+        +
+        currentQuestions.length;
+
+    document
+        .getElementById("questionText")
+        .textContent =
+        q.question;
+
+    const container =
+        document.getElementById("optionsContainer");
+
+    container.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+
+        const label =
+            document.createElement("label");
+
+        label.className = "option";
+
+        label.innerHTML = `
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                ${answers[currentQuestion] === index ? "checked" : ""}
+            >
+            ${String.fromCharCode(65 + index)}. ${option}
+        `;
+
+        label
+            .querySelector("input")
+            .addEventListener("change", function() {
+
+                answers[currentQuestion] =
+                    Number(this.value);
+
+            });
+
+        container.appendChild(label);
+
+    });
+
+    const progress =
+        ((currentQuestion + 1)
+        /
+        currentQuestions.length)
+        * 100;
+
+    document
+        .getElementById("progressBar")
+        .style.width =
+        progress + "%";
+
+}
+
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
+
+function nextQuestion() {
+
+    if (
+        currentQuestion
+        <
+        currentQuestions.length - 1
+    ) {
+
+        currentQuestion++;
+
+        displayQuestion();
+
+    } else {
+
+        alert("This is the last question.");
 
     }
 
-
-    /* SUBMIT EXAM */
-
-    function submitExam() {
-
-      clearInterval(timerInterval);
+}
 
 
-      let score = 0;
+/* =====================================================
+   PREVIOUS QUESTION
+===================================================== */
+
+function previousQuestion() {
+
+    if (currentQuestion > 0) {
+
+        currentQuestion--;
+
+        displayQuestion();
+
+    }
+
+}
 
 
-      currentQuestions.forEach(function(q, index) {
+/* =====================================================
+   SUBMIT EXAM
+===================================================== */
 
-        if (answers[index] === q.answer) {
+function submitExam() {
 
-          score++;
+    if (!currentQuestions.length) {
+
+        return;
+
+    }
+
+    const unanswered =
+        answers.filter(
+            answer => answer === null
+        ).length;
+
+    if (
+        unanswered > 0
+        &&
+        timeLeft > 0
+    ) {
+
+        const proceed =
+            confirm(
+                "You have "
+                +
+                unanswered
+                +
+                " unanswered question(s). Submit anyway?"
+            );
+
+        if (!proceed) {
+
+            return;
 
         }
 
-      });
+    }
 
+    clearInterval(timerInterval);
 
-      const percentage =
+    let score = 0;
+
+    currentQuestions.forEach((question, index) => {
+
+        if (
+            answers[index]
+            ===
+            question.answer
+        ) {
+
+            score++;
+
+        }
+
+    });
+
+    const percentage =
         Math.round(
-          (score / currentQuestions.length) * 100
+            (score / currentQuestions.length) * 100
+        );
+
+    const status =
+        percentage >= PASS_MARK
+        ? "PASS"
+        : "FAIL";
+
+    document
+        .getElementById("resultCandidate")
+        .textContent = candidateName;
+
+    document
+        .getElementById("resultSubject")
+        .textContent = selectedSubject;
+
+    document
+        .getElementById("score")
+        .textContent =
+        score
+        +
+        " / "
+        +
+        currentQuestions.length;
+
+    document
+        .getElementById("percentage")
+        .textContent =
+        "Percentage: "
+        +
+        percentage
+        +
+        "%";
+
+    const statusElement =
+        document.getElementById("status");
+
+    statusElement.textContent = status;
+
+    statusElement.className =
+        percentage >= PASS_MARK
+        ? "pass"
+        : "fail";
+
+    showScreen("resultScreen");
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restartExam() {
+
+    clearInterval(timerInterval);
+
+    candidateName = "";
+
+    selectedSubject = "";
+
+    currentQuestions = [];
+
+    answers = [];
+
+    document
+        .getElementById("candidateName")
+        .value = "";
+
+    showScreen("loginScreen");
+
+}
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+function showAdminLogin() {
+
+    document
+        .getElementById("adminPassword")
+        .value = "";
+
+    document
+        .getElementById("adminLoginMessage")
+        .textContent = "";
+
+    showScreen("adminLoginScreen");
+
+}
+
+
+function loginAdmin() {
+
+    const password =
+        document
+        .getElementById("adminPassword")
+        .value;
+
+    if (password === ADMIN_PASSWORD) {
+
+        document
+            .getElementById("adminSubject")
+            .value = "";
+
+        document
+            .getElementById("adminQuestionList")
+            .innerHTML = "";
+
+        showScreen("adminScreen");
+
+    } else {
+
+        document
+            .getElementById("adminLoginMessage")
+            .textContent =
+            "Incorrect admin password.";
+
+        document
+            .getElementById("adminLoginMessage")
+            .style.color = "red";
+
+    }
+
+}
+
+
+/* =====================================================
+   ADMIN QUESTION LIST
+===================================================== */
+
+function loadAdminQuestions() {
+
+    const subject =
+        document
+        .getElementById("adminSubject")
+        .value;
+
+    const list =
+        document
+        .getElementById("adminQuestionList");
+
+    list.innerHTML = "";
+
+    if (!subject) {
+
+        return;
+
+    }
+
+    const subjectQuestions =
+        questions[subject] || [];
+
+    if (subjectQuestions.length === 0) {
+
+        list.innerHTML =
+            '<div class="empty">No questions yet.</div>';
+
+        return;
+
+    }
+
+    subjectQuestions.forEach((q, index) => {
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "admin-question";
+
+        div.innerHTML = `
+            <strong>
+                ${index + 1}. ${escapeHTML(q.question)}
+            </strong>
+
+            <div class="small">
+                A. ${escapeHTML(q.options[0])}<br>
+                B. ${escapeHTML(q.options[1])}<br>
+                C. ${escapeHTML(q.options[2])}<br>
+                D. ${escapeHTML(q.options[3])}
+                <br><br>
+                Correct answer:
+                ${String.fromCharCode(65 + q.answer)}
+            </div>
+
+            <button
+                class="danger"
+                onclick="deleteQuestion(${index})"
+            >
+                DELETE
+            </button>
+        `;
+
+        list.appendChild(div);
+
+    });
+
+}
+
+
+/* =====================================================
+   ADD QUESTION
+===================================================== */
+
+function showAddQuestion() {
+
+    const subject =
+        document
+        .getElementById("adminSubject")
+        .value;
+
+    if (!subject) {
+
+        alert("Please select a subject first.");
+
+        return;
+
+    }
+
+    document
+        .getElementById("addQuestionSubject")
+        .textContent = subject;
+
+    document
+        .getElementById("newQuestion")
+        .value = "";
+
+    document
+        .getElementById("optionA")
+        .value = "";
+
+    document
+        .getElementById("optionB")
+        .value = "";
+
+    document
+        .getElementById("optionC")
+        .value = "";
+
+    document
+        .getElementById("optionD")
+        .value = "";
+
+    document
+        .getElementById("correctAnswer")
+        .value = "0";
+
+    document
+        .getElementById("questionMessage")
+        .textContent = "";
+
+    showScreen("addQuestionScreen");
+
+}
+
+
+function saveNewQuestion() {
+
+    const subject =
+        document
+        .getElementById("adminSubject")
+        .value;
+
+    const question =
+        document
+        .getElementById("newQuestion")
+        .value
+        .trim();
+
+    const optionA =
+        document
+        .getElementById("optionA")
+        .value
+        .trim();
+
+    const optionB =
+        document
+        .getElementById("optionB")
+        .value
+        .trim();
+
+    const optionC =
+        document
+        .getElementById("optionC")
+        .value
+        .trim();
+
+    const optionD =
+        document
+        .getElementById("optionD")
+        .value
+        .trim();
+
+    const answer =
+        Number(
+            document
+            .getElementById("correctAnswer")
+            .value
         );
 
 
-      let status = "";
+    if (
+        !question
+        ||
+        !optionA
+        ||
+        !optionB
+        ||
+        !optionC
+        ||
+        !optionD
+    ) {
 
-      if (percentage >= 50) {
+        alert(
+            "Please complete the question and all four options."
+        );
 
-        status = "PASS";
-
-      } else {
-
-        status = "FAIL";
-
-      }
-
-
-      document.getElementById("examScreen").classList.add("hidden");
-
-      document.getElementById("resultScreen").classList.remove("hidden");
-
-
-      document.getElementById("resultCandidate").textContent =
-        "Candidate: " + candidateName;
-
-
-      document.getElementById("resultSubject").textContent =
-        "Subject: " + selectedSubject;
-
-
-      document.getElementById("score").textContent =
-        score + " / " + currentQuestions.length;
-
-
-      document.getElementById("percentage").textContent =
-        "Percentage: " + percentage + "%";
-
-
-      const statusElement =
-        document.getElementById("status");
-
-
-      statusElement.textContent =
-        status;
-
-
-      statusElement.className =
-        percentage >= 50 ? "pass" : "fail";
+        return;
 
     }
 
 
-    /* RESTART */
+    if (!questions[subject]) {
 
-    function restartExam() {
-
-      clearInterval(timerInterval);
-
-      candidateName = "";
-
-      selectedSubject = "";
-
-      currentQuestion = 0;
-
-      currentQuestions = [];
-
-      answers = [];
-
-
-      document.getElementById("resultScreen").classList.add("hidden");
-
-      document.getElementById("subjectScreen").classList.add("hidden");
-
-      document.getElementById("codeScreen").classList.add("hidden");
-
-      document.getElementById("examScreen").classList.add("hidden");
-
-      document.getElementById("loginScreen").classList.remove("hidden");
-
-      document.getElementById("candidateName").value = "";
+        questions[subject] = [];
 
     }
 
-  </script>
-  <!-- JAVASCRIPT ENDS HERE -->
+
+    questions[subject].push({
+
+        question: question,
+
+        options: [
+            optionA,
+            optionB,
+            optionC,
+            optionD
+        ],
+
+        answer: answer
+
+    });
+
+
+    saveQuestions();
+
+
+    document
+        .getElementById("questionMessage")
+        .textContent =
+        "Question saved successfully.";
+
+    document
+        .getElementById("questionMessage")
+        .style.color = "green";
+
+
+    setTimeout(() => {
+
+        showAdminScreen();
+
+    }, 700);
+
+}
+
+
+/* =====================================================
+   DELETE QUESTION
+===================================================== */
+
+function deleteQuestion(index) {
+
+    const subject =
+        document
+        .getElementById("adminSubject")
+        .value;
+
+    if (!subject) {
+
+        return;
+
+    }
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this question?"
+        );
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+    questions[subject].splice(index, 1);
+
+    saveQuestions();
+
+    loadAdminQuestions();
+
+}
+
+
+/* =====================================================
+   RETURN TO ADMIN
+===================================================== */
+
+function showAdminScreen() {
+
+    showScreen("adminScreen");
+
+    loadAdminQuestions();
+
+}
+
+
+/* =====================================================
+   HTML SECURITY HELPER
+===================================================== */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =====================================================
+   INITIAL SETUP
+===================================================== */
+
+saveQuestions();
+
+</script>
 
 </body>
 </html>
