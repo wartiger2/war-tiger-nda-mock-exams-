@@ -3,324 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>War Tigers Computers - Mock Examination</title>
-
+<title>War Tiger Computers - Mock Examination</title>
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  background: #f2f4f7;
-  color: #222;
-}
-
-.header {
-  background: #123b20;
-  color: white;
-  padding: 22px 15px;
-  text-align: center;
-}
-
-.header h1 {
-  font-size: 24px;
-}
-
-.header p {
-  margin-top: 6px;
-  font-size: 14px;
-}
-
-.container {
-  width: 94%;
-  max-width: 600px;
-  margin: 25px auto;
-}
-
-.card {
-  background: white;
-  padding: 22px;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  margin-bottom: 20px;
-}
-
-.card h2 {
-  margin-bottom: 15px;
-}
-
-input {
-  width: 100%;
-  padding: 14px;
-  margin: 8px 0 15px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 16px;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
-  background: #123b20;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-.hidden {
-  display: none;
-}
-
-.exam-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.timer {
-  background: #ffe5e5;
-  color: #b00020;
-  padding: 9px 12px;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.progress {
-  height: 8px;
-  background: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: #123b20;
-  transition: width 0.3s;
-}
-
-.question-number {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 10px;
-}
-
-.question {
-  font-size: 19px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  line-height: 1.5;
-}
-
-.option {
-  display: block;
-  border: 1px solid #ddd;
-  padding: 14px;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  background: #fafafa;
-}
-
-.option:hover {
-  background: #eef5ef;
-}
-
-.option input {
-  width: auto;
-  margin: 0 10px 0 0;
-}
-
-.navigation {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.navigation button {
-  flex: 1;
-}
-
-.result {
-  text-align: center;
-}
-
-.score {
-  font-size: 45px;
-  font-weight: bold;
-  margin: 20px 0;
-  color: #123b20;
-}
-
-.pass {
-  color: green;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.fail {
-  color: #b00020;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
-  font-size: 13px;
-}
+* {box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif;}
+body {background: #f7f7f7; color: #222;}
+.header {background: #1b3b20; color: white; padding: 22px 15px; text-align: center;}
+.header h1 {font-size: 24px;}
+.header p {margin-top: 6px; font-size: 14px;}
+.container {width: 90%; max-width: 600px; margin: 25px auto;}
+.card {background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px;}
+.card h2 {margin-bottom: 15px;}
+input {width: 100%; padding: 10px; margin: 8px 0 15px; border: 1px solid #ccc; border-radius: 10px; font-size: 14px;}
+button {width: 100%; padding: 14px; border: none; border-radius: 10px; background: #1b3b20; color: white; font-size: 16px; font-weight: bold; cursor: pointer;}
+button:hover {opacity: 0.9;}
+.hidden {display: none;}
+.exam-top {display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;}
+.timer {background: #fffe5a; color: #000020; padding: 8px 12px; border-radius: 8px; font-weight: bold;}
+.progress {height: 8px; background: #ddd; border-radius: 10px; overflow: hidden; margin-bottom: 20px;}
+.progress-bar {height: 100%; width: 0%; background: #1b3b20; transition: width 0.3s;}
+.option {display: block; border: 1px solid #ddd; padding: 10px; border-radius: 10px; margin-bottom: 12px; cursor: pointer; background: #fafafa;}
+.option:hover {background: #eef5ef;}
+.option input {width: auto; margin: 0 10px 0 0;}
+.navigation {display: flex; gap: 10px; margin-top: 20px;}
+.navigation button {flex: 1;}
+.score {font-size: 45px; font-weight: bold; margin: 20px 0; color: #1b3b20;}
+.pass {color: green; font-size: 24px; font-weight: bold;}
+.fail {color: #b00020; font-size: 24px; font-weight: bold;}
+.footer {text-align: center; padding: 20px; color: #777; font-size: 13px;}
 </style>
 </head>
-
 <body>
-
 <div class="header">
-  <h1>WAR TIGERS COMPUTERS</h1>
+  <h1>WAR TIGER COMPUTERS</h1>
   <p>NDA Mock Examination Portal</p>
 </div>
 
 <div class="container">
-
   <!-- LOGIN -->
   <div class="card" id="loginScreen">
     <h2>Candidate Login</h2>
-
     <label>Candidate Name</label>
     <input type="text" id="candidateName" placeholder="Enter your full name">
-
     <label>Examination Code</label>
     <input type="text" id="examCode" placeholder="Enter examination code">
-
     <button onclick="startExam()">START EXAMINATION</button>
-
-    <p style="margin-top:15px; font-size:13px; color:#777;">
-      Demo examination code: <b>NDA2026</b>
-    </p>
+    <p style="margin-top:15px; font-size:13px; color:#777;">Demo code: <b>NDA202E</b></p>
   </div>
 
   <!-- EXAM -->
   <div class="card hidden" id="examScreen">
-
     <div class="exam-top">
       <strong id="candidateDisplay"></strong>
       <div class="timer" id="timer">30:00</div>
     </div>
-
-    <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
     <div class="question-number" id="questionNumber"></div>
-
     <div class="question" id="questionText"></div>
-
     <div id="options"></div>
-
     <div class="navigation">
       <button onclick="previousQuestion()">PREVIOUS</button>
       <button onclick="nextQuestion()">NEXT</button>
     </div>
-
-    <button
-      onclick="submitExam()"
-      style="margin-top:12px;background:#b00020;">
-      SUBMIT EXAM
-    </button>
-
+    <button onclick="submitExam()" style="margin-top:12px; background:#b00020;">SUBMIT EXAM</button>
   </div>
 
   <!-- RESULT -->
-  <div class="card hidden result" id="resultScreen">
-
+  <div class="card hidden" id="resultScreen">
     <h2>Examination Completed</h2>
-
     <p id="resultCandidate" style="margin-top:10px;"></p>
-
     <div class="score" id="score"></div>
-
     <p id="percentage"></p>
-
     <p id="status" style="margin-top:15px;"></p>
-
-    <button onclick="location.reload()" style="margin-top:25px;">
-      TAKE ANOTHER EXAM
-    </button>
-
+    <button onclick="location.reload()" style="margin-top:20px;">TAKE ANOTHER EXAM</button>
   </div>
-
 </div>
 
-<div class="footer">
-  © 2026 War Tigers Computers
-</div>
+<div class="footer">© 2026 War Tiger Computers</div>
 
 <script>
-
 const questions = [
-
-  {
-    question: "Which of the following is the capital of Nigeria?",
-    options: ["Lagos", "Abuja", "Kano", "Ibadan"],
-    answer: 1
-  },
-
-  {
-    question: "Which organization is responsible for the admission of cadets into the Nigerian Defence Academy?",
-    options: [
-      "Nigerian Defence Academy",
-      "Federal Road Safety Corps",
-      "Nigerian Immigration Service",
-      "National Youth Service Corps"
-    ],
-    answer: 0
-  },
-
-  {
-    question: "What does CPU stand for?",
-    options: [
-      "Central Processing Unit",
-      "Computer Personal Unit",
-      "Central Program Utility",
-      "Computer Processing Utility"
-    ],
-    answer: 0
-  },
-
-  {
-    question: "Which planet is known as the Red Planet?",
-    options: [
-      "Earth",
-      "Venus",
-      "Mars",
-      "Jupiter"
-    ],
-    answer: 2
-  },
-
-  {
-    question: "Which of these is a web browser?",
-    options: [
-      "Google Chrome",
-      "Microsoft Word",
-      "Windows",
-      "Adobe Photoshop"
-    ],
-    answer: 0
-  }
-
+  {question: "Which of the following is the capital of Nigeria?", options: ["Lagos", "Abuja", "Kano", "Ibadan"], answer: 1},
+  {question: "Which organization is responsible for the admission of cadets into the Nigerian Defence Academy?", options: ["Nigerian Defence Academy", "Federal Road Safety Corps", "Nigerian Immigration Service", "National Youth Service Corps"], answer: 0},
+  {question: "What does CPU stand for?", options: ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "Computer Processing Utility"], answer: 0},
+  {question: "Which planet is known as the Red Planet?", options: ["Earth", "Venus", "Mars", "Jupiter"], answer: 2},
+  {question: "Which of these is a web browser?", options: ["Google Chrome", "Microsoft Word", "Windows", "Adobe Photoshop"], answer: 0}
 ];
 
 let currentQuestion = 0;
@@ -329,154 +95,66 @@ let timeLeft = 30 * 60;
 let timerInterval;
 
 function startExam() {
-
-  const name = document.getElementById("candidateName").value.trim();
-  const code = document.getElementById("examCode").value.trim();
-
-  if (!name) {
-    alert("Please enter your name.");
-    return;
-  }
-
-  if (code !== "NDA2026") {
-    alert("Invalid examination code.");
-    return;
-  }
-
-  document.getElementById("loginScreen").classList.add("hidden");
-  document.getElementById("examScreen").classList.remove("hidden");
-
-  document.getElementById("candidateDisplay").textContent = name;
-
-  showQuestion();
-  startTimer();
+  const name = document.getElementById('candidateName').value.trim();
+  const code = document.getElementById('examCode').value.trim();
+  if (!name) {alert("Please enter your name."); return;}
+  if (code!== "NDA202E") {alert("Invalid examination code."); return;}
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('examScreen').classList.remove('hidden');
+  document.getElementById('candidateDisplay').textContent = name;
+  showQuestion(); startTimer();
 }
 
 function showQuestion() {
-
   const q = questions[currentQuestion];
-
-  document.getElementById("questionNumber").textContent =
-    "Question " + (currentQuestion + 1) + " of " + questions.length;
-
-  document.getElementById("questionText").textContent = q.question;
-
-  const optionsDiv = document.getElementById("options");
-
+  document.getElementById('questionNumber').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+  document.getElementById('questionText').textContent = q.question;
+  const optionsDiv = document.getElementById('options');
   optionsDiv.innerHTML = "";
-
   q.options.forEach((option, index) => {
-
-    const label = document.createElement("label");
-
-    label.className = "option";
-
-    label.innerHTML = `
-      <input type="radio"
-        name="answer"
-        value="${index}"
-        ${answers[currentQuestion] === index ? "checked" : ""}>
-      ${option}
-    `;
-
-    label.querySelector("input").addEventListener("change", function() {
-      answers[currentQuestion] = Number(this.value);
-    });
-
+    const label = document.createElement('label');
+    label.className = 'option';
+    label.innerHTML = `<input type="radio" name="answer" value="${index}" ${(answers[currentQuestion] == index)? "checked" : ""}> ${option}`;
+    label.querySelector('input').addEventListener('change', function(){answers[currentQuestion] = this.value;});
     optionsDiv.appendChild(label);
-
   });
-
-  const progress =
-    ((currentQuestion + 1) / questions.length) * 100;
-
-  document.getElementById("progressBar").style.width =
-    progress + "%";
+  const progress = ((currentQuestion + 1) / questions.length) * 100;
+  document.getElementById('progressBar').style.width = progress + "%";
 }
 
 function nextQuestion() {
-
-  if (currentQuestion < questions.length - 1) {
-    currentQuestion++;
-    showQuestion();
-  } else {
-    alert("This is the last question. You can submit the examination.");
-  }
+  if (currentQuestion < questions.length - 1) {currentQuestion++; showQuestion();} 
+  else {alert("This is the last question. You can submit the examination.");}
 }
 
 function previousQuestion() {
-
-  if (currentQuestion > 0) {
-    currentQuestion--;
-    showQuestion();
-  }
-
+  if (currentQuestion > 0) {currentQuestion--; showQuestion();}
 }
 
 function startTimer() {
-
   timerInterval = setInterval(function() {
-
     timeLeft--;
-
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
-
-    document.getElementById("timer").textContent =
-      String(minutes).padStart(2, "0") + ":" +
-      String(seconds).padStart(2, "0");
-
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      alert("Time is up. Your examination will be submitted.");
-      submitExam();
-    }
-
+    document.getElementById('timer').textContent = String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+    if (timeLeft <= 0) {clearInterval(timerInterval); alert("Time is up. Your examination will be submitted."); submitExam();}
   }, 1000);
-
 }
 
 function submitExam() {
-
   clearInterval(timerInterval);
-
   let score = 0;
-
-  questions.forEach((q, index) => {
-
-    if (answers[index] === q.answer) {
-      score++;
-    }
-
-  });
-
-  const percentage =
-    Math.round((score / questions.length) * 100);
-
-  const status =
-    percentage >= 50 ? "PASSED" : "FAILED";
-
-  document.getElementById("examScreen").classList.add("hidden");
-  document.getElementById("resultScreen").classList.remove("hidden");
-
-  document.getElementById("resultCandidate").textContent =
-    "Candidate: " +
-    document.getElementById("candidateName").value;
-
-  document.getElementById("score").textContent =
-    score + " / " + questions.length;
-
-  document.getElementById("percentage").textContent =
-    "Percentage: " + percentage + "%";
-
-  document.getElementById("status").textContent =
-    status;
-
-  document.getElementById("status").className =
-    percentage >= 50 ? "pass" : "fail";
+  questions.forEach((q, index) => {if (answers[index] == q.answer) {score++;}});
+  const percentage = Math.round((score / questions.length) * 100);
+  const status = percentage >= 50? "PASSED" : "FAILED";
+  document.getElementById('examScreen').classList.add('hidden');
+  document.getElementById('resultScreen').classList.remove('hidden');
+  document.getElementById('resultCandidate').textContent = "Candidate: " + document.getElementById('candidateName').value;
+  document.getElementById('score').textContent = `${score} / ${questions.length}`;
+  document.getElementById('percentage').textContent = `Percentage: ${percentage}%`;
+  document.getElementById('status').textContent = status;
+  document.getElementById('status').className = percentage >= 50? "pass" : "fail";
 }
-
 </script>
-
 </body>
 </html>
