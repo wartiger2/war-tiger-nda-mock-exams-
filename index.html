@@ -1,851 +1,863 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>War Tigers Computers - Mock Examination Portal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>War Tigers Computers - Mock Examination Portal</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172033;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
 
-.header {
-  background: #0b3d2e;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
+    header {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+    }
 
-.header h1 {
-  margin: 0;
-  font-size: 25px;
-}
+    header h1 {
+      margin: 0;
+      font-size: 25px;
+    }
 
-.header p {
-  margin: 6px 0 0;
-}
+    header p {
+      margin: 6px 0 0;
+      font-size: 14px;
+    }
 
-.container {
-  max-width: 700px;
-  margin: 25px auto;
-  padding: 15px;
-}
+    .container {
+      width: 94%;
+      max-width: 650px;
+      margin: 25px auto;
+    }
 
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
 
-.hidden {
-  display: none;
-}
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
 
-input[type="text"] {
-  width: 100%;
-  padding: 14px;
-  margin: 8px 0 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-}
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
 
-button {
-  border: none;
-  padding: 13px 18px;
-  border-radius: 8px;
-  background: #0b3d2e;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-}
+    input,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+    }
 
-button:hover {
-  opacity: 0.9;
-}
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      background: #0f172a;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.subject {
-  width: 100%;
-  margin: 9px 0;
-  padding: 16px;
-  text-align: left;
-  background: #f8fafc;
-  color: #172033;
-  border: 1px solid #d7dde5;
-}
+    button:hover {
+      opacity: 0.9;
+    }
 
-.subject:hover {
-  background: #e8f5ef;
-}
+    .secondary {
+      background: #64748b;
+    }
 
-.subject strong {
-  display: block;
-  font-size: 17px;
-}
+    .danger {
+      background: #b91c1c;
+    }
 
-.subject span {
-  font-size: 13px;
-  color: #666;
-}
+    .hidden {
+      display: none;
+    }
 
-.option {
-  display: block;
-  padding: 13px;
-  margin: 8px 0;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  cursor: pointer;
-}
+    .subject-list {
+      display: grid;
+      gap: 10px;
+    }
 
-.option:hover {
-  background: #f5f5f5;
-}
+    .subject-btn {
+      margin-top: 0;
+      background: #e2e8f0;
+      color: #0f172a;
+      text-align: left;
+    }
 
-#timer {
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  margin: 15px 0;
-}
+    .subject-btn:hover {
+      background: #cbd5e1;
+    }
 
-.progress {
-  width: 100%;
-  height: 8px;
-  background: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-}
+    .exam-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
 
-#progressBar {
-  height: 100%;
-  width: 0%;
-  background: #0b3d2e;
-}
+    .timer {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
 
-.nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 20px;
-}
+    .progress {
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
 
-.score {
-  font-size: 40px;
-  font-weight: bold;
-  text-align: center;
-  margin: 20px;
-}
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #0f172a;
+      transition: width 0.3s;
+    }
 
-.pass {
-  color: green;
-  font-weight: bold;
-  font-size: 22px;
-  text-align: center;
-}
+    .question {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
 
-.fail {
-  color: red;
-  font-weight: bold;
-  font-size: 22px;
-  text-align: center;
-}
+    .option {
+      display: block;
+      padding: 13px;
+      margin: 10px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-.footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
-  font-size: 13px;
-}
+    .option:hover {
+      background: #f8fafc;
+    }
 
-.small {
-  font-size: 13px;
-  color: #666;
-}
-</style>
+    .option input {
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-buttons button {
+      flex: 1;
+    }
+
+    .result {
+      text-align: center;
+    }
+
+    .score {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .pass {
+      color: green;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    .fail {
+      color: #b91c1c;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    .code-hint {
+      background: #f8fafc;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-top: 15px;
+    }
+
+    footer {
+      text-align: center;
+      color: #64748b;
+      font-size: 13px;
+      margin: 25px 0;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>WAR TIGERS COMPUTERS</h1>
-  <p>Mock Examination Portal</p>
-</div>
+  <header>
+    <h1>WAR TIGERS COMPUTERS</h1>
+    <p>Mock Examination Portal</p>
+  </header>
 
-<div class="container">
+  <div class="container">
 
-<!-- LOGIN -->
-<div class="card" id="loginScreen">
-  <h2>Candidate Login</h2>
+    <!-- LOGIN -->
+    <div id="loginScreen" class="card">
+      <h2>Candidate Login</h2>
 
-  <label>Candidate Name</label>
-  <input type="text" id="candidateName" placeholder="Enter your full name">
-
-  <button onclick="showSubjects()" style="width:100%;">
-    CONTINUE
-  </button>
-</div>
-
-
-<!-- SUBJECT SELECTION -->
-<div class="card hidden" id="subjectScreen">
-
-  <h2>Select Examination Subject</h2>
-
-  <p class="small">
-    Select a subject below to continue.
-  </p>
-
-  <button class="subject" onclick="selectSubject('English Language')">
-    <strong>English Language</strong>
-    <span>English examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Mathematics')">
-    <strong>Mathematics</strong>
-    <span>Mathematics examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Government')">
-    <strong>Government</strong>
-    <span>Government examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('General Knowledge')">
-    <strong>General Knowledge</strong>
-    <span>General knowledge examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Current Affairs')">
-    <strong>Current Affairs</strong>
-    <span>Current affairs examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Biology')">
-    <strong>Biology</strong>
-    <span>Biology examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Chemistry')">
-    <strong>Chemistry</strong>
-    <span>Chemistry examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Physics')">
-    <strong>Physics</strong>
-    <span>Physics examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Economics')">
-    <strong>Economics</strong>
-    <span>Economics examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Geography')">
-    <strong>Geography</strong>
-    <span>Geography examination</span>
-  </button>
-
-</div>
-
-
-<!-- CODE SCREEN -->
-<div class="card hidden" id="codeScreen">
-
-  <h2 id="selectedSubject"></h2>
-
-  <p>
-    Candidate:
-    <strong id="selectedCandidate"></strong>
-  </p>
-
-  <label>Examination Code</label>
-
-  <input type="text"
-         id="examCode"
-         placeholder="Enter examination code">
-
-  <button onclick="startExam()" style="width:100%;">
-    START EXAMINATION
-  </button>
-
-  <button onclick="backToSubjects()"
-          style="width:100%; margin-top:10px; background:#666;">
-    BACK TO SUBJECTS
-  </button>
-
-  <p class="small" style="margin-top:15px;">
-    Enter the code provided for the selected subject.
-  </p>
-
-</div>
-
-
-<!-- EXAM -->
-<div class="card hidden" id="examScreen">
-
-  <h3 id="candidateDisplay"></h3>
-
-  <p id="subjectDisplay"></p>
-
-  <div id="timer">30:00</div>
-
-  <div class="progress">
-    <div id="progressBar"></div>
-  </div>
-
-  <h3 id="questionNumber"></h3>
-
-  <p id="questionText"></p>
-
-  <div id="options"></div>
-
-  <div class="nav-buttons">
-
-    <button onclick="previousQuestion()">
-      PREVIOUS
-    </button>
-
-    <button onclick="nextQuestion()">
-      NEXT
-    </button>
-
-  </div>
-
-  <button onclick="submitExam()"
-          style="width:100%; margin-top:15px; background:#8b0000;">
-    SUBMIT EXAMINATION
-  </button>
-
-</div>
-
-
-<!-- RESULT -->
-<div class="card hidden" id="resultScreen">
-
-  <h2 style="text-align:center;">
-    Examination Result
-  </h2>
-
-  <p id="resultCandidate"></p>
-
-  <p id="resultSubject"
-     style="text-align:center;"></p>
-
-  <div class="score" id="score"></div>
-
-  <p id="percentage"
-     style="text-align:center;"></p>
-
-  <p id="status"></p>
-
-  <button onclick="location.reload()"
-          style="width:100%; margin-top:20px;">
-    TAKE ANOTHER EXAM
-  </button>
-
-</div>
-
-</div>
-
-<div class="footer">
-  © 2026 War Tigers Computers
-</div>
-
-
-<script>
-
-/* =========================
-   SUBJECT CODES
-========================= */
-
-const subjectCodes = {
-
-  "English Language": "ENG2026",
-
-  "Mathematics": "MATH2026",
-
-  "Government": "GOV2026",
-
-  "General Knowledge": "GK2026",
-
-  "Current Affairs": "CA2026",
-
-  "Biology": "BIO2026",
-
-  "Chemistry": "CHEM2026",
-
-  "Physics": "PHY2026",
-
-  "Economics": "ECO2026",
-
-  "Geography": "GEO2026"
-
-};
-
-
-/* =========================
-   SAMPLE QUESTIONS
-========================= */
-
-const questions = [
-
-  {
-    subject: "English Language",
-    question: "Choose the word closest in meaning to 'rapid'.",
-    options: [
-      "Slow",
-      "Fast",
-      "Weak",
-      "Late"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "English Language",
-    question: "Which of the following is a noun?",
-    options: [
-      "Run",
-      "Beautiful",
-      "Teacher",
-      "Quickly"
-    ],
-    answer: 2
-  },
-
-  {
-    subject: "Mathematics",
-    question: "What is 12 × 5?",
-    options: [
-      "50",
-      "60",
-      "70",
-      "80"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "Mathematics",
-    question: "What is 100 ÷ 4?",
-    options: [
-      "20",
-      "25",
-      "30",
-      "40"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "Government",
-    question: "Nigeria operates what type of government?",
-    options: [
-      "Federal system",
-      "Monarchy",
-      "Military dictatorship",
-      "Absolute monarchy"
-    ],
-    answer: 0
-  },
-
-  {
-    subject: "General Knowledge",
-    question: "What is the capital of Nigeria?",
-    options: [
-      "Lagos",
-      "Abuja",
-      "Kano",
-      "Ibadan"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "Biology",
-    question: "Which organ pumps blood around the human body?",
-    options: [
-      "Lung",
-      "Kidney",
-      "Heart",
-      "Brain"
-    ],
-    answer: 2
-  },
-
-  {
-    subject: "Chemistry",
-    question: "What is the chemical symbol for oxygen?",
-    options: [
-      "O",
-      "Ox",
-      "C",
-      "H"
-    ],
-    answer: 0
-  },
-
-  {
-    subject: "Physics",
-    question: "What force pulls objects toward the Earth?",
-    options: [
-      "Friction",
-      "Gravity",
-      "Magnetism",
-      "Pressure"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "Economics",
-    question: "What is the basic economic problem caused by limited resources?",
-    options: [
-      "Scarcity",
-      "Profit",
-      "Trade",
-      "Taxation"
-    ],
-    answer: 0
-  },
-
-  {
-    subject: "Geography",
-    question: "Which is the largest continent?",
-    options: [
-      "Africa",
-      "Europe",
-      "Asia",
-      "Australia"
-    ],
-    answer: 2
-  },
-
-  {
-    subject: "Current Affairs",
-    question: "Which organization is responsible for admission into the Nigerian Defence Academy?",
-    options: [
-      "Nigerian Defence Academy",
-      "Federal Road Safety Corps",
-      "National Youth Service Corps",
-      "Nigerian Immigration Service"
-    ],
-    answer: 0
-  }
-
-];
-
-
-/* =========================
-   VARIABLES
-========================= */
-
-let selectedSubject = "";
-
-let currentQuestions = [];
-
-let currentQuestion = 0;
-
-let answers = [];
-
-let timeLeft = 30 * 60;
-
-let timerInterval;
-
-
-/* =========================
-   SHOW SUBJECTS
-========================= */
-
-function showSubjects() {
-
-  const name =
-    document.getElementById("candidateName").value.trim();
-
-  if (!name) {
-
-    alert("Please enter your name.");
-
-    return;
-  }
-
-  document
-    .getElementById("loginScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("subjectScreen")
-    .classList.remove("hidden");
-}
-
-
-/* =========================
-   SELECT SUBJECT
-========================= */
-
-function selectSubject(subject) {
-
-  selectedSubject = subject;
-
-  document.getElementById("selectedSubject")
-    .textContent = subject + " Examination";
-
-  document.getElementById("selectedCandidate")
-    .textContent =
-    document.getElementById("candidateName").value;
-
-  document
-    .getElementById("subjectScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("codeScreen")
-    .classList.remove("hidden");
-}
-
-
-/* =========================
-   BACK TO SUBJECTS
-========================= */
-
-function backToSubjects() {
-
-  document
-    .getElementById("codeScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("subjectScreen")
-    .classList.remove("hidden");
-}
-
-
-/* =========================
-   START EXAM
-========================= */
-
-function startExam() {
-
-  const code =
-    document.getElementById("examCode")
-      .value.trim()
-      .toUpperCase();
-
-  if (!code) {
-
-    alert("Please enter the examination code.");
-
-    return;
-  }
-
-  if (code !== subjectCodes[selectedSubject]) {
-
-    alert(
-      "Invalid code for " +
-      selectedSubject +
-      "."
-    );
-
-    return;
-  }
-
-
-  /* Get questions for selected subject */
-
-  currentQuestions =
-    questions.filter(
-      q => q.subject === selectedSubject
-    );
-
-
-  /* If no questions yet */
-
-  if (currentQuestions.length === 0) {
-
-    alert(
-      "Questions for this subject have not been added yet."
-    );
-
-    return;
-  }
-
-
-  currentQuestion = 0;
-
-  answers = [];
-
-  timeLeft = 30 * 60;
-
-
-  document
-    .getElementById("codeScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("examScreen")
-    .classList.remove("hidden");
-
-
-  document
-    .getElementById("candidateDisplay")
-    .textContent =
-    "Candidate: " +
-    document.getElementById("candidateName").value;
-
-
-  document
-    .getElementById("subjectDisplay")
-    .textContent =
-    "Subject: " + selectedSubject;
-
-
-  showQuestion();
-
-  startTimer();
-}
-
-
-/* =========================
-   SHOW QUESTION
-========================= */
-
-function showQuestion() {
-
-  const q =
-    currentQuestions[currentQuestion];
-
-  document
-    .getElementById("questionNumber")
-    .textContent =
-    `Question ${currentQuestion + 1} of ${currentQuestions.length}`;
-
-  document
-    .getElementById("questionText")
-    .textContent =
-    q.question;
-
-
-  const optionsDiv =
-    document.getElementById("options");
-
-  optionsDiv.innerHTML = "";
-
-
-  q.options.forEach((option, index) => {
-
-    const label =
-      document.createElement("label");
-
-    label.className = "option";
-
-    label.innerHTML = `
+      <label for="candidateName">Candidate Name</label>
       <input
-        type="radio"
-        name="answer"
-        value="${index}"
-        ${answers[currentQuestion] == index ? "checked" : ""}
+        type="text"
+        id="candidateName"
+        placeholder="Enter your full name"
       >
-      ${option}
-    `;
+
+      <button onclick="continueToSubjects()">CONTINUE</button>
+    </div>
 
 
-    label
-      .querySelector("input")
-      .addEventListener(
-        "change",
-        function() {
+    <!-- SUBJECT SELECTION -->
+    <div id="subjectScreen" class="card hidden">
+      <h2>Select Subject</h2>
 
-          answers[currentQuestion] =
-            Number(this.value);
+      <p>
+        Candidate:
+        <strong id="displayCandidate"></strong>
+      </p>
+
+      <div class="subject-list">
+
+        <button class="subject-btn" onclick="selectSubject('English Language')">
+          English Language
+        </button>
+
+        <button class="subject-btn" onclick="selectSubject('Mathematics')">
+          Mathematics
+        </button>
+
+        <button class="subject-btn" onclick="selectSubject('Government')">
+          Government
+        </button>
+
+        <button class="subject-btn" onclick="selectSubject('General Knowledge')">
+          General Knowledge
+        </button>
+
+        <button class="subject-btn" onclick="selectSubject('Current Affairs')">
+          Current Affairs
+        </button>
+
+        <button class="subject-btn" onclick="selectSubject('Biology')">
+          Biology
+        </button>
+
+        <button class="subject-btn" onclick="selectSubject('Chemistry')">
+          Chemistry
+        </button>
+
+        <button class="subject-btn" onclick="selectSubject('Physics')">
+          Physics
+        </button>
+
+        <button class="subject-btn" onclick="selectSubject('Economics')">
+          Economics
+        </button>
+
+        <button class="subject-btn" onclick="selectSubject('Geography')">
+          Geography
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- CODE SCREEN -->
+    <div id="codeScreen" class="card hidden">
+      <h2>Subject Access</h2>
+
+      <p>
+        Candidate:
+        <strong id="codeCandidate"></strong>
+      </p>
+
+      <p>
+        Subject:
+        <strong id="selectedSubject"></strong>
+      </p>
+
+      <label for="examCode">Enter Subject Code</label>
+
+      <input
+        type="text"
+        id="examCode"
+        placeholder="Enter access code"
+      >
+
+      <button onclick="startExam()">START EXAM</button>
+
+      <button class="secondary" onclick="backToSubjects()">
+        BACK TO SUBJECTS
+      </button>
+
+      <div class="code-hint">
+        Demo codes are currently enabled for testing.
+      </div>
+    </div>
+
+
+    <!-- EXAM SCREEN -->
+    <div id="examScreen" class="card hidden">
+
+      <div class="exam-top">
+        <strong id="examSubject"></strong>
+        <div class="timer">
+          Time: <span id="timer">30:00</span>
+        </div>
+      </div>
+
+      <div class="progress">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <p id="questionNumber"></p>
+
+      <div id="questionText" class="question"></div>
+
+      <div id="options"></div>
+
+      <div class="nav-buttons">
+
+        <button
+          id="previousBtn"
+          class="secondary"
+          onclick="previousQuestion()"
+        >
+          PREVIOUS
+        </button>
+
+        <button
+          id="nextBtn"
+          onclick="nextQuestion()"
+        >
+          NEXT
+        </button>
+
+      </div>
+
+      <button
+        id="submitBtn"
+        class="danger hidden"
+        onclick="submitExam()"
+      >
+        SUBMIT EXAM
+      </button>
+
+    </div>
+
+
+    <!-- RESULT SCREEN -->
+    <div id="resultScreen" class="card hidden result">
+
+      <h2>Examination Result</h2>
+
+      <p id="resultCandidate"></p>
+
+      <p id="resultSubject"></p>
+
+      <div id="score" class="score"></div>
+
+      <p id="percentage"></p>
+
+      <p id="status"></p>
+
+      <button onclick="restartExam()">
+        RETURN TO LOGIN
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <footer>
+    © 2026 War Tigers Computers
+  </footer>
+
+
+  <!-- JAVASCRIPT STARTS HERE -->
+  <script>
+
+    let candidateName = "";
+    let selectedSubject = "";
+    let currentQuestion = 0;
+    let currentQuestions = [];
+    let answers = [];
+    let timeLeft = 30 * 60;
+    let timerInterval = null;
+
+
+    /* SUBJECT CODES */
+
+    const subjectCodes = {
+
+      "English Language": "ENG2026",
+
+      "Mathematics": "MATH2026",
+
+      "Government": "GOV2026",
+
+      "General Knowledge": "GK2026",
+
+      "Current Affairs": "CA2026",
+
+      "Biology": "BIO2026",
+
+      "Chemistry": "CHEM2026",
+
+      "Physics": "PHY2026",
+
+      "Economics": "ECO2026",
+
+      "Geography": "GEO2026"
+
+    };
+
+
+    /* SAMPLE QUESTIONS
+       These are original sample questions for testing.
+    */
+
+    const questions = [
+
+      {
+        subject: "English Language",
+        question: "Choose the word closest in meaning to 'rapid'.",
+        options: ["Slow", "Fast", "Weak", "Late"],
+        answer: 1
+      },
+
+      {
+        subject: "English Language",
+        question: "Which of these is a noun?",
+        options: ["Quickly", "Beautiful", "Teacher", "Run"],
+        answer: 2
+      },
+
+
+      {
+        subject: "Mathematics",
+        question: "What is 12 × 5?",
+        options: ["50", "55", "60", "65"],
+        answer: 2
+      },
+
+      {
+        subject: "Mathematics",
+        question: "What is 100 ÷ 4?",
+        options: ["20", "25", "30", "40"],
+        answer: 1
+      },
+
+
+      {
+        subject: "Government",
+        question: "Nigeria operates which system of government?",
+        options: [
+          "Federal system",
+          "Monarchy",
+          "Absolute dictatorship",
+          "Theocracy"
+        ],
+        answer: 0
+      },
+
+
+      {
+        subject: "General Knowledge",
+        question: "What is the capital of Nigeria?",
+        options: [
+          "Lagos",
+          "Kano",
+          "Abuja",
+          "Ibadan"
+        ],
+        answer: 2
+      },
+
+
+      {
+        subject: "Current Affairs",
+        question: "Which institution is responsible for the admission of cadets into the Nigerian Defence Academy?",
+        options: [
+          "Nigerian Defence Academy",
+          "Federal Road Safety Corps",
+          "Nigerian Ports Authority",
+          "National Assembly"
+        ],
+        answer: 0
+      },
+
+
+      {
+        subject: "Biology",
+        question: "Which organ pumps blood around the human body?",
+        options: [
+          "Liver",
+          "Heart",
+          "Kidney",
+          "Lung"
+        ],
+        answer: 1
+      },
+
+
+      {
+        subject: "Chemistry",
+        question: "What is the chemical symbol for oxygen?",
+        options: [
+          "Ox",
+          "O",
+          "C",
+          "Og"
+        ],
+        answer: 1
+      },
+
+
+      {
+        subject: "Physics",
+        question: "Which force pulls objects toward the Earth?",
+        options: [
+          "Friction",
+          "Magnetism",
+          "Gravity",
+          "Tension"
+        ],
+        answer: 2
+      },
+
+
+      {
+        subject: "Economics",
+        question: "What basic economic problem arises because resources are limited?",
+        options: [
+          "Scarcity",
+          "Inflation",
+          "Export",
+          "Taxation"
+        ],
+        answer: 0
+      },
+
+
+      {
+        subject: "Geography",
+        question: "Which is the largest continent?",
+        options: [
+          "Africa",
+          "Europe",
+          "Asia",
+          "Australia"
+        ],
+        answer: 2
+      }
+
+    ];
+
+
+    /* LOGIN */
+
+    function continueToSubjects() {
+
+      const nameInput =
+        document.getElementById("candidateName").value.trim();
+
+      if (nameInput === "") {
+
+        alert("Please enter the candidate name.");
+
+        return;
+      }
+
+      candidateName = nameInput;
+
+      document.getElementById("displayCandidate").textContent =
+        candidateName;
+
+      document.getElementById("loginScreen").classList.add("hidden");
+
+      document.getElementById("subjectScreen").classList.remove("hidden");
+
+    }
+
+
+    /* SELECT SUBJECT */
+
+    function selectSubject(subject) {
+
+      selectedSubject = subject;
+
+      document.getElementById("codeCandidate").textContent =
+        candidateName;
+
+      document.getElementById("selectedSubject").textContent =
+        selectedSubject;
+
+      document.getElementById("subjectScreen").classList.add("hidden");
+
+      document.getElementById("codeScreen").classList.remove("hidden");
+
+      document.getElementById("examCode").value = "";
+
+    }
+
+
+    /* BACK TO SUBJECTS */
+
+    function backToSubjects() {
+
+      document.getElementById("codeScreen").classList.add("hidden");
+
+      document.getElementById("subjectScreen").classList.remove("hidden");
+
+    }
+
+
+    /* START EXAM */
+
+    function startExam() {
+
+      const code =
+        document.getElementById("examCode").value.trim().toUpperCase();
+
+      const correctCode =
+        subjectCodes[selectedSubject];
+
+      if (code !== correctCode) {
+
+        alert("Incorrect subject code. Please check the code and try again.");
+
+        return;
+      }
+
+
+      currentQuestions =
+        questions.filter(function(q) {
+
+          return q.subject === selectedSubject;
+
+        });
+
+
+      if (currentQuestions.length === 0) {
+
+        alert("Questions for this subject have not been added yet.");
+
+        return;
+      }
+
+
+      currentQuestion = 0;
+
+      answers = new Array(currentQuestions.length).fill(null);
+
+      timeLeft = 30 * 60;
+
+
+      document.getElementById("codeScreen").classList.add("hidden");
+
+      document.getElementById("examScreen").classList.remove("hidden");
+
+      document.getElementById("examSubject").textContent =
+        selectedSubject;
+
+
+      showQuestion();
+
+      startTimer();
+
+    }
+
+
+    /* DISPLAY QUESTION */
+
+    function showQuestion() {
+
+      const q = currentQuestions[currentQuestion];
+
+      document.getElementById("questionNumber").textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        currentQuestions.length;
+
+
+      document.getElementById("questionText").textContent =
+        q.question;
+
+
+      const optionsDiv =
+        document.getElementById("options");
+
+      optionsDiv.innerHTML = "";
+
+
+      q.options.forEach(function(option, index) {
+
+        const label =
+          document.createElement("label");
+
+        label.className = "option";
+
+
+        const radio =
+          document.createElement("input");
+
+        radio.type = "radio";
+
+        radio.name = "answer";
+
+        radio.value = index;
+
+        radio.checked =
+          answers[currentQuestion] === index;
+
+
+        radio.addEventListener("change", function() {
+
+          answers[currentQuestion] = index;
+
+        });
+
+
+        label.appendChild(radio);
+
+        label.appendChild(
+          document.createTextNode(" " + option)
+        );
+
+        optionsDiv.appendChild(label);
+
+      });
+
+
+      document.getElementById("previousBtn").disabled =
+        currentQuestion === 0;
+
+
+      if (currentQuestion === currentQuestions.length - 1) {
+
+        document.getElementById("nextBtn").classList.add("hidden");
+
+        document.getElementById("submitBtn").classList.remove("hidden");
+
+      } else {
+
+        document.getElementById("nextBtn").classList.remove("hidden");
+
+        document.getElementById("submitBtn").classList.add("hidden");
+
+      }
+
+
+      const progress =
+        ((currentQuestion + 1) /
+        currentQuestions.length) * 100;
+
+
+      document.getElementById("progressBar").style.width =
+        progress + "%";
+
+    }
+
+
+    /* NEXT QUESTION */
+
+    function nextQuestion() {
+
+      if (currentQuestion < currentQuestions.length - 1) {
+
+        currentQuestion++;
+
+        showQuestion();
+
+      }
+
+    }
+
+
+    /* PREVIOUS QUESTION */
+
+    function previousQuestion() {
+
+      if (currentQuestion > 0) {
+
+        currentQuestion--;
+
+        showQuestion();
+
+      }
+
+    }
+
+
+    /* TIMER */
+
+    function startTimer() {
+
+      clearInterval(timerInterval);
+
+      updateTimer();
+
+
+      timerInterval = setInterval(function() {
+
+        timeLeft--;
+
+        updateTimer();
+
+
+        if (timeLeft <= 0) {
+
+          clearInterval(timerInterval);
+
+          alert("Time is up. Your exam will be submitted automatically.");
+
+          submitExam();
 
         }
-      );
+
+      }, 1000);
+
+    }
 
 
-    optionsDiv.appendChild(label);
-
-  });
-
-
-  const progress =
-    ((currentQuestion + 1) /
-    currentQuestions.length) * 100;
-
-
-  document
-    .getElementById("progressBar")
-    .style.width =
-    progress + "%";
-}
-
-
-/* =========================
-   NEXT
-========================= */
-
-function nextQuestion() {
-
-  if (
-    currentQuestion <
-    currentQuestions.length - 1
-  ) {
-
-    currentQuestion++;
-
-    showQuestion();
-
-  } else {
-
-    alert(
-      "This is the last question. You can submit the examination."
-    );
-  }
-}
-
-
-/* =========================
-   PREVIOUS
-========================= */
-
-function previousQuestion() {
-
-  if (currentQuestion > 0) {
-
-    currentQuestion--;
-
-    showQuestion();
-
-  }
-
-}
-
-
-/* =========================
-   TIMER
-========================= */
-
-function startTimer() {
-
-  clearInterval(timerInterval);
-
-  document.getElementById("timer")
-    .textContent = "30:00";
-
-
-  timerInterval =
-    setInterval(function() {
-
-      timeLeft--;
-
+    function updateTimer() {
 
       const minutes =
         Math.floor(timeLeft / 60);
@@ -854,1088 +866,122 @@ function startTimer() {
         timeLeft % 60;
 
 
-      document.getElementById("timer")
-        .textContent =
-        String(minutes).padStart(2, "0")
-        + ":" +
+      document.getElementById("timer").textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
         String(seconds).padStart(2, "0");
 
-
-      if (timeLeft <= 0) {
-
-        clearInterval(timerInterval);
-
-        alert(
-          "Time is up. Your examination will be submitted."
-        );
-
-        submitExam();
-
-      }
-
-    }, 1000);
-}
-
-
-/* =========================
-   SUBMIT EXAM
-========================= */
-
-function submitExam() {
-
-  clearInterval(timerInterval);
-
-
-  let score = 0;
-
-
-  currentQuestions.forEach(
-    (q, index) => {
-
-      if (
-        answers[index] === q.answer
-      ) {
-
-        score++;
-
-      }
-
     }
-  );
 
 
-  const percentage =
-    Math.round(
-      (score / currentQuestions.length) * 100
-    );
+    /* SUBMIT EXAM */
 
+    function submitExam() {
 
-  const status =
-    percentage >= 50
-      ? "PASSED"
-      : "FAILED";
+      clearInterval(timerInterval);
 
 
-  document
-    .getElementById("examScreen")
-    .classList.add("hidden");
+      let score = 0;
 
 
-  document
-    .getElementById("resultScreen")
-    .classList.remove("hidden");
+      currentQuestions.forEach(function(q, index) {
 
+        if (answers[index] === q.answer) {
 
-  document<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>War Tigers Computers - Mock Examination Portal</title>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172033;
-}
-
-.header {
-  background: #0b3d2e;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 25px;
-}
-
-.header p {
-  margin: 6px 0 0;
-}
-
-.container {
-  max-width: 700px;
-  margin: 25px auto;
-  padding: 15px;
-}
-
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.hidden {
-  display: none;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 14px;
-  margin: 8px 0 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-button {
-  border: none;
-  padding: 13px 18px;
-  border-radius: 8px;
-  background: #0b3d2e;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-.subject {
-  width: 100%;
-  margin: 9px 0;
-  padding: 16px;
-  text-align: left;
-  background: #f8fafc;
-  color: #172033;
-  border: 1px solid #d7dde5;
-}
-
-.subject:hover {
-  background: #e8f5ef;
-}
-
-.subject strong {
-  display: block;
-  font-size: 17px;
-}
-
-.subject span {
-  font-size: 13px;
-  color: #666;
-}
-
-.option {
-  display: block;
-  padding: 13px;
-  margin: 8px 0;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.option:hover {
-  background: #f5f5f5;
-}
-
-#timer {
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  margin: 15px 0;
-}
-
-.progress {
-  width: 100%;
-  height: 8px;
-  background: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#progressBar {
-  height: 100%;
-  width: 0%;
-  background: #0b3d2e;
-}
-
-.nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.score {
-  font-size: 40px;
-  font-weight: bold;
-  text-align: center;
-  margin: 20px;
-}
-
-.pass {
-  color: green;
-  font-weight: bold;
-  font-size: 22px;
-  text-align: center;
-}
-
-.fail {
-  color: red;
-  font-weight: bold;
-  font-size: 22px;
-  text-align: center;
-}
-
-.footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
-  font-size: 13px;
-}
-
-.small {
-  font-size: 13px;
-  color: #666;
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">
-  <h1>WAR TIGERS COMPUTERS</h1>
-  <p>Mock Examination Portal</p>
-</div>
-
-<div class="container">
-
-<!-- LOGIN -->
-<div class="card" id="loginScreen">
-  <h2>Candidate Login</h2>
-
-  <label>Candidate Name</label>
-  <input type="text" id="candidateName" placeholder="Enter your full name">
-
-  <button onclick="showSubjects()" style="width:100%;">
-    CONTINUE
-  </button>
-</div>
-
-
-<!-- SUBJECT SELECTION -->
-<div class="card hidden" id="subjectScreen">
-
-  <h2>Select Examination Subject</h2>
-
-  <p class="small">
-    Select a subject below to continue.
-  </p>
-
-  <button class="subject" onclick="selectSubject('English Language')">
-    <strong>English Language</strong>
-    <span>English examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Mathematics')">
-    <strong>Mathematics</strong>
-    <span>Mathematics examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Government')">
-    <strong>Government</strong>
-    <span>Government examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('General Knowledge')">
-    <strong>General Knowledge</strong>
-    <span>General knowledge examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Current Affairs')">
-    <strong>Current Affairs</strong>
-    <span>Current affairs examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Biology')">
-    <strong>Biology</strong>
-    <span>Biology examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Chemistry')">
-    <strong>Chemistry</strong>
-    <span>Chemistry examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Physics')">
-    <strong>Physics</strong>
-    <span>Physics examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Economics')">
-    <strong>Economics</strong>
-    <span>Economics examination</span>
-  </button>
-
-  <button class="subject" onclick="selectSubject('Geography')">
-    <strong>Geography</strong>
-    <span>Geography examination</span>
-  </button>
-
-</div>
-
-
-<!-- CODE SCREEN -->
-<div class="card hidden" id="codeScreen">
-
-  <h2 id="selectedSubject"></h2>
-
-  <p>
-    Candidate:
-    <strong id="selectedCandidate"></strong>
-  </p>
-
-  <label>Examination Code</label>
-
-  <input type="text"
-         id="examCode"
-         placeholder="Enter examination code">
-
-  <button onclick="startExam()" style="width:100%;">
-    START EXAMINATION
-  </button>
-
-  <button onclick="backToSubjects()"
-          style="width:100%; margin-top:10px; background:#666;">
-    BACK TO SUBJECTS
-  </button>
-
-  <p class="small" style="margin-top:15px;">
-    Enter the code provided for the selected subject.
-  </p>
-
-</div>
-
-
-<!-- EXAM -->
-<div class="card hidden" id="examScreen">
-
-  <h3 id="candidateDisplay"></h3>
-
-  <p id="subjectDisplay"></p>
-
-  <div id="timer">30:00</div>
-
-  <div class="progress">
-    <div id="progressBar"></div>
-  </div>
-
-  <h3 id="questionNumber"></h3>
-
-  <p id="questionText"></p>
-
-  <div id="options"></div>
-
-  <div class="nav-buttons">
-
-    <button onclick="previousQuestion()">
-      PREVIOUS
-    </button>
-
-    <button onclick="nextQuestion()">
-      NEXT
-    </button>
-
-  </div>
-
-  <button onclick="submitExam()"
-          style="width:100%; margin-top:15px; background:#8b0000;">
-    SUBMIT EXAMINATION
-  </button>
-
-</div>
-
-
-<!-- RESULT -->
-<div class="card hidden" id="resultScreen">
-
-  <h2 style="text-align:center;">
-    Examination Result
-  </h2>
-
-  <p id="resultCandidate"></p>
-
-  <p id="resultSubject"
-     style="text-align:center;"></p>
-
-  <div class="score" id="score"></div>
-
-  <p id="percentage"
-     style="text-align:center;"></p>
-
-  <p id="status"></p>
-
-  <button onclick="location.reload()"
-          style="width:100%; margin-top:20px;">
-    TAKE ANOTHER EXAM
-  </button>
-
-</div>
-
-</div>
-
-<div class="footer">
-  © 2026 War Tigers Computers
-</div>
-
-
-<script>
-
-/* =========================
-   SUBJECT CODES
-========================= */
-
-const subjectCodes = {
-
-  "English Language": "ENG2026",
-
-  "Mathematics": "MATH2026",
-
-  "Government": "GOV2026",
-
-  "General Knowledge": "GK2026",
-
-  "Current Affairs": "CA2026",
-
-  "Biology": "BIO2026",
-
-  "Chemistry": "CHEM2026",
-
-  "Physics": "PHY2026",
-
-  "Economics": "ECO2026",
-
-  "Geography": "GEO2026"
-
-};
-
-
-/* =========================
-   SAMPLE QUESTIONS
-========================= */
-
-const questions = [
-
-  {
-    subject: "English Language",
-    question: "Choose the word closest in meaning to 'rapid'.",
-    options: [
-      "Slow",
-      "Fast",
-      "Weak",
-      "Late"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "English Language",
-    question: "Which of the following is a noun?",
-    options: [
-      "Run",
-      "Beautiful",
-      "Teacher",
-      "Quickly"
-    ],
-    answer: 2
-  },
-
-  {
-    subject: "Mathematics",
-    question: "What is 12 × 5?",
-    options: [
-      "50",
-      "60",
-      "70",
-      "80"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "Mathematics",
-    question: "What is 100 ÷ 4?",
-    options: [
-      "20",
-      "25",
-      "30",
-      "40"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "Government",
-    question: "Nigeria operates what type of government?",
-    options: [
-      "Federal system",
-      "Monarchy",
-      "Military dictatorship",
-      "Absolute monarchy"
-    ],
-    answer: 0
-  },
-
-  {
-    subject: "General Knowledge",
-    question: "What is the capital of Nigeria?",
-    options: [
-      "Lagos",
-      "Abuja",
-      "Kano",
-      "Ibadan"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "Biology",
-    question: "Which organ pumps blood around the human body?",
-    options: [
-      "Lung",
-      "Kidney",
-      "Heart",
-      "Brain"
-    ],
-    answer: 2
-  },
-
-  {
-    subject: "Chemistry",
-    question: "What is the chemical symbol for oxygen?",
-    options: [
-      "O",
-      "Ox",
-      "C",
-      "H"
-    ],
-    answer: 0
-  },
-
-  {
-    subject: "Physics",
-    question: "What force pulls objects toward the Earth?",
-    options: [
-      "Friction",
-      "Gravity",
-      "Magnetism",
-      "Pressure"
-    ],
-    answer: 1
-  },
-
-  {
-    subject: "Economics",
-    question: "What is the basic economic problem caused by limited resources?",
-    options: [
-      "Scarcity",
-      "Profit",
-      "Trade",
-      "Taxation"
-    ],
-    answer: 0
-  },
-
-  {
-    subject: "Geography",
-    question: "Which is the largest continent?",
-    options: [
-      "Africa",
-      "Europe",
-      "Asia",
-      "Australia"
-    ],
-    answer: 2
-  },
-
-  {
-    subject: "Current Affairs",
-    question: "Which organization is responsible for admission into the Nigerian Defence Academy?",
-    options: [
-      "Nigerian Defence Academy",
-      "Federal Road Safety Corps",
-      "National Youth Service Corps",
-      "Nigerian Immigration Service"
-    ],
-    answer: 0
-  }
-
-];
-
-
-/* =========================
-   VARIABLES
-========================= */
-
-let selectedSubject = "";
-
-let currentQuestions = [];
-
-let currentQuestion = 0;
-
-let answers = [];
-
-let timeLeft = 30 * 60;
-
-let timerInterval;
-
-
-/* =========================
-   SHOW SUBJECTS
-========================= */
-
-function showSubjects() {
-
-  const name =
-    document.getElementById("candidateName").value.trim();
-
-  if (!name) {
-
-    alert("Please enter your name.");
-
-    return;
-  }
-
-  document
-    .getElementById("loginScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("subjectScreen")
-    .classList.remove("hidden");
-}
-
-
-/* =========================
-   SELECT SUBJECT
-========================= */
-
-function selectSubject(subject) {
-
-  selectedSubject = subject;
-
-  document.getElementById("selectedSubject")
-    .textContent = subject + " Examination";
-
-  document.getElementById("selectedCandidate")
-    .textContent =
-    document.getElementById("candidateName").value;
-
-  document
-    .getElementById("subjectScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("codeScreen")
-    .classList.remove("hidden");
-}
-
-
-/* =========================
-   BACK TO SUBJECTS
-========================= */
-
-function backToSubjects() {
-
-  document
-    .getElementById("codeScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("subjectScreen")
-    .classList.remove("hidden");
-}
-
-
-/* =========================
-   START EXAM
-========================= */
-
-function startExam() {
-
-  const code =
-    document.getElementById("examCode")
-      .value.trim()
-      .toUpperCase();
-
-  if (!code) {
-
-    alert("Please enter the examination code.");
-
-    return;
-  }
-
-  if (code !== subjectCodes[selectedSubject]) {
-
-    alert(
-      "Invalid code for " +
-      selectedSubject +
-      "."
-    );
-
-    return;
-  }
-
-
-  /* Get questions for selected subject */
-
-  currentQuestions =
-    questions.filter(
-      q => q.subject === selectedSubject
-    );
-
-
-  /* If no questions yet */
-
-  if (currentQuestions.length === 0) {
-
-    alert(
-      "Questions for this subject have not been added yet."
-    );
-
-    return;
-  }
-
-
-  currentQuestion = 0;
-
-  answers = [];
-
-  timeLeft = 30 * 60;
-
-
-  document
-    .getElementById("codeScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("examScreen")
-    .classList.remove("hidden");
-
-
-  document
-    .getElementById("candidateDisplay")
-    .textContent =
-    "Candidate: " +
-    document.getElementById("candidateName").value;
-
-
-  document
-    .getElementById("subjectDisplay")
-    .textContent =
-    "Subject: " + selectedSubject;
-
-
-  showQuestion();
-
-  startTimer();
-}
-
-
-/* =========================
-   SHOW QUESTION
-========================= */
-
-function showQuestion() {
-
-  const q =
-    currentQuestions[currentQuestion];
-
-  document
-    .getElementById("questionNumber")
-    .textContent =
-    `Question ${currentQuestion + 1} of ${currentQuestions.length}`;
-
-  document
-    .getElementById("questionText")
-    .textContent =
-    q.question;
-
-
-  const optionsDiv =
-    document.getElementById("options");
-
-  optionsDiv.innerHTML = "";
-
-
-  q.options.forEach((option, index) => {
-
-    const label =
-      document.createElement("label");
-
-    label.className = "option";
-
-    label.innerHTML = `
-      <input
-        type="radio"
-        name="answer"
-        value="${index}"
-        ${answers[currentQuestion] == index ? "checked" : ""}
-      >
-      ${option}
-    `;
-
-
-    label
-      .querySelector("input")
-      .addEventListener(
-        "change",
-        function() {
-
-          answers[currentQuestion] =
-            Number(this.value);
+          score++;
 
         }
-      );
+
+      });
 
 
-    optionsDiv.appendChild(label);
-
-  });
-
-
-  const progress =
-    ((currentQuestion + 1) /
-    currentQuestions.length) * 100;
-
-
-  document
-    .getElementById("progressBar")
-    .style.width =
-    progress + "%";
-}
-
-
-/* =========================
-   NEXT
-========================= */
-
-function nextQuestion() {
-
-  if (
-    currentQuestion <
-    currentQuestions.length - 1
-  ) {
-
-    currentQuestion++;
-
-    showQuestion();
-
-  } else {
-
-    alert(
-      "This is the last question. You can submit the examination."
-    );
-  }
-}
-
-
-/* =========================
-   PREVIOUS
-========================= */
-
-function previousQuestion() {
-
-  if (currentQuestion > 0) {
-
-    currentQuestion--;
-
-    showQuestion();
-
-  }
-
-}
-
-
-/* =========================
-   TIMER
-========================= */
-
-function startTimer() {
-
-  clearInterval(timerInterval);
-
-  document.getElementById("timer")
-    .textContent = "30:00";
-
-
-  timerInterval =
-    setInterval(function() {
-
-      timeLeft--;
-
-
-      const minutes =
-        Math.floor(timeLeft / 60);
-
-      const seconds =
-        timeLeft % 60;
-
-
-      document.getElementById("timer")
-        .textContent =
-        String(minutes).padStart(2, "0")
-        + ":" +
-        String(seconds).padStart(2, "0");
-
-
-      if (timeLeft <= 0) {
-
-        clearInterval(timerInterval);
-
-        alert(
-          "Time is up. Your examination will be submitted."
+      const percentage =
+        Math.round(
+          (score / currentQuestions.length) * 100
         );
 
-        submitExam();
+
+      let status = "";
+
+      if (percentage >= 50) {
+
+        status = "PASS";
+
+      } else {
+
+        status = "FAIL";
 
       }
 
-    }, 1000);
-}
+
+      document.getElementById("examScreen").classList.add("hidden");
+
+      document.getElementById("resultScreen").classList.remove("hidden");
 
 
-/* =========================
-   SUBMIT EXAM
-========================= */
-
-function submitExam() {
-
-  clearInterval(timerInterval);
+      document.getElementById("resultCandidate").textContent =
+        "Candidate: " + candidateName;
 
 
-  let score = 0;
+      document.getElementById("resultSubject").textContent =
+        "Subject: " + selectedSubject;
 
 
-  currentQuestions.forEach(
-    (q, index) => {
+      document.getElementById("score").textContent =
+        score + " / " + currentQuestions.length;
 
-      if (
-        answers[index] === q.answer
-      ) {
 
-        score++;
+      document.getElementById("percentage").textContent =
+        "Percentage: " + percentage + "%";
 
-      }
+
+      const statusElement =
+        document.getElementById("status");
+
+
+      statusElement.textContent =
+        status;
+
+
+      statusElement.className =
+        percentage >= 50 ? "pass" : "fail";
 
     }
-  );
 
 
-  const percentage =
-    Math.round(
-      (score / currentQuestions.length) * 100
-    );
+    /* RESTART */
+
+    function restartExam() {
+
+      clearInterval(timerInterval);
+
+      candidateName = "";
+
+      selectedSubject = "";
+
+      currentQuestion = 0;
+
+      currentQuestions = [];
+
+      answers = [];
 
 
-  const status =
-    percentage >= 50
-      ? "PASSED"
-      : "FAILED";
+      document.getElementById("resultScreen").classList.add("hidden");
 
+      document.getElementById("subjectScreen").classList.add("hidden");
 
-  document
-    .getElementById("examScreen")
-    .classList.add("hidden");
+      document.getElementById("codeScreen").classList.add("hidden");
 
+      document.getElementById("examScreen").classList.add("hidden");
 
-  document
-    .getElementById("resultScreen")
-    .classList.remove("hidden");
+      document.getElementById("loginScreen").classList.remove("hidden");
 
+      document.getElementById("candidateName").value = "";
 
-  document
-    .getElementById("resultCandidate")
-    .textContent =
-    "Candidate: " +
-    document.getElementById("candidateName").value;
+    }
 
-
-  document
-    .getElementById("resultSubject")
-    .textContent =
-    "Subject: " + selectedSubject;
-
-
-  document
-    .getElementById("score")
-    .textContent =
-    `${score} / ${currentQuestions.length}`;
-
-
-  document
-    .getElementById("percentage")
-    .textContent =
-    `Percentage: ${percentage}%`;
-
-
-  const statusElement =
-    document.getElementById("status");
-
-
-  statusElement.textContent =
-    status;
-
-
-  statusElement.className =
-    percentage >= 50
-      ? "pass"
-      : "fail";
-}
-
-</script>
-
-</body>
-</html>
-    .getElementById("resultCandidate")
-    .textContent =
-    "Candidate: " +
-    document.getElementById("candidateName").value;
-
-
-  document
-    .getElementById("resultSubject")
-    .textContent =
-    "Subject: " + selectedSubject;
-
-
-  document
-    .getElementById("score")
-    .textContent =
-    `${score} / ${currentQuestions.length}`;
-
-
-  document
-    .getElementById("percentage")
-    .textContent =
-    `Percentage: ${percentage}%`;
-
-
-  const statusElement =
-    document.getElementById("status");
-
-
-  statusElement.textContent =
-    status;
-
-
-  statusElement.className =
-    percentage >= 50
-      ? "pass"
-      : "fail";
-}
-
-</script>
+  </script>
+  <!-- JAVASCRIPT ENDS HERE -->
 
 </body>
 </html>
