@@ -10,145 +10,209 @@
 <style>
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-    margin:0;
     font-family:Arial,Helvetica,sans-serif;
     background:#f2f5f3;
     color:#222;
 }
 
 header{
-    background:#087f3f;
+    background:#075b32;
     color:white;
-    padding:18px 12px;
+    padding:18px;
     text-align:center;
 }
 
 header h1{
-    margin:0;
-    font-size:25px;
+    font-size:22px;
 }
 
 header p{
-    margin:5px 0 0;
+    margin-top:5px;
+    font-size:14px;
 }
 
 .container{
-    max-width:700px;
-    margin:20px auto;
-    padding:0 15px;
+    width:95%;
+    max-width:900px;
+    margin:25px auto;
 }
 
 .card{
     background:white;
     padding:22px;
-    border-radius:16px;
-    box-shadow:0 3px 15px rgba(0,0,0,.08);
+    border-radius:14px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
     margin-bottom:20px;
 }
 
 h2{
-    color:#087f3f;
+    color:#075b32;
+    margin-bottom:15px;
+}
+
+h3{
+    margin-bottom:12px;
 }
 
 input,select,textarea{
     width:100%;
     padding:13px;
-    margin:7px 0 12px;
     border:1px solid #ccc;
-    border-radius:9px;
-    font-size:16px;
+    border-radius:8px;
+    margin:7px 0 13px;
+    font-size:15px;
 }
 
 textarea{
-    min-height:100px;
+    min-height:120px;
     resize:vertical;
 }
 
 button{
-    width:100%;
-    padding:13px;
     border:0;
-    border-radius:9px;
-    background:#087f3f;
-    color:white;
-    font-size:16px;
+    border-radius:8px;
+    padding:12px 18px;
     cursor:pointer;
-    margin:6px 0;
+    font-size:15px;
+    margin:4px;
 }
 
-button:hover{
-    opacity:.9;
+.primary{
+    background:#075b32;
+    color:white;
 }
 
-button.secondary{
-    background:#555;
+.secondary{
+    background:#ddd;
+    color:#222;
 }
 
-button.danger{
+.danger{
     background:#b00020;
+    color:white;
 }
 
-button.warning{
-    background:#d88b00;
+.warning{
+    background:#d99100;
+    color:white;
 }
 
-.screen{
-    display:none;
+.hidden{
+    display:none !important;
 }
 
-.screen.active{
-    display:block;
+.center{
+    text-align:center;
 }
 
-.subject-list{
+.error{
+    color:#b00020;
+    margin:10px 0;
+    font-weight:bold;
+}
+
+.success{
+    color:#087f3f;
+    margin:10px 0;
+    font-weight:bold;
+}
+
+.subject-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
 }
 
-.subject-list button{
-    margin:0;
+.subject-btn{
+    background:#f7faf8;
+    border:2px solid #075b32;
+    color:#075b32;
+    font-weight:bold;
+    min-height:70px;
+}
+
+.subject-btn:hover{
+    background:#075b32;
+    color:white;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:15px;
 }
 
 .timer{
-    text-align:center;
-    font-size:22px;
+    background:#111;
+    color:white;
+    padding:10px 16px;
+    border-radius:8px;
     font-weight:bold;
-    color:#b00020;
-    margin-bottom:12px;
+}
+
+.progress-wrap{
+    background:#ddd;
+    height:10px;
+    border-radius:10px;
+    overflow:hidden;
+    margin:12px 0 20px;
 }
 
 .progress{
-    width:100%;
-    height:10px;
-    background:#ddd;
-    border-radius:10px;
-    overflow:hidden;
-    margin-bottom:15px;
-}
-
-.progress-bar{
     height:100%;
-    background:#087f3f;
+    background:#075b32;
     width:0%;
 }
 
-.question{
-    font-size:19px;
-    font-weight:bold;
+.question-number{
+    color:#666;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+.question-box{
+    border:1px solid #ddd;
+    padding:20px;
+    border-radius:12px;
     margin-bottom:15px;
+}
+
+.passage-box{
+    background:#f5f7f6;
+    border-left:5px solid #075b32;
+    padding:18px;
+    border-radius:8px;
+    margin-bottom:20px;
+    line-height:1.7;
+    white-space:pre-wrap;
+}
+
+.passage-title{
+    color:#075b32;
+    font-weight:bold;
+    margin-bottom:10px;
+    font-size:17px;
 }
 
 .option{
     display:block;
-    background:#f3f3f3;
+    border:1px solid #ddd;
     padding:13px;
-    margin:9px 0;
-    border-radius:9px;
+    margin:10px 0;
+    border-radius:8px;
     cursor:pointer;
+}
+
+.option:hover{
+    background:#f3f7f4;
 }
 
 .option input{
@@ -156,33 +220,79 @@ button.warning{
     margin-right:8px;
 }
 
-.nav-buttons{
-    display:flex;
-    gap:10px;
-}
-
-.nav-buttons button{
-    flex:1;
-}
-
-.score{
-    font-size:30px;
+.result-score{
+    font-size:45px;
     font-weight:bold;
-    text-align:center;
+    color:#075b32;
 }
 
 .pass{
     color:#087f3f;
-    font-weight:bold;
-    text-align:center;
     font-size:22px;
+    font-weight:bold;
 }
 
 .fail{
     color:#b00020;
-    font-weight:bold;
-    text-align:center;
     font-size:22px;
+    font-weight:bold;
+}
+
+.admin-nav{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.admin-nav button{
+    background:#eee;
+}
+
+.admin-nav button.active{
+    background:#075b32;
+    color:white;
+}
+
+.stat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+}
+
+.stat{
+    background:#f5f7f6;
+    padding:18px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:28px;
+    color:#075b32;
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+    font-size:14px;
+}
+
+th{
+    background:#075b32;
+    color:white;
 }
 
 .small{
@@ -190,85 +300,37 @@ button.warning{
     color:#666;
 }
 
-.message{
-    padding:12px;
-    border-radius:8px;
-    margin:10px 0;
-    display:none;
-}
-
-.success{
-    background:#dff5e7;
-    color:#087f3f;
-}
-
-.error{
-    background:#ffe1e1;
-    color:#a00000;
-}
-
-.info{
-    background:#e4f0ff;
-    color:#174c85;
-}
-
-.admin-item{
-    background:#f5f5f5;
-    padding:13px;
-    margin:10px 0;
-    border-radius:10px;
-}
-
-.code-box{
-    background:#e7f7ed;
-    border:2px dashed #087f3f;
-    padding:15px;
+footer{
     text-align:center;
-    border-radius:10px;
-    margin:12px 0;
+    padding:25px;
+    color:#777;
+    font-size:13px;
 }
 
-.generated-code{
-    font-size:28px;
-    font-weight:bold;
-    letter-spacing:2px;
-    color:#087f3f;
-}
-
-.status{
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:6px;
-    font-size:12px;
-    font-weight:bold;
-}
-
-.status.active{
-    background:#dff5e7;
-    color:#087f3f;
-}
-
-.status.used{
-    background:#ddd;
-    color:#555;
-}
-
-.status.locked{
-    background:#ffdede;
-    color:#a00000;
-}
-
-@media(max-width:500px){
-    .subject-list{
-        grid-template-columns:1fr;
+@media(max-width:600px){
+    .container{
+        width:96%;
     }
 
-    .nav-buttons{
-        flex-direction:column;
+    .card{
+        padding:16px;
     }
 
-    header h1{
-        font-size:21px;
+    button{
+        width:100%;
+        margin:4px 0;
+    }
+
+    .admin-nav button{
+        width:auto;
+    }
+
+    .topbar{
+        align-items:stretch;
+    }
+
+    .timer{
+        text-align:center;
     }
 }
 </style>
@@ -283,227 +345,288 @@ button.warning{
 
 <div class="container">
 
-<!-- LOGIN -->
-<section id="loginScreen" class="screen active">
-    <div class="card">
-        <h2>Candidate Login</h2>
+<!-- ================= CANDIDATE LOGIN ================= -->
 
-        <label>Candidate Name</label>
-        <input id="candidateName" placeholder="Enter your full name">
+<section id="loginScreen" class="card">
+    <h2>Candidate Login</h2>
 
-        <button onclick="continueToSubjects()">CONTINUE</button>
+    <label>Candidate Name</label>
+    <input id="candidateName" type="text" placeholder="Enter your full name">
 
-        <button class="secondary" onclick="showScreen('adminLoginScreen')">
-            Admin Login
-        </button>
+    <button class="primary" onclick="continueCandidate()">
+        CONTINUE
+    </button>
 
-        <div id="loginMessage" class="message"></div>
-    </div>
+    <button class="secondary" onclick="showAdminLogin()">
+        Admin Login
+    </button>
+
+    <div id="loginMessage"></div>
 </section>
 
 
-<!-- SUBJECT -->
-<section id="subjectScreen" class="screen">
-    <div class="card">
-        <h2>Select Subject</h2>
+<!-- ================= SUBJECT SCREEN ================= -->
 
-        <p>
-            Candidate:
-            <b id="displayCandidate"></b>
-        </p>
-
-        <div id="subjectList" class="subject-list"></div>
-
-        <button class="secondary" onclick="logout()">Back</button>
-    </div>
-</section>
-
-
-<!-- ACCESS CODE -->
-<section id="codeScreen" class="screen">
-    <div class="card">
-        <h2>Subject Access Code</h2>
-
-        <p>
-            Candidate:
-            <b id="codeCandidate"></b>
-        </p>
-
-        <p>
-            Subject:
-            <b id="codeSubject"></b>
-        </p>
-
-        <label>Enter Access Code</label>
-        <input id="subjectCode" placeholder="Enter your access code">
-
-        <p class="small">
-            Your access code does not expire. After 3 wrong attempts,
-            the code will be locked.
-        </p>
-
-        <button onclick="verifyAccessCode()">START EXAM</button>
-
-        <button class="secondary" onclick="showScreen('subjectScreen')">
-            Back
-        </button>
-
-        <div id="codeMessage" class="message"></div>
-    </div>
-</section>
-
-
-<!-- EXAM -->
-<section id="examScreen" class="screen">
-    <div class="card">
-
-        <div class="timer">
-            Time Remaining: <span id="timer">30:00</span>
+<section id="subjectScreen" class="card hidden">
+    <div class="topbar">
+        <div>
+            <h2>Select Subject</h2>
+            <p id="welcomeText"></p>
         </div>
 
-        <p>
-            Candidate:
-            <b id="examCandidate"></b>
-        </p>
-
-        <p>
-            Subject:
-            <b id="examSubject"></b>
-        </p>
-
-        <div class="progress">
-            <div id="progressBar" class="progress-bar"></div>
-        </div>
-
-        <p id="questionNumber"></p>
-
-        <div id="questionText" class="question"></div>
-
-        <div id="options"></div>
-
-        <div class="nav-buttons">
-            <button onclick="previousQuestion()">Previous</button>
-            <button onclick="nextQuestion()">Next</button>
-        </div>
-
-        <button class="danger" onclick="submitExam()">
-            SUBMIT EXAM
-        </button>
-    </div>
-</section>
-
-
-<!-- RESULT -->
-<section id="resultScreen" class="screen">
-    <div class="card">
-
-        <h2>Examination Result</h2>
-
-        <p>
-            Candidate:
-            <b id="resultCandidate"></b>
-        </p>
-
-        <p>
-            Subject:
-            <b id="resultSubject"></b>
-        </p>
-
-        <div class="score">
-            <span id="score"></span>
-        </div>
-
-        <p style="text-align:center">
-            Percentage:
-            <b id="percentage"></b>
-        </p>
-
-        <div id="resultStatus"></div>
-
-        <button onclick="logout()">Finish</button>
-    </div>
-</section>
-
-
-<!-- ADMIN LOGIN -->
-<section id="adminLoginScreen" class="screen">
-    <div class="card">
-        <h2>Admin Login</h2>
-
-        <label>Admin Password</label>
-        <input id="adminPassword" type="password">
-
-        <button onclick="adminLogin()">LOGIN</button>
-
-        <button class="secondary" onclick="showScreen('loginScreen')">
-            Back
-        </button>
-
-        <div id="adminLoginMessage" class="message"></div>
-    </div>
-</section>
-
-
-<!-- ADMIN DASHBOARD -->
-<section id="adminScreen" class="screen">
-    <div class="card">
-
-        <h2>Admin Dashboard</h2>
-
-        <p>
-            Manage questions, access codes and examination results.
-        </p>
-
-        <button onclick="showAddQuestion()">
-            ➕ Add Question
-        </button>
-
-        <button onclick="showGenerateCode()">
-            🔐 Generate Access Code
-        </button>
-
-        <button onclick="loadAccessCodes()">
-            🎟️ View Access Codes
-        </button>
-
-        <button onclick="loadResults()">
-            📊 View Results
-        </button>
-
-        <button class="secondary" onclick="logout()">
+        <button class="secondary" onclick="logoutCandidate()">
             Logout
         </button>
-
     </div>
 
-    <div id="adminContent"></div>
+    <div id="subjectGrid" class="subject-grid"></div>
 </section>
 
 
-<!-- ADD QUESTION -->
-<section id="addQuestionScreen" class="screen">
+<!-- ================= ACCESS CODE ================= -->
+
+<section id="codeScreen" class="card hidden">
+    <h2 id="codeSubjectTitle">Subject Access</h2>
+
+    <p>
+        Enter the access code given to you for this subject.
+    </p>
+
+    <input id="accessCode" type="text" placeholder="Enter access code">
+
+    <button class="primary" onclick="verifyAccessCode()">
+        START EXAM
+    </button>
+
+    <button class="secondary" onclick="backToSubjects()">
+        Back
+    </button>
+
+    <div id="codeMessage"></div>
+</section>
+
+
+<!-- ================= EXAM ================= -->
+
+<section id="examScreen" class="hidden">
+
     <div class="card">
 
-        <h2>Add Question</h2>
+        <div class="topbar">
+            <div>
+                <strong id="examSubjectName"></strong>
+                <p id="examCandidateName" class="small"></p>
+            </div>
+
+            <div id="timer" class="timer">
+                30:00
+            </div>
+        </div>
+
+        <div class="progress-wrap">
+            <div id="progressBar" class="progress"></div>
+        </div>
+
+        <div id="questionArea"></div>
+
+        <div class="topbar">
+
+            <button id="previousBtn"
+                    class="secondary"
+                    onclick="previousQuestion()">
+                Previous
+            </button>
+
+            <button id="nextBtn"
+                    class="primary"
+                    onclick="nextQuestion()">
+                Next
+            </button>
+
+            <button id="submitBtn"
+                    class="danger hidden"
+                    onclick="submitExam()">
+                Submit Exam
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RESULT ================= -->
+
+<section id="resultScreen" class="card hidden center">
+
+    <h2>Examination Result</h2>
+
+    <p id="resultCandidate"></p>
+    <p id="resultSubject"></p>
+
+    <br>
+
+    <div id="score" class="result-score">0 / 0</div>
+
+    <p id="percentage"></p>
+
+    <br>
+
+    <div id="resultStatus"></div>
+
+    <br>
+
+    <button class="primary" onclick="location.reload()">
+        Finish
+    </button>
+
+</section>
+
+
+<!-- ================= ADMIN LOGIN ================= -->
+
+<section id="adminLoginScreen" class="card hidden">
+
+    <h2>Admin Login</h2>
+
+    <input
+        id="adminPassword"
+        type="password"
+        placeholder="Admin password">
+
+    <button class="primary" onclick="adminLogin()">
+        LOGIN
+    </button>
+
+    <button class="secondary" onclick="showLogin()">
+        Back
+    </button>
+
+    <div id="adminLoginMessage"></div>
+
+</section>
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<section id="adminDashboard" class="hidden">
+
+    <div class="card">
+
+        <div class="topbar">
+            <div>
+                <h2>Admin Dashboard</h2>
+                <p class="small">
+                    War Tigers Computers Examination Management
+                </p>
+            </div>
+
+            <button class="danger" onclick="adminLogout()">
+                Logout
+            </button>
+        </div>
+
+        <div class="admin-nav">
+
+            <button
+                id="navDashboard"
+                class="active"
+                onclick="showAdminTab('dashboard')">
+                Dashboard
+            </button>
+
+            <button
+                id="navQuestions"
+                onclick="showAdminTab('questions')">
+                Questions
+            </button>
+
+            <button
+                id="navCodes"
+                onclick="showAdminTab('codes')">
+                Access Codes
+            </button>
+
+            <button
+                id="navResults"
+                onclick="showAdminTab('results')">
+                Results
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN HOME -->
+
+    <div id="adminDashboardTab" class="card">
+
+        <h2>Overview</h2>
+
+        <div class="stat-grid">
+
+            <div class="stat">
+                <strong id="statSubjects">0</strong>
+                Subjects
+            </div>
+
+            <div class="stat">
+                <strong id="statQuestions">0</strong>
+                Questions
+            </div>
+
+            <div class="stat">
+                <strong id="statCodes">0</strong>
+                Access Codes
+            </div>
+
+            <div class="stat">
+                <strong id="statResults">0</strong>
+                Results
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN QUESTIONS -->
+
+    <div id="adminQuestionsTab" class="card hidden">
+
+        <h2>Question Management</h2>
 
         <label>Subject</label>
-        <select id="adminSubject"></select>
+        <select id="questionSubject"></select>
+
+        <label>Passage</label>
+        <textarea
+            id="questionPassage"
+            placeholder="For comprehension questions, paste the passage here. Leave blank for normal questions."></textarea>
+
+        <p class="small">
+            If several questions belong to the same passage,
+            put the same passage into each of those questions.
+        </p>
 
         <label>Question</label>
-        <textarea id="newQuestion"
-        placeholder="Enter question"></textarea>
+        <textarea
+            id="questionText"
+            placeholder="Enter question"></textarea>
 
         <label>Option A</label>
-        <input id="optionA">
+        <input id="optionA" type="text">
 
         <label>Option B</label>
-        <input id="optionB">
+        <input id="optionB" type="text">
 
         <label>Option C</label>
-        <input id="optionC">
+        <input id="optionC" type="text">
 
         <label>Option D</label>
-        <input id="optionD">
+        <input id="optionD" type="text">
 
         <label>Correct Answer</label>
         <select id="correctAnswer">
@@ -513,149 +636,161 @@ button.warning{
             <option value="D">D</option>
         </select>
 
-        <button onclick="saveQuestion()">
-            SAVE QUESTION
+        <input id="editingQuestionId" type="hidden">
+
+        <button
+            id="saveQuestionBtn"
+            class="primary"
+            onclick="saveQuestion()">
+            Add Question
         </button>
 
-        <button class="secondary" onclick="showScreen('adminScreen')">
-            Back
+        <button
+            id="cancelEditBtn"
+            class="secondary hidden"
+            onclick="cancelQuestionEdit()">
+            Cancel Edit
         </button>
 
-        <div id="questionMessage" class="message"></div>
+        <hr style="margin:20px 0">
+
+        <input
+            id="questionSearch"
+            type="text"
+            placeholder="Search questions..."
+            oninput="loadAdminQuestions()">
+
+        <select
+            id="questionFilterSubject"
+            onchange="loadAdminQuestions()">
+        </select>
+
+        <div id="questionsTable" class="table-wrap"></div>
+
     </div>
-</section>
 
 
-<!-- GENERATE CODE -->
-<section id="generateCodeScreen" class="screen">
-    <div class="card">
+    <!-- ADMIN ACCESS CODES -->
 
-        <h2>Generate Access Code</h2>
+    <div id="adminCodesTab" class="card hidden">
+
+        <h2>Access Code Management</h2>
 
         <label>Candidate Name</label>
-        <input id="newCandidateName"
-               placeholder="Enter candidate's full name">
+        <input
+            id="newCodeCandidate"
+            type="text"
+            placeholder="Candidate name">
 
         <label>Subject</label>
-        <select id="codeSubjectSelect"></select>
+        <select id="newCodeSubject"></select>
 
-        <p class="small">
-            This code will NOT expire.
-            It will remain active until used or locked after 3 wrong attempts.
-        </p>
-
-        <button onclick="generateAccessCode()">
-            GENERATE CODE
+        <button class="primary" onclick="generateAccessCode()">
+            Generate Access Code
         </button>
 
-        <div id="generatedCodeBox"></div>
+        <div id="generatedCodeMessage"></div>
 
-        <button class="secondary" onclick="showScreen('adminScreen')">
-            Back
-        </button>
+        <hr style="margin:20px 0">
 
-        <div id="codeGenerateMessage" class="message"></div>
+        <input
+            id="codeSearch"
+            type="text"
+            placeholder="Search candidate or code..."
+            oninput="loadAccessCodes()">
+
+        <div id="codesTable" class="table-wrap"></div>
+
     </div>
+
+
+    <!-- ADMIN RESULTS -->
+
+    <div id="adminResultsTab" class="card hidden">
+
+        <h2>Examination Results</h2>
+
+        <input
+            id="resultSearch"
+            type="text"
+            placeholder="Search candidate..."
+            oninput="loadResults()">
+
+        <button class="primary" onclick="exportResultsCSV()">
+            Export CSV
+        </button>
+
+        <div id="resultsTable" class="table-wrap"></div>
+
+    </div>
+
 </section>
 
 </div>
 
+<footer>
+© 2026 War Tigers Computers
+</footer>
+
 
 <script>
 
-/* ==============================
+/* ============================================================
    SUPABASE CONNECTION
-============================== */
+============================================================ */
 
 const SUPABASE_URL =
-"https://fhzeaxqhxxhwlfvontit.supabase.co";
+    "https://fhzeaxqhxxhwlfvontit.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable__v-cCYq1S9nR48xWQpUzXQ_XUEnDr2A";
+const SUPABASE_KEY =
+    "sb_publishable__v-cCYq1S9nR48xWQpUzXQ_XUEnDr2A";
 
-const db = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
+const { createClient } =
+    supabase;
 
-
-/* ==============================
-   SETTINGS
-============================== */
-
-const ADMIN_PASSWORD = "WTADMIN2026";
-const PASS_MARK = 50;
-const EXAM_MINUTES = 30;
+const db =
+    createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-/* ==============================
-   SUBJECTS
-============================== */
-
-const FALLBACK_SUBJECTS = [
-    {name:"English Language", code:"ENG2026"},
-    {name:"Mathematics", code:"MATH2026"},
-    {name:"Government", code:"GOV2026"},
-    {name:"General Knowledge", code:"GK2026"},
-    {name:"Current Affairs", code:"CA2026"},
-    {name:"Biology", code:"BIO2026"},
-    {name:"Chemistry", code:"CHEM2026"},
-    {name:"Physics", code:"PHY2026"},
-    {name:"Economics", code:"ECO2026"},
-    {name:"Geography", code:"GEO2026"}
-];
+/* ============================================================
+   GLOBAL VARIABLES
+============================================================ */
 
 let subjects = [];
 
 let candidateName = "";
+
 let selectedSubject = null;
 
 let questions = [];
+
 let currentQuestion = 0;
-let answers = [];
+
+let answers = {};
 
 let timerInterval = null;
-let timeLeft = EXAM_MINUTES * 60;
 
-let currentAccessCodeId = null;
+let timeRemaining = 30 * 60;
 
+let accessCodeRecord = null;
 
-/* ==============================
-   SCREEN CONTROL
-============================== */
-
-function showScreen(id){
-
-    document.querySelectorAll(".screen")
-    .forEach(screen => screen.classList.remove("active"));
-
-    document.getElementById(id).classList.add("active");
-
-    window.scrollTo(0,0);
-}
+let adminResultsCache = [];
 
 
-/* ==============================
-   MESSAGE
-============================== */
-
-function message(id,text,type="error"){
-
-    const box = document.getElementById(id);
-
-    box.className = "message " + type;
-    box.textContent = text;
-    box.style.display = "block";
-}
-
-
-/* ==============================
-   HTML ESCAPE
-============================== */
+/* ============================================================
+   HELPERS
+============================================================ */
 
 function escapeHTML(value){
 
-    return String(value ?? "")
+    if(value === null || value === undefined){
+        return "";
+    }
+
+    return String(value)
         .replace(/&/g,"&amp;")
         .replace(/</g,"&lt;")
         .replace(/>/g,"&gt;")
@@ -664,37 +799,66 @@ function escapeHTML(value){
 }
 
 
-/* ==============================
-   LOAD SUBJECTS
-============================== */
+function show(id){
 
-async function loadSubjects(){
-
-    const {data,error} =
-        await db
-        .from("subjects")
-        .select("id,name,code")
-        .order("name");
-
-    if(error || !data || data.length === 0){
-
-        subjects = FALLBACK_SUBJECTS;
-        return;
-    }
-
-    subjects = data;
+    document
+        .getElementById(id)
+        .classList.remove("hidden");
 }
 
 
-/* ==============================
-   CANDIDATE LOGIN
-============================== */
+function hide(id){
 
-async function continueToSubjects(){
+    document
+        .getElementById(id)
+        .classList.add("hidden");
+}
+
+
+function message(id,text,type="error"){
+
+    const el =
+        document.getElementById(id);
+
+    el.className =
+        type;
+
+    el.textContent =
+        text;
+}
+
+
+/* ============================================================
+   SCREEN CONTROL
+============================================================ */
+
+function showLogin(){
+
+    hide("adminLoginScreen");
+    hide("adminDashboard");
+
+    show("loginScreen");
+}
+
+
+function showAdminLogin(){
+
+    hide("loginScreen");
+    show("adminLoginScreen");
+
+    document
+        .getElementById("adminPassword")
+        .value = "";
+}
+
+
+function continueCandidate(){
 
     const name =
-        document.getElementById("candidateName")
-        .value.trim();
+        document
+        .getElementById("candidateName")
+        .value
+        .trim();
 
     if(!name){
 
@@ -706,90 +870,146 @@ async function continueToSubjects(){
         return;
     }
 
-    candidateName = name;
+    candidateName =
+        name;
 
-    document.getElementById("displayCandidate")
-        .textContent = candidateName;
+    document
+        .getElementById("welcomeText")
+        .textContent =
+        "Welcome, " + candidateName;
 
-    await loadSubjects();
+    hide("loginScreen");
+    show("subjectScreen");
 
-    renderSubjects();
-
-    showScreen("subjectScreen");
+    loadSubjects();
 }
 
 
-/* ==============================
-   SUBJECT BUTTONS
-============================== */
+function logoutCandidate(){
 
-function renderSubjects(){
+    clearInterval(timerInterval);
 
-    const box =
-        document.getElementById("subjectList");
+    candidateName = "";
+    selectedSubject = null;
+    questions = [];
+    answers = {};
 
-    box.innerHTML = "";
+    hide("subjectScreen");
+    hide("codeScreen");
+    hide("examScreen");
+    hide("resultScreen");
 
-    subjects.forEach((subject,index)=>{
-
-        const button =
-            document.createElement("button");
-
-        button.textContent = subject.name;
-
-        button.onclick = function(){
-            selectSubject(subject,index);
-        };
-
-        box.appendChild(button);
-    });
+    show("loginScreen");
 }
 
 
-/* ==============================
-   SELECT SUBJECT
-============================== */
+/* ============================================================
+   SUBJECTS
+============================================================ */
 
-function selectSubject(subject,index){
+async function loadSubjects(){
 
-    selectedSubject = subject;
+    const {
+        data,
+        error
+    } = await db
+        .from("subjects")
+        .select("*")
+        .order("name");
 
-    document.getElementById("codeCandidate")
-        .textContent = candidateName;
+    if(error){
 
-    document.getElementById("codeSubject")
-        .textContent = subject.name;
+        console.error(error);
 
-    document.getElementById("subjectCode").value = "";
-
-    document.getElementById("codeMessage").style.display = "none";
-
-    showScreen("codeScreen");
-}
-
-
-/* ==============================
-   VERIFY ACCESS CODE
-============================== */
-
-async function verifyAccessCode(){
-
-    if(!selectedSubject){
-
-        message(
-            "codeMessage",
-            "Please select a subject first."
+        alert(
+            "Unable to load subjects: " +
+            error.message
         );
 
         return;
     }
 
-    const enteredCode =
-        document.getElementById("subjectCode")
-        .value.trim()
+    subjects =
+        data || [];
+
+    renderSubjects();
+}
+
+
+function renderSubjects(){
+
+    const grid =
+        document
+        .getElementById("subjectGrid");
+
+    grid.innerHTML = "";
+
+    subjects.forEach(subject => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "subject-btn";
+
+        button.textContent =
+            subject.name;
+
+        button.onclick =
+            () => selectSubject(subject);
+
+        grid.appendChild(button);
+
+    });
+}
+
+
+function selectSubject(subject){
+
+    selectedSubject =
+        subject;
+
+    document
+        .getElementById("codeSubjectTitle")
+        .textContent =
+        subject.name + " - Subject Access";
+
+    document
+        .getElementById("accessCode")
+        .value = "";
+
+    message(
+        "codeMessage",
+        "",
+        ""
+    );
+
+    hide("subjectScreen");
+    show("codeScreen");
+}
+
+
+function backToSubjects(){
+
+    hide("codeScreen");
+    show("subjectScreen");
+}
+
+
+/* ============================================================
+   ACCESS CODE VERIFICATION
+============================================================ */
+
+async function verifyAccessCode(){
+
+    const code =
+        document
+        .getElementById("accessCode")
+        .value
+        .trim()
         .toUpperCase();
 
-    if(!enteredCode){
+    if(!code){
 
         message(
             "codeMessage",
@@ -799,76 +1019,62 @@ async function verifyAccessCode(){
         return;
     }
 
+    message(
+        "codeMessage",
+        "Checking access code...",
+        "success"
+    );
 
-    /*
-       Find the candidate's assigned code.
-       This also lets us count wrong attempts.
-    */
 
-    const {data:assigned,error:assignedError} =
-        await db
+    const {
+        data,
+        error
+    } = await db
         .from("access_codes")
-        .select(`
-            id,
-            code,
-            candidate_name,
-            subject_id,
-            used,
-            failed_attempts,
-            locked
-        `)
+        .select("*")
+        .eq("code",code)
+        .eq("subject_id",selectedSubject.id)
         .eq("candidate_name",candidateName)
-        .eq("subject_id",selectedSubject.id || "")
         .maybeSingle();
 
 
-    if(assignedError){
+    if(error){
+
+        console.error(error);
 
         message(
             "codeMessage",
-            "Unable to check access code. Please try again."
-        );
-
-        console.error(assignedError);
-        return;
-    }
-
-
-    /*
-       No assigned database code.
-    */
-
-    if(!assigned){
-
-        message(
-            "codeMessage",
-            "No access code has been assigned to this candidate for this subject."
+            "Unable to verify code: " +
+            error.message
         );
 
         return;
     }
 
 
-    /*
-       Already locked.
-    */
-
-    if(assigned.locked){
+    if(!data){
 
         message(
             "codeMessage",
-            "This access code has been LOCKED after 3 wrong attempts."
+            "Invalid access code or candidate name."
         );
 
         return;
     }
 
 
-    /*
-       Already used.
-    */
+    if(data.locked){
 
-    if(assigned.used){
+        message(
+            "codeMessage",
+            "This access code has been locked after 3 failed attempts."
+        );
+
+        return;
+    }
+
+
+    if(data.used){
 
         message(
             "codeMessage",
@@ -879,96 +1085,33 @@ async function verifyAccessCode(){
     }
 
 
-    /*
-       CORRECT CODE
-    */
-
-    if(enteredCode === assigned.code){
-
-        currentAccessCodeId = assigned.id;
-
-        await startExam();
-
-        return;
-    }
+    accessCodeRecord =
+        data;
 
 
-    /*
-       WRONG CODE
-    */
+    /* Correct code */
 
-    let attempts =
-        Number(assigned.failed_attempts || 0) + 1;
+    await startExam();
 
-    let locked = attempts >= 3;
-
-
-    const {error:updateError} =
-        await db
-        .from("access_codes")
-        .update({
-            failed_attempts:attempts,
-            locked:locked
-        })
-        .eq("id",assigned.id);
-
-
-    if(updateError){
-
-        console.error(updateError);
-
-        message(
-            "codeMessage",
-            "The attempt could not be recorded. Please try again."
-        );
-
-        return;
-    }
-
-
-    if(locked){
-
-        message(
-            "codeMessage",
-            "WRONG CODE. This access code has now been LOCKED after 3 wrong attempts."
-        );
-
-        return;
-    }
-
-
-    const remaining = 3 - attempts;
-
-    message(
-        "codeMessage",
-        "Wrong access code. You have " +
-        remaining +
-        " attempt" +
-        (remaining === 1 ? "" : "s") +
-        " remaining."
-    );
 }
 
 
-/* ==============================
+/* ============================================================
    START EXAM
-============================== */
+============================================================ */
 
 async function startExam(){
 
-    if(!selectedSubject){
-
-        alert("Subject not selected.");
-        return;
-    }
-
-
-    let query =
-        db
+    const {
+        data,
+        error
+    } = await db
         .from("questions")
         .select(`
             id,
+            subject_id,
             question_text,
+            passage,
             option_a,
             option_b,
             option_c,
@@ -978,16 +1121,13 @@ async function startExam(){
         .eq("subject_id",selectedSubject.id);
 
 
-    const {data,error} =
-        await query;
-
-
     if(error){
 
         console.error(error);
 
         alert(
-            "Unable to load questions from Supabase."
+            "Unable to load questions: " +
+            error.message
         );
 
         return;
@@ -997,63 +1137,258 @@ async function startExam(){
     if(!data || data.length === 0){
 
         alert(
-            "There are no questions for this subject yet. Please ask the administrator to add questions."
+            "There are currently no questions available for this subject."
         );
 
         return;
     }
 
 
-    questions = data.map(q => ({
-
-        question:q.question_text,
-
-        options:[
-            q.option_a,
-            q.option_b,
-            q.option_c,
-            q.option_d
-        ],
-
-        answer:
-            ["A","B","C","D"]
-            .indexOf(q.correct_answer)
-
-    }));
-
-
-    /*
-       Shuffle questions
-    */
-
     questions =
-        questions.sort(()=>Math.random()-0.5);
+        [...data];
 
 
-    answers = new Array(questions.length).fill(null);
+    /* Randomize question order */
+
+    questions.sort(
+        () => Math.random() - 0.5
+    );
+
 
     currentQuestion = 0;
+    answers = {};
 
-    document.getElementById("examCandidate")
-        .textContent = candidateName;
-
-    document.getElementById("examSubject")
-        .textContent = selectedSubject.name;
+    timeRemaining =
+        (selectedSubject.duration_minutes || 30) * 60;
 
 
-    timeLeft = EXAM_MINUTES * 60;
+    document
+        .getElementById("examSubjectName")
+        .textContent =
+        selectedSubject.name;
 
-    startTimer();
+    document
+        .getElementById("examCandidateName")
+        .textContent =
+        "Candidate: " + candidateName;
 
-    showScreen("examScreen");
+
+    hide("codeScreen");
+    show("examScreen");
 
     renderQuestion();
+
+    startTimer();
 }
 
 
-/* ==============================
+/* ============================================================
+   RENDER QUESTION
+============================================================ */
+
+function renderQuestion(){
+
+    if(!questions.length){
+        return;
+    }
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    const area =
+        document
+        .getElementById("questionArea");
+
+
+    let html = "";
+
+
+    html += `
+        <div class="question-number">
+            Question ${currentQuestion + 1}
+            of ${questions.length}
+        </div>
+    `;
+
+
+    /* ========================================================
+       PASSAGE DISPLAY
+       This is the important new part.
+    ======================================================== */
+
+    if(q.passage && q.passage.trim()){
+
+        html += `
+            <div class="passage-box">
+                <div class="passage-title">
+                    Read the passage carefully
+                </div>
+
+                ${escapeHTML(q.passage)}
+            </div>
+        `;
+    }
+
+
+    html += `
+        <div class="question-box">
+
+            <h3>
+                ${escapeHTML(q.question_text)}
+            </h3>
+
+            ${renderOption(
+                q,
+                "A",
+                q.option_a
+            )}
+
+            ${renderOption(
+                q,
+                "B",
+                q.option_b
+            )}
+
+            ${renderOption(
+                q,
+                "C",
+                q.option_c
+            )}
+
+            ${renderOption(
+                q,
+                "D",
+                q.option_d
+            )}
+
+        </div>
+    `;
+
+
+    area.innerHTML =
+        html;
+
+
+    updateNavigation();
+
+    updateProgress();
+}
+
+
+function renderOption(q,letter,text){
+
+    const checked =
+        answers[q.id] === letter
+        ? "checked"
+        : "";
+
+    return `
+        <label class="option">
+
+            <input
+                type="radio"
+                name="question_${q.id}"
+                value="${letter}"
+                ${checked}
+                onchange="selectAnswer('${q.id}','${letter}')">
+
+            <strong>${letter}.</strong>
+            ${escapeHTML(text)}
+
+        </label>
+    `;
+}
+
+
+function selectAnswer(questionId,answer){
+
+    answers[questionId] =
+        answer;
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        renderQuestion();
+    }
+}
+
+
+function nextQuestion(){
+
+    if(currentQuestion <
+       questions.length - 1){
+
+        currentQuestion++;
+
+        renderQuestion();
+
+    }else{
+
+        submitExam();
+    }
+}
+
+
+function updateNavigation(){
+
+    const previous =
+        document
+        .getElementById("previousBtn");
+
+    const next =
+        document
+        .getElementById("nextBtn");
+
+    const submit =
+        document
+        .getElementById("submitBtn");
+
+
+    previous.disabled =
+        currentQuestion === 0;
+
+
+    if(currentQuestion ===
+       questions.length - 1){
+
+        next.classList.add("hidden");
+        submit.classList.remove("hidden");
+
+    }else{
+
+        next.classList.remove("hidden");
+        submit.classList.add("hidden");
+    }
+}
+
+
+function updateProgress(){
+
+    const percent =
+        ((currentQuestion + 1) /
+        questions.length) * 100;
+
+    document
+        .getElementById("progressBar")
+        .style.width =
+        percent + "%";
+}
+
+
+/* ============================================================
    TIMER
-============================== */
+============================================================ */
 
 function startTimer(){
 
@@ -1061,19 +1396,21 @@ function startTimer(){
 
     updateTimer();
 
-    timerInterval =
-        setInterval(()=>{
 
-            timeLeft--;
+    timerInterval =
+        setInterval(() => {
+
+            timeRemaining--;
 
             updateTimer();
 
-            if(timeLeft <= 0){
+
+            if(timeRemaining <= 0){
 
                 clearInterval(timerInterval);
 
                 alert(
-                    "Time is up. Your examination will be submitted automatically."
+                    "Time is up. Your examination will now be submitted."
                 );
 
                 submitExam(true);
@@ -1085,150 +1422,44 @@ function startTimer(){
 
 function updateTimer(){
 
-    const minutes =
-        Math.floor(timeLeft / 60);
+    let minutes =
+        Math.floor(
+            timeRemaining / 60
+        );
 
-    const seconds =
-        timeLeft % 60;
+    let seconds =
+        timeRemaining % 60;
 
-    document.getElementById("timer")
-        .textContent =
-        String(minutes).padStart(2,"0")
-        + ":" +
+
+    const text =
+        String(minutes).padStart(2,"0") +
+        ":" +
         String(seconds).padStart(2,"0");
-}
 
 
-/* ==============================
-   RENDER QUESTION
-============================== */
-
-function renderQuestion(){
-
-    if(!questions.length) return;
-
-    const q = questions[currentQuestion];
-
-    document.getElementById("questionNumber")
+    document
+        .getElementById("timer")
         .textContent =
-        "Question " +
-        (currentQuestion + 1) +
-        " of " +
-        questions.length;
-
-
-    document.getElementById("questionText")
-        .textContent = q.question;
-
-
-    const optionsBox =
-        document.getElementById("options");
-
-    optionsBox.innerHTML = "";
-
-
-    q.options.forEach((option,index)=>{
-
-        const label =
-            document.createElement("label");
-
-        label.className = "option";
-
-        const radio =
-            document.createElement("input");
-
-        radio.type = "radio";
-        radio.name = "answer";
-        radio.value = index;
-
-        if(answers[currentQuestion] === index){
-
-            radio.checked = true;
-        }
-
-
-        radio.onchange = function(){
-
-            answers[currentQuestion] = index;
-        };
-
-
-        label.appendChild(radio);
-
-        label.appendChild(
-            document.createTextNode(
-                String.fromCharCode(65+index) +
-                ". " +
-                option
-            )
-        );
-
-        optionsBox.appendChild(label);
-    });
-
-
-    const percent =
-        ((currentQuestion + 1) / questions.length) * 100;
-
-    document.getElementById("progressBar")
-        .style.width = percent + "%";
+        text;
 }
 
 
-/* ==============================
-   NEXT
-============================== */
-
-function nextQuestion(){
-
-    if(currentQuestion < questions.length - 1){
-
-        currentQuestion++;
-
-        renderQuestion();
-
-        window.scrollTo(0,0);
-
-    }else{
-
-        alert(
-            "This is the last question. Click Submit Exam when you are ready."
-        );
-    }
-}
-
-
-/* ==============================
-   PREVIOUS
-============================== */
-
-function previousQuestion(){
-
-    if(currentQuestion > 0){
-
-        currentQuestion--;
-
-        renderQuestion();
-
-        window.scrollTo(0,0);
-    }
-}
-
-
-/* ==============================
+/* ============================================================
    SUBMIT EXAM
-============================== */
+============================================================ */
 
 async function submitExam(autoSubmit=false){
 
     if(!autoSubmit){
 
-        const confirmed =
+        const confirmSubmit =
             confirm(
-                "Are you sure you want to submit your examination?"
+                "Are you sure you want to submit the examination?"
             );
 
-        if(!confirmed) return;
+        if(!confirmSubmit){
+            return;
+        }
     }
 
 
@@ -1238,76 +1469,61 @@ async function submitExam(autoSubmit=false){
     let score = 0;
 
 
-    questions.forEach((q,index)=>{
+    questions.forEach(q => {
 
-        if(answers[index] === q.answer){
+        if(
+            answers[q.id] &&
+            answers[q.id] ===
+            q.correct_answer
+        ){
 
             score++;
         }
+
     });
 
 
-    const total = questions.length;
+    const total =
+        questions.length;
+
 
     const percentage =
-        Math.round((score / total) * 100);
+        total > 0
+        ? Math.round(
+            (score / total) * 100
+        )
+        : 0;
+
 
     const passed =
-        percentage >= PASS_MARK;
+        percentage >= 50;
 
 
-    document.getElementById("resultCandidate")
-        .textContent = candidateName;
+    /* Save result */
 
-    document.getElementById("resultSubject")
-        .textContent = selectedSubject.name;
-
-    document.getElementById("score")
-        .textContent =
-        score + " / " + total;
-
-    document.getElementById("percentage")
-        .textContent =
-        percentage + "%";
-
-
-    const status =
-        document.getElementById("resultStatus");
-
-
-    if(passed){
-
-        status.className = "pass";
-        status.textContent = "PASSED";
-    }else{
-
-        status.className = "fail";
-        status.textContent = "FAILED";
-    }
-
-
-    /*
-       Save result to Supabase
-    */
-
-    const {error:resultError} =
-        await db
+    const {
+        error: resultError
+    } = await db
         .from("exam_results")
         .insert({
 
-            candidate_name:candidateName,
+            candidate_name:
+                candidateName,
 
-            subject_id:selectedSubject.id,
+            subject_id:
+                selectedSubject.id,
 
-            score:score,
+            score:
+                score,
 
-            total_questions:total,
+            total_questions:
+                total,
 
-            percentage:percentage,
+            percentage:
+                percentage,
 
-            passed:passed,
-
-            submitted_at:new Date().toISOString()
+            passed:
+                passed
         });
 
 
@@ -1316,51 +1532,105 @@ async function submitExam(autoSubmit=false){
         console.error(resultError);
 
         alert(
-            "Your score was calculated, but the result could not be saved to the database."
+            "Result could not be saved: " +
+            resultError.message
         );
 
-    }else{
-
-        /*
-           Mark access code as USED
-           only after successful exam submission.
-        */
-
-        if(currentAccessCodeId){
-
-            const {error:codeError} =
-                await db
-                .from("access_codes")
-                .update({
-                    used:true
-                })
-                .eq("id",currentAccessCodeId);
+    }
 
 
-            if(codeError){
+    /* Mark access code used */
 
-                console.error(codeError);
-            }
+    if(accessCodeRecord){
+
+        const {
+            error
+        } = await db
+            .from("access_codes")
+            .update({
+                used:true
+            })
+            .eq("id",accessCodeRecord.id);
+
+
+        if(error){
+            console.error(error);
         }
     }
 
 
-    showScreen("resultScreen");
+    document
+        .getElementById("resultCandidate")
+        .textContent =
+        "Candidate: " + candidateName;
+
+
+    document
+        .getElementById("resultSubject")
+        .textContent =
+        "Subject: " +
+        selectedSubject.name;
+
+
+    document
+        .getElementById("score")
+        .textContent =
+        score + " / " + total;
+
+
+    document
+        .getElementById("percentage")
+        .textContent =
+        "Percentage: " +
+        percentage + "%";
+
+
+    const status =
+        document
+        .getElementById("resultStatus");
+
+
+    if(passed){
+
+        status.className =
+            "pass";
+
+        status.textContent =
+            "PASS";
+
+    }else{
+
+        status.className =
+            "fail";
+
+        status.textContent =
+            "FAIL";
+    }
+
+
+    hide("examScreen");
+    show("resultScreen");
 }
 
 
-/* ==============================
+/* ============================================================
    ADMIN LOGIN
-============================== */
+============================================================ */
 
 function adminLogin(){
 
     const password =
-        document.getElementById("adminPassword")
+        document
+        .getElementById("adminPassword")
         .value;
 
 
-    if(password !== ADMIN_PASSWORD){
+    /*
+       Prototype admin password.
+       For production, use Supabase Auth.
+    */
+
+    if(password !== "WTADMIN2026"){
 
         message(
             "adminLoginMessage",
@@ -1371,283 +1641,1110 @@ function adminLogin(){
     }
 
 
-    document.getElementById("adminPassword")
-        .value = "";
+    hide("adminLoginScreen");
+    show("adminDashboard");
 
-    showScreen("adminScreen");
+    loadAdminData();
 }
 
 
-/* ==============================
-   ADMIN - ADD QUESTION
-============================== */
+function adminLogout(){
 
-async function showAddQuestion(){
+    hide("adminDashboard");
 
-    await loadSubjects();
+    showLogin();
+}
 
-    const select =
-        document.getElementById("adminSubject");
 
-    select.innerHTML = "";
+/* ============================================================
+   ADMIN TABS
+============================================================ */
 
-    subjects.forEach(subject=>{
+function showAdminTab(tab){
 
-        const option =
-            document.createElement("option");
+    const tabs = [
+        "dashboard",
+        "questions",
+        "codes",
+        "results"
+    ];
 
-        option.value = subject.id || "";
-        option.textContent = subject.name;
 
-        option.dataset.name = subject.name;
+    tabs.forEach(name => {
 
-        select.appendChild(option);
+        const element =
+            document
+            .getElementById(
+                "admin" +
+                name.charAt(0).toUpperCase() +
+                name.slice(1) +
+                "Tab"
+            );
+
+        if(element){
+
+            if(name === tab){
+                element.classList.remove("hidden");
+            }else{
+                element.classList.add("hidden");
+            }
+        }
+
+
+        const nav =
+            document
+            .getElementById(
+                "nav" +
+                name.charAt(0).toUpperCase() +
+                name.slice(1)
+            );
+
+        if(nav){
+
+            if(name === tab){
+                nav.classList.add("active");
+            }else{
+                nav.classList.remove("active");
+            }
+        }
+
     });
 
 
-    showScreen("addQuestionScreen");
+    if(tab === "dashboard"){
+        loadAdminData();
+    }
+
+    if(tab === "questions"){
+        loadQuestionSubjectLists();
+        loadAdminQuestions();
+    }
+
+    if(tab === "codes"){
+        loadCodeSubjectList();
+        loadAccessCodes();
+    }
+
+    if(tab === "results"){
+        loadResults();
+    }
 }
 
+
+/* ============================================================
+   ADMIN DASHBOARD DATA
+============================================================ */
+
+async function loadAdminData(){
+
+    const subjectsResult =
+        await db
+        .from("subjects")
+        .select("id",{
+            count:"exact",
+            head:true
+        });
+
+
+    const questionsResult =
+        await db
+        .from("questions")
+        .select("id",{
+            count:"exact",
+            head:true
+        });
+
+
+    const codesResult =
+        await db
+        .from("access_codes")
+        .select("id",{
+            count:"exact",
+            head:true
+        });
+
+
+    const resultsResult =
+        await db
+        .from("exam_results")
+        .select("id",{
+            count:"exact",
+            head:true
+        });
+
+
+    document
+        .getElementById("statSubjects")
+        .textContent =
+        subjectsResult.count || 0;
+
+
+    document
+        .getElementById("statQuestions")
+        .textContent =
+        questionsResult.count || 0;
+
+
+    document
+        .getElementById("statCodes")
+        .textContent =
+        codesResult.count || 0;
+
+
+    document
+        .getElementById("statResults")
+        .textContent =
+        resultsResult.count || 0;
+}
+
+
+/* ============================================================
+   QUESTION SUBJECT LISTS
+============================================================ */
+
+async function loadQuestionSubjectLists(){
+
+    if(!subjects.length){
+        await loadSubjects();
+    }
+
+
+    const select =
+        document
+        .getElementById("questionSubject");
+
+    const filter =
+        document
+        .getElementById("questionFilterSubject");
+
+
+    select.innerHTML =
+        subjects.map(s =>
+            `<option value="${s.id}">
+                ${escapeHTML(s.name)}
+            </option>`
+        ).join("");
+
+
+    filter.innerHTML =
+        `<option value="">All Subjects</option>` +
+        subjects.map(s =>
+            `<option value="${s.id}">
+                ${escapeHTML(s.name)}
+            </option>`
+        ).join("");
+}
+
+
+/* ============================================================
+   ADD / EDIT QUESTION
+============================================================ */
 
 async function saveQuestion(){
 
     const subjectId =
-        document.getElementById("adminSubject")
+        document
+        .getElementById("questionSubject")
         .value;
 
-    const question =
-        document.getElementById("newQuestion")
-        .value.trim();
+    const passage =
+        document
+        .getElementById("questionPassage")
+        .value
+        .trim();
+
+    const questionText =
+        document
+        .getElementById("questionText")
+        .value
+        .trim();
 
     const optionA =
-        document.getElementById("optionA")
-        .value.trim();
+        document
+        .getElementById("optionA")
+        .value
+        .trim();
 
     const optionB =
-        document.getElementById("optionB")
-        .value.trim();
+        document
+        .getElementById("optionB")
+        .value
+        .trim();
 
     const optionC =
-        document.getElementById("optionC")
-        .value.trim();
+        document
+        .getElementById("optionC")
+        .value
+        .trim();
 
     const optionD =
-        document.getElementById("optionD")
-        .value.trim();
+        document
+        .getElementById("optionD")
+        .value
+        .trim();
 
     const correct =
-        document.getElementById("correctAnswer")
+        document
+        .getElementById("correctAnswer")
+        .value;
+
+    const editingId =
+        document
+        .getElementById("editingQuestionId")
         .value;
 
 
     if(
         !subjectId ||
-        !question ||
+        !questionText ||
         !optionA ||
         !optionB ||
         !optionC ||
         !optionD
     ){
 
-        message(
-            "questionMessage",
-            "Please complete all fields."
+        alert(
+            "Please complete all required fields."
         );
 
         return;
     }
 
 
-    const {error} =
-        await db
+    const payload = {
+
+        subject_id:
+            subjectId,
+
+        passage:
+            passage || null,
+
+        question_text:
+            questionText,
+
+        option_a:
+            optionA,
+
+        option_b:
+            optionB,
+
+        option_c:
+            optionC,
+
+        option_d:
+            optionD,
+
+        correct_answer:
+            correct
+    };
+
+
+    let error;
+
+
+    if(editingId){
+
+        const result =
+            await db
+            .from("questions")
+            .update(payload)
+            .eq("id",editingId);
+
+        error =
+            result.error;
+
+    }else{
+
+        const result =
+            await db
+            .from("questions")
+            .insert(payload);
+
+        error =
+            result.error;
+    }
+
+
+    if(error){
+
+        alert(
+            "Error saving question: " +
+            error.message
+        );
+
+        console.error(error);
+
+        return;
+    }
+
+
+    alert(
+        editingId
+        ? "Question updated successfully."
+        : "Question added successfully."
+    );
+
+
+    clearQuestionForm();
+
+    loadAdminQuestions();
+
+    loadAdminData();
+}
+
+
+function clearQuestionForm(){
+
+    document
+        .getElementById("questionPassage")
+        .value = "";
+
+    document
+        .getElementById("questionText")
+        .value = "";
+
+    document
+        .getElementById("optionA")
+        .value = "";
+
+    document
+        .getElementById("optionB")
+        .value = "";
+
+    document
+        .getElementById("optionC")
+        .value = "";
+
+    document
+        .getElementById("optionD")
+        .value = "";
+
+    document
+        .getElementById("correctAnswer")
+        .value = "A";
+
+    document
+        .getElementById("editingQuestionId")
+        .value = "";
+
+    document
+        .getElementById("saveQuestionBtn")
+        .textContent =
+        "Add Question";
+
+    document
+        .getElementById("cancelEditBtn")
+        .classList.add("hidden");
+}
+
+
+function cancelQuestionEdit(){
+
+    clearQuestionForm();
+}
+
+
+/* ============================================================
+   LOAD ADMIN QUESTIONS
+============================================================ */
+
+async function loadAdminQuestions(){
+
+    const search =
+        document
+        .getElementById("questionSearch")
+        .value
+        .trim();
+
+    const subjectId =
+        document
+        .getElementById("questionFilterSubject")
+        .value;
+
+
+    let query =
+        db
         .from("questions")
-        .insert({
-
-            subject_id:subjectId,
-
-            question_text:question,
-
-            option_a:optionA,
-
-            option_b:optionB,
-
-            option_c:optionC,
-
-            option_d:optionD,
-
-            correct_answer:correct
+        .select(`
+            *,
+            subjects(name,code)
+        `)
+        .order("created_at",{
+            ascending:false
         });
+
+
+    if(subjectId){
+
+        query =
+            query.eq(
+                "subject_id",
+                subjectId
+            );
+    }
+
+
+    if(search){
+
+        query =
+            query.ilike(
+                "question_text",
+                "%" + search + "%"
+            );
+    }
+
+
+    const {
+        data,
+        error
+    } = await query;
 
 
     if(error){
 
         console.error(error);
 
-        message(
-            "questionMessage",
-            "Could not save question. Check Supabase permissions."
+        document
+            .getElementById("questionsTable")
+            .innerHTML =
+            "<p class='error'>" +
+            escapeHTML(error.message) +
+            "</p>";
+
+        return;
+    }
+
+
+    let html = `
+
+        <table>
+
+        <tr>
+            <th>Subject</th>
+            <th>Question</th>
+            <th>Passage</th>
+            <th>Answer</th>
+            <th>Action</th>
+        </tr>
+    `;
+
+
+    data.forEach(q => {
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHTML(
+                        q.subjects?.name || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        q.question_text
+                    )}
+                </td>
+
+                <td>
+                    ${
+                        q.passage
+                        ? "Yes"
+                        : "No"
+                    }
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        q.correct_answer
+                    )}
+                </td>
+
+                <td>
+
+                    <button
+                        class="warning"
+                        onclick="editQuestion('${q.id}')">
+                        Edit
+                    </button>
+
+                    <button
+                        class="danger"
+                        onclick="deleteQuestion('${q.id}')">
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+        `;
+    });
+
+
+    html += "</table>";
+
+
+    document
+        .getElementById("questionsTable")
+        .innerHTML =
+        html;
+}
+
+
+/* ============================================================
+   EDIT QUESTION
+============================================================ */
+
+async function editQuestion(id){
+
+    const {
+        data,
+        error
+    } = await db
+        .from("questions")
+        .select("*")
+        .eq("id",id)
+        .single();
+
+
+    if(error){
+
+        alert(
+            "Unable to load question: " +
+            error.message
         );
 
         return;
     }
 
 
-    message(
-        "questionMessage",
-        "Question saved successfully!",
-        "success"
-    );
+    document
+        .getElementById("questionSubject")
+        .value =
+        data.subject_id;
+
+    document
+        .getElementById("questionPassage")
+        .value =
+        data.passage || "";
+
+    document
+        .getElementById("questionText")
+        .value =
+        data.question_text;
+
+    document
+        .getElementById("optionA")
+        .value =
+        data.option_a;
+
+    document
+        .getElementById("optionB")
+        .value =
+        data.option_b;
+
+    document
+        .getElementById("optionC")
+        .value =
+        data.option_c;
+
+    document
+        .getElementById("optionD")
+        .value =
+        data.option_d;
+
+    document
+        .getElementById("correctAnswer")
+        .value =
+        data.correct_answer;
+
+    document
+        .getElementById("editingQuestionId")
+        .value =
+        data.id;
 
 
-    document.getElementById("newQuestion").value = "";
-    document.getElementById("optionA").value = "";
-    document.getElementById("optionB").value = "";
-    document.getElementById("optionC").value = "";
-    document.getElementById("optionD").value = "";
-}
+    document
+        .getElementById("saveQuestionBtn")
+        .textContent =
+        "Update Question";
 
 
-/* ==============================
-   GENERATE ACCESS CODE
-============================== */
+    document
+        .getElementById("cancelEditBtn")
+        .classList.remove("hidden");
 
-async function showGenerateCode(){
 
-    await loadSubjects();
-
-    const select =
-        document.getElementById("codeSubjectSelect");
-
-    select.innerHTML = "";
-
-    subjects.forEach(subject=>{
-
-        const option =
-            document.createElement("option");
-
-        option.value = subject.id || "";
-        option.textContent = subject.name;
-
-        select.appendChild(option);
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
     });
-
-
-    document.getElementById("generatedCodeBox")
-        .innerHTML = "";
-
-    showScreen("generateCodeScreen");
 }
 
 
-/* ==============================
-   RANDOM CODE
-============================== */
+/* ============================================================
+   DELETE QUESTION
+============================================================ */
 
-function createAccessCode(){
+async function deleteQuestion(id){
 
-    const characters =
+    if(!confirm(
+        "Delete this question?"
+    )){
+        return;
+    }
+
+
+    const {
+        error
+    } = await db
+        .from("questions")
+        .delete()
+        .eq("id",id);
+
+
+    if(error){
+
+        alert(
+            "Unable to delete question: " +
+            error.message
+        );
+
+        return;
+    }
+
+
+    loadAdminQuestions();
+    loadAdminData();
+}
+
+
+/* ============================================================
+   ACCESS CODE SUBJECT LIST
+============================================================ */
+
+function loadCodeSubjectList(){
+
+    if(!subjects.length){
+        loadSubjects();
+    }
+
+
+    document
+        .getElementById("newCodeSubject")
+        .innerHTML =
+        subjects.map(s =>
+            `<option value="${s.id}">
+                ${escapeHTML(s.name)}
+            </option>`
+        ).join("");
+}
+
+
+/* ============================================================
+   GENERATE ACCESS CODE
+============================================================ */
+
+function createRandomCode(){
+
+    const chars =
         "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
     let code = "WT-";
 
-    for(let i=0;i<6;i++){
+
+    for(let i=0;i<8;i++){
 
         code +=
-            characters[
+            chars[
                 Math.floor(
-                    Math.random() * characters.length
+                    Math.random() *
+                    chars.length
                 )
             ];
     }
+
 
     return code;
 }
 
 
-/* ==============================
-   GENERATE CODE
-============================== */
-
 async function generateAccessCode(){
 
-    const name =
-        document.getElementById("newCandidateName")
-        .value.trim();
+    const candidate =
+        document
+        .getElementById("newCodeCandidate")
+        .value
+        .trim();
 
     const subjectId =
-        document.getElementById("codeSubjectSelect")
+        document
+        .getElementById("newCodeSubject")
         .value;
 
 
-    if(!name){
+    if(!candidate){
 
-        message(
-            "codeGenerateMessage",
-            "Please enter the candidate name."
+        alert(
+            "Enter the candidate name."
         );
 
         return;
     }
 
 
-    if(!subjectId){
+    let code =
+        createRandomCode();
 
-        message(
-            "codeGenerateMessage",
-            "Please select a subject."
-        );
-
-        return;
-    }
-
-
-    let code = createAccessCode();
-
-
-    /*
-       Check that code is unique
-    */
 
     let exists = true;
 
+
     while(exists){
 
-        const {data} =
-            await db
+        const {
+            data
+        } = await db
             .from("access_codes")
             .select("id")
             .eq("code",code)
             .maybeSingle();
 
-        if(!data){
 
-            exists = false;
+        exists =
+            !!data;
 
-        }else{
 
-            code = createAccessCode();
+        if(exists){
+            code =
+                createRandomCode();
         }
     }
 
 
-    const {error} =
-        await db
+    const {
+        error
+    } = await db
         .from("access_codes")
         .insert({
 
-            code:code,
+            code:
+                code,
 
-            candidate_name:name,
+            candidate_name:
+                candidate,
 
-            subject_id:subjectId,
+            subject_id:
+                subjectId,
 
-            used:false,
+            used:
+                false,
 
-            failed_attempts:0,
+            expires_at:
+                null,
+
+            failed_attempts:
+                0,
+
+            locked:
+                false
+        });
+
+
+    if(error){
+
+        alert(
+            "Unable to generate code: " +
+            error.message
+        );
+
+        return;
+    }
+
+
+    message(
+        "generatedCodeMessage",
+        "Access code generated: " + code,
+        "success"
+    );
+
+
+    document
+        .getElementById("newCodeCandidate")
+        .value = "";
+
+
+    loadAccessCodes();
+    loadAdminData();
+}
+
+
+/* ============================================================
+   LOAD ACCESS CODES
+============================================================ */
+
+async function loadAccessCodes(){
+
+    const search =
+        document
+        .getElementById("codeSearch")
+        .value
+        .trim();
+
+
+    let query =
+        db
+        .from("access_codes")
+        .select(`
+            *,
+            subjects(name,code)
+        `)
+        .order("created_at",{
+            ascending:false
+        });
+
+
+    const {
+        data,
+        error
+    } = await query;
+
+
+    if(error){
+
+        console.error(error);
+
+        document
+            .getElementById("codesTable")
+            .innerHTML =
+            "<p class='error'>" +
+            escapeHTML(error.message) +
+            "</p>";
+
+        return;
+    }
+
+
+    let rows =
+        data || [];
+
+
+    if(search){
+
+        const term =
+            search.toLowerCase();
+
+        rows =
+            rows.filter(row =>
+
+                (
+                    row.candidate_name || ""
+                )
+                .toLowerCase()
+                .includes(term)
+
+                ||
+
+                (
+                    row.code || ""
+                )
+                .toLowerCase()
+                .includes(term)
+            );
+    }
+
+
+    let html = `
+
+        <table>
+
+        <tr>
+            <th>Candidate</th>
+            <th>Subject</th>
+            <th>Code</th>
+            <th>Status</th>
+            <th>Attempts</th>
+            <th>Action</th>
+        </tr>
+    `;
+
+
+    rows.forEach(row => {
+
+        let status =
+            row.locked
+            ? "LOCKED"
+            : row.used
+            ? "USED"
+            : "ACTIVE";
+
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHTML(
+                        row.candidate_name
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        row.subjects?.name || ""
+                    )}
+                </td>
+
+                <td>
+                    <strong>
+                        ${escapeHTML(row.code)}
+                    </strong>
+                </td>
+
+                <td>
+                    ${status}
+                </td>
+
+                <td>
+                    ${row.failed_attempts || 0}
+                </td>
+
+                <td>
+
+                    ${
+                        row.locked
+                        ?
+                        `<button
+                            class="primary"
+                            onclick="resetAccessCode('${row.id}')">
+                            Unlock
+                        </button>`
+                        :
+                        ""
+                    }
+
+                    <button
+                        class="danger"
+                        onclick="deleteAccessCode('${row.id}')">
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+        `;
+    });
+
+
+    html += "</table>";
+
+
+    document
+        .getElementById("codesTable")
+        .innerHTML =
+        html;
+}
+
+
+/* ============================================================
+   RESET ACCESS CODE
+============================================================ */
+
+async function resetAccessCode(id){
+
+    const {
+        error
+    } = await db
+        .from("access_codes")
+        .update({
 
             locked:false,
 
-            expires_at:null
+            failed_attempts:0,
+
+            used:false
+
+        })
+        .eq("id",id);
+
+
+    if(error){
+
+        alert(
+            "Unable to reset code: " +
+            error.message
+        );
+
+        return;
+    }
+
+
+    loadAccessCodes();
+}
+
+
+/* ============================================================
+   DELETE ACCESS CODE
+============================================================ */
+
+async function deleteAccessCode(id){
+
+    if(!confirm(
+        "Delete this access code?"
+    )){
+        return;
+    }
+
+
+    const {
+        error
+    } = await db
+        .from("access_codes")
+        .delete()
+        .eq("id",id);
+
+
+    if(error){
+
+        alert(
+            "Unable to delete code: " +
+            error.message
+        );
+
+        return;
+    }
+
+
+    loadAccessCodes();
+    loadAdminData();
+}
+
+
+/* ============================================================
+   RESULTS
+============================================================ */
+
+async function loadResults(){
+
+    const search =
+        document
+        .getElementById("resultSearch")
+        .value
+        .trim();
+
+
+    const {
+        data,
+        error
+    } = await db
+        .from("exam_results")
+        .select(`
+            *,
+            subjects(name,code)
+        `)
+        .order("submitted_at",{
+            ascending:false
         });
 
 
@@ -1655,302 +2752,227 @@ async function generateAccessCode(){
 
         console.error(error);
 
-        message(
-            "codeGenerateMessage",
-            "Access code could not be generated."
+        document
+            .getElementById("resultsTable")
+            .innerHTML =
+            "<p class='error'>" +
+            escapeHTML(error.message) +
+            "</p>";
+
+        return;
+    }
+
+
+    adminResultsCache =
+        data || [];
+
+
+    let rows =
+        adminResultsCache;
+
+
+    if(search){
+
+        const term =
+            search.toLowerCase();
+
+        rows =
+            rows.filter(row =>
+
+                (
+                    row.candidate_name || ""
+                )
+                .toLowerCase()
+                .includes(term)
+            );
+    }
+
+
+    let html = `
+
+        <table>
+
+        <tr>
+            <th>Candidate</th>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>Percentage</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+    `;
+
+
+    rows.forEach(row => {
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHTML(
+                        row.candidate_name
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        row.subjects?.name || ""
+                    )}
+                </td>
+
+                <td>
+                    ${row.score}
+                    /
+                    ${row.total_questions}
+                </td>
+
+                <td>
+                    ${row.percentage}%
+                </td>
+
+                <td>
+                    ${
+                        row.passed
+                        ? "PASS"
+                        : "FAIL"
+                    }
+                </td>
+
+                <td>
+                    ${
+                        row.submitted_at
+                        ? new Date(
+                            row.submitted_at
+                          ).toLocaleString()
+                        : ""
+                    }
+                </td>
+
+            </tr>
+        `;
+    });
+
+
+    html += "</table>";
+
+
+    document
+        .getElementById("resultsTable")
+        .innerHTML =
+        html;
+}
+
+
+/* ============================================================
+   EXPORT RESULTS CSV
+============================================================ */
+
+function exportResultsCSV(){
+
+    if(!adminResultsCache.length){
+
+        alert(
+            "There are no results to export."
         );
 
         return;
     }
 
 
-    document.getElementById("generatedCodeBox")
-        .innerHTML = `
-
-        <div class="code-box">
-
-            <div>ACCESS CODE</div>
-
-            <div class="generated-code">
-                ${escapeHTML(code)}
-            </div>
-
-            <p>
-                Candidate:
-                <b>${escapeHTML(name)}</b>
-            </p>
-
-            <p>
-                This code does <b>NOT EXPIRE</b>.
-            </p>
-
-            <p>
-                It will lock after 3 wrong attempts.
-            </p>
-
-        </div>
-
-    `;
+    let csv =
+        "Candidate,Subject,Score,Total,Percentage,Status,Date\n";
 
 
-    document.getElementById("newCandidateName")
-        .value = "";
+    adminResultsCache.forEach(row => {
 
+        const candidate =
+            csvSafe(
+                row.candidate_name
+            );
 
-    message(
-        "codeGenerateMessage",
-        "Access code generated successfully!",
-        "success"
-    );
-}
+        const subject =
+            csvSafe(
+                row.subjects?.name || ""
+            );
 
-
-/* ==============================
-   VIEW ACCESS CODES
-============================== */
-
-async function loadAccessCodes(){
-
-    const content =
-        document.getElementById("adminContent");
-
-    content.innerHTML =
-        `<div class="card"><h2>Access Codes</h2>
-        <p>Loading...</p></div>`;
-
-
-    const {data,error} =
-        await db
-        .from("access_codes")
-        .select(`
-            id,
-            code,
-            candidate_name,
-            used,
-            failed_attempts,
-            locked,
-            created_at,
-            subjects(name)
-        `)
-        .order("created_at",{ascending:false});
-
-
-    if(error){
-
-        console.error(error);
-
-        content.innerHTML =
-            `<div class="card">
-                <p>Unable to load access codes.</p>
-            </div>`;
-
-        return;
-    }
-
-
-    let html =
-        `<div class="card">
-        <h2>Access Codes</h2>`;
-
-
-    if(!data || data.length === 0){
-
-        html +=
-            `<p>No access codes generated yet.</p>`;
-    }
-
-
-    (data || []).forEach(item=>{
-
-        let statusClass = "active";
-        let statusText = "ACTIVE";
-
-
-        if(item.locked){
-
-            statusClass = "locked";
-            statusText = "LOCKED";
-
-        }else if(item.used){
-
-            statusClass = "used";
-            statusText = "USED";
-        }
-
-
-        html += `
-
-        <div class="admin-item">
-
-            <b>${escapeHTML(item.candidate_name)}</b>
-
-            <br>
-
-            Subject:
-            ${escapeHTML(
-                item.subjects?.name || "Unknown"
-            )}
-
-            <br><br>
-
-            Code:
-            <b>${escapeHTML(item.code)}</b>
-
-            <br>
-
-            Wrong attempts:
-            ${item.failed_attempts || 0}/3
-
-            <br><br>
-
-            <span class="status ${statusClass}">
-                ${statusText}
-            </span>
-
-        </div>
-
-        `;
+        csv +=
+            candidate + "," +
+            subject + "," +
+            row.score + "," +
+            row.total_questions + "," +
+            row.percentage + "," +
+            (
+                row.passed
+                ? "PASS"
+                : "FAIL"
+            ) + "," +
+            csvSafe(
+                row.submitted_at
+            ) +
+            "\n";
     });
 
 
-    html += `</div>`;
+    const blob =
+        new Blob(
+            [csv],
+            {
+                type:
+                "text/csv;charset=utf-8;"
+            }
+        );
 
-    content.innerHTML = html;
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href =
+        url;
+
+    link.download =
+        "war-tigers-exam-results.csv";
+
+
+    document
+        .body
+        .appendChild(link);
+
+
+    link.click();
+
+    link.remove();
+
+
+    URL.revokeObjectURL(url);
 }
 
 
-/* ==============================
-   VIEW RESULTS
-============================== */
+function csvSafe(value){
 
-async function loadResults(){
-
-    const content =
-        document.getElementById("adminContent");
-
-    content.innerHTML =
-        `<div class="card">
-            <h2>Examination Results</h2>
-            <p>Loading...</p>
-        </div>`;
-
-
-    const {data,error} =
-        await db
-        .from("exam_results")
-        .select(`
-            id,
-            candidate_name,
-            score,
-            total_questions,
-            percentage,
-            passed,
-            submitted_at,
-            subjects(name)
-        `)
-        .order("submitted_at",{ascending:false});
-
-
-    if(error){
-
-        console.error(error);
-
-        content.innerHTML =
-            `<div class="card">
-                <p>Unable to load results.</p>
-            </div>`;
-
-        return;
+    if(value === null ||
+       value === undefined){
+        return "";
     }
 
 
-    let html =
-        `<div class="card">
-        <h2>Examination Results</h2>`;
-
-
-    if(!data || data.length === 0){
-
-        html +=
-            `<p>No examination results yet.</p>`;
-    }
-
-
-    (data || []).forEach(result=>{
-
-        html += `
-
-        <div class="admin-item">
-
-            <b>
-                ${escapeHTML(result.candidate_name)}
-            </b>
-
-            <br>
-
-            Subject:
-            ${escapeHTML(
-                result.subjects?.name || "Unknown"
-            )}
-
-            <br>
-
-            Score:
-            ${result.score}/${result.total_questions}
-
-            <br>
-
-            Percentage:
-            ${result.percentage}%
-
-            <br>
-
-            Status:
-            <b>
-                ${result.passed ? "PASSED" : "FAILED"}
-            </b>
-
-            <br>
-
-            Date:
-            ${new Date(result.submitted_at)
-                .toLocaleString()}
-
-        </div>
-
-        `;
-    });
-
-
-    html += `</div>`;
-
-    content.innerHTML = html;
+    return '"' +
+        String(value)
+        .replace(/"/g,'""') +
+        '"';
 }
 
 
-/* ==============================
-   LOGOUT
-============================== */
+/* ============================================================
+   INITIAL SCREEN
+============================================================ */
 
-function logout(){
-
-    clearInterval(timerInterval);
-
-    candidateName = "";
-    selectedSubject = null;
-    currentAccessCodeId = null;
-    questions = [];
-    answers = [];
-
-    showScreen("loginScreen");
-}
-
-
-/* ==============================
-   INITIAL LOAD
-============================== */
-
-loadSubjects();
+showLogin();
 
 </script>
 
