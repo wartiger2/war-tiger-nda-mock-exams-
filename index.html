@@ -4,259 +4,285 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WAR TIGERS COMPUTERS - Mock Examination Portal</title>
+<title>WAR TIGERS COMPUTERS - NDA Mock Examination Portal</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-* {
-    box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f1f5f9;
-    color: #172033;
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f6f8;
+  color:#17202a;
 }
 
-header {
-    background: #0b3d2e;
-    color: white;
-    padding: 20px;
-    text-align: center;
+header{
+  background:#123b25;
+  color:white;
+  padding:18px;
+  text-align:center;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 24px;
+header h1{
+  margin:0;
+  font-size:24px;
 }
 
-header p {
-    margin: 6px 0 0;
+header p{
+  margin:5px 0 0;
 }
 
-.container {
-    width: 94%;
-    max-width: 850px;
-    margin: 25px auto;
+.container{
+  max-width:1050px;
+  margin:20px auto;
+  padding:0 14px;
 }
 
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
+.card{
+  background:white;
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 4px 18px #0001;
 }
 
-h2 {
-    margin-top: 0;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 7px;
+h2,h3{
+  margin-top:0;
 }
 
 input,
 select,
-textarea,
-button {
-    width: 100%;
-    padding: 13px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    font-size: 16px;
+textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccd3d8;
+  border-radius:8px;
+  margin:7px 0 13px;
+  font-size:15px;
 }
 
-input,
-select,
-textarea {
-    border: 1px solid #cbd5e1;
+textarea{
+  min-height:120px;
+  resize:vertical;
 }
 
-textarea {
-    min-height: 100px;
-    resize: vertical;
+button{
+  border:0;
+  border-radius:8px;
+  padding:12px 17px;
+  background:#176b3a;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin:4px;
 }
 
-button {
-    border: none;
-    background: #0b3d2e;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+button.secondary{
+  background:#52616b;
 }
 
-button:hover {
-    opacity: 0.9;
+button.danger{
+  background:#a72828;
 }
 
-button.secondary {
-    background: #475569;
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
 }
 
-button.danger {
-    background: #b91c1c;
+.hidden{
+  display:none!important;
 }
 
-.hidden {
-    display: none !important;
+.subject-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:12px;
 }
 
-.message {
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: none;
+.subject{
+  border:1px solid #d7dee3;
+  border-radius:10px;
+  padding:15px;
+  background:#fafafa;
+  cursor:pointer;
 }
 
-.success {
-    background: #dcfce7;
-    color: #166534;
+.subject:hover{
+  background:#eef8f1;
 }
 
-.error {
-    background: #fee2e2;
-    color: #991b1b;
+.subject strong{
+  display:block;
+  margin-bottom:5px;
 }
 
-.subject-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
+.badge{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:20px;
+  background:#e8f4ec;
+  color:#176b3a;
+  font-size:12px;
 }
 
-.subject-btn {
-    background: #e2e8f0;
-    color: #172033;
-    border: 2px solid transparent;
-    margin: 0;
+.passage{
+  background:#f7f7f2;
+  border-left:4px solid #176b3a;
+  padding:14px;
+  border-radius:6px;
+  margin-bottom:15px;
+  white-space:pre-wrap;
 }
 
-.subject-btn:hover {
-    background: #cbd5e1;
+.option{
+  display:block;
+  border:1px solid #d9dfe3;
+  border-radius:9px;
+  padding:13px;
+  margin:9px 0;
+  cursor:pointer;
 }
 
-.subject-btn.selected {
-    background: #0b3d2e;
-    color: white;
+.option.selected{
+  border-color:#176b3a;
+  background:#eef8f1;
 }
 
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+.option input{
+  width:auto;
+  margin:0 8px 0 0;
 }
 
-.timer {
-    background: #991b1b;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-weight: bold;
+.exam-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
-.progress {
-    height: 10px;
-    background: #e2e8f0;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 15px 0;
+.timer{
+  font-size:22px;
+  font-weight:bold;
 }
 
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: #0b3d2e;
+.progress{
+  height:10px;
+  background:#e4e8eb;
+  border-radius:10px;
+  overflow:hidden;
+  margin:12px 0;
 }
 
-.option {
-    display: block;
-    border: 1px solid #cbd5e1;
-    padding: 14px;
-    border-radius: 8px;
-    margin: 10px 0;
-    cursor: pointer;
+.progress>div{
+  height:100%;
+  background:#176b3a;
+  width:0;
 }
 
-.option:hover {
-    background: #f8fafc;
+.nav{
+  display:flex;
+  justify-content:space-between;
+  margin-top:18px;
 }
 
-.option input {
-    width: auto;
-    margin: 0 8px 0 0;
+.result{
+  text-align:center;
 }
 
-.navigation {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
+.score{
+  font-size:45px;
+  font-weight:bold;
 }
 
-.navigation button {
-    flex: 1;
+.pass{
+  color:#176b3a;
 }
 
-.question-number {
-    font-weight: bold;
-    color: #0b3d2e;
+.fail{
+  color:#b3261e;
 }
 
-.passage {
-    background: #f8fafc;
-    border-left: 5px solid #0b3d2e;
-    padding: 15px;
-    margin: 15px 0;
-    line-height: 1.6;
+.admin-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-bottom:15px;
 }
 
-.result-score {
-    font-size: 42px;
-    font-weight: bold;
-    text-align: center;
-    color: #0b3d2e;
+.admin-section{
+  border-top:1px solid #eee;
+  padding-top:15px;
 }
 
-.result-status {
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    margin: 15px 0;
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
 }
 
-.admin-menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+th,td{
+  border-bottom:1px solid #e4e7e9;
+  padding:9px;
+  text-align:left;
+  vertical-align:top;
 }
 
-.small {
-    font-size: 13px;
-    color: #64748b;
+.table-wrap{
+  overflow:auto;
 }
 
-.item {
-    border: 1px solid #cbd5e1;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+.small{
+  font-size:13px;
+  color:#5d6870;
 }
 
-.item strong {
-    display: block;
-    margin-bottom: 6px;
+.notice{
+  padding:12px;
+  border-radius:8px;
+  background:#fff7d6;
+  margin:10px 0;
 }
 
-footer {
-    text-align: center;
-    padding: 25px;
-    color: #64748b;
+.success{
+  background:#e8f7ed;
+  color:#176b3a;
+}
+
+.error{
+  background:#fdecec;
+  color:#a72828;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#667;
+}
+
+code{
+  background:#eef1f3;
+  padding:2px 5px;
+  border-radius:4px;
+}
+
+@media(max-width:600px){
+  header h1{
+    font-size:20px;
+  }
+
+  .card{
+    padding:15px;
+  }
+
+  .score{
+    font-size:36px;
+  }
 }
 </style>
 </head>
@@ -264,1642 +290,2848 @@ footer {
 <body>
 
 <header>
-    <h1>WAR TIGERS COMPUTERS</h1>
-    <p>Mock Examination Portal</p>
+  <h1>WAR TIGERS COMPUTERS</h1>
+  <p>Mock Examination Portal</p>
 </header>
 
 <div class="container">
 
-<!-- MESSAGE -->
-<div id="message" class="message"></div>
+<!-- ================= CANDIDATE LOGIN ================= -->
 
-<!-- CANDIDATE LOGIN -->
-<section id="loginSection" class="card">
-    <h2>Candidate Login</h2>
+<section id="loginScreen" class="card">
 
-    <label for="candidateName">Candidate Name</label>
-    <input
-        type="text"
-        id="candidateName"
-        placeholder="Enter your full name"
-    >
+<h2>Candidate Login</h2>
 
-    <button type="button" onclick="continueToSubjects()">
-        CONTINUE
-    </button>
+<label>Candidate Name</label>
 
-    <button type="button" class="secondary" onclick="showAdminLogin()">
-        ADMIN
-    </button>
-</section>
+<input
+  id="candidateName"
+  placeholder="Enter candidate name"
+>
 
+<button onclick="continueCandidate()">
+CONTINUE
+</button>
 
-<!-- SUBJECT SECTION -->
-<section id="subjectSection" class="card hidden">
+<button
+  class="secondary"
+  onclick="showAdminLogin()"
+>
+Admin Panel
+</button>
 
-    <div class="topbar">
-        <div>
-            <h2>Select Subject</h2>
-            <p id="welcomeText"></p>
-        </div>
-    </div>
-
-    <div id="subjectList" class="subject-grid">
-        Loading subjects...
-    </div>
-
-    <br>
-
-    <button type="button" onclick="goToAccessCode()">
-        CONTINUE
-    </button>
-
-    <button type="button" class="secondary" onclick="backToLogin()">
-        BACK
-    </button>
+<div id="loginMsg"></div>
 
 </section>
 
 
-<!-- ACCESS CODE -->
-<section id="accessSection" class="card hidden">
+<!-- ================= SUBJECTS ================= -->
 
-    <h2>Subject Access</h2>
+<section
+  id="subjectScreen"
+  class="card hidden"
+>
 
-    <p>
-        Enter the access code provided to you for this subject.
-    </p>
+<h2>Select Subject</h2>
 
-    <p>
-        <strong>Subject:</strong>
-        <span id="selectedSubjectName"></span>
-    </p>
+<p class="small">
+Choose the subject for which you have an access code.
+</p>
 
-    <label for="accessCode">Access Code</label>
+<div
+  id="subjectGrid"
+  class="subject-grid"
+></div>
 
-    <input
-        type="text"
-        id="accessCode"
-        placeholder="Enter access code"
-        autocomplete="off"
-    >
-
-    <button type="button" onclick="verifyAccessCode()">
-        START EXAM
-    </button>
-
-    <button type="button" class="secondary" onclick="backToSubjects()">
-        BACK
-    </button>
+<button
+  class="secondary"
+  onclick="showScreen('loginScreen')"
+>
+Back
+</button>
 
 </section>
 
 
-<!-- EXAM -->
-<section id="examSection" class="card hidden">
+<!-- ================= ACCESS CODE ================= -->
 
-    <div class="topbar">
-        <div>
-            <h2 id="examSubject"></h2>
-            <p id="examCandidate"></p>
-        </div>
+<section
+  id="codeScreen"
+  class="card hidden"
+>
 
-        <div class="timer" id="timer">
-            30:00
-        </div>
-    </div>
+<h2 id="codeTitle">
+Enter Access Code
+</h2>
 
-    <div class="progress">
-        <div id="progressBar" class="progress-bar"></div>
-    </div>
+<p
+  id="codeCandidate"
+  class="small"
+></p>
 
-    <div id="questionArea"></div>
+<input
+  id="accessCode"
+  placeholder="Example: WT-GKTEST01"
+  autocomplete="off"
+>
 
-    <div class="navigation">
-        <button type="button" class="secondary" onclick="previousQuestion()">
-            PREVIOUS
-        </button>
+<button onclick="verifyAccessCode()">
+START EXAM
+</button>
 
-        <button type="button" onclick="nextQuestion()">
-            NEXT
-        </button>
-    </div>
+<button
+  class="secondary"
+  onclick="showScreen('subjectScreen')"
+>
+Back
+</button>
 
-    <button
-        type="button"
-        class="danger"
-        onclick="submitExam()"
-        style="margin-top:10px;"
-    >
-        SUBMIT EXAM
-    </button>
+<div id="codeMsg"></div>
 
 </section>
 
 
-<!-- RESULT -->
-<section id="resultSection" class="card hidden">
+<!-- ================= EXAM ================= -->
 
-    <h2>Examination Result</h2>
+<section
+  id="examScreen"
+  class="card hidden"
+>
 
-    <p>
-        <strong>Candidate:</strong>
-        <span id="resultCandidate"></span>
-    </p>
+<div class="exam-top">
 
-    <p>
-        <strong>Subject:</strong>
-        <span id="resultSubject"></span>
-    </p>
+<div>
+<strong id="examSubject"></strong>
 
-    <div id="resultScore" class="result-score"></div>
+<div
+  id="examYear"
+  class="small"
+></div>
 
-    <div id="resultStatus" class="result-status"></div>
+</div>
 
-    <button type="button" onclick="location.reload()">
-        RETURN TO HOME
-    </button>
+<div class="timer">
+⏱ <span id="timer">30:00</span>
+</div>
 
-</section>
-
-
-<!-- ADMIN LOGIN -->
-<section id="adminLoginSection" class="card hidden">
-
-    <h2>Admin Login</h2>
-
-    <label for="adminPassword">Admin Password</label>
-
-    <input
-        type="password"
-        id="adminPassword"
-        placeholder="Enter admin password"
-    >
-
-    <button type="button" onclick="adminLogin()">
-        LOGIN
-    </button>
-
-    <button type="button" class="secondary" onclick="backToLogin()">
-        BACK
-    </button>
-
-</section>
+</div>
 
 
-<!-- ADMIN PANEL -->
-<section id="adminSection" class="card hidden">
+<div class="progress">
+<div id="progressBar"></div>
+</div>
 
-    <h2>Admin Panel</h2>
 
-    <div class="admin-menu">
+<div id="questionArea"></div>
 
-        <button type="button" onclick="showAdminPage('questions')">
-            QUESTIONS
-        </button>
 
-        <button type="button" onclick="showAdminPage('codes')">
-            ACCESS CODES
-        </button>
+<div class="nav">
 
-        <button type="button" onclick="showAdminPage('results')">
-            RESULTS
-        </button>
+<button
+  id="prevBtn"
+  class="secondary"
+  onclick="previousQuestion()"
+>
+PREVIOUS
+</button>
 
-        <button type="button" class="danger" onclick="location.reload()">
-            LOGOUT
-        </button>
 
-    </div>
+<button
+  id="nextBtn"
+  onclick="nextQuestion()"
+>
+NEXT
+</button>
+
+</div>
+
+
+<button
+  id="submitBtn"
+  class="danger hidden"
+  onclick="submitExam()"
+>
+SUBMIT EXAM
+</button>
 
 </section>
 
 
-<!-- ADMIN QUESTIONS -->
-<section id="adminQuestions" class="card hidden">
+<!-- ================= RESULT ================= -->
 
-    <h2>Question Management</h2>
+<section
+  id="resultScreen"
+  class="card result hidden"
+>
 
-    <label for="adminSubject">Subject</label>
+<h2>Examination Result</h2>
 
-    <select id="adminSubject"></select>
+<p id="resultCandidate"></p>
 
-    <label for="questionYear">Year</label>
+<p id="resultSubject"></p>
 
-    <input
-        type="number"
-        id="questionYear"
-        placeholder="Example: 2025"
-    >
+<div
+  id="score"
+  class="score"
+></div>
 
-    <label for="passage">Passage (optional)</label>
+<p id="resultDetails"></p>
 
-    <textarea
-        id="passage"
-        placeholder="Enter passage if this question is based on a passage..."
-    ></textarea>
+<div id="passStatus"></div>
 
-    <label for="questionText">Question</label>
-
-    <textarea
-        id="questionText"
-        placeholder="Enter question"
-    ></textarea>
-
-    <label for="optionA">Option A</label>
-    <input type="text" id="optionA">
-
-    <label for="optionB">Option B</label>
-    <input type="text" id="optionB">
-
-    <label for="optionC">Option C</label>
-    <input type="text" id="optionC">
-
-    <label for="optionD">Option D</label>
-    <input type="text" id="optionD">
-
-    <label for="correctAnswer">Correct Answer</label>
-
-    <select id="correctAnswer">
-        <option value="">Select answer</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-    </select>
-
-    <button type="button" onclick="addQuestion()">
-        SAVE QUESTION
-    </button>
-
-    <hr>
-
-    <h3>Questions</h3>
-
-    <div id="adminQuestionList">
-        Loading...
-    </div>
+<button
+  onclick="showScreen('loginScreen')"
+>
+BACK TO HOME
+</button>
 
 </section>
 
 
-<!-- ADMIN CODES -->
-<section id="adminCodes" class="card hidden">
+<!-- ================= ADMIN LOGIN ================= -->
 
-    <h2>Access Code Management</h2>
+<section
+  id="adminLoginScreen"
+  class="card hidden"
+>
 
-    <label for="codeSubject">Subject</label>
+<h2>Admin Login</h2>
 
-    <select id="codeSubject"></select>
+<input
+  id="adminPassword"
+  type="password"
+  placeholder="Admin password"
+>
 
-    <label for="codeCandidate">Candidate Name</label>
+<button onclick="adminLogin()">
+LOGIN
+</button>
 
-    <input
-        type="text"
-        id="codeCandidate"
-        placeholder="Candidate name"
-    >
+<button
+  class="secondary"
+  onclick="showScreen('loginScreen')"
+>
+Back
+</button>
 
-    <label for="newAccessCode">Access Code</label>
-
-    <input
-        type="text"
-        id="newAccessCode"
-        placeholder="Example: WT-ABC123"
-    >
-
-    <button type="button" onclick="createAccessCode()">
-        CREATE ACCESS CODE
-    </button>
-
-    <hr>
-
-    <h3>Existing Codes</h3>
-
-    <div id="adminCodeList">
-        Loading...
-    </div>
+<div id="adminLoginMsg"></div>
 
 </section>
 
 
-<!-- ADMIN RESULTS -->
-<section id="adminResults" class="card hidden">
+<!-- ================= ADMIN PANEL ================= -->
 
-    <h2>Examination Results</h2>
+<section
+  id="adminScreen"
+  class="card hidden"
+>
 
-    <div id="adminResultList">
-        Loading...
-    </div>
+<div class="exam-top">
+
+<div>
+
+<h2>Admin Panel</h2>
+
+<div class="small">
+War Tigers Computers
+</div>
+
+</div>
+
+<button
+  class="secondary"
+  onclick="adminLogout()"
+>
+Logout
+</button>
+
+</div>
+
+
+<div class="admin-nav">
+
+<button onclick="adminTab('bulk')">
+📥 Bulk Import
+</button>
+
+<button onclick="adminTab('single')">
+➕ Add Question
+</button>
+
+<button onclick="adminTab('questions')">
+📚 Questions
+</button>
+
+<button onclick="adminTab('codes')">
+🔑 Access Codes
+</button>
+
+<button onclick="adminTab('results')">
+📊 Results
+</button>
+
+</div>
+
+
+<!-- ================= BULK IMPORT ================= -->
+
+<div
+  id="adminBulk"
+  class="admin-section"
+>
+
+<h3>
+Bulk Question Import
+</h3>
+
+<p class="small">
+Paste your authorized question material using the format below.
+Repeat the block for each question.
+</p>
+
+
+<div class="notice">
+
+<b>Format:</b>
+
+<br><br>
+
+<code>SUBJECT: English Language</code>
+
+<br>
+
+<code>YEAR: 2014</code>
+
+<br>
+
+<code>QUESTION:</code> your question
+
+<br>
+
+<code>A:</code> option A
+
+<br>
+
+<code>B:</code> option B
+
+<br>
+
+<code>C:</code> option C
+
+<br>
+
+<code>D:</code> option D
+
+<br>
+
+<code>ANSWER: B</code>
+
+<br>
+
+<code>PASSAGE:</code> optional passage
+
+<br>
+
+<code>END</code>
+
+</div>
+
+
+<textarea
+  id="bulkText"
+  style="min-height:330px"
+  placeholder="SUBJECT: English Language
+YEAR: 2014
+QUESTION:
+Paste your authorized question here
+A:
+Option A
+B:
+Option B
+C:
+Option C
+D:
+Option D
+ANSWER: B
+PASSAGE:
+Optional passage
+END"
+></textarea>
+
+
+<button onclick="previewBulk()">
+PREVIEW
+</button>
+
+<button onclick="importBulk()">
+IMPORT TO SUPABASE
+</button>
+
+<div id="bulkMsg"></div>
+
+<div id="bulkPreview"></div>
+
+</div>
+
+
+<!-- ================= SINGLE QUESTION ================= -->
+
+<div
+  id="adminSingle"
+  class="admin-section hidden"
+>
+
+<h3>
+Add One Question
+</h3>
+
+
+<label>Subject</label>
+
+<select id="qSubject"></select>
+
+
+<label>Year</label>
+
+<input
+  id="qYear"
+  type="number"
+  value="2014"
+>
+
+
+<label>Question</label>
+
+<textarea id="qText"></textarea>
+
+
+<label>Option A</label>
+
+<input id="qA">
+
+
+<label>Option B</label>
+
+<input id="qB">
+
+
+<label>Option C</label>
+
+<input id="qC">
+
+
+<label>Option D</label>
+
+<input id="qD">
+
+
+<label>Correct Answer</label>
+
+<select id="qAnswer">
+
+<option>A</option>
+<option>B</option>
+<option>C</option>
+<option>D</option>
+
+</select>
+
+
+<label>
+Passage (optional)
+</label>
+
+<textarea id="qPassage"></textarea>
+
+
+<button onclick="addSingleQuestion()">
+SAVE QUESTION
+</button>
+
+<div id="singleMsg"></div>
+
+</div>
+
+
+<!-- ================= QUESTIONS ================= -->
+
+<div
+  id="adminQuestions"
+  class="admin-section hidden"
+>
+
+<h3>
+Question Bank
+</h3>
+
+<button onclick="loadAdminQuestions()">
+Refresh
+</button>
+
+<div
+  id="questionsList"
+  class="table-wrap"
+></div>
+
+</div>
+
+
+<!-- ================= ACCESS CODES ================= -->
+
+<div
+  id="adminCodes"
+  class="admin-section hidden"
+>
+
+<h3>
+Create Access Code
+</h3>
+
+
+<label>
+Candidate Name
+</label>
+
+<input id="codeCandidateName">
+
+
+<label>
+Subject
+</label>
+
+<select id="codeSubject"></select>
+
+
+<label>
+Code
+</label>
+
+<input
+  id="newCode"
+  placeholder="Example: WT-ENG001"
+>
+
+
+<button onclick="createAccessCode()">
+CREATE CODE
+</button>
+
+<button
+  class="secondary"
+  onclick="generateCode()"
+>
+GENERATE CODE
+</button>
+
+<div id="codeAdminMsg"></div>
+
+
+<hr>
+
+
+<h3>
+Access Codes
+</h3>
+
+<button onclick="loadAdminCodes()">
+Refresh
+</button>
+
+<div
+  id="codesList"
+  class="table-wrap"
+></div>
+
+</div>
+
+
+<!-- ================= RESULTS ================= -->
+
+<div
+  id="adminResults"
+  class="admin-section hidden"
+>
+
+<h3>
+Exam Results
+</h3>
+
+<button onclick="loadAdminResults()">
+Refresh
+</button>
+
+<div
+  id="resultsList"
+  class="table-wrap"
+></div>
+
+</div>
 
 </section>
 
 </div>
 
+
 <footer>
-    © 2026 War Tigers Computers
+© 2026 War Tigers Computers
 </footer>
 
 
 <script>
 
-/* =========================================================
+/* =====================================================
    SUPABASE CONNECTION
-========================================================= */
+===================================================== */
 
 const SUPABASE_URL =
-    "https://dmscnymhwnqdabvxuuce.supabase.co";
+"https://dmscnymhwnqdabvxuuce.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_YLAhxNO3szVourvaQQ4jgw_KRQ9f0qc";
+"sb_publishable_YLAhxNO3szVourvaQQ4jgw_KRQ9f0qc";
 
-const db = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
+const { createClient } = supabase;
+
+const db =
+createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
 );
 
 
-/* =========================================================
-   GLOBAL VARIABLES
-========================================================= */
+/* =====================================================
+   SETTINGS
+===================================================== */
 
-let candidateName = "";
+const ADMIN_PASSWORD =
+"WTADMIN2026";
+
+const PASS_MARK =
+50;
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let subjects = [];
+
 let selectedSubject = null;
-let accessCodeRecord = null;
+
+let candidate = "";
+
+let accessRecord = null;
 
 let questions = [];
-let answers = [];
+
+let answers = {};
+
 let currentQuestion = 0;
 
-let examTimer = null;
-let timeLeft = 30 * 60;
+let timerSeconds = 1800;
 
-const PASS_MARK = 50;
-
-const ADMIN_PASSWORD = "WTADMIN2026";
+let timerHandle = null;
 
 
-/* =========================================================
-   HELPERS
-========================================================= */
+/* =====================================================
+   SHORTCUT
+===================================================== */
 
-function hideAllSections() {
+function $(id){
 
-    const sections = [
-        "loginSection",
-        "subjectSection",
-        "accessSection",
-        "examSection",
-        "resultSection",
-        "adminLoginSection",
-        "adminSection",
-        "adminQuestions",
-        "adminCodes",
-        "adminResults"
-    ];
+return document.getElementById(id);
 
-    sections.forEach(id => {
-        document.getElementById(id).classList.add("hidden");
-    });
 }
 
 
-function showMessage(text, type = "error") {
+/* =====================================================
+   SCREEN CONTROL
+===================================================== */
 
-    const box = document.getElementById("message");
+function showScreen(id){
 
-    box.textContent = text;
-    box.className = "message " + type;
-    box.style.display = "block";
+[
+"loginScreen",
+"subjectScreen",
+"codeScreen",
+"examScreen",
+"resultScreen",
+"adminLoginScreen",
+"adminScreen"
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+].forEach(x => {
+
+$(x).classList.add("hidden");
+
+});
+
+
+$(id).classList.remove("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 }
 
 
-function clearMessage() {
+/* =====================================================
+   MESSAGE
+===================================================== */
 
-    const box = document.getElementById("message");
+function message(
+id,
+text,
+type="notice"
+){
 
-    box.style.display = "none";
-    box.textContent = "";
+$(id).innerHTML =
+text
+?
+`<div class="${type} notice">
+${escapeHtml(text)}
+</div>`
+:
+"";
+
 }
 
 
-function escapeHtml(text) {
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
-    if (text === null || text === undefined) {
-        return "";
-    }
+function escapeHtml(v){
 
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+return String(v ?? "")
+.replace(
+/[&<>"']/g,
+m =>
+({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[m])
+);
+
 }
 
 
-/* =========================================================
+/* =====================================================
    CANDIDATE LOGIN
-========================================================= */
+===================================================== */
 
-function continueToSubjects() {
+async function continueCandidate(){
 
-    clearMessage();
+const name =
+$("candidateName")
+.value
+.trim();
 
-    const nameInput =
-        document.getElementById("candidateName");
+if(!name){
 
-    const name =
-        nameInput.value.trim();
+message(
+"loginMsg",
+"Please enter the candidate name.",
+"error"
+);
 
-    if (!name) {
+return;
 
-        showMessage(
-            "Please enter your candidate name."
-        );
+}
 
-        nameInput.focus();
+candidate =
+name;
 
-        return;
-    }
+message(
+"loginMsg",
+""
+);
 
-    candidateName = name;
+await loadSubjects();
 
-    hideAllSections();
+showScreen(
+"subjectScreen"
+);
 
-    document
-        .getElementById("subjectSection")
-        .classList.remove("hidden");
-
-    document
-        .getElementById("welcomeText")
-        .textContent =
-        "Welcome, " + candidateName + ". Select a subject.";
-
-    loadSubjects();
 }
 
 
-/* =========================================================
-   SUBJECTS
-========================================================= */
+/* =====================================================
+   LOAD SUBJECTS
+===================================================== */
 
-async function loadSubjects() {
+async function loadSubjects(){
 
-    const list =
-        document.getElementById("subjectList");
+const {
+data,
+error
+} =
+await db
+.from("subjects")
+.select("*")
+.order("name");
 
-    list.innerHTML = "Loading subjects...";
 
-    const { data, error } =
-        await db
-            .from("subjects")
-            .select("*")
-            .order("name");
+if(error){
 
-    if (error) {
+message(
+"loginMsg",
+"Could not load subjects: "
++ error.message,
+"error"
+);
 
-        console.error(error);
+return;
 
-        list.innerHTML = "";
-
-        showMessage(
-            "Unable to load subjects. Please check your Supabase connection."
-        );
-
-        return;
-    }
-
-    if (!data || data.length === 0) {
-
-        list.innerHTML =
-            "<p>No subjects have been added yet.</p>";
-
-        return;
-    }
-
-    list.innerHTML = "";
-
-    data.forEach(subject => {
-
-        const button =
-            document.createElement("button");
-
-        button.type = "button";
-        button.className = "subject-btn";
-
-        button.textContent =
-            subject.name;
-
-        button.onclick = function() {
-
-            document
-                .querySelectorAll(".subject-btn")
-                .forEach(btn => {
-                    btn.classList.remove("selected");
-                });
-
-            button.classList.add("selected");
-
-            selectedSubject = subject;
-        };
-
-        list.appendChild(button);
-    });
 }
 
 
-/* =========================================================
-   SUBJECT NAVIGATION
-========================================================= */
+subjects =
+data || [];
 
-function goToAccessCode() {
 
-    clearMessage();
+$("subjectGrid").innerHTML =
+subjects.map(
+s => `
 
-    if (!selectedSubject) {
+<div
+class="subject"
+onclick="chooseSubject('${s.id}')"
+>
 
-        showMessage(
-            "Please select a subject first."
-        );
+<strong>
+${escapeHtml(s.name)}
+</strong>
 
-        return;
-    }
+<span class="badge">
+${escapeHtml(s.code)}
+</span>
 
-    document
-        .getElementById("selectedSubjectName")
-        .textContent =
-        selectedSubject.name;
+<div class="small">
+${s.duration_minutes || 30}
+minutes
+</div>
 
-    document
-        .getElementById("accessCode")
-        .value = "";
+</div>
 
-    hideAllSections();
+`
+).join("");
 
-    document
-        .getElementById("accessSection")
-        .classList.remove("hidden");
 }
 
 
-function backToLogin() {
+/* =====================================================
+   CHOOSE SUBJECT
+===================================================== */
 
-    clearMessage();
+function chooseSubject(id){
 
-    hideAllSections();
+selectedSubject =
+subjects.find(
+s => s.id === id
+);
 
-    document
-        .getElementById("loginSection")
-        .classList.remove("hidden");
+if(!selectedSubject)
+return;
+
+
+$("codeTitle").textContent =
+selectedSubject.name
++
+" - Access Code";
+
+
+$("codeCandidate").textContent =
+"Candidate: "
++
+candidate;
+
+
+$("accessCode").value =
+"";
+
+
+message(
+"codeMsg",
+""
+);
+
+
+showScreen(
+"codeScreen"
+);
+
+
+setTimeout(
+() => $("accessCode").focus(),
+100
+);
+
 }
 
 
-function backToSubjects() {
+/* =====================================================
+   VERIFY ACCESS CODE
+===================================================== */
 
-    clearMessage();
+async function verifyAccessCode(){
 
-    hideAllSections();
+const code =
+$("accessCode")
+.value
+.trim()
+.toUpperCase();
 
-    document
-        .getElementById("subjectSection")
-        .classList.remove("hidden");
+
+if(!code){
+
+message(
+"codeMsg",
+"Enter your access code.",
+"error"
+);
+
+return;
+
 }
 
 
-/* =========================================================
-   ACCESS CODE
-========================================================= */
+const {
+data,
+error
+} =
+await db
+.from("access_codes")
+.select("*")
+.eq("code",code)
+.eq("subject_id",selectedSubject.id)
+.limit(1);
 
-async function verifyAccessCode() {
 
-    clearMessage();
+if(error){
 
-    if (!selectedSubject) {
+message(
+"codeMsg",
+"Database error: "
++
+error.message,
+"error"
+);
 
-        showMessage(
-            "Please select a subject."
-        );
+return;
 
-        return;
-    }
-
-    const input =
-        document.getElementById("accessCode");
-
-    const code =
-        input.value.trim().toUpperCase();
-
-    if (!code) {
-
-        showMessage(
-            "Please enter your access code."
-        );
-
-        input.focus();
-
-        return;
-    }
-
-    showMessage(
-        "Checking access code...",
-        "success"
-    );
-
-    const { data, error } =
-        await db
-            .from("access_codes")
-            .select("*")
-            .eq("code", code)
-            .eq("subject_id", selectedSubject.id)
-            .limit(1);
-
-    if (error) {
-
-        console.error(error);
-
-        clearMessage();
-
-        showMessage(
-            "There was an error checking the access code."
-        );
-
-        return;
-    }
-
-    if (!data || data.length === 0) {
-
-        clearMessage();
-
-        showMessage(
-            "Invalid access code for this subject."
-        );
-
-        return;
-    }
-
-    accessCodeRecord = data[0];
-
-    if (accessCodeRecord.locked === true) {
-
-        clearMessage();
-
-        showMessage(
-            "This access code is locked. Please contact the administrator."
-        );
-
-        return;
-    }
-
-    /*
-       IMPORTANT:
-       The code is reusable.
-       We do NOT check used = true.
-       We do NOT mark the code as used.
-    */
-
-    clearMessage();
-
-    await startExam();
 }
 
 
-/* =========================================================
+if(!data || !data.length){
+
+message(
+"codeMsg",
+"Invalid access code for this subject.",
+"error"
+);
+
+return;
+
+}
+
+
+const rec =
+data[0];
+
+
+if(rec.locked){
+
+message(
+"codeMsg",
+"This access code is locked. Contact the administrator.",
+"error"
+);
+
+return;
+
+}
+
+
+accessRecord =
+rec;
+
+
+await startExam();
+
+}
+
+
+/* =====================================================
    START EXAM
-========================================================= */
+===================================================== */
 
-async function startExam() {
+async function startExam(){
 
-    clearMessage();
+const {
+data,
+error
+} =
+await db
+.from("questions")
+.select("*")
+.eq(
+"subject_id",
+selectedSubject.id
+)
+.order(
+"question_year",
+{
+ascending:true
+}
+)
+.order(
+"created_at",
+{
+ascending:true
+}
+);
 
-    const { data, error } =
-        await db
-            .from("questions")
-            .select("*")
-            .eq("subject_id", selectedSubject.id)
-            .order("created_at");
 
-    if (error) {
+if(error){
 
-        console.error(error);
+message(
+"codeMsg",
+"Could not load questions: "
++
+error.message,
+"error"
+);
 
-        showMessage(
-            "Unable to load examination questions."
-        );
+return;
 
-        return;
-    }
-
-    if (!data || data.length === 0) {
-
-        showMessage(
-            "There are currently no questions available for " +
-            selectedSubject.name +
-            "."
-        );
-
-        return;
-    }
-
-    questions = data;
-
-    answers =
-        new Array(questions.length).fill(null);
-
-    currentQuestion = 0;
-
-    timeLeft =
-        (selectedSubject.duration_minutes || 30) * 60;
-
-    document
-        .getElementById("examSubject")
-        .textContent =
-        selectedSubject.name;
-
-    document
-        .getElementById("examCandidate")
-        .textContent =
-        "Candidate: " + candidateName;
-
-    hideAllSections();
-
-    document
-        .getElementById("examSection")
-        .classList.remove("hidden");
-
-    showQuestion();
-
-    startTimer();
 }
 
 
-/* =========================================================
-   QUESTION DISPLAY
-========================================================= */
+if(
+!data ||
+data.length === 0
+){
 
-function showQuestion() {
+message(
+"codeMsg",
+"No questions have been added for this subject yet.",
+"error"
+);
 
-    const question =
-        questions[currentQuestion];
+return;
 
-    const area =
-        document.getElementById("questionArea");
-
-    let html = "";
-
-    html +=
-        '<div class="question-number">' +
-        "Question " +
-        (currentQuestion + 1) +
-        " of " +
-        questions.length +
-        "</div>";
-
-    if (question.question_year) {
-
-        html +=
-            '<p class="small">Past Question • ' +
-            escapeHtml(question.question_year) +
-            "</p>";
-    }
-
-    if (question.passage) {
-
-        html +=
-            '<div class="passage">' +
-            escapeHtml(question.passage) +
-            "</div>";
-    }
-
-    html +=
-        "<h3>" +
-        escapeHtml(question.question_text) +
-        "</h3>";
-
-    const options = [
-        ["A", question.option_a],
-        ["B", question.option_b],
-        ["C", question.option_c],
-        ["D", question.option_d]
-    ];
-
-    options.forEach(option => {
-
-        const letter = option[0];
-        const text = option[1];
-
-        const checked =
-            answers[currentQuestion] === letter
-                ? "checked"
-                : "";
-
-        html +=
-            '<label class="option">' +
-            '<input type="radio" ' +
-            'name="answer" ' +
-            'value="' +
-            letter +
-            '" ' +
-            checked +
-            ' onchange="saveAnswer(this.value)">' +
-            "<strong>" +
-            letter +
-            ".</strong> " +
-            escapeHtml(text) +
-            "</label>";
-    });
-
-    area.innerHTML = html;
-
-    const percentage =
-        ((currentQuestion + 1) /
-            questions.length) * 100;
-
-    document
-        .getElementById("progressBar")
-        .style.width =
-        percentage + "%";
 }
 
 
-function saveAnswer(value) {
+questions =
+data;
 
-    answers[currentQuestion] =
-        value;
+answers = {};
+
+currentQuestion =
+0;
+
+timerSeconds =
+(selectedSubject.duration_minutes || 30)
+*
+60;
+
+
+$("examSubject").textContent =
+selectedSubject.name;
+
+
+showScreen(
+"examScreen"
+);
+
+
+renderQuestion();
+
+startTimer();
+
 }
 
 
-/* =========================================================
-   QUESTION NAVIGATION
-========================================================= */
-
-function previousQuestion() {
-
-    if (currentQuestion > 0) {
-
-        currentQuestion--;
-
-        showQuestion();
-    }
-}
-
-
-function nextQuestion() {
-
-    if (currentQuestion < questions.length - 1) {
-
-        currentQuestion++;
-
-        showQuestion();
-
-    } else {
-
-        showMessage(
-            "You are on the last question. Click SUBMIT EXAM when you are ready.",
-            "success"
-        );
-    }
-}
-
-
-/* =========================================================
+/* =====================================================
    TIMER
-========================================================= */
+===================================================== */
 
-function startTimer() {
+function startTimer(){
 
-    clearInterval(examTimer);
+clearInterval(
+timerHandle
+);
 
-    updateTimer();
+updateTimer();
 
-    examTimer =
-        setInterval(function() {
 
-            timeLeft--;
+timerHandle =
+setInterval(
+() => {
 
-            updateTimer();
+timerSeconds--;
 
-            if (timeLeft <= 0) {
+updateTimer();
 
-                clearInterval(examTimer);
 
-                alert(
-                    "Time is up. Your examination will now be submitted."
-                );
+if(
+timerSeconds <= 0
+){
 
-                submitExam();
-            }
+clearInterval(
+timerHandle
+);
 
-        }, 1000);
+alert(
+"Time is up. Your exam will be submitted automatically."
+);
+
+submitExam();
+
+}
+
+},
+1000
+);
+
 }
 
 
-function updateTimer() {
+/* =====================================================
+   UPDATE TIMER
+===================================================== */
 
-    const minutes =
-        Math.floor(timeLeft / 60);
+function updateTimer(){
 
-    const seconds =
-        timeLeft % 60;
+const m =
+Math.floor(
+timerSeconds / 60
+)
+.toString()
+.padStart(
+2,
+"0"
+);
 
-    document
-        .getElementById("timer")
-        .textContent =
-        String(minutes).padStart(2, "0") +
-        ":" +
-        String(seconds).padStart(2, "0");
+const s =
+(
+timerSeconds % 60
+)
+.toString()
+.padStart(
+2,
+"0"
+);
+
+
+$("timer").textContent =
+`${m}:${s}`;
+
 }
 
 
-/* =========================================================
+/* =====================================================
+   DISPLAY QUESTION
+===================================================== */
+
+function renderQuestion(){
+
+const q =
+questions[currentQuestion];
+
+
+$("examYear").textContent =
+q.question_year
+?
+`Past Question • ${q.question_year}`
+:
+"Mock Question";
+
+
+$("progressBar").style.width =
+(
+(
+currentQuestion + 1
+)
+/
+questions.length
+*
+100
+)
++
+"%";
+
+
+let html =
+`
+<h3>
+Question ${currentQuestion + 1}
+of
+${questions.length}
+</h3>
+`;
+
+
+if(q.passage){
+
+html +=
+`
+<div class="passage">
+
+<b>Passage</b>
+
+<br>
+
+${escapeHtml(q.passage)}
+
+</div>
+`;
+
+}
+
+
+html +=
+`
+<p>
+<b>
+${escapeHtml(q.question_text)}
+</b>
+</p>
+`;
+
+
+[
+"A",
+"B",
+"C",
+"D"
+
+].forEach(
+letter => {
+
+const value =
+q[
+"option_"
++
+letter.toLowerCase()
+];
+
+
+const checked =
+answers[q.id] === letter
+?
+"checked"
+:
+"";
+
+
+const cls =
+answers[q.id] === letter
+?
+"option selected"
+:
+"option";
+
+
+html +=
+`
+<label class="${cls}">
+
+<input
+type="radio"
+name="answer"
+value="${letter}"
+${checked}
+onchange="selectAnswer('${q.id}','${letter}')"
+>
+
+<b>${letter}.</b>
+
+${escapeHtml(value)}
+
+</label>
+`;
+
+}
+);
+
+
+$("questionArea").innerHTML =
+html;
+
+
+$("prevBtn").disabled =
+currentQuestion === 0;
+
+
+$("nextBtn").classList.toggle(
+"hidden",
+currentQuestion === questions.length - 1
+);
+
+
+$("submitBtn").classList.toggle(
+"hidden",
+currentQuestion !== questions.length - 1
+);
+
+}
+
+
+/* =====================================================
+   SELECT ANSWER
+===================================================== */
+
+function selectAnswer(
+qid,
+letter
+){
+
+answers[qid] =
+letter;
+
+renderQuestion();
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousQuestion(){
+
+if(currentQuestion > 0){
+
+currentQuestion--;
+
+renderQuestion();
+
+}
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextQuestion(){
+
+if(
+currentQuestion <
+questions.length - 1
+){
+
+currentQuestion++;
+
+renderQuestion();
+
+}
+
+}
+
+
+/* =====================================================
    SUBMIT EXAM
-========================================================= */
+===================================================== */
 
-async function submitExam() {
+async function submitExam(){
 
-    if (!confirm(
-        "Are you sure you want to submit your examination?"
-    )) {
-        return;
-    }
+if(!questions.length)
+return;
 
-    clearInterval(examTimer);
 
-    let score = 0;
+clearInterval(
+timerHandle
+);
 
-    questions.forEach(function(question, index) {
 
-        if (
-            answers[index] ===
-            question.correct_answer
-        ) {
-            score++;
-        }
-    });
+let score =
+0;
 
-    const total =
-        questions.length;
 
-    const percentage =
-        total > 0
-            ? Math.round((score / total) * 100)
-            : 0;
+questions.forEach(
+q => {
 
-    const passed =
-        percentage >= PASS_MARK;
+if(
+answers[q.id] ===
+q.correct_answer
+){
 
-    /*
-       IMPORTANT:
-       We do not mark the access code as used.
-       Access codes remain reusable.
-    */
+score++;
 
-    const { error } =
-        await db
-            .from("exam_results")
-            .insert({
-                candidate_name: candidateName,
-                subject_id: selectedSubject.id,
-                score: score,
-                total_questions: total,
-                percentage: percentage,
-                passed: passed
-            });
+}
 
-    if (error) {
+}
+);
 
-        console.error(error);
 
-        showMessage(
-            "Your result could not be saved, but your score was calculated."
-        );
-    }
+const percentage =
+Math.round(
+(score / questions.length)
+*
+100
+);
 
-    document
-        .getElementById("resultCandidate")
-        .textContent =
-        candidateName;
 
-    document
-        .getElementById("resultSubject")
-        .textContent =
-        selectedSubject.name;
+const passed =
+percentage >= PASS_MARK;
 
-    document
-        .getElementById("resultScore")
-        .textContent =
-        score + " / " + total +
-        " (" + percentage + "%)";
 
-    document
-        .getElementById("resultStatus")
-        .textContent =
-        passed
-            ? "PASSED"
-            : "FAILED";
+const result = {
 
-    document
-        .getElementById("resultStatus")
-        .style.color =
-        passed
-            ? "#166534"
-            : "#991b1b";
+candidate_name:
+candidate,
 
-    hideAllSections();
+subject_id:
+selectedSubject.id,
 
-    document
-        .getElementById("resultSection")
-        .classList.remove("hidden");
+score:
+score,
+
+total_questions:
+questions.length,
+
+percentage:
+percentage,
+
+passed:
+passed
+
+};
+
+
+const {
+error
+} =
+await db
+.from("exam_results")
+.insert(result);
+
+
+if(error){
+
+alert(
+"The result could not be saved: "
++
+error.message
+);
+
+return;
+
 }
 
 
-/* =========================================================
+/*
+IMPORTANT:
+The access code remains reusable.
+
+We deliberately DO NOT change
+used=true after submission.
+*/
+
+
+$("resultCandidate").textContent =
+"Candidate: "
++
+candidate;
+
+
+$("resultSubject").textContent =
+"Subject: "
++
+selectedSubject.name;
+
+
+$("score").textContent =
+`${score} / ${questions.length}`;
+
+
+$("resultDetails").textContent =
+`${percentage}%`;
+
+
+$("passStatus").innerHTML =
+passed
+
+?
+
+`
+<h2 class="pass">
+PASS
+</h2>
+
+<p>
+Congratulations.
+You met the ${PASS_MARK}% pass mark.
+</p>
+`
+
+:
+
+`
+<h2 class="fail">
+NOT PASSED
+</h2>
+
+<p>
+The pass mark is ${PASS_MARK}%.
+</p>
+`;
+
+
+showScreen(
+"resultScreen"
+);
+
+}
+
+
+/* =====================================================
    ADMIN LOGIN
-========================================================= */
+===================================================== */
 
-function showAdminLogin() {
+function showAdminLogin(){
 
-    clearMessage();
+showScreen(
+"adminLoginScreen"
+);
 
-    hideAllSections();
-
-    document
-        .getElementById("adminLoginSection")
-        .classList.remove("hidden");
 }
 
 
-function adminLogin() {
+function adminLogin(){
 
-    clearMessage();
+if(
+$("adminPassword").value ===
+ADMIN_PASSWORD
+){
 
-    const password =
-        document
-            .getElementById("adminPassword")
-            .value;
+$("adminPassword").value =
+"";
 
-    if (password !== ADMIN_PASSWORD) {
+showScreen(
+"adminScreen"
+);
 
-        showMessage(
-            "Incorrect admin password."
-        );
+adminTab(
+"bulk"
+);
 
-        return;
-    }
+}
 
-    document
-        .getElementById("adminPassword")
-        .value = "";
+else{
 
-    hideAllSections();
+message(
+"adminLoginMsg",
+"Incorrect admin password.",
+"error"
+);
 
-    document
-        .getElementById("adminSection")
-        .classList.remove("hidden");
+}
+
 }
 
 
-/* =========================================================
-   ADMIN NAVIGATION
-========================================================= */
+function adminLogout(){
 
-async function showAdminPage(page) {
+showScreen(
+"loginScreen"
+);
 
-    document
-        .getElementById("adminQuestions")
-        .classList.add("hidden");
-
-    document
-        .getElementById("adminCodes")
-        .classList.add("hidden");
-
-    document
-        .getElementById("adminResults")
-        .classList.add("hidden");
-
-    if (page === "questions") {
-
-        document
-            .getElementById("adminQuestions")
-            .classList.remove("hidden");
-
-        await loadAdminSubjects();
-
-        await loadAdminQuestions();
-    }
-
-    if (page === "codes") {
-
-        document
-            .getElementById("adminCodes")
-            .classList.remove("hidden");
-
-        await loadAdminSubjects();
-
-        await loadAdminCodes();
-    }
-
-    if (page === "results") {
-
-        document
-            .getElementById("adminResults")
-            .classList.remove("hidden");
-
-        await loadAdminResults();
-    }
 }
 
 
-/* =========================================================
-   ADMIN SUBJECTS
-========================================================= */
+/* =====================================================
+   ADMIN TABS
+===================================================== */
 
-async function loadAdminSubjects() {
+function adminTab(tab){
 
-    const { data, error } =
-        await db
-            .from("subjects")
-            .select("*")
-            .order("name");
+[
+"bulk",
+"single",
+"questions",
+"codes",
+"results"
 
-    if (error) {
+].forEach(
+x => {
 
-        console.error(error);
+$(
+"admin"
++
+x.charAt(0).toUpperCase()
++
+x.slice(1)
+)
+.classList.add("hidden");
 
-        return;
-    }
+}
+);
 
-    const questionSelect =
-        document.getElementById("adminSubject");
 
-    const codeSelect =
-        document.getElementById("codeSubject");
+$(
+"admin"
++
+tab.charAt(0).toUpperCase()
++
+tab.slice(1)
+)
+.classList.remove("hidden");
 
-    questionSelect.innerHTML = "";
-    codeSelect.innerHTML = "";
 
-    data.forEach(subject => {
+if(
+tab === "single" ||
+tab === "codes"
+){
 
-        const option1 =
-            document.createElement("option");
+fillSubjectSelects();
 
-        option1.value =
-            subject.id;
-
-        option1.textContent =
-            subject.name;
-
-        questionSelect.appendChild(option1);
-
-        const option2 =
-            document.createElement("option");
-
-        option2.value =
-            subject.id;
-
-        option2.textContent =
-            subject.name;
-
-        codeSelect.appendChild(option2);
-    });
 }
 
 
-/* =========================================================
-   ADD QUESTION
-========================================================= */
+if(tab === "questions")
+loadAdminQuestions();
 
-async function addQuestion() {
 
-    clearMessage();
+if(tab === "codes")
+loadAdminCodes();
 
-    const subjectId =
-        document.getElementById("adminSubject").value;
 
-    const year =
-        document.getElementById("questionYear").value;
+if(tab === "results")
+loadAdminResults();
 
-    const passage =
-        document.getElementById("passage").value.trim();
-
-    const questionText =
-        document.getElementById("questionText").value.trim();
-
-    const optionA =
-        document.getElementById("optionA").value.trim();
-
-    const optionB =
-        document.getElementById("optionB").value.trim();
-
-    const optionC =
-        document.getElementById("optionC").value.trim();
-
-    const optionD =
-        document.getElementById("optionD").value.trim();
-
-    const correct =
-        document.getElementById("correctAnswer").value;
-
-    if (
-        !subjectId ||
-        !questionText ||
-        !optionA ||
-        !optionB ||
-        !optionC ||
-        !optionD ||
-        !correct
-    ) {
-
-        showMessage(
-            "Please fill all required question fields."
-        );
-
-        return;
-    }
-
-    const { error } =
-        await db
-            .from("questions")
-            .insert({
-                subject_id: subjectId,
-                question_text: questionText,
-                option_a: optionA,
-                option_b: optionB,
-                option_c: optionC,
-                option_d: optionD,
-                correct_answer: correct,
-                passage: passage || null,
-                question_year:
-                    year ? Number(year) : null
-            });
-
-    if (error) {
-
-        console.error(error);
-
-        showMessage(
-            "Question could not be saved."
-        );
-
-        return;
-    }
-
-    showMessage(
-        "Question saved successfully.",
-        "success"
-    );
-
-    document
-        .getElementById("questionYear")
-        .value = "";
-
-    document
-        .getElementById("passage")
-        .value = "";
-
-    document
-        .getElementById("questionText")
-        .value = "";
-
-    document
-        .getElementById("optionA")
-        .value = "";
-
-    document
-        .getElementById("optionB")
-        .value = "";
-
-    document
-        .getElementById("optionC")
-        .value = "";
-
-    document
-        .getElementById("optionD")
-        .value = "";
-
-    document
-        .getElementById("correctAnswer")
-        .value = "";
-
-    await loadAdminQuestions();
 }
 
 
-/* =========================================================
-   ADMIN QUESTION LIST
-========================================================= */
+/* =====================================================
+   SUBJECT DROPDOWNS
+===================================================== */
 
-async function loadAdminQuestions() {
+function fillSubjectSelects(){
 
-    const box =
-        document.getElementById("adminQuestionList");
+const opts =
+subjects.map(
+s =>
+`
+<option value="${s.id}">
+${escapeHtml(s.name)}
+</option>
+`
+)
+.join("");
 
-    box.innerHTML = "Loading...";
 
-    const { data, error } =
-        await db
-            .from("questions")
-            .select("*, subjects(name)")
-            .order("created_at", {
-                ascending: false
-            });
+$("qSubject").innerHTML =
+opts;
 
-    if (error) {
 
-        console.error(error);
+$("codeSubject").innerHTML =
+opts;
 
-        box.innerHTML =
-            "<p>Unable to load questions.</p>";
-
-        return;
-    }
-
-    if (!data || data.length === 0) {
-
-        box.innerHTML =
-            "<p>No questions available.</p>";
-
-        return;
-    }
-
-    box.innerHTML = "";
-
-    data.forEach((question, index) => {
-
-        const div =
-            document.createElement("div");
-
-        div.className = "item";
-
-        div.innerHTML =
-            "<strong>" +
-            (index + 1) +
-            ". " +
-            escapeHtml(question.question_text) +
-            "</strong>" +
-
-            "<span class='small'>" +
-            escapeHtml(
-                question.subjects
-                    ? question.subjects.name
-                    : ""
-            ) +
-            " • " +
-            (
-                question.question_year || "Year not set"
-            ) +
-            " • Correct: " +
-            escapeHtml(question.correct_answer) +
-            "</span>";
-
-        box.appendChild(div);
-    });
 }
 
 
-/* =========================================================
+/* =====================================================
+   BULK PARSER
+===================================================== */
+
+function parseBulk(text){
+
+const blocks =
+text
+.split(
+/\n\s*END\s*(?:\n|$)/i
+)
+.map(
+x => x.trim()
+)
+.filter(Boolean);
+
+
+const parsed = [];
+
+
+for(
+const block
+of blocks
+){
+
+const lines =
+block.split(/\r?\n/);
+
+
+const getField =
+(label) => {
+
+const idx =
+lines.findIndex(
+l =>
+l.trim()
+.toUpperCase()
+===
+label + ":"
+);
+
+
+if(idx < 0)
+return "";
+
+
+const vals = [];
+
+
+for(
+let i = idx + 1;
+i < lines.length;
+i++
+){
+
+const t =
+lines[i].trim();
+
+
+if(
+/^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):\s*$/i
+.test(t)
+)
+break;
+
+
+if(
+/^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):/i
+.test(t)
+)
+break;
+
+
+vals.push(
+lines[i]
+);
+
+}
+
+
+return vals
+.join("\n")
+.trim();
+
+};
+
+
+const getInline =
+(label) => {
+
+const re =
+new RegExp(
+"^"
++
+label
++
+":\\s*(.*)$",
+"i"
+);
+
+
+const found =
+lines.find(
+l => re.test(l)
+);
+
+
+return found
+?
+found
+.replace(
+re,
+"$1"
+)
+.trim()
+:
+"";
+
+};
+
+
+const item = {
+
+subject:
+getInline("SUBJECT"),
+
+year:
+getInline("YEAR"),
+
+question:
+getField("QUESTION"),
+
+a:
+getField("A"),
+
+b:
+getField("B"),
+
+c:
+getField("C"),
+
+d:
+getField("D"),
+
+answer:
+getInline("ANSWER")
+.toUpperCase(),
+
+passage:
+getField("PASSAGE")
+
+};
+
+
+if(!item.question){
+
+const qLine =
+lines.findIndex(
+l =>
+/^QUESTION:\s*/i
+.test(l)
+);
+
+
+if(qLine >= 0){
+
+item.question =
+lines[qLine]
+.replace(
+/^QUESTION:\s*/i,
+""
+)
+.trim();
+
+}
+
+}
+
+
+parsed.push(
+item
+);
+
+}
+
+
+return parsed;
+
+}
+
+
+/* =====================================================
+   BULK PREVIEW
+===================================================== */
+
+function previewBulk(){
+
+const items =
+parseBulk(
+$("bulkText").value
+);
+
+
+if(!items.length){
+
+message(
+"bulkMsg",
+"No question blocks found.",
+"error"
+);
+
+return;
+
+}
+
+
+$("bulkPreview").innerHTML =
+
+`
+<p>
+<b>
+${items.length}
+question(s) detected.
+</b>
+</p>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+
+<th>#</th>
+<th>Subject</th>
+<th>Year</th>
+<th>Question</th>
+<th>Answer</th>
+
+</tr>
+
+`
+
++
+
+items.map(
+(x,i) =>
+
+`
+
+<tr>
+
+<td>${i + 1}</td>
+
+<td>
+${escapeHtml(x.subject)}
+</td>
+
+<td>
+${escapeHtml(x.year)}
+</td>
+
+<td>
+${escapeHtml(x.question)}
+</td>
+
+<td>
+${escapeHtml(x.answer)}
+</td>
+
+</tr>
+
+`
+
+).join("")
+
++
+
+`
+
+</table>
+
+</div>
+`;
+
+}
+
+
+/* =====================================================
+   IMPORT BULK
+===================================================== */
+
+async function importBulk(){
+
+const items =
+parseBulk(
+$("bulkText").value
+);
+
+
+if(!items.length){
+
+message(
+"bulkMsg",
+"No question blocks found.",
+"error"
+);
+
+return;
+
+}
+
+
+const rows = [];
+
+const errors = [];
+
+
+for(
+let i = 0;
+i < items.length;
+i++
+){
+
+const x =
+items[i];
+
+
+const subject =
+subjects.find(
+s =>
+s.name.toLowerCase()
+===
+x.subject.toLowerCase()
+||
+s.code.toLowerCase()
+===
+x.subject.toLowerCase()
+);
+
+
+if(!subject){
+
+errors.push(
+`Question ${i + 1}: subject not found (${x.subject})`
+);
+
+continue;
+
+}
+
+
+if(
+!x.question ||
+!x.a ||
+!x.b ||
+!x.c ||
+!x.d
+){
+
+errors.push(
+`Question ${i + 1}: question/options incomplete`
+);
+
+continue;
+
+}
+
+
+if(
+!["A","B","C","D"]
+.includes(x.answer)
+){
+
+errors.push(
+`Question ${i + 1}: ANSWER must be A, B, C or D`
+);
+
+continue;
+
+}
+
+
+rows.push({
+
+subject_id:
+subject.id,
+
+question_text:
+x.question,
+
+option_a:
+x.a,
+
+option_b:
+x.b,
+
+option_c:
+x.c,
+
+option_d:
+x.d,
+
+correct_answer:
+x.answer,
+
+passage:
+x.passage || null,
+
+question_year:
+x.year
+?
+parseInt(
+x.year,
+10
+)
+:
+null
+
+});
+
+}
+
+
+if(errors.length){
+
+message(
+"bulkMsg",
+errors.join(" | "),
+"error"
+);
+
+return;
+
+}
+
+
+if(
+!confirm(
+`Import ${rows.length} question(s) into Supabase?`
+)
+)
+return;
+
+
+const {
+error
+} =
+await db
+.from("questions")
+.insert(rows);
+
+
+if(error){
+
+message(
+"bulkMsg",
+"Import failed: "
++
+error.message,
+"error"
+);
+
+return;
+
+}
+
+
+message(
+"bulkMsg",
+`${rows.length} question(s) imported successfully.`,
+"success"
+);
+
+
+$("bulkText").value =
+"";
+
+
+$("bulkPreview").innerHTML =
+"";
+
+}
+
+
+/* =====================================================
+   ADD SINGLE QUESTION
+===================================================== */
+
+async function addSingleQuestion(){
+
+const row = {
+
+subject_id:
+$("qSubject").value,
+
+question_text:
+$("qText").value.trim(),
+
+option_a:
+$("qA").value.trim(),
+
+option_b:
+$("qB").value.trim(),
+
+option_c:
+$("qC").value.trim(),
+
+option_d:
+$("qD").value.trim(),
+
+correct_answer:
+$("qAnswer").value,
+
+passage:
+$("qPassage").value.trim()
+||
+null,
+
+question_year:
+$("qYear").value
+?
+parseInt(
+$("qYear").value,
+10
+)
+:
+null
+
+};
+
+
+if(
+!row.question_text ||
+!row.option_a ||
+!row.option_b ||
+!row.option_c ||
+!row.option_d
+){
+
+message(
+"singleMsg",
+"Complete the question and all four options.",
+"error"
+);
+
+return;
+
+}
+
+
+const {
+error
+} =
+await db
+.from("questions")
+.insert(row);
+
+
+if(error){
+
+message(
+"singleMsg",
+"Save failed: "
++
+error.message,
+"error"
+);
+
+return;
+
+}
+
+
+message(
+"singleMsg",
+"Question saved successfully.",
+"success"
+);
+
+
+[
+"qText",
+"qA",
+"qB",
+"qC",
+"qD",
+"qPassage"
+
+].forEach(
+id =>
+$(id).value = ""
+);
+
+}
+
+
+/* =====================================================
+   ADMIN QUESTIONS
+===================================================== */
+
+async function loadAdminQuestions(){
+
+const {
+data,
+error
+} =
+await db
+.from("questions")
+.select(
+"id,question_text,question_year,correct_answer,created_at,subjects(name)"
+)
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+if(error){
+
+$("questionsList").innerHTML =
+
+`
+<div class="error notice">
+${escapeHtml(error.message)}
+</div>
+`;
+
+return;
+
+}
+
+
+$("questionsList").innerHTML =
+
+`
+<table>
+
+<tr>
+
+<th>Subject</th>
+<th>Year</th>
+<th>Question</th>
+<th>Answer</th>
+<th>Action</th>
+
+</tr>
+
+`
+
++
+
+(data || [])
+.map(
+q =>
+
+`
+
+<tr>
+
+<td>
+${escapeHtml(q.subjects?.name)}
+</td>
+
+<td>
+${escapeHtml(q.question_year || "—")}
+</td>
+
+<td>
+${escapeHtml(q.question_text)}
+</td>
+
+<td>
+<b>
+${escapeHtml(q.correct_answer)}
+</b>
+</td>
+
+<td>
+
+<button
+class="danger"
+onclick="deleteQuestion('${q.id}')"
+>
+Delete
+</button>
+
+</td>
+
+</tr>
+
+`
+
+)
+.join("")
+
++
+
+`
+
+</table>
+`;
+
+}
+
+
+/* =====================================================
+   DELETE QUESTION
+===================================================== */
+
+async function deleteQuestion(id){
+
+if(
+!confirm(
+"Delete this question?"
+)
+)
+return;
+
+
+const {
+error
+} =
+await db
+.from("questions")
+.delete()
+.eq(
+"id",
+id
+);
+
+
+if(error){
+
+alert(
+error.message
+);
+
+return;
+
+}
+
+
+loadAdminQuestions();
+
+}
+
+
+/* =====================================================
+   GENERATE ACCESS CODE
+===================================================== */
+
+function generateCode(){
+
+const code =
+"WT-"
++
+Math.random()
+.toString(36)
+.substring(2,8)
+.toUpperCase();
+
+
+$("newCode").value =
+code;
+
+}
+
+
+/* =====================================================
    CREATE ACCESS CODE
-========================================================= */
+===================================================== */
 
-async function createAccessCode() {
+async function createAccessCode(){
 
-    clearMessage();
+const candidateName =
+$("codeCandidateName")
+.value
+.trim();
 
-    const subjectId =
-        document.getElementById("codeSubject").value;
 
-    const candidate =
-        document
-            .getElementById("codeCandidate")
-            .value
-            .trim();
+const subjectId =
+$("codeSubject")
+.value;
 
-    const code =
-        document
-            .getElementById("newAccessCode")
-            .value
-            .trim()
-            .toUpperCase();
 
-    if (!subjectId || !candidate || !code) {
+const code =
+$("newCode")
+.value
+.trim()
+.toUpperCase();
 
-        showMessage(
-            "Please fill all access-code fields."
-        );
 
-        return;
-    }
+if(
+!candidateName ||
+!subjectId ||
+!code
+){
 
-    const { error } =
-        await db
-            .from("access_codes")
-            .insert({
-                code: code,
-                candidate_name: candidate,
-                subject_id: subjectId,
-                used: false,
-                failed_attempts: 0,
-                locked: false
-            });
+message(
+"codeAdminMsg",
+"Complete all fields.",
+"error"
+);
 
-    if (error) {
+return;
 
-        console.error(error);
-
-        showMessage(
-            "Access code could not be created. The code may already exist."
-        );
-
-        return;
-    }
-
-    showMessage(
-        "Access code created successfully.",
-        "success"
-    );
-
-    document
-        .getElementById("codeCandidate")
-        .value = "";
-
-    document
-        .getElementById("newAccessCode")
-        .value = "";
-
-    await loadAdminCodes();
 }
 
 
-/* =========================================================
+const {
+error
+} =
+await db
+.from("access_codes")
+.insert({
+
+code:
+code,
+
+candidate_name:
+candidateName,
+
+subject_id:
+subjectId,
+
+used:
+false,
+
+failed_attempts:
+0,
+
+locked:
+false,
+
+expires_at:
+null
+
+});
+
+
+if(error){
+
+message(
+"codeAdminMsg",
+"Could not create code: "
++
+error.message,
+"error"
+);
+
+return;
+
+}
+
+
+message(
+"codeAdminMsg",
+"Access code created. It remains reusable.",
+"success"
+);
+
+
+$("newCode").value =
+"";
+
+
+loadAdminCodes();
+
+}
+
+
+/* =====================================================
    ADMIN ACCESS CODES
-========================================================= */
+===================================================== */
 
-async function loadAdminCodes() {
+async function loadAdminCodes(){
 
-    const box =
-        document.getElementById("adminCodeList");
+const {
+data,
+error
+} =
+await db
+.from("access_codes")
+.select(
+"id,code,candidate_name,used,locked,failed_attempts,created_at,subjects(name)"
+)
+.order(
+"created_at",
+{
+ascending:false
+}
+);
 
-    box.innerHTML = "Loading...";
 
-    const { data, error } =
-        await db
-            .from("access_codes")
-            .select("*, subjects(name)")
-            .order("created_at", {
-                ascending: false
-            });
+if(error){
 
-    if (error) {
+$("codesList").innerHTML =
 
-        console.error(error);
+`
+<div class="error notice">
+${escapeHtml(error.message)}
+</div>
+`;
 
-        box.innerHTML =
-            "<p>Unable to load access codes.</p>";
+return;
 
-        return;
-    }
-
-    if (!data || data.length === 0) {
-
-        box.innerHTML =
-            "<p>No access codes available.</p>";
-
-        return;
-    }
-
-    box.innerHTML = "";
-
-    data.forEach(code => {
-
-        const div =
-            document.createElement("div");
-
-        div.className = "item";
-
-        div.innerHTML =
-            "<strong>" +
-            escapeHtml(code.code) +
-            "</strong>" +
-
-            "<span>" +
-            escapeHtml(code.candidate_name) +
-            "</span><br>" +
-
-            "<span class='small'>" +
-            escapeHtml(
-                code.subjects
-                    ? code.subjects.name
-                    : ""
-            ) +
-            " • Status: " +
-            (
-                code.locked
-                    ? "LOCKED"
-                    : "ACTIVE"
-            ) +
-            "</span>";
-
-        box.appendChild(div);
-    });
 }
 
 
-/* =========================================================
-   ADMIN RESULTS
-========================================================= */
+$("codesList").innerHTML =
 
-async function loadAdminResults() {
+`
+<table>
 
-    const box =
-        document.getElementById("adminResultList");
+<tr>
 
-    box.innerHTML = "Loading...";
+<th>Code</th>
+<th>Candidate</th>
+<th>Subject</th>
+<th>Status</th>
+<th>Action</th>
 
-    const { data, error } =
-        await db
-            .from("exam_results")
-            .select("*, subjects(name)")
-            .order("submitted_at", {
-                ascending: false
-            });
+</tr>
 
-    if (error) {
+`
 
-        console.error(error);
++
 
-        box.innerHTML =
-            "<p>Unable to load results.</p>";
+(data || [])
+.map(
+x =>
 
-        return;
-    }
+`
 
-    if (!data || data.length === 0) {
+<tr>
 
-        box.innerHTML =
-            "<p>No examination results yet.</p>";
+<td>
+<b>${escapeHtml(x.code)}</b>
+</td>
 
-        return;
-    }
+<td>
+${escapeHtml(x.candidate_name)}
+</td>
 
-    box.innerHTML = "";
+<td>
+${escapeHtml(x.subjects?.name)}
+</td>
 
-    data.forEach(result => {
+<td>
+${x.locked ? "LOCKED" : "ACTIVE"}
+</td>
 
-        const div =
-            document.createElement("div");
+<td>
 
-        div.className = "item";
+<button
+onclick="resetCode('${x.id}')"
+>
+Reset
+</button>
 
-        div.innerHTML =
-            "<strong>" +
-            escapeHtml(result.candidate_name) +
-            "</strong>" +
+<button
+class="danger"
+onclick="deleteCode('${x.id}')"
+>
+Delete
+</button>
 
-            "<span>" +
-            escapeHtml(
-                result.subjects
-                    ? result.subjects.name
-                    : ""
-            ) +
-            "</span><br>" +
+</td>
 
-            "<span>" +
-            "Score: " +
-            result.score +
-            " / " +
-            result.total_questions +
-            " (" +
-            result.percentage +
-            "%)" +
-            "</span><br>" +
+</tr>
 
-            "<span class='small'>" +
-            (
-                result.passed
-                    ? "PASSED"
-                    : "FAILED"
-            ) +
-            "</span>";
+`
 
-        box.appendChild(div);
-    });
+)
+.join("")
+
++
+
+`
+
+</table>
+`;
+
 }
 
 
-/* =========================================================
-   START PAGE
-========================================================= */
+/* =====================================================
+   RESET CODE
+===================================================== */
 
-hideAllSections();
+async function resetCode(id){
 
-document
-    .getElementById("loginSection")
-    .classList.remove("hidden");
+const {
+error
+} =
+await db
+.from("access_codes")
+.update({
+
+locked:
+false,
+
+failed_attempts:
+0,
+
+used:
+false
+
+})
+.eq(
+"id",
+id
+);
+
+
+if(error){
+
+alert(
+error.message
+);
+
+}
+
+else{
+
+loadAdminCodes();
+
+}
+
+}
+
+
+/* =====================================================
+   DELETE CODE
+===================================================== */
+
+async function deleteCode(id){
+
+if(
+!confirm(
+"Delete this access code?"
+)
+)
+return;
+
+
+const {
+error
+} =
+await db
+.from("access_codes")
+.delete()
+.eq(
+"id",
+id
+);
+
+
+if(error){
+
+alert(
+error.message
+);
+
+}
+
+else{
+
+loadAdminCodes();
+
+}
+
+}
+
+
+/* =====================================================
+   RESULTS
+===================================================== */
+
+async function loadAdminResults(){
+
+const {
+data,
+error
+} =
+await db
+.from("exam_results")
+.select(
+"candidate_name,score,total_questions,percentage,passed,submitted_at,subjects(name)"
+)
+.order(
+"submitted_at",
+{
+ascending:false
+}
+);
+
+
+if(error){
+
+$("resultsList").innerHTML =
+
+`
+<div class="error notice">
+${escapeHtml(error.message)}
+</div>
+`;
+
+return;
+
+}
+
+
+$("resultsList").innerHTML =
+
+`
+<table>
+
+<tr>
+
+<th>Candidate</th>
+<th>Subject</th>
+<th>Score</th>
+<th>%</th>
+<th>Status</th>
+<th>Date</th>
+
+</tr>
+
+`
+
++
+
+(data || [])
+.map(
+r =>
+
+`
+
+<tr>
+
+<td>
+${escapeHtml(r.candidate_name)}
+</td>
+
+<td>
+${escapeHtml(r.subjects?.name)}
+</td>
+
+<td>
+${r.score}/${r.total_questions}
+</td>
+
+<td>
+${r.percentage}%
+</td>
+
+<td>
+${r.passed ? "PASS" : "NOT PASSED"}
+</td>
+
+<td>
+${new Date(
+r.submitted_at
+).toLocaleString()}
+</td>
+
+</tr>
+
+`
+
+)
+.join("")
+
++
+
+`
+
+</table>
+`;
+
+}
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+loadSubjects().catch(
+() => {}
+);
 
 </script>
 
