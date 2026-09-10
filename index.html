@@ -1,288 +1,253 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>WAR TIGERS COMPUTERS - NDA Mock Examination Portal</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f3f6f8;
-  color:#17202a;
+margin:0;
+font-family:Arial,sans-serif;
+background:#f3f6f8;
+color:#17202a
 }
 
 header{
-  background:#123b25;
-  color:white;
-  padding:18px;
-  text-align:center;
+background:#123b25;
+color:#fff;
+padding:18px;
+text-align:center
 }
 
 header h1{
-  margin:0;
-  font-size:24px;
+margin:0;
+font-size:24px
 }
 
-header p{
-  margin:5px 0 0;
-}
-
-.container{
-  max-width:1050px;
-  margin:20px auto;
-  padding:0 14px;
+.wrap{
+max-width:1100px;
+margin:20px auto;
+padding:0 14px
 }
 
 .card{
-  background:white;
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:18px;
-  box-shadow:0 4px 18px #0001;
-}
-
-h2,h3{
-  margin-top:0;
-}
-
-input,
-select,
-textarea{
-  width:100%;
-  padding:12px;
-  border:1px solid #ccd3d8;
-  border-radius:8px;
-  margin:7px 0 13px;
-  font-size:15px;
-}
-
-textarea{
-  min-height:120px;
-  resize:vertical;
-}
-
-button{
-  border:0;
-  border-radius:8px;
-  padding:12px 17px;
-  background:#176b3a;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  margin:4px;
-}
-
-button.secondary{
-  background:#52616b;
-}
-
-button.danger{
-  background:#a72828;
-}
-
-button:disabled{
-  opacity:.55;
-  cursor:not-allowed;
+background:#fff;
+border-radius:14px;
+padding:20px;
+margin-bottom:18px;
+box-shadow:0 4px 18px #0001
 }
 
 .hidden{
-  display:none!important;
+display:none!important
 }
 
-.subject-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:12px;
+input,select,textarea{
+width:100%;
+padding:12px;
+border:1px solid #ccd3d8;
+border-radius:8px;
+margin:7px 0 13px;
+font-size:15px
+}
+
+textarea{
+min-height:120px
+}
+
+button{
+border:0;
+border-radius:8px;
+padding:12px 17px;
+background:#176b3a;
+color:#fff;
+font-weight:bold;
+cursor:pointer;
+margin:4px
+}
+
+button.secondary{
+background:#52616b
+}
+
+button.danger{
+background:#a72828
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:12px
 }
 
 .subject{
-  border:1px solid #d7dee3;
-  border-radius:10px;
-  padding:15px;
-  background:#fafafa;
-  cursor:pointer;
+border:1px solid #d7dee3;
+border-radius:10px;
+padding:15px;
+background:#fafafa;
+cursor:pointer
 }
 
 .subject:hover{
-  background:#eef8f1;
+background:#eef8f1
 }
 
 .subject strong{
-  display:block;
-  margin-bottom:5px;
+display:block;
+margin-bottom:5px
 }
 
 .badge{
-  display:inline-block;
-  padding:4px 8px;
-  border-radius:20px;
-  background:#e8f4ec;
-  color:#176b3a;
-  font-size:12px;
-}
-
-.passage{
-  background:#f7f7f2;
-  border-left:4px solid #176b3a;
-  padding:14px;
-  border-radius:6px;
-  margin-bottom:15px;
-  white-space:pre-wrap;
-}
-
-.option{
-  display:block;
-  border:1px solid #d9dfe3;
-  border-radius:9px;
-  padding:13px;
-  margin:9px 0;
-  cursor:pointer;
-}
-
-.option.selected{
-  border-color:#176b3a;
-  background:#eef8f1;
-}
-
-.option input{
-  width:auto;
-  margin:0 8px 0 0;
-}
-
-.exam-top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.timer{
-  font-size:22px;
-  font-weight:bold;
-}
-
-.progress{
-  height:10px;
-  background:#e4e8eb;
-  border-radius:10px;
-  overflow:hidden;
-  margin:12px 0;
-}
-
-.progress>div{
-  height:100%;
-  background:#176b3a;
-  width:0;
-}
-
-.nav{
-  display:flex;
-  justify-content:space-between;
-  margin-top:18px;
-}
-
-.result{
-  text-align:center;
-}
-
-.score{
-  font-size:45px;
-  font-weight:bold;
-}
-
-.pass{
-  color:#176b3a;
-}
-
-.fail{
-  color:#b3261e;
-}
-
-.admin-nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-  margin-bottom:15px;
-}
-
-.admin-section{
-  border-top:1px solid #eee;
-  padding-top:15px;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:14px;
-}
-
-th,td{
-  border-bottom:1px solid #e4e7e9;
-  padding:9px;
-  text-align:left;
-  vertical-align:top;
-}
-
-.table-wrap{
-  overflow:auto;
+display:inline-block;
+padding:4px 8px;
+border-radius:20px;
+background:#e8f4ec;
+color:#176b3a;
+font-size:12px
 }
 
 .small{
-  font-size:13px;
-  color:#5d6870;
+font-size:13px;
+color:#5d6870
 }
 
 .notice{
-  padding:12px;
-  border-radius:8px;
-  background:#fff7d6;
-  margin:10px 0;
+padding:12px;
+border-radius:8px;
+background:#fff7d6;
+margin:10px 0
 }
 
 .success{
-  background:#e8f7ed;
-  color:#176b3a;
+background:#e8f7ed;
+color:#176b3a
 }
 
 .error{
-  background:#fdecec;
-  color:#a72828;
+background:#fdecec;
+color:#a72828
+}
+
+.pass{
+color:#176b3a
+}
+
+.fail{
+color:#b3261e
+}
+
+.passage{
+background:#f7f7f2;
+border-left:4px solid #176b3a;
+padding:14px;
+border-radius:6px;
+margin-bottom:15px;
+white-space:pre-wrap
+}
+
+.option{
+display:block;
+border:1px solid #d9dfe3;
+border-radius:9px;
+padding:13px;
+margin:9px 0;
+cursor:pointer
+}
+
+.option.selected{
+border-color:#176b3a;
+background:#eef8f1
+}
+
+.option input{
+width:auto;
+margin:0 8px 0 0
+}
+
+.top,.nav{
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:center;
+flex-wrap:wrap
+}
+
+.timer{
+font-size:22px;
+font-weight:bold
+}
+
+.progress{
+height:10px;
+background:#e4e8eb;
+border-radius:10px;
+overflow:hidden;
+margin:12px 0
+}
+
+.progress>div{
+height:100%;
+background:#176b3a;
+width:0
+}
+
+.adminnav{
+display:flex;
+flex-wrap:wrap;
+gap:5px;
+margin-bottom:15px
+}
+
+.section{
+border-top:1px solid #eee;
+padding-top:15px
+}
+
+.tablewrap{
+overflow:auto
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+font-size:14px
+}
+
+th,td{
+border-bottom:1px solid #e4e7e9;
+padding:9px;
+text-align:left;
+vertical-align:top
 }
 
 footer{
-  text-align:center;
-  padding:25px;
-  color:#667;
+text-align:center;
+padding:25px;
+color:#667
 }
 
-code{
-  background:#eef1f3;
-  padding:2px 5px;
-  border-radius:4px;
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px
 }
 
-@media(max-width:600px){
-  header h1{
-    font-size:20px;
-  }
+.stat{
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+text-align:center
+}
 
-  .card{
-    padding:15px;
-  }
-
-  .score{
-    font-size:36px;
-  }
+.stat b{
+font-size:25px;
+display:block
 }
 </style>
 </head>
@@ -290,23 +255,23 @@ code{
 <body>
 
 <header>
-  <h1>WAR TIGERS COMPUTERS</h1>
-  <p>Mock Examination Portal</p>
+<h1>WAR TIGERS COMPUTERS</h1>
+<p>Mock Examination Portal</p>
 </header>
 
-<div class="container">
+<div class="wrap">
 
-<!-- ================= CANDIDATE LOGIN ================= -->
+<!-- LOGIN -->
 
-<section id="loginScreen" class="card">
+<section id="login" class="card">
 
 <h2>Candidate Login</h2>
 
 <label>Candidate Name</label>
 
 <input
-  id="candidateName"
-  placeholder="Enter candidate name"
+id="candidate"
+placeholder="Enter candidate name"
 >
 
 <button onclick="continueCandidate()">
@@ -314,8 +279,8 @@ CONTINUE
 </button>
 
 <button
-  class="secondary"
-  onclick="showAdminLogin()"
+class="secondary"
+onclick="show('adminLogin')"
 >
 Admin Panel
 </button>
@@ -325,27 +290,17 @@ Admin Panel
 </section>
 
 
-<!-- ================= SUBJECTS ================= -->
+<!-- SUBJECTS -->
 
-<section
-  id="subjectScreen"
-  class="card hidden"
->
+<section id="subjects" class="card hidden">
 
 <h2>Select Subject</h2>
 
-<p class="small">
-Choose the subject for which you have an access code.
-</p>
-
-<div
-  id="subjectGrid"
-  class="subject-grid"
-></div>
+<div id="subjectGrid" class="grid"></div>
 
 <button
-  class="secondary"
-  onclick="showScreen('loginScreen')"
+class="secondary"
+onclick="show('login')"
 >
 Back
 </button>
@@ -353,35 +308,31 @@ Back
 </section>
 
 
-<!-- ================= ACCESS CODE ================= -->
+<!-- ACCESS CODE -->
 
-<section
-  id="codeScreen"
-  class="card hidden"
->
+<section id="code" class="card hidden">
 
 <h2 id="codeTitle">
 Enter Access Code
 </h2>
 
 <p
-  id="codeCandidate"
-  class="small"
+id="codeCandidate"
+class="small"
 ></p>
 
 <input
-  id="accessCode"
-  placeholder="Example: WT-GKTEST01"
-  autocomplete="off"
+id="accessCode"
+placeholder="Example: WT-GKTEST01"
 >
 
-<button onclick="verifyAccessCode()">
+<button onclick="verifyCode()">
 START EXAM
 </button>
 
 <button
-  class="secondary"
-  onclick="showScreen('subjectScreen')"
+class="secondary"
+onclick="show('subjects')"
 >
 Back
 </button>
@@ -391,21 +342,19 @@ Back
 </section>
 
 
-<!-- ================= EXAM ================= -->
+<!-- EXAM -->
 
-<section
-  id="examScreen"
-  class="card hidden"
->
+<section id="exam" class="card hidden">
 
-<div class="exam-top">
+<div class="top">
 
 <div>
-<strong id="examSubject"></strong>
+
+<b id="examSubject"></b>
 
 <div
-  id="examYear"
-  class="small"
+id="examYear"
+class="small"
 ></div>
 
 </div>
@@ -416,40 +365,35 @@ Back
 
 </div>
 
-
 <div class="progress">
-<div id="progressBar"></div>
+<div id="bar"></div>
 </div>
 
-
 <div id="questionArea"></div>
-
 
 <div class="nav">
 
 <button
-  id="prevBtn"
-  class="secondary"
-  onclick="previousQuestion()"
+id="prev"
+class="secondary"
+onclick="prevQ()"
 >
 PREVIOUS
 </button>
 
-
 <button
-  id="nextBtn"
-  onclick="nextQuestion()"
+id="next"
+onclick="nextQ()"
 >
 NEXT
 </button>
 
 </div>
 
-
 <button
-  id="submitBtn"
-  class="danger hidden"
-  onclick="submitExam()"
+id="submit"
+class="danger hidden"
+onclick="submitExam()"
 >
 SUBMIT EXAM
 </button>
@@ -457,50 +401,49 @@ SUBMIT EXAM
 </section>
 
 
-<!-- ================= RESULT ================= -->
+<!-- RESULT -->
 
 <section
-  id="resultScreen"
-  class="card result hidden"
+id="result"
+class="card hidden"
+style="text-align:center"
 >
 
 <h2>Examination Result</h2>
 
-<p id="resultCandidate"></p>
+<p id="rCandidate"></p>
 
-<p id="resultSubject"></p>
+<p id="rSubject"></p>
 
 <div
-  id="score"
-  class="score"
+id="score"
+style="font-size:45px;font-weight:bold"
 ></div>
 
-<p id="resultDetails"></p>
+<p id="details"></p>
 
-<div id="passStatus"></div>
+<div id="status"></div>
 
-<button
-  onclick="showScreen('loginScreen')"
->
+<button onclick="resetApp()">
 BACK TO HOME
 </button>
 
 </section>
 
 
-<!-- ================= ADMIN LOGIN ================= -->
+<!-- ADMIN LOGIN -->
 
 <section
-  id="adminLoginScreen"
-  class="card hidden"
+id="adminLogin"
+class="card hidden"
 >
 
 <h2>Admin Login</h2>
 
 <input
-  id="adminPassword"
-  type="password"
-  placeholder="Admin password"
+id="adminPass"
+type="password"
+placeholder="Admin password"
 >
 
 <button onclick="adminLogin()">
@@ -508,8 +451,8 @@ LOGIN
 </button>
 
 <button
-  class="secondary"
-  onclick="showScreen('loginScreen')"
+class="secondary"
+onclick="show('login')"
 >
 Back
 </button>
@@ -519,14 +462,14 @@ Back
 </section>
 
 
-<!-- ================= ADMIN PANEL ================= -->
+<!-- ADMIN PANEL -->
 
 <section
-  id="adminScreen"
-  class="card hidden"
+id="admin"
+class="card hidden"
 >
 
-<div class="exam-top">
+<div class="top">
 
 <div>
 
@@ -539,8 +482,8 @@ War Tigers Computers
 </div>
 
 <button
-  class="secondary"
-  onclick="adminLogout()"
+class="secondary"
+onclick="show('login')"
 >
 Logout
 </button>
@@ -548,114 +491,122 @@ Logout
 </div>
 
 
-<div class="admin-nav">
+<div class="adminnav">
 
-<button onclick="adminTab('bulk')">
+<button onclick="tab('bulk')">
 📥 Bulk Import
 </button>
 
-<button onclick="adminTab('single')">
+<button onclick="tab('single')">
 ➕ Add Question
 </button>
 
-<button onclick="adminTab('questions')">
+<button onclick="tab('questions')">
 📚 Questions
 </button>
 
-<button onclick="adminTab('codes')">
+<button onclick="tab('codes')">
 🔑 Access Codes
 </button>
 
-<button onclick="adminTab('results')">
+<button onclick="tab('results')">
 📊 Results
 </button>
 
 </div>
 
 
-<!-- ================= BULK IMPORT ================= -->
+<!-- BULK IMPORT -->
 
 <div
-  id="adminBulk"
-  class="admin-section"
+id="bulk"
+class="section"
 >
 
-<h3>
-Bulk Question Import
-</h3>
+<h3>Bulk Question Import</h3>
 
 <p class="small">
-Paste your authorized question material using the format below.
-Repeat the block for each question.
-</p>
 
+Paste only question material you are authorized to use.
+
+Subject and year may be written once and will carry forward to later blocks.
+
+</p>
 
 <div class="notice">
 
-<b>Format:</b>
-
-<br><br>
-
-<code>SUBJECT: English Language</code>
+<b>Format</b>
 
 <br>
 
-<code>YEAR: 2014</code>
+SUBJECT: English Language
 
 <br>
 
-<code>QUESTION:</code> your question
+YEAR: 2014
 
 <br>
 
-<code>A:</code> option A
+QUESTION:
 
 <br>
 
-<code>B:</code> option B
+Your authorized question
 
 <br>
 
-<code>C:</code> option C
+A:
 
 <br>
 
-<code>D:</code> option D
+Option A
 
 <br>
 
-<code>ANSWER: B</code>
+B:
 
 <br>
 
-<code>PASSAGE:</code> optional passage
+Option B
 
 <br>
 
-<code>END</code>
+C:
+
+<br>
+
+Option C
+
+<br>
+
+D:
+
+<br>
+
+Option D
+
+<br>
+
+ANSWER: B
+
+<br>
+
+PASSAGE:
+
+<br>
+
+Optional passage
+
+<br>
+
+END
 
 </div>
 
 
 <textarea
-  id="bulkText"
-  style="min-height:330px"
-  placeholder="SUBJECT: English Language
-YEAR: 2014
-QUESTION:
-Paste your authorized question here
-A:
-Option A
-B:
-Option B
-C:
-Option C
-D:
-Option D
-ANSWER: B
-PASSAGE:
-Optional passage
-END"
+id="bulkText"
+style="min-height:330px"
 ></textarea>
 
 
@@ -663,9 +614,11 @@ END"
 PREVIEW
 </button>
 
+
 <button onclick="importBulk()">
 IMPORT TO SUPABASE
 </button>
+
 
 <div id="bulkMsg"></div>
 
@@ -674,16 +627,14 @@ IMPORT TO SUPABASE
 </div>
 
 
-<!-- ================= SINGLE QUESTION ================= -->
+<!-- SINGLE QUESTION -->
 
 <div
-  id="adminSingle"
-  class="admin-section hidden"
+id="single"
+class="section hidden"
 >
 
-<h3>
-Add One Question
-</h3>
+<h3>Add One Question</h3>
 
 
 <label>Subject</label>
@@ -694,9 +645,9 @@ Add One Question
 <label>Year</label>
 
 <input
-  id="qYear"
-  type="number"
-  value="2014"
+id="qYear"
+type="number"
+value="2026"
 >
 
 
@@ -737,91 +688,104 @@ Add One Question
 </select>
 
 
-<label>
-Passage (optional)
-</label>
+<label>Passage (optional)</label>
 
 <textarea id="qPassage"></textarea>
 
 
-<button onclick="addSingleQuestion()">
+<button onclick="addQuestion()">
 SAVE QUESTION
 </button>
+
 
 <div id="singleMsg"></div>
 
 </div>
 
 
-<!-- ================= QUESTIONS ================= -->
+<!-- QUESTIONS -->
 
 <div
-  id="adminQuestions"
-  class="admin-section hidden"
+id="questions"
+class="section hidden"
 >
 
-<h3>
-Question Bank
-</h3>
+<h3>Question Bank</h3>
 
-<button onclick="loadAdminQuestions()">
+
+<div class="grid">
+
+<select
+id="filterSubject"
+onchange="loadQuestions()"
+>
+
+<option value="">
+All subjects
+</option>
+
+</select>
+
+
+<input
+id="filterYear"
+placeholder="Year e.g. 2014"
+oninput="loadQuestions()"
+>
+
+</div>
+
+
+<button onclick="loadQuestions()">
 Refresh
 </button>
 
+
 <div
-  id="questionsList"
-  class="table-wrap"
+id="questionsList"
+class="tablewrap"
 ></div>
 
 </div>
 
 
-<!-- ================= ACCESS CODES ================= -->
+<!-- ACCESS CODES -->
 
 <div
-  id="adminCodes"
-  class="admin-section hidden"
+id="codes"
+class="section hidden"
 >
 
-<h3>
-Create Access Code
-</h3>
+<h3>Create Access Code</h3>
 
 
-<label>
-Candidate Name
-</label>
+<label>Candidate Name</label>
 
-<input id="codeCandidateName">
+<input id="codeName">
 
 
-<label>
-Subject
-</label>
+<label>Subject</label>
 
 <select id="codeSubject"></select>
 
 
-<label>
-Code
-</label>
+<label>Code</label>
 
-<input
-  id="newCode"
-  placeholder="Example: WT-ENG001"
->
+<input id="newCode">
 
 
-<button onclick="createAccessCode()">
+<button onclick="createCode()">
 CREATE CODE
 </button>
 
+
 <button
-  class="secondary"
-  onclick="generateCode()"
+class="secondary"
+onclick="generateCode()"
 >
 GENERATE CODE
 </button>
+
 
 <div id="codeAdminMsg"></div>
 
@@ -829,43 +793,42 @@ GENERATE CODE
 <hr>
 
 
-<h3>
-Access Codes
-</h3>
+<h3>Access Codes</h3>
 
-<button onclick="loadAdminCodes()">
+<button onclick="loadCodes()">
 Refresh
 </button>
 
+
 <div
-  id="codesList"
-  class="table-wrap"
+id="codesList"
+class="tablewrap"
 ></div>
 
 </div>
 
 
-<!-- ================= RESULTS ================= -->
+<!-- RESULTS -->
 
 <div
-  id="adminResults"
-  class="admin-section hidden"
+id="results"
+class="section hidden"
 >
 
-<h3>
-Exam Results
-</h3>
+<h3>Exam Results</h3>
 
-<button onclick="loadAdminResults()">
+<button onclick="loadResults()">
 Refresh
 </button>
 
+
 <div
-  id="resultsList"
-  class="table-wrap"
+id="resultsList"
+class="tablewrap"
 ></div>
 
 </div>
+
 
 </section>
 
@@ -879,308 +842,213 @@ Refresh
 
 <script>
 
-/* =====================================================
-   SUPABASE CONNECTION
-===================================================== */
+const URL =
+'https://dmscnymhwnqdabvxuuce.supabase.co';
 
-const SUPABASE_URL =
-"https://dmscnymhwnqdabvxuuce.supabase.co";
+const KEY =
+'sb_publishable_YLAhxNO3szVourvaQQ4jgw_KRQ9f0qc';
 
-const SUPABASE_KEY =
-"sb_publishable_YLAhxNO3szVourvaQQ4jgw_KRQ9f0qc";
-
-const { createClient } = supabase;
 
 const db =
-createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+supabase.createClient(URL,KEY);
 
 
-/* =====================================================
-   SETTINGS
-===================================================== */
+const ADMIN =
+'WTADMIN2026';
 
-const ADMIN_PASSWORD =
-"WTADMIN2026";
 
-const PASS_MARK =
+const PASS =
 50;
 
 
-/* =====================================================
-   VARIABLES
-===================================================== */
-
-let subjects = [];
-
-let selectedSubject = null;
-
-let candidate = "";
-
-let accessRecord = null;
-
-let questions = [];
-
-let answers = {};
-
-let currentQuestion = 0;
-
-let timerSeconds = 1800;
-
-let timerHandle = null;
+const EXAM_QUESTION_COUNT =
+40;
 
 
-/* =====================================================
-   SHORTCUT
-===================================================== */
+let subjects=[];
 
-function $(id){
+let subject=null;
 
-return document.getElementById(id);
+let candidate='';
 
-}
+let questions=[];
 
+let answers={};
 
-/* =====================================================
-   SCREEN CONTROL
-===================================================== */
+let index=0;
 
-function showScreen(id){
+let seconds=1800;
 
-[
-"loginScreen",
-"subjectScreen",
-"codeScreen",
-"examScreen",
-"resultScreen",
-"adminLoginScreen",
-"adminScreen"
+let timer=null;
 
-].forEach(x => {
-
-$(x).classList.add("hidden");
-
-});
+let currentCode=null;
 
 
-$(id).classList.remove("hidden");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
+const $ =
+id => document.getElementById(id);
 
 
-/* =====================================================
-   MESSAGE
-===================================================== */
-
-function message(
-id,
-text,
-type="notice"
-){
-
-$(id).innerHTML =
-text
-?
-`<div class="${type} notice">
-${escapeHtml(text)}
-</div>`
-:
-"";
-
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
-function escapeHtml(v){
-
-return String(v ?? "")
-.replace(
+const esc =
+v =>
+String(v??'').replace(
 /[&<>"']/g,
 m =>
 ({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#039;'
 }[m])
 );
 
+
+function show(id){
+
+[
+'login',
+'subjects',
+'code',
+'exam',
+'result',
+'adminLogin',
+'admin'
+].forEach(
+x => $(x).classList.add('hidden')
+);
+
+$(id).classList.remove('hidden');
+
+scrollTo(0,0);
+
 }
 
 
-/* =====================================================
-   CANDIDATE LOGIN
-===================================================== */
+function msg(id,t,c='notice'){
+
+$(id).innerHTML =
+t
+?
+`<div class="${c} notice">${esc(t)}</div>`
+:'';
+
+}
+
 
 async function continueCandidate(){
 
-const name =
-$("candidateName")
-.value
-.trim();
+candidate =
+$('candidate').value.trim();
 
-if(!name){
+if(!candidate){
 
-message(
-"loginMsg",
-"Please enter the candidate name.",
-"error"
+return msg(
+'loginMsg',
+'Please enter the candidate name.',
+'error'
 );
-
-return;
 
 }
-
-candidate =
-name;
-
-message(
-"loginMsg",
-""
-);
 
 await loadSubjects();
 
-showScreen(
-"subjectScreen"
-);
+show('subjects');
 
 }
 
 
-/* =====================================================
-   LOAD SUBJECTS
-===================================================== */
-
 async function loadSubjects(){
 
-const {
-data,
-error
-} =
+let r =
 await db
-.from("subjects")
-.select("*")
-.order("name");
+.from('subjects')
+.select('*')
+.order('name');
 
 
-if(error){
+if(r.error){
 
-message(
-"loginMsg",
-"Could not load subjects: "
-+ error.message,
-"error"
+return msg(
+'loginMsg',
+r.error.message,
+'error'
 );
-
-return;
 
 }
 
 
 subjects =
-data || [];
+r.data || [];
 
 
-$("subjectGrid").innerHTML =
+$('subjectGrid').innerHTML =
 subjects.map(
-s => `
-
-<div
+s =>
+`<div
 class="subject"
-onclick="chooseSubject('${s.id}')"
+onclick="choose('${s.id}')"
 >
 
 <strong>
-${escapeHtml(s.name)}
+${esc(s.name)}
 </strong>
 
 <span class="badge">
-${escapeHtml(s.code)}
+${esc(s.code)}
 </span>
 
 <div class="small">
-${s.duration_minutes || 30}
-minutes
+${s.duration_minutes||30} minutes
 </div>
 
-</div>
+</div>`
+).join('');
 
-`
-).join("");
+
+fillSelects();
 
 }
 
 
-/* =====================================================
-   CHOOSE SUBJECT
-===================================================== */
+function choose(id){
 
-function chooseSubject(id){
-
-selectedSubject =
+subject =
 subjects.find(
-s => s.id === id
+s => s.id===id
 );
 
-if(!selectedSubject)
-return;
+
+$('codeTitle').textContent =
+subject.name +
+' - Access Code';
 
 
-$("codeTitle").textContent =
-selectedSubject.name
-+
-" - Access Code";
-
-
-$("codeCandidate").textContent =
-"Candidate: "
-+
+$('codeCandidate').textContent =
+'Candidate: ' +
 candidate;
 
 
-$("accessCode").value =
-"";
+$('accessCode').value='';
 
 
-message(
-"codeMsg",
-""
-);
+msg('codeMsg','');
 
 
-showScreen(
-"codeScreen"
-);
+show('code');
 
 
 setTimeout(
-() => $("accessCode").focus(),
+()=>$('accessCode').focus(),
 100
 );
 
 }
 
 
-/* =====================================================
-   VERIFY ACCESS CODE
-===================================================== */
+async function verifyCode(){
 
-async function verifyAccessCode(){
-
-const code =
-$("accessCode")
+let code =
+$('accessCode')
 .value
 .trim()
 .toUpperCase();
@@ -1188,207 +1056,185 @@ $("accessCode")
 
 if(!code){
 
-message(
-"codeMsg",
-"Enter your access code.",
-"error"
+return msg(
+'codeMsg',
+'Enter your access code.',
+'error'
 );
-
-return;
 
 }
 
 
-const {
-data,
-error
-} =
+let r =
 await db
-.from("access_codes")
-.select("*")
-.eq("code",code)
-.eq("subject_id",selectedSubject.id)
+.from('access_codes')
+.select('*')
+.eq('code',code)
+.eq('subject_id',subject.id)
 .limit(1);
 
 
-if(error){
+if(r.error){
 
-message(
-"codeMsg",
-"Database error: "
-+
-error.message,
-"error"
+return msg(
+'codeMsg',
+r.error.message,
+'error'
 );
 
-return;
-
 }
 
 
-if(!data || !data.length){
+if(!r.data?.length){
 
-message(
-"codeMsg",
-"Invalid access code for this subject.",
-"error"
+return msg(
+'codeMsg',
+'Invalid access code for this subject.',
+'error'
 );
 
-return;
-
 }
 
 
-const rec =
-data[0];
+let row =
+r.data[0];
 
 
-if(rec.locked){
+if(row.locked){
 
-message(
-"codeMsg",
-"This access code is locked. Contact the administrator.",
-"error"
+return msg(
+'codeMsg',
+'This access code is locked. Contact the administrator.',
+'error'
 );
 
-return;
+}
+
+
+if(
+row.expires_at &&
+new Date(row.expires_at)<new Date()
+){
+
+return msg(
+'codeMsg',
+'This access code has expired.',
+'error'
+);
 
 }
 
 
-accessRecord =
-rec;
+currentCode =
+row;
 
 
-await startExam();
+startExam();
 
 }
 
-
-/* =====================================================
-   START EXAM
-===================================================== */
 
 async function startExam(){
 
-const {
-data,
-error
-} =
+let r =
 await db
-.from("questions")
-.select("*")
-.eq(
-"subject_id",
-selectedSubject.id
+.from('questions')
+.select('*')
+.eq('subject_id',subject.id)
+.order(
+'question_year',
+{ascending:true}
 )
 .order(
-"question_year",
-{
-ascending:true
-}
-)
-.order(
-"created_at",
-{
-ascending:true
-}
+'created_at',
+{ascending:true}
 );
 
 
-if(error){
+if(r.error){
 
-message(
-"codeMsg",
-"Could not load questions: "
-+
-error.message,
-"error"
+return msg(
+'codeMsg',
+r.error.message,
+'error'
 );
 
-return;
+}
+
+
+if(!r.data?.length){
+
+return msg(
+'codeMsg',
+'No questions have been added for this subject yet.',
+'error'
+);
 
 }
+
+
+let allQuestions =
+r.data;
 
 
 if(
-!data ||
-data.length === 0
+allQuestions.length >
+EXAM_QUESTION_COUNT
 ){
-
-message(
-"codeMsg",
-"No questions have been added for this subject yet.",
-"error"
-);
-
-return;
-
-}
-
 
 questions =
-data;
-
-answers = {};
-
-currentQuestion =
-0;
-
-timerSeconds =
-(selectedSubject.duration_minutes || 30)
-*
-60;
-
-
-$("examSubject").textContent =
-selectedSubject.name;
-
-
-showScreen(
-"examScreen"
+[...allQuestions]
+.sort(
+()=>Math.random()-0.5
+)
+.slice(
+0,
+EXAM_QUESTION_COUNT
 );
 
+}else{
 
-renderQuestion();
-
-startTimer();
+questions =
+[...allQuestions]
+.sort(
+()=>Math.random()-0.5
+);
 
 }
 
 
-/* =====================================================
-   TIMER
-===================================================== */
+answers={};
 
-function startTimer(){
+index=0;
 
-clearInterval(
-timerHandle
-);
-
-updateTimer();
+seconds =
+(subject.duration_minutes||30)*60;
 
 
-timerHandle =
+$('examSubject').textContent =
+subject.name;
+
+
+show('exam');
+
+render();
+
+clearInterval(timer);
+
+
+timer =
 setInterval(
-() => {
+()=>{
+seconds--;
 
-timerSeconds--;
+clock();
 
-updateTimer();
+if(seconds<=0){
 
-
-if(
-timerSeconds <= 0
-){
-
-clearInterval(
-timerHandle
-);
+clearInterval(timer);
 
 alert(
-"Time is up. Your exam will be submitted automatically."
+'Time is up. Your exam will be submitted automatically.'
 );
 
 submitExam();
@@ -1399,247 +1245,189 @@ submitExam();
 1000
 );
 
-}
 
-
-/* =====================================================
-   UPDATE TIMER
-===================================================== */
-
-function updateTimer(){
-
-const m =
-Math.floor(
-timerSeconds / 60
-)
-.toString()
-.padStart(
-2,
-"0"
-);
-
-const s =
-(
-timerSeconds % 60
-)
-.toString()
-.padStart(
-2,
-"0"
-);
-
-
-$("timer").textContent =
-`${m}:${s}`;
+clock();
 
 }
 
 
-/* =====================================================
-   DISPLAY QUESTION
-===================================================== */
+function clock(){
 
-function renderQuestion(){
+$('timer').textContent =
+String(
+Math.floor(seconds/60)
+).padStart(2,'0')
++
+':'
++
+String(
+seconds%60
+).padStart(2,'0');
 
-const q =
-questions[currentQuestion];
+}
 
 
-$("examYear").textContent =
+function render(){
+
+let q =
+questions[index];
+
+
+$('examYear').textContent =
 q.question_year
 ?
-`Past Question • ${q.question_year}`
+'Past Question • '+
+q.question_year
 :
-"Mock Question";
+'Mock Question';
 
 
-$("progressBar").style.width =
+$('bar').style.width =
 (
-(
-currentQuestion + 1
-)
-/
-questions.length
-*
+(index+1)/
+questions.length*
 100
-)
-+
-"%";
+)+'%';
 
 
-let html =
-`
-<h3>
-Question ${currentQuestion + 1}
-of
-${questions.length}
-</h3>
-`;
+let h =
+`<h3>
+Question ${index+1}
+of ${questions.length}
+</h3>`;
 
 
 if(q.passage){
 
-html +=
-`
-<div class="passage">
+h +=
+`<div class="passage">
 
 <b>Passage</b>
 
 <br>
 
-${escapeHtml(q.passage)}
+${esc(q.passage)}
 
-</div>
-`;
+</div>`;
 
 }
 
 
-html +=
-`
-<p>
+h +=
+`<p>
 <b>
-${escapeHtml(q.question_text)}
+${esc(q.question_text)}
 </b>
-</p>
-`;
+</p>`;
 
 
 [
-"A",
-"B",
-"C",
-"D"
-
+'A',
+'B',
+'C',
+'D'
 ].forEach(
-letter => {
+l => {
 
-const value =
+let v =
 q[
-"option_"
-+
-letter.toLowerCase()
+'option_'+
+l.toLowerCase()
 ];
 
 
-const checked =
-answers[q.id] === letter
-?
-"checked"
-:
-"";
-
-
-const cls =
-answers[q.id] === letter
-?
-"option selected"
-:
-"option";
-
-
-html +=
-`
-<label class="${cls}">
+h +=
+`<label
+class="option ${
+answers[q.id]===l
+?'selected'
+:''
+}"
+>
 
 <input
 type="radio"
 name="answer"
-value="${letter}"
-${checked}
-onchange="selectAnswer('${q.id}','${letter}')"
+${
+answers[q.id]===l
+?'checked'
+:''
+}
+onchange="answer('${q.id}','${l}')"
 >
 
-<b>${letter}.</b>
+<b>${l}.</b>
 
-${escapeHtml(value)}
+${esc(v)}
 
-</label>
-`;
+</label>`;
 
-}
+});
+
+
+$('questionArea').innerHTML =
+h;
+
+
+$('prev').disabled =
+index===0;
+
+
+$('next')
+.classList
+.toggle(
+'hidden',
+index===questions.length-1
 );
 
 
-$("questionArea").innerHTML =
-html;
-
-
-$("prevBtn").disabled =
-currentQuestion === 0;
-
-
-$("nextBtn").classList.toggle(
-"hidden",
-currentQuestion === questions.length - 1
-);
-
-
-$("submitBtn").classList.toggle(
-"hidden",
-currentQuestion !== questions.length - 1
+$('submit')
+.classList
+.toggle(
+'hidden',
+index!==questions.length-1
 );
 
 }
 
 
-/* =====================================================
-   SELECT ANSWER
-===================================================== */
+function answer(id,l){
 
-function selectAnswer(
-qid,
-letter
-){
+answers[id]=l;
 
-answers[qid] =
-letter;
-
-renderQuestion();
+render();
 
 }
 
 
-/* =====================================================
-   PREVIOUS
-===================================================== */
+function prevQ(){
 
-function previousQuestion(){
+if(index){
 
-if(currentQuestion > 0){
+index--;
 
-currentQuestion--;
-
-renderQuestion();
+render();
 
 }
 
 }
 
 
-/* =====================================================
-   NEXT
-===================================================== */
-
-function nextQuestion(){
+function nextQ(){
 
 if(
-currentQuestion <
-questions.length - 1
+index <
+questions.length-1
 ){
 
-currentQuestion++;
+index++;
 
-renderQuestion();
-
-}
+render();
 
 }
 
+}
 
-/* =====================================================
-   SUBMIT EXAM
-===================================================== */
 
 async function submitExam(){
 
@@ -1647,161 +1435,120 @@ if(!questions.length)
 return;
 
 
-clearInterval(
-timerHandle
-);
+clearInterval(timer);
 
 
 let score =
-0;
-
-
-questions.forEach(
-q => {
-
-if(
-answers[q.id] ===
+questions.reduce(
+(n,q)=>
+n+
+(
+answers[q.id]===
 q.correct_answer
-){
-
-score++;
-
-}
-
-}
+?1
+:0
+),
+0
 );
 
 
-const percentage =
+let pct =
 Math.round(
-(score / questions.length)
-*
+score/
+questions.length*
 100
 );
 
 
-const passed =
-percentage >= PASS_MARK;
+let passed =
+pct>=PASS;
 
 
-const result = {
+let r =
+await db
+.from('exam_results')
+.insert({
 
 candidate_name:
 candidate,
 
 subject_id:
-selectedSubject.id,
+subject.id,
 
 score:
+
 score,
 
 total_questions:
 questions.length,
 
 percentage:
-percentage,
+pct,
 
 passed:
 passed
 
-};
+});
 
 
-const {
-error
-} =
-await db
-.from("exam_results")
-.insert(result);
+if(r.error){
 
-
-if(error){
-
-alert(
-"The result could not be saved: "
-+
-error.message
+return alert(
+'Result could not be saved: '+
+r.error.message
 );
-
-return;
 
 }
 
 
-/*
-IMPORTANT:
-The access code remains reusable.
-
-We deliberately DO NOT change
-used=true after submission.
-*/
-
-
-$("resultCandidate").textContent =
-"Candidate: "
-+
+$('rCandidate')
+.textContent =
+'Candidate: '+
 candidate;
 
 
-$("resultSubject").textContent =
-"Subject: "
-+
-selectedSubject.name;
+$('rSubject')
+.textContent =
+'Subject: '+
+subject.name;
 
 
-$("score").textContent =
+$('score')
+.textContent =
 `${score} / ${questions.length}`;
 
 
-$("resultDetails").textContent =
-`${percentage}%`;
+$('details')
+.textContent =
+pct+'%';
 
 
-$("passStatus").innerHTML =
+$('status').innerHTML =
 passed
-
 ?
-
-`
-<h2 class="pass">
-PASS
-</h2>
-
-<p>
-Congratulations.
-You met the ${PASS_MARK}% pass mark.
-</p>
-`
-
+'<h2 class="pass">PASS</h2><p>Congratulations. You met the 50% pass mark.</p>'
 :
-
-`
-<h2 class="fail">
-NOT PASSED
-</h2>
-
-<p>
-The pass mark is ${PASS_MARK}%.
-</p>
-`;
+'<h2 class="fail">NOT PASSED</h2><p>The pass mark is 50%.</p>';
 
 
-showScreen(
-"resultScreen"
-);
+show('result');
 
 }
 
 
-/* =====================================================
-   ADMIN LOGIN
-===================================================== */
+function resetApp(){
 
-function showAdminLogin(){
+candidate='';
 
-showScreen(
-"adminLoginScreen"
-);
+subject=null;
+
+questions=[];
+
+answers={};
+
+currentCode=null;
+
+show('login');
 
 }
 
@@ -1809,522 +1556,416 @@ showScreen(
 function adminLogin(){
 
 if(
-$("adminPassword").value ===
-ADMIN_PASSWORD
+$('adminPass').value===
+ADMIN
 ){
 
-$("adminPassword").value =
-"";
+$('adminPass').value='';
 
-showScreen(
-"adminScreen"
+show('admin');
+
+tab('bulk');
+
+}else{
+
+msg(
+'adminLoginMsg',
+'Incorrect admin password.',
+'error'
 );
 
-adminTab(
-"bulk"
+}
+
+}
+
+
+function tab(t){
+
+[
+'bulk',
+'single',
+'questions',
+'codes',
+'results'
+].forEach(
+x =>
+$(x).classList.add('hidden')
+);
+
+
+$(t).classList.remove('hidden');
+
+
+if(
+t==='single'||
+t==='codes'||
+t==='questions'
+){
+
+fillSelects();
+
+}
+
+
+if(t==='questions')
+loadQuestions();
+
+
+if(t==='codes')
+loadCodes();
+
+
+if(t==='results')
+loadResults();
+
+}
+
+
+function fillSelects(){
+
+let o =
+subjects.map(
+s =>
+`<option value="${s.id}">
+${esc(s.name)}
+</option>`
+).join('');
+
+
+if($('qSubject'))
+$('qSubject').innerHTML=o;
+
+
+if($('codeSubject'))
+$('codeSubject').innerHTML=o;
+
+
+if($('filterSubject'))
+$('filterSubject').innerHTML =
+'<option value="">All subjects</option>'+
+o;
+
+}
+
+
+function parseBulk(text){
+
+let lastSubject='';
+
+let lastYear='';
+
+
+return text
+.split(
+/\n\s*END\s*(?:\n|$)/i
+)
+.map(
+b=>b.trim()
+)
+.filter(Boolean)
+.map(
+b=>{
+
+let lines =
+b.split(/\r?\n/);
+
+
+let inline =
+l=>{
+
+let m =
+lines.find(
+x =>
+new RegExp(
+'^'+
+l+
+':\\s*',
+'i'
+).test(
+x.trim()
+)
+);
+
+return m
+?
+m.replace(
+new RegExp(
+'^'+
+l+
+':\\s*',
+'i'
+),
+''
+).trim()
+:'';
+
+};
+
+
+let block =
+l=>{
+
+let i =
+lines.findIndex(
+x =>
+x.trim()
+.toUpperCase()===
+l+':'
+);
+
+
+if(i<0)
+return '';
+
+
+let a=[];
+
+
+for(
+let j=i+1;
+j<lines.length;
+j++
+){
+
+if(
+/^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):\s*$/i
+.test(lines[j].trim())
+||
+/^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):\s*\S/i
+.test(lines[j].trim())
+)
+break;
+
+
+a.push(lines[j]);
+
+}
+
+
+return a.join('\n').trim();
+
+};
+
+
+let s =
+inline('SUBJECT') ||
+lastSubject;
+
+
+let y =
+inline('YEAR') ||
+lastYear;
+
+
+if(s)
+lastSubject=s;
+
+
+if(y)
+lastYear=y;
+
+
+return{
+
+subject:s,
+
+year:y,
+
+question:
+block('QUESTION')||
+inline('QUESTION'),
+
+a:block('A'),
+
+b:block('B'),
+
+c:block('C'),
+
+d:block('D'),
+
+answer:
+inline('ANSWER')
+.toUpperCase(),
+
+passage:
+block('PASSAGE')
+
+};
+
+});
+
+}
+
+
+function fingerprint(x){
+
+return [
+
+x.subject_id,
+
+x.question_text,
+
+x.option_a,
+
+x.option_b,
+
+x.option_c,
+
+x.option_d
+
+]
+.map(
+v =>
+String(v||'')
+.toLowerCase()
+.replace(/\s+/g,' ')
+.trim()
+)
+.join('|');
+
+}
+
+
+async function previewBulk(){
+
+let a =
+parseBulk(
+$('bulkText').value
+);
+
+
+if(!a.length){
+
+return msg(
+'bulkMsg',
+'No question blocks found.',
+'error'
+);
+
+}
+
+
+$('bulkPreview').innerHTML =
+
+`<p>
+<b>
+${a.length}
+question(s) detected.
+</b>
+</p>
+
+<div class="tablewrap">
+
+<table>
+
+<tr>
+<th>#</th>
+<th>Subject</th>
+<th>Year</th>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+
+${
+a.map(
+(x,i)=>
+`<tr>
+
+<td>${i+1}</td>
+
+<td>
+${esc(x.subject)}
+</td>
+
+<td>
+${esc(x.year)}
+</td>
+
+<td>
+${esc(x.question)}
+</td>
+
+<td>
+${esc(x.answer)}
+</td>
+
+</tr>`
+).join('')
+}
+
+</table>
+
+</div>`;
+
+}
+
+
+async function importBulk(){
+
+let a =
+parseBulk(
+$('bulkText').value
+);
+
+
+let rows=[];
+
+let bad=[];
+
+
+a.forEach(
+(x,i)=>{
+
+let s =
+subjects.find(
+z =>
+z.name.toLowerCase()===
+x.subject.toLowerCase()
+||
+z.code.toLowerCase()===
+x.subject.toLowerCase()
+);
+
+
+if(!s){
+
+bad.push(
+`Q${i+1}: subject not found (${x.subject})`
+);
+
+}
+
+else if(
+!x.question||
+!x.a||
+!x.b||
+!x.c||
+!x.d
+){
+
+bad.push(
+`Q${i+1}: question/options incomplete`
+);
+
+}
+
+else if(
+!['A','B','C','D']
+.includes(x.answer)
+){
+
+bad.push(
+`Q${i+1}: ANSWER must be A-D`
 );
 
 }
 
 else{
 
-message(
-"adminLoginMsg",
-"Incorrect admin password.",
-"error"
-);
-
-}
-
-}
-
-
-function adminLogout(){
-
-showScreen(
-"loginScreen"
-);
-
-}
-
-
-/* =====================================================
-   ADMIN TABS
-===================================================== */
-
-function adminTab(tab){
-
-[
-"bulk",
-"single",
-"questions",
-"codes",
-"results"
-
-].forEach(
-x => {
-
-$(
-"admin"
-+
-x.charAt(0).toUpperCase()
-+
-x.slice(1)
-)
-.classList.add("hidden");
-
-}
-);
-
-
-$(
-"admin"
-+
-tab.charAt(0).toUpperCase()
-+
-tab.slice(1)
-)
-.classList.remove("hidden");
-
-
-if(
-tab === "single" ||
-tab === "codes"
-){
-
-fillSubjectSelects();
-
-}
-
-
-if(tab === "questions")
-loadAdminQuestions();
-
-
-if(tab === "codes")
-loadAdminCodes();
-
-
-if(tab === "results")
-loadAdminResults();
-
-}
-
-
-/* =====================================================
-   SUBJECT DROPDOWNS
-===================================================== */
-
-function fillSubjectSelects(){
-
-const opts =
-subjects.map(
-s =>
-`
-<option value="${s.id}">
-${escapeHtml(s.name)}
-</option>
-`
-)
-.join("");
-
-
-$("qSubject").innerHTML =
-opts;
-
-
-$("codeSubject").innerHTML =
-opts;
-
-}
-
-
-/* =====================================================
-   BULK PARSER
-===================================================== */
-
-function parseBulk(text){
-
-const blocks =
-text
-.split(
-/\n\s*END\s*(?:\n|$)/i
-)
-.map(
-x => x.trim()
-)
-.filter(Boolean);
-
-
-const parsed = [];
-
-
-for(
-const block
-of blocks
-){
-
-const lines =
-block.split(/\r?\n/);
-
-
-const getField =
-(label) => {
-
-const idx =
-lines.findIndex(
-l =>
-l.trim()
-.toUpperCase()
-===
-label + ":"
-);
-
-
-if(idx < 0)
-return "";
-
-
-const vals = [];
-
-
-for(
-let i = idx + 1;
-i < lines.length;
-i++
-){
-
-const t =
-lines[i].trim();
-
-
-if(
-/^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):\s*$/i
-.test(t)
-)
-break;
-
-
-if(
-/^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):/i
-.test(t)
-)
-break;
-
-
-vals.push(
-lines[i]
-);
-
-}
-
-
-return vals
-.join("\n")
-.trim();
-
-};
-
-
-const getInline =
-(label) => {
-
-const re =
-new RegExp(
-"^"
-+
-label
-+
-":\\s*(.*)$",
-"i"
-);
-
-
-const found =
-lines.find(
-l => re.test(l)
-);
-
-
-return found
-?
-found
-.replace(
-re,
-"$1"
-)
-.trim()
-:
-"";
-
-};
-
-
-const item = {
-
-subject:
-getInline("SUBJECT"),
-
-year:
-getInline("YEAR"),
-
-question:
-getField("QUESTION"),
-
-a:
-getField("A"),
-
-b:
-getField("B"),
-
-c:
-getField("C"),
-
-d:
-getField("D"),
-
-answer:
-getInline("ANSWER")
-.toUpperCase(),
-
-passage:
-getField("PASSAGE")
-
-};
-
-
-if(!item.question){
-
-const qLine =
-lines.findIndex(
-l =>
-/^QUESTION:\s*/i
-.test(l)
-);
-
-
-if(qLine >= 0){
-
-item.question =
-lines[qLine]
-.replace(
-/^QUESTION:\s*/i,
-""
-)
-.trim();
-
-}
-
-}
-
-
-parsed.push(
-item
-);
-
-}
-
-
-return parsed;
-
-}
-
-
-/* =====================================================
-   BULK PREVIEW
-===================================================== */
-
-function previewBulk(){
-
-const items =
-parseBulk(
-$("bulkText").value
-);
-
-
-if(!items.length){
-
-message(
-"bulkMsg",
-"No question blocks found.",
-"error"
-);
-
-return;
-
-}
-
-
-$("bulkPreview").innerHTML =
-
-`
-<p>
-<b>
-${items.length}
-question(s) detected.
-</b>
-</p>
-
-<div class="table-wrap">
-
-<table>
-
-<tr>
-
-<th>#</th>
-<th>Subject</th>
-<th>Year</th>
-<th>Question</th>
-<th>Answer</th>
-
-</tr>
-
-`
-
-+
-
-items.map(
-(x,i) =>
-
-`
-
-<tr>
-
-<td>${i + 1}</td>
-
-<td>
-${escapeHtml(x.subject)}
-</td>
-
-<td>
-${escapeHtml(x.year)}
-</td>
-
-<td>
-${escapeHtml(x.question)}
-</td>
-
-<td>
-${escapeHtml(x.answer)}
-</td>
-
-</tr>
-
-`
-
-).join("")
-
-+
-
-`
-
-</table>
-
-</div>
-`;
-
-}
-
-
-/* =====================================================
-   IMPORT BULK
-===================================================== */
-
-async function importBulk(){
-
-const items =
-parseBulk(
-$("bulkText").value
-);
-
-
-if(!items.length){
-
-message(
-"bulkMsg",
-"No question blocks found.",
-"error"
-);
-
-return;
-
-}
-
-
-const rows = [];
-
-const errors = [];
-
-
-for(
-let i = 0;
-i < items.length;
-i++
-){
-
-const x =
-items[i];
-
-
-const subject =
-subjects.find(
-s =>
-s.name.toLowerCase()
-===
-x.subject.toLowerCase()
-||
-s.code.toLowerCase()
-===
-x.subject.toLowerCase()
-);
-
-
-if(!subject){
-
-errors.push(
-`Question ${i + 1}: subject not found (${x.subject})`
-);
-
-continue;
-
-}
-
-
-if(
-!x.question ||
-!x.a ||
-!x.b ||
-!x.c ||
-!x.d
-){
-
-errors.push(
-`Question ${i + 1}: question/options incomplete`
-);
-
-continue;
-
-}
-
-
-if(
-!["A","B","C","D"]
-.includes(x.answer)
-){
-
-errors.push(
-`Question ${i + 1}: ANSWER must be A, B, C or D`
-);
-
-continue;
-
-}
-
-
 rows.push({
 
 subject_id:
-subject.id,
+s.id,
 
 question_text:
 x.question,
@@ -2345,552 +1986,651 @@ correct_answer:
 x.answer,
 
 passage:
-x.passage || null,
+x.passage||null,
 
 question_year:
 x.year
 ?
-parseInt(
-x.year,
-10
-)
-:
-null
+parseInt(x.year,10)
+:null
 
 });
 
 }
 
+});
 
-if(errors.length){
 
-message(
-"bulkMsg",
-errors.join(" | "),
-"error"
+if(bad.length){
+
+return msg(
+'bulkMsg',
+
+bad.slice(0,15).join(' | ')+
+(
+bad.length>15
+?
+` | +${bad.length-15} more`
+:''
+),
+
+'error'
 );
 
-return;
+}
+
+
+if(!rows.length){
+
+return msg(
+'bulkMsg',
+'Nothing to import.',
+'error'
+);
+
+}
+
+
+let existing=[];
+
+
+for(
+let i=0;
+i<rows.length;
+i+=500
+){
+
+let chunk =
+rows.slice(
+i,
+i+500
+);
+
+
+let subjectsIds =
+[
+...new Set(
+chunk.map(
+x=>x.subject_id
+)
+)
+];
+
+
+let r =
+await db
+.from('questions')
+.select(
+'subject_id,question_text,option_a,option_b,option_c,option_d'
+)
+.in(
+'subject_id',
+subjectsIds
+);
+
+
+if(r.error){
+
+return msg(
+'bulkMsg',
+r.error.message,
+'error'
+);
+
+}
+
+
+existing.push(
+...(r.data||[])
+);
+
+}
+
+
+let seen =
+new Set(
+existing.map(fingerprint)
+);
+
+
+let unique=[];
+
+let duplicates=0;
+
+
+for(
+let row of rows
+){
+
+let f =
+fingerprint(row);
+
+
+if(
+seen.has(f)
+){
+
+duplicates++;
+
+continue;
+
+}
+
+
+seen.add(f);
+
+unique.push(row);
 
 }
 
 
 if(
 !confirm(
-`Import ${rows.length} question(s) into Supabase?`
+`Detected ${rows.length} question(s). ${duplicates} duplicate(s) will be skipped. Import ${unique.length} new question(s)?`
 )
 )
 return;
 
 
-const {
-error
-} =
+if(!unique.length){
+
+return msg(
+'bulkMsg',
+'All detected questions are duplicates. Nothing imported.',
+'notice'
+);
+
+}
+
+
+let imported=0;
+
+
+for(
+let i=0;
+i<unique.length;
+i+=100
+){
+
+let r =
 await db
-.from("questions")
-.insert(rows);
-
-
-if(error){
-
-message(
-"bulkMsg",
-"Import failed: "
-+
-error.message,
-"error"
+.from('questions')
+.insert(
+unique.slice(
+i,
+i+100
+)
 );
 
-return;
+
+if(r.error){
+
+return msg(
+'bulkMsg',
+`Imported ${imported}; then stopped: ${r.error.message}`,
+'error'
+);
 
 }
 
 
-message(
-"bulkMsg",
-`${rows.length} question(s) imported successfully.`,
-"success"
+imported +=
+Math.min(
+100,
+unique.length-i
 );
-
-
-$("bulkText").value =
-"";
-
-
-$("bulkPreview").innerHTML =
-"";
 
 }
 
 
-/* =====================================================
-   ADD SINGLE QUESTION
-===================================================== */
+msg(
+'bulkMsg',
+`${imported} question(s) imported. ${duplicates} duplicate(s) skipped.`,
+'success'
+);
 
-async function addSingleQuestion(){
 
-const row = {
+$('bulkText').value='';
+
+$('bulkPreview').innerHTML='';
+
+}
+
+
+async function addQuestion(){
+
+let row={
 
 subject_id:
-$("qSubject").value,
+$('qSubject').value,
 
 question_text:
-$("qText").value.trim(),
+$('qText').value.trim(),
 
 option_a:
-$("qA").value.trim(),
+$('qA').value.trim(),
 
 option_b:
-$("qB").value.trim(),
+$('qB').value.trim(),
 
 option_c:
-$("qC").value.trim(),
+$('qC').value.trim(),
 
 option_d:
-$("qD").value.trim(),
+$('qD').value.trim(),
 
 correct_answer:
-$("qAnswer").value,
+$('qAnswer').value,
 
 passage:
-$("qPassage").value.trim()
-||
+$('qPassage').value.trim()||
 null,
 
 question_year:
-$("qYear").value
+$('qYear').value
 ?
 parseInt(
-$("qYear").value,
+$('qYear').value,
 10
 )
-:
-null
+:null
 
 };
 
 
 if(
-!row.question_text ||
-!row.option_a ||
-!row.option_b ||
-!row.option_c ||
+!row.question_text||
+!row.option_a||
+!row.option_b||
+!row.option_c||
 !row.option_d
 ){
 
-message(
-"singleMsg",
-"Complete the question and all four options.",
-"error"
+return msg(
+'singleMsg',
+'Complete the question and all four options.',
+'error'
 );
-
-return;
 
 }
 
 
-const {
-error
-} =
+let r =
 await db
-.from("questions")
+.from('questions')
+.select(
+'subject_id,question_text,option_a,option_b,option_c,option_d'
+)
+.eq(
+'subject_id',
+row.subject_id
+);
+
+
+if(r.error){
+
+return msg(
+'singleMsg',
+r.error.message,
+'error'
+);
+
+}
+
+
+if(
+(r.data||[])
+.some(
+x =>
+fingerprint(x)===
+fingerprint(row)
+)
+){
+
+return msg(
+'singleMsg',
+'This question already exists for this subject.',
+'error'
+);
+
+}
+
+
+let ins =
+await db
+.from('questions')
 .insert(row);
 
 
-if(error){
+if(ins.error){
 
-message(
-"singleMsg",
-"Save failed: "
-+
-error.message,
-"error"
+return msg(
+'singleMsg',
+ins.error.message,
+'error'
 );
-
-return;
 
 }
 
 
-message(
-"singleMsg",
-"Question saved successfully.",
-"success"
+msg(
+'singleMsg',
+'Question saved successfully.',
+'success'
 );
 
 
 [
-"qText",
-"qA",
-"qB",
-"qC",
-"qD",
-"qPassage"
-
+'qText',
+'qA',
+'qB',
+'qC',
+'qD',
+'qPassage'
 ].forEach(
 id =>
-$(id).value = ""
+$(id).value=''
 );
 
 }
 
 
-/* =====================================================
-   ADMIN QUESTIONS
-===================================================== */
+async function loadQuestions(){
 
-async function loadAdminQuestions(){
-
-const {
-data,
-error
-} =
-await db
-.from("questions")
+let q =
+db
+.from('questions')
 .select(
-"id,question_text,question_year,correct_answer,created_at,subjects(name)"
+'id,question_text,question_year,correct_answer,subjects(name)'
 )
 .order(
-"created_at",
-{
-ascending:false
-}
+'created_at',
+{ascending:false}
 );
 
 
-if(error){
+if(
+$('filterSubject')?.value
+){
 
-$("questionsList").innerHTML =
-
-`
-<div class="error notice">
-${escapeHtml(error.message)}
-</div>
-`;
-
-return;
+q =
+q.eq(
+'subject_id',
+$('filterSubject').value
+);
 
 }
 
 
-$("questionsList").innerHTML =
+if(
+$('filterYear')?.value
+){
 
-`
-<table>
+q =
+q.eq(
+'question_year',
+parseInt(
+$('filterYear').value,
+10
+)
+);
 
-<tr>
+}
 
-<th>Subject</th>
-<th>Year</th>
-<th>Question</th>
-<th>Answer</th>
-<th>Action</th>
 
-</tr>
+let r =
+await q.limit(500);
 
-`
 
-+
+if(r.error){
 
-(data || [])
+return $('questionsList')
+.textContent =
+r.error.message;
+
+}
+
+
+$('questionsList').innerHTML =
+
+'<table>'+
+
+'<tr>'+
+
+'<th>Subject</th>'+
+
+'<th>Year</th>'+
+
+'<th>Question</th>'+
+
+'<th>Answer</th>'+
+
+'<th>Action</th>'+
+
+'</tr>'+
+
+(r.data||[])
 .map(
-q =>
-
-`
-
-<tr>
+x=>
+`<tr>
 
 <td>
-${escapeHtml(q.subjects?.name)}
+${esc(x.subjects?.name)}
 </td>
 
 <td>
-${escapeHtml(q.question_year || "—")}
+${esc(x.question_year||'—')}
 </td>
 
 <td>
-${escapeHtml(q.question_text)}
+${esc(x.question_text)}
 </td>
 
 <td>
-<b>
-${escapeHtml(q.correct_answer)}
-</b>
+${esc(x.correct_answer)}
 </td>
 
 <td>
 
 <button
 class="danger"
-onclick="deleteQuestion('${q.id}')"
+onclick="deleteQuestion('${x.id}')"
 >
 Delete
 </button>
 
 </td>
 
-</tr>
-
-`
-
+</tr>`
 )
-.join("")
+.join('')+
 
-+
-
-`
-
-</table>
-`;
+'</table>';
 
 }
 
-
-/* =====================================================
-   DELETE QUESTION
-===================================================== */
 
 async function deleteQuestion(id){
 
 if(
 !confirm(
-"Delete this question?"
+'Delete this question?'
 )
 )
 return;
 
 
-const {
-error
-} =
+let r =
 await db
-.from("questions")
+.from('questions')
 .delete()
 .eq(
-"id",
+'id',
 id
 );
 
 
-if(error){
+if(r.error){
 
-alert(
-error.message
-);
+alert(r.error.message);
 
-return;
+}else{
 
-}
-
-
-loadAdminQuestions();
+loadQuestions();
 
 }
 
+}
 
-/* =====================================================
-   GENERATE ACCESS CODE
-===================================================== */
 
 function generateCode(){
 
-const code =
-"WT-"
-+
+$('newCode').value =
+'WT-'+
 Math.random()
 .toString(36)
 .substring(2,8)
 .toUpperCase();
 
-
-$("newCode").value =
-code;
-
 }
 
 
-/* =====================================================
-   CREATE ACCESS CODE
-===================================================== */
+async function createCode(){
 
-async function createAccessCode(){
+let row={
 
-const candidateName =
-$("codeCandidateName")
-.value
-.trim();
-
-
-const subjectId =
-$("codeSubject")
-.value;
-
-
-const code =
-$("newCode")
+code:
+$('newCode')
 .value
 .trim()
-.toUpperCase();
+.toUpperCase(),
+
+candidate_name:
+$('codeName')
+.value
+.trim(),
+
+subject_id:
+$('codeSubject')
+.value,
+
+used:false,
+
+failed_attempts:0,
+
+locked:false,
+
+expires_at:null
+
+};
 
 
 if(
-!candidateName ||
-!subjectId ||
-!code
+!row.code||
+!row.candidate_name
 ){
 
-message(
-"codeAdminMsg",
-"Complete all fields.",
-"error"
+return msg(
+'codeAdminMsg',
+'Complete all fields.',
+'error'
 );
-
-return;
 
 }
 
 
-const {
-error
-} =
+let r =
 await db
-.from("access_codes")
-.insert({
-
-code:
-code,
-
-candidate_name:
-candidateName,
-
-subject_id:
-subjectId,
-
-used:
-false,
-
-failed_attempts:
-0,
-
-locked:
-false,
-
-expires_at:
-null
-
-});
+.from('access_codes')
+.insert(row);
 
 
-if(error){
+if(r.error){
 
-message(
-"codeAdminMsg",
-"Could not create code: "
-+
-error.message,
-"error"
+return msg(
+'codeAdminMsg',
+r.error.message,
+'error'
 );
-
-return;
 
 }
 
 
-message(
-"codeAdminMsg",
-"Access code created. It remains reusable.",
-"success"
+msg(
+'codeAdminMsg',
+'Access code created.',
+'success'
 );
 
 
-$("newCode").value =
-"";
+$('newCode').value='';
 
 
-loadAdminCodes();
+loadCodes();
 
 }
 
 
-/* =====================================================
-   ADMIN ACCESS CODES
-===================================================== */
+async function loadCodes(){
 
-async function loadAdminCodes(){
-
-const {
-data,
-error
-} =
+let r =
 await db
-.from("access_codes")
+.from('access_codes')
 .select(
-"id,code,candidate_name,used,locked,failed_attempts,created_at,subjects(name)"
+'id,code,candidate_name,used,locked,subjects(name)'
 )
 .order(
-"created_at",
-{
-ascending:false
-}
+'created_at',
+{ascending:false}
 );
 
 
-if(error){
+if(r.error){
 
-$("codesList").innerHTML =
-
-`
-<div class="error notice">
-${escapeHtml(error.message)}
-</div>
-`;
-
-return;
+return $('codesList')
+.textContent =
+r.error.message;
 
 }
 
 
-$("codesList").innerHTML =
+$('codesList').innerHTML =
 
-`
-<table>
+'<table>'+
 
-<tr>
+'<tr>'+
 
-<th>Code</th>
-<th>Candidate</th>
-<th>Subject</th>
-<th>Status</th>
-<th>Action</th>
+'<th>Code</th>'+
 
-</tr>
+'<th>Candidate</th>'+
 
-`
+'<th>Subject</th>'+
 
-+
+'<th>Status</th>'+
 
-(data || [])
+'<th>Action</th>'+
+
+'</tr>'+
+
+(r.data||[])
 .map(
 x =>
-
-`
-
-<tr>
+`<tr>
 
 <td>
-<b>${escapeHtml(x.code)}</b>
+<b>${esc(x.code)}</b>
 </td>
 
 <td>
-${escapeHtml(x.candidate_name)}
+${esc(x.candidate_name)}
 </td>
 
 <td>
-${escapeHtml(x.subjects?.name)}
+${esc(x.subjects?.name)}
 </td>
 
 <td>
-${x.locked ? "LOCKED" : "ACTIVE"}
+${x.locked?'LOCKED':'ACTIVE'}
 </td>
 
 <td>
@@ -2910,227 +2650,167 @@ Delete
 
 </td>
 
-</tr>
-
-`
-
+</tr>`
 )
-.join("")
+.join('')+
 
-+
-
-`
-
-</table>
-`;
+'</table>';
 
 }
 
 
-/* =====================================================
-   RESET CODE
-===================================================== */
-
 async function resetCode(id){
 
-const {
-error
-} =
+let r =
 await db
-.from("access_codes")
+.from('access_codes')
 .update({
 
-locked:
-false,
+locked:false,
 
-failed_attempts:
-0,
+failed_attempts:0,
 
-used:
-false
+used:false
 
 })
 .eq(
-"id",
+'id',
 id
 );
 
 
-if(error){
+if(r.error){
 
-alert(
-error.message
-);
+alert(r.error.message);
 
-}
+}else{
 
-else{
-
-loadAdminCodes();
+loadCodes();
 
 }
 
 }
 
-
-/* =====================================================
-   DELETE CODE
-===================================================== */
 
 async function deleteCode(id){
 
 if(
 !confirm(
-"Delete this access code?"
+'Delete this access code?'
 )
 )
 return;
 
 
-const {
-error
-} =
+let r =
 await db
-.from("access_codes")
+.from('access_codes')
 .delete()
 .eq(
-"id",
+'id',
 id
 );
 
 
-if(error){
+if(r.error){
 
-alert(
-error.message
-);
+alert(r.error.message);
 
-}
+}else{
 
-else{
-
-loadAdminCodes();
+loadCodes();
 
 }
 
 }
 
 
-/* =====================================================
-   RESULTS
-===================================================== */
+async function loadResults(){
 
-async function loadAdminResults(){
-
-const {
-data,
-error
-} =
+let r =
 await db
-.from("exam_results")
+.from('exam_results')
 .select(
-"candidate_name,score,total_questions,percentage,passed,submitted_at,subjects(name)"
+'candidate_name,score,total_questions,percentage,passed,submitted_at,subjects(name)'
 )
 .order(
-"submitted_at",
-{
-ascending:false
-}
-);
+'submitted_at',
+{ascending:false}
+)
+.limit(500);
 
 
-if(error){
+if(r.error){
 
-$("resultsList").innerHTML =
-
-`
-<div class="error notice">
-${escapeHtml(error.message)}
-</div>
-`;
-
-return;
+return $('resultsList')
+.textContent =
+r.error.message;
 
 }
 
 
-$("resultsList").innerHTML =
+$('resultsList').innerHTML =
 
-`
-<table>
+'<table>'+
 
-<tr>
+'<tr>'+
 
-<th>Candidate</th>
-<th>Subject</th>
-<th>Score</th>
-<th>%</th>
-<th>Status</th>
-<th>Date</th>
+'<th>Candidate</th>'+
 
-</tr>
+'<th>Subject</th>'+
 
-`
+'<th>Score</th>'+
 
-+
+'<th>%</th>'+
 
-(data || [])
+'<th>Status</th>'+
+
+'<th>Date</th>'+
+
+'</tr>'+
+
+(r.data||[])
 .map(
-r =>
-
-`
-
-<tr>
+x =>
+`<tr>
 
 <td>
-${escapeHtml(r.candidate_name)}
+${esc(x.candidate_name)}
 </td>
 
 <td>
-${escapeHtml(r.subjects?.name)}
+${esc(x.subjects?.name)}
 </td>
 
 <td>
-${r.score}/${r.total_questions}
+${x.score}/${x.total_questions}
 </td>
 
 <td>
-${r.percentage}%
+${x.percentage}%
 </td>
 
 <td>
-${r.passed ? "PASS" : "NOT PASSED"}
+${x.passed?'PASS':'NOT PASSED'}
 </td>
 
 <td>
 ${new Date(
-r.submitted_at
+x.submitted_at
 ).toLocaleString()}
 </td>
 
-</tr>
-
-`
-
+</tr>`
 )
-.join("")
+.join('')+
 
-+
-
-`
-
-</table>
-`;
+'</table>';
 
 }
 
 
-/* =====================================================
-   INITIAL LOAD
-===================================================== */
-
 loadSubjects().catch(
-() => {}
+()=>{}
 );
 
 </script>
