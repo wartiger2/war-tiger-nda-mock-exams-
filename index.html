@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>WAR TIGERS COMPUTERS - NDA Mock Examination Portal</title>
 
@@ -12,242 +12,234 @@
 *{box-sizing:border-box}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f3f6f8;
-color:#17202a
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f3f6f8;
+    color:#17202a;
 }
 
 header{
-background:#123b25;
-color:#fff;
-padding:18px;
-text-align:center
+    background:#0b3d2e;
+    color:white;
+    padding:20px;
+    text-align:center;
 }
 
 header h1{
-margin:0;
-font-size:24px
+    margin:0;
+    font-size:25px;
+}
+
+header p{
+    margin:6px 0 0;
 }
 
 .wrap{
-max-width:1100px;
-margin:20px auto;
-padding:0 14px
+    max-width:1050px;
+    margin:20px auto;
+    padding:0 14px;
 }
 
 .card{
-background:#fff;
-border-radius:14px;
-padding:20px;
-margin-bottom:18px;
-box-shadow:0 4px 18px #0001
+    background:white;
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 4px 18px #0001;
 }
 
 .hidden{
-display:none!important
+    display:none!important;
 }
 
 input,select,textarea{
-width:100%;
-padding:12px;
-border:1px solid #ccd3d8;
-border-radius:8px;
-margin:7px 0 13px;
-font-size:15px
+    width:100%;
+    padding:13px;
+    border:1px solid #ccd3d8;
+    border-radius:8px;
+    margin:7px 0 13px;
+    font-size:15px;
 }
 
 textarea{
-min-height:120px
+    min-height:120px;
+    resize:vertical;
 }
 
 button{
-border:0;
-border-radius:8px;
-padding:12px 17px;
-background:#176b3a;
-color:#fff;
-font-weight:bold;
-cursor:pointer;
-margin:4px
+    border:0;
+    border-radius:8px;
+    padding:12px 17px;
+    background:#176b3a;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    margin:4px;
 }
 
 button.secondary{
-background:#52616b
+    background:#52616b;
 }
 
 button.danger{
-background:#a72828
+    background:#a72828;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-gap:12px
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:12px;
 }
 
 .subject{
-border:1px solid #d7dee3;
-border-radius:10px;
-padding:15px;
-background:#fafafa;
-cursor:pointer
+    border:1px solid #d7dee3;
+    border-radius:10px;
+    padding:16px;
+    background:#fafafa;
+    cursor:pointer;
 }
 
 .subject:hover{
-background:#eef8f1
+    background:#eef8f1;
 }
 
 .subject strong{
-display:block;
-margin-bottom:5px
+    display:block;
+    margin-bottom:6px;
 }
 
 .badge{
-display:inline-block;
-padding:4px 8px;
-border-radius:20px;
-background:#e8f4ec;
-color:#176b3a;
-font-size:12px
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:20px;
+    background:#e8f4ec;
+    color:#176b3a;
+    font-size:12px;
 }
 
 .small{
-font-size:13px;
-color:#5d6870
+    font-size:13px;
+    color:#5d6870;
 }
 
 .notice{
-padding:12px;
-border-radius:8px;
-background:#fff7d6;
-margin:10px 0
+    padding:12px;
+    border-radius:8px;
+    background:#fff7d6;
+    margin:10px 0;
 }
 
 .success{
-background:#e8f7ed;
-color:#176b3a
+    background:#e8f7ed;
+    color:#176b3a;
 }
 
 .error{
-background:#fdecec;
-color:#a72828
+    background:#fdecec;
+    color:#a72828;
 }
 
 .pass{
-color:#176b3a
+    color:#176b3a;
 }
 
 .fail{
-color:#b3261e
+    color:#b3261e;
 }
 
 .passage{
-background:#f7f7f2;
-border-left:4px solid #176b3a;
-padding:14px;
-border-radius:6px;
-margin-bottom:15px;
-white-space:pre-wrap
+    background:#f7f7f2;
+    border-left:4px solid #176b3a;
+    padding:14px;
+    border-radius:6px;
+    margin-bottom:15px;
+    white-space:pre-wrap;
 }
 
 .option{
-display:block;
-border:1px solid #d9dfe3;
-border-radius:9px;
-padding:13px;
-margin:9px 0;
-cursor:pointer
+    display:block;
+    border:1px solid #d9dfe3;
+    border-radius:9px;
+    padding:13px;
+    margin:9px 0;
+    cursor:pointer;
 }
 
 .option.selected{
-border-color:#176b3a;
-background:#eef8f1
+    border-color:#176b3a;
+    background:#eef8f1;
 }
 
 .option input{
-width:auto;
-margin:0 8px 0 0
+    width:auto;
+    margin:0 8px 0 0;
 }
 
 .top,.nav{
-display:flex;
-justify-content:space-between;
-gap:10px;
-align-items:center;
-flex-wrap:wrap
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
 }
 
 .timer{
-font-size:22px;
-font-weight:bold
+    font-size:22px;
+    font-weight:bold;
 }
 
 .progress{
-height:10px;
-background:#e4e8eb;
-border-radius:10px;
-overflow:hidden;
-margin:12px 0
+    height:10px;
+    background:#e4e8eb;
+    border-radius:10px;
+    overflow:hidden;
+    margin:12px 0;
 }
 
 .progress>div{
-height:100%;
-background:#176b3a;
-width:0
+    height:100%;
+    background:#176b3a;
+    width:0;
 }
 
 .adminnav{
-display:flex;
-flex-wrap:wrap;
-gap:5px;
-margin-bottom:15px
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-bottom:15px;
 }
 
 .section{
-border-top:1px solid #eee;
-padding-top:15px
+    border-top:1px solid #eee;
+    padding-top:15px;
 }
 
 .tablewrap{
-overflow:auto
+    overflow:auto;
 }
 
 table{
-width:100%;
-border-collapse:collapse;
-font-size:14px
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
 }
 
 th,td{
-border-bottom:1px solid #e4e7e9;
-padding:9px;
-text-align:left;
-vertical-align:top
+    border-bottom:1px solid #e4e7e9;
+    padding:9px;
+    text-align:left;
+    vertical-align:top;
 }
 
 footer{
-text-align:center;
-padding:25px;
-color:#667
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:10px
-}
-
-.stat{
-padding:14px;
-border:1px solid #ddd;
-border-radius:10px;
-text-align:center
-}
-
-.stat b{
-font-size:25px;
-display:block
+    text-align:center;
+    padding:25px;
+    color:#667;
 }
 </style>
 </head>
@@ -255,580 +247,425 @@ display:block
 <body>
 
 <header>
-<h1>WAR TIGERS COMPUTERS</h1>
-<p>Mock Examination Portal</p>
+    <h1>WAR TIGERS COMPUTERS</h1>
+    <p>Mock Examination Portal</p>
 </header>
 
 <div class="wrap">
 
 <!-- LOGIN -->
-
 <section id="login" class="card">
+    <h2>Candidate Login</h2>
 
-<h2>Candidate Login</h2>
+    <label>Candidate Name</label>
 
-<label>Candidate Name</label>
+    <input
+        id="candidate"
+        type="text"
+        placeholder="Enter candidate name"
+    >
 
-<input
-id="candidate"
-placeholder="Enter candidate name"
->
+    <button onclick="continueCandidate()">
+        CONTINUE
+    </button>
 
-<button onclick="continueCandidate()">
-CONTINUE
-</button>
+    <button
+        class="secondary"
+        onclick="show('adminLogin')"
+    >
+        ADMIN PANEL
+    </button>
 
-<button
-class="secondary"
-onclick="show('adminLogin')"
->
-Admin Panel
-</button>
-
-<div id="loginMsg"></div>
-
+    <div id="loginMsg"></div>
 </section>
 
 
 <!-- SUBJECTS -->
-
 <section id="subjects" class="card hidden">
 
-<h2>Select Subject</h2>
+    <h2>Select Subject</h2>
 
-<div id="subjectGrid" class="grid"></div>
+    <p class="small">
+        Candidate: <b id="subjectCandidate"></b>
+    </p>
 
-<button
-class="secondary"
-onclick="show('login')"
->
-Back
-</button>
+    <div id="subjectGrid" class="grid"></div>
+
+    <div id="subjectMsg"></div>
+
+    <button
+        class="secondary"
+        onclick="show('login')"
+    >
+        BACK
+    </button>
 
 </section>
 
 
 <!-- ACCESS CODE -->
-
 <section id="code" class="card hidden">
 
-<h2 id="codeTitle">
-Enter Access Code
-</h2>
+    <h2 id="codeTitle">
+        Enter Access Code
+    </h2>
 
-<p
-id="codeCandidate"
-class="small"
-></p>
+    <p id="codeCandidate" class="small"></p>
 
-<input
-id="accessCode"
-placeholder="Example: WT-GKTEST01"
->
+    <input
+        id="accessCode"
+        type="text"
+        placeholder="Enter access code"
+        autocomplete="off"
+    >
 
-<button onclick="verifyCode()">
-START EXAM
-</button>
+    <button onclick="verifyCode()">
+        START EXAM
+    </button>
 
-<button
-class="secondary"
-onclick="show('subjects')"
->
-Back
-</button>
+    <button
+        class="secondary"
+        onclick="show('subjects')"
+    >
+        BACK
+    </button>
 
-<div id="codeMsg"></div>
+    <div id="codeMsg"></div>
 
 </section>
 
 
 <!-- EXAM -->
-
 <section id="exam" class="card hidden">
 
-<div class="top">
+    <div class="top">
 
-<div>
+        <div>
+            <b id="examSubject"></b>
+            <div id="examYear" class="small"></div>
+        </div>
 
-<b id="examSubject"></b>
+        <div class="timer">
+            ⏱ <span id="timer">30:00</span>
+        </div>
 
-<div
-id="examYear"
-class="small"
-></div>
+    </div>
 
-</div>
+    <div class="progress">
+        <div id="bar"></div>
+    </div>
 
-<div class="timer">
-⏱ <span id="timer">30:00</span>
-</div>
+    <div id="questionArea"></div>
 
-</div>
+    <div class="nav">
 
-<div class="progress">
-<div id="bar"></div>
-</div>
+        <button
+            id="prev"
+            class="secondary"
+            onclick="prevQ()"
+        >
+            PREVIOUS
+        </button>
 
-<div id="questionArea"></div>
+        <button
+            id="next"
+            onclick="nextQ()"
+        >
+            NEXT
+        </button>
 
-<div class="nav">
+    </div>
 
-<button
-id="prev"
-class="secondary"
-onclick="prevQ()"
->
-PREVIOUS
-</button>
-
-<button
-id="next"
-onclick="nextQ()"
->
-NEXT
-</button>
-
-</div>
-
-<button
-id="submit"
-class="danger hidden"
-onclick="submitExam()"
->
-SUBMIT EXAM
-</button>
+    <button
+        id="submit"
+        class="danger hidden"
+        onclick="submitExam()"
+    >
+        SUBMIT EXAM
+    </button>
 
 </section>
 
 
 <!-- RESULT -->
+<section id="result" class="card hidden">
 
-<section
-id="result"
-class="card hidden"
-style="text-align:center"
->
+    <div id="resultInner">
 
-<h2>Examination Result</h2>
+        <h2>Examination Result</h2>
 
-<p id="rCandidate"></p>
+        <p id="rCandidate"></p>
 
-<p id="rSubject"></p>
+        <p id="rSubject"></p>
 
-<div
-id="score"
-style="font-size:45px;font-weight:bold"
-></div>
+        <div
+            id="score"
+            style="font-size:45px;font-weight:bold"
+        ></div>
 
-<p id="details"></p>
+        <p id="details"></p>
 
-<div id="status"></div>
+        <div id="status"></div>
 
-<button onclick="resetApp()">
-BACK TO HOME
-</button>
+        <button onclick="show('login')">
+            BACK TO HOME
+        </button>
+
+    </div>
 
 </section>
 
 
 <!-- ADMIN LOGIN -->
+<section id="adminLogin" class="card hidden">
 
-<section
-id="adminLogin"
-class="card hidden"
->
+    <h2>Admin Login</h2>
 
-<h2>Admin Login</h2>
+    <input
+        id="adminPass"
+        type="password"
+        placeholder="Admin password"
+    >
 
-<input
-id="adminPass"
-type="password"
-placeholder="Admin password"
->
+    <button onclick="adminLogin()">
+        LOGIN
+    </button>
 
-<button onclick="adminLogin()">
-LOGIN
-</button>
+    <button
+        class="secondary"
+        onclick="show('login')"
+    >
+        BACK
+    </button>
 
-<button
-class="secondary"
-onclick="show('login')"
->
-Back
-</button>
-
-<div id="adminLoginMsg"></div>
+    <div id="adminLoginMsg"></div>
 
 </section>
 
 
 <!-- ADMIN PANEL -->
+<section id="admin" class="card hidden">
 
-<section
-id="admin"
-class="card hidden"
->
+    <div class="top">
 
-<div class="top">
+        <div>
+            <h2>Admin Panel</h2>
+            <div class="small">
+                War Tigers Computers
+            </div>
+        </div>
 
-<div>
+        <button
+            class="secondary"
+            onclick="show('login')"
+        >
+            LOGOUT
+        </button>
 
-<h2>Admin Panel</h2>
+    </div>
 
-<div class="small">
-War Tigers Computers
-</div>
 
-</div>
+    <div class="adminnav">
 
-<button
-class="secondary"
-onclick="show('login')"
->
-Logout
-</button>
+        <button onclick="tab('bulk')">
+            📥 Bulk Import
+        </button>
 
-</div>
+        <button onclick="tab('single')">
+            ➕ Add Question
+        </button>
 
+        <button onclick="tab('questions')">
+            📚 Questions
+        </button>
 
-<div class="adminnav">
+        <button onclick="tab('codes')">
+            🔑 Access Codes
+        </button>
 
-<button onclick="tab('bulk')">
-📥 Bulk Import
-</button>
+        <button onclick="tab('results')">
+            📊 Results
+        </button>
 
-<button onclick="tab('single')">
-➕ Add Question
-</button>
+    </div>
 
-<button onclick="tab('questions')">
-📚 Questions
-</button>
 
-<button onclick="tab('codes')">
-🔑 Access Codes
-</button>
+    <!-- BULK -->
+    <div id="bulk" class="section">
 
-<button onclick="tab('results')">
-📊 Results
-</button>
+        <h3>Bulk Question Import</h3>
 
-</div>
+        <p class="small">
+            Paste questions you are authorized to use.
+        </p>
 
+        <div class="notice">
 
-<!-- BULK IMPORT -->
+            <b>Format</b><br><br>
 
-<div
-id="bulk"
-class="section"
->
+            SUBJECT: English Language<br>
+            YEAR: 2014<br>
+            QUESTION:<br>
+            Your question<br>
+            A:<br>
+            Option A<br>
+            B:<br>
+            Option B<br>
+            C:<br>
+            Option C<br>
+            D:<br>
+            Option D<br>
+            ANSWER: B<br>
+            PASSAGE:<br>
+            Optional passage<br>
+            END
 
-<h3>Bulk Question Import</h3>
+        </div>
 
-<p class="small">
 
-Paste only question material you are authorized to use.
+        <textarea
+            id="bulkText"
+            style="min-height:330px"
+            placeholder="Paste your authorized questions here..."
+        ></textarea>
 
-Subject and year may be written once and will carry forward to later blocks.
 
-</p>
+        <button onclick="previewBulk()">
+            PREVIEW
+        </button>
 
-<div class="notice">
+        <button onclick="importBulk()">
+            IMPORT TO SUPABASE
+        </button>
 
-<b>Format</b>
+        <div id="bulkMsg"></div>
 
-<br>
+        <div id="bulkPreview"></div>
 
-SUBJECT: English Language
+    </div>
 
-<br>
 
-YEAR: 2014
+    <!-- SINGLE QUESTION -->
+    <div id="single" class="section hidden">
 
-<br>
+        <h3>Add One Question</h3>
 
-QUESTION:
+        <label>Subject</label>
+        <select id="qSubject"></select>
 
-<br>
+        <label>Year</label>
+        <input
+            id="qYear"
+            type="number"
+            value="2026"
+        >
 
-Your authorized question
+        <label>Question</label>
+        <textarea id="qText"></textarea>
 
-<br>
+        <label>Option A</label>
+        <input id="qA">
 
-A:
+        <label>Option B</label>
+        <input id="qB">
 
-<br>
+        <label>Option C</label>
+        <input id="qC">
 
-Option A
+        <label>Option D</label>
+        <input id="qD">
 
-<br>
+        <label>Correct Answer</label>
 
-B:
+        <select id="qAnswer">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+        </select>
 
-<br>
+        <label>Passage (optional)</label>
+        <textarea id="qPassage"></textarea>
 
-Option B
+        <button onclick="addQuestion()">
+            SAVE QUESTION
+        </button>
 
-<br>
+        <div id="singleMsg"></div>
 
-C:
+    </div>
 
-<br>
 
-Option C
+    <!-- QUESTIONS -->
+    <div id="questions" class="section hidden">
 
-<br>
+        <h3>Question Bank</h3>
 
-D:
+        <button onclick="loadQuestions()">
+            REFRESH
+        </button>
 
-<br>
+        <div id="questionsList" class="tablewrap"></div>
 
-Option D
+    </div>
 
-<br>
 
-ANSWER: B
+    <!-- CODES -->
+    <div id="codes" class="section hidden">
 
-<br>
+        <h3>Create Access Code</h3>
 
-PASSAGE:
+        <label>Candidate Name</label>
+        <input id="codeName">
 
-<br>
+        <label>Subject</label>
+        <select id="codeSubject"></select>
 
-Optional passage
+        <label>Code</label>
 
-<br>
+        <input
+            id="newCode"
+            placeholder="Example: WT-ENG001"
+        >
 
-END
+        <button onclick="createCode()">
+            CREATE CODE
+        </button>
 
-</div>
+        <button
+            class="secondary"
+            onclick="generateCode()"
+        >
+            GENERATE CODE
+        </button>
 
+        <div id="codeAdminMsg"></div>
 
-<textarea
-id="bulkText"
-style="min-height:330px"
-></textarea>
+        <hr>
 
+        <h3>Access Codes</h3>
 
-<button onclick="previewBulk()">
-PREVIEW
-</button>
+        <button onclick="loadCodes()">
+            REFRESH
+        </button>
 
+        <div id="codesList" class="tablewrap"></div>
 
-<button onclick="importBulk()">
-IMPORT TO SUPABASE
-</button>
+    </div>
 
 
-<div id="bulkMsg"></div>
+    <!-- RESULTS -->
+    <div id="results" class="section hidden">
 
-<div id="bulkPreview"></div>
+        <h3>Exam Results</h3>
 
-</div>
+        <button onclick="loadResults()">
+            REFRESH
+        </button>
 
+        <div id="resultsList" class="tablewrap"></div>
 
-<!-- SINGLE QUESTION -->
-
-<div
-id="single"
-class="section hidden"
->
-
-<h3>Add One Question</h3>
-
-
-<label>Subject</label>
-
-<select id="qSubject"></select>
-
-
-<label>Year</label>
-
-<input
-id="qYear"
-type="number"
-value="2026"
->
-
-
-<label>Question</label>
-
-<textarea id="qText"></textarea>
-
-
-<label>Option A</label>
-
-<input id="qA">
-
-
-<label>Option B</label>
-
-<input id="qB">
-
-
-<label>Option C</label>
-
-<input id="qC">
-
-
-<label>Option D</label>
-
-<input id="qD">
-
-
-<label>Correct Answer</label>
-
-<select id="qAnswer">
-
-<option>A</option>
-<option>B</option>
-<option>C</option>
-<option>D</option>
-
-</select>
-
-
-<label>Passage (optional)</label>
-
-<textarea id="qPassage"></textarea>
-
-
-<button onclick="addQuestion()">
-SAVE QUESTION
-</button>
-
-
-<div id="singleMsg"></div>
-
-</div>
-
-
-<!-- QUESTIONS -->
-
-<div
-id="questions"
-class="section hidden"
->
-
-<h3>Question Bank</h3>
-
-
-<div class="grid">
-
-<select
-id="filterSubject"
-onchange="loadQuestions()"
->
-
-<option value="">
-All subjects
-</option>
-
-</select>
-
-
-<input
-id="filterYear"
-placeholder="Year e.g. 2014"
-oninput="loadQuestions()"
->
-
-</div>
-
-
-<button onclick="loadQuestions()">
-Refresh
-</button>
-
-
-<div
-id="questionsList"
-class="tablewrap"
-></div>
-
-</div>
-
-
-<!-- ACCESS CODES -->
-
-<div
-id="codes"
-class="section hidden"
->
-
-<h3>Create Access Code</h3>
-
-
-<label>Candidate Name</label>
-
-<input id="codeName">
-
-
-<label>Subject</label>
-
-<select id="codeSubject"></select>
-
-
-<label>Code</label>
-
-<input id="newCode">
-
-
-<button onclick="createCode()">
-CREATE CODE
-</button>
-
-
-<button
-class="secondary"
-onclick="generateCode()"
->
-GENERATE CODE
-</button>
-
-
-<div id="codeAdminMsg"></div>
-
-
-<hr>
-
-
-<h3>Access Codes</h3>
-
-<button onclick="loadCodes()">
-Refresh
-</button>
-
-
-<div
-id="codesList"
-class="tablewrap"
-></div>
-
-</div>
-
-
-<!-- RESULTS -->
-
-<div
-id="results"
-class="section hidden"
->
-
-<h3>Exam Results</h3>
-
-<button onclick="loadResults()">
-Refresh
-</button>
-
-
-<div
-id="resultsList"
-class="tablewrap"
-></div>
-
-</div>
-
+    </div>
 
 </section>
 
@@ -836,1984 +673,589 @@ class="tablewrap"
 
 
 <footer>
-© 2026 War Tigers Computers
+    © 2026 War Tigers Computers
 </footer>
 
 
 <script>
 
-const URL =
+/* ================================
+   SUPABASE
+================================ */
+
+const SUPABASE_URL =
 'https://dmscnymhwnqdabvxuuce.supabase.co';
 
-const KEY =
+const SUPABASE_KEY =
 'sb_publishable_YLAhxNO3szVourvaQQ4jgw_KRQ9f0qc';
 
+let db = null;
 
-const db =
-supabase.createClient(URL,KEY);
+try {
 
+    if(window.supabase){
 
-const ADMIN =
-'WTADMIN2026';
+        db = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
 
+    }
 
-const PASS =
-50;
+} catch(error){
 
+    console.error(error);
 
-const EXAM_QUESTION_COUNT =
-40;
-
-
-let subjects=[];
-
-let subject=null;
-
-let candidate='';
-
-let questions=[];
-
-let answers={};
-
-let index=0;
-
-let seconds=1800;
-
-let timer=null;
-
-let currentCode=null;
+}
 
 
-const $ =
-id => document.getElementById(id);
+/* ================================
+   SETTINGS
+================================ */
+
+const ADMIN_PASSWORD = 'WTADMIN2026';
+
+const PASS_MARK = 50;
+
+const MAX_QUESTIONS = 40;
 
 
-const esc =
-v =>
-String(v??'').replace(
-/[&<>"']/g,
-m =>
-({
-'&':'&amp;',
-'<':'&lt;',
-'>':'&gt;',
-'"':'&quot;',
-"'":'&#039;'
-}[m])
-);
+/* ================================
+   VARIABLES
+================================ */
 
+let subjects = [];
+
+let subject = null;
+
+let candidate = '';
+
+let questions = [];
+
+let answers = {};
+
+let index = 0;
+
+let seconds = 1800;
+
+let timer = null;
+
+
+/* ================================
+   FALLBACK SUBJECTS
+   These allow CONTINUE to work
+   even if Supabase temporarily fails.
+================================ */
+
+const DEFAULT_SUBJECTS = [
+
+{
+    id:'english-local',
+    name:'English Language',
+    code:'ENG2026',
+    duration_minutes:30
+},
+
+{
+    id:'math-local',
+    name:'Mathematics',
+    code:'MATH2026',
+    duration_minutes:30
+},
+
+{
+    id:'government-local',
+    name:'Government',
+    code:'GOV2026',
+    duration_minutes:30
+},
+
+{
+    id:'gk-local',
+    name:'General Knowledge',
+    code:'GK2026',
+    duration_minutes:30
+},
+
+{
+    id:'ca-local',
+    name:'Current Affairs',
+    code:'CA2026',
+    duration_minutes:30
+},
+
+{
+    id:'biology-local',
+    name:'Biology',
+    code:'BIO2026',
+    duration_minutes:30
+},
+
+{
+    id:'chemistry-local',
+    name:'Chemistry',
+    code:'CHEM2026',
+    duration_minutes:30
+},
+
+{
+    id:'physics-local',
+    name:'Physics',
+    code:'PHY2026',
+    duration_minutes:30
+},
+
+{
+    id:'economics-local',
+    name:'Economics',
+    code:'ECO2026',
+    duration_minutes:30
+},
+
+{
+    id:'geography-local',
+    name:'Geography',
+    code:'GEO2026',
+    duration_minutes:30
+},
+
+{
+    id:'history-local',
+    name:'History',
+    code:'HIST2026',
+    duration_minutes:30
+}
+
+];
+
+
+/* ================================
+   HELPER
+================================ */
+
+function $(id){
+
+    return document.getElementById(id);
+
+}
+
+
+/* ================================
+   SHOW SCREEN
+================================ */
 
 function show(id){
 
-[
-'login',
-'subjects',
-'code',
-'exam',
-'result',
-'adminLogin',
-'admin'
-].forEach(
-x => $(x).classList.add('hidden')
-);
+    const screens = [
+        'login',
+        'subjects',
+        'code',
+        'exam',
+        'result',
+        'adminLogin',
+        'admin'
+    ];
 
-$(id).classList.remove('hidden');
+    screens.forEach(screen => {
 
-scrollTo(0,0);
+        const element = $(screen);
+
+        if(element){
+
+            element.classList.add('hidden');
+
+        }
+
+    });
+
+
+    const target = $(id);
+
+    if(target){
+
+        target.classList.remove('hidden');
+
+    }
+
+    window.scrollTo(0,0);
 
 }
 
 
-function msg(id,t,c='notice'){
+/* ================================
+   MESSAGE
+================================ */
 
-$(id).innerHTML =
-t
-?
-`<div class="${c} notice">${esc(t)}</div>`
-:'';
+function msg(id,text,type='notice'){
+
+    const element = $(id);
+
+    if(!element) return;
+
+    element.innerHTML = text
+        ? `<div class="${type} notice">${escapeHTML(text)}</div>`
+        : '';
 
 }
 
+
+/* ================================
+   ESCAPE HTML
+================================ */
+
+function escapeHTML(value){
+
+    return String(value ?? '')
+        .replace(/[&<>"']/g,function(match){
+
+            return {
+                '&':'&amp;',
+                '<':'&lt;',
+                '>':'&gt;',
+                '"':'&quot;',
+                "'":'&#039;'
+            }[match];
+
+        });
+
+}
+
+
+/* ================================
+   CONTINUE
+================================ */
 
 async function continueCandidate(){
 
-candidate =
-$('candidate').value.trim();
+    candidate = $('candidate').value.trim();
 
-if(!candidate){
+    if(!candidate){
 
-return msg(
-'loginMsg',
-'Please enter the candidate name.',
-'error'
-);
+        msg(
+            'loginMsg',
+            'Please enter the candidate name.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    /*
+       IMPORTANT:
+       Move forward immediately.
+       Do NOT wait for Supabase.
+    */
+
+    $('subjectCandidate').textContent = candidate;
+
+    subjects = DEFAULT_SUBJECTS;
+
+    renderSubjects();
+
+    show('subjects');
+
+
+    /*
+       Load real subjects from Supabase
+       in the background.
+    */
+
+    await loadSubjects();
 
 }
 
-await loadSubjects();
 
-show('subjects');
-
-}
-
+/* ================================
+   LOAD SUBJECTS
+================================ */
 
 async function loadSubjects(){
 
-let r =
-await db
-.from('subjects')
-.select('*')
-.order('name');
+    if(!db){
+
+        msg(
+            'subjectMsg',
+            'Supabase connection is not available. The subject list shown is the local backup.',
+            'error'
+        );
+
+        return;
+
+    }
 
 
-if(r.error){
+    try{
 
-return msg(
-'loginMsg',
-r.error.message,
-'error'
-);
+        const result = await db
+            .from('subjects')
+            .select('*')
+            .order('name');
+
+
+        if(result.error){
+
+            console.error(result.error);
+
+            msg(
+                'subjectMsg',
+                'Could not connect to the Supabase subjects table. Please check your Supabase settings.',
+                'error'
+            );
+
+            return;
+
+        }
+
+
+        if(result.data && result.data.length){
+
+            subjects = result.data;
+
+            renderSubjects();
+
+            fillSelects();
+
+            msg(
+                'subjectMsg',
+                'Subjects loaded successfully.',
+                'success'
+            );
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        msg(
+            'subjectMsg',
+            'Unable to connect to the database. Please check your internet connection.',
+            'error'
+        );
+
+    }
+
+}
+
+
+/* ================================
+   DISPLAY SUBJECTS
+================================ */
+
+function renderSubjects(){
+
+    $('subjectGrid').innerHTML =
+        subjects.map(function(s){
+
+            return `
+
+            <div
+                class="subject"
+                onclick="chooseSubject('${escapeHTML(s.id)}')"
+            >
+
+                <strong>
+                    ${escapeHTML(s.name)}
+                </strong>
+
+                <span class="badge">
+                    ${escapeHTML(s.code)}
+                </span>
+
+                <div class="small">
+                    ${s.duration_minutes || 30} minutes
+                </div>
+
+            </div>
+
+            `;
+
+        }).join('');
 
 }
 
 
-subjects =
-r.data || [];
+/* ================================
+   CHOOSE SUBJECT
+================================ */
+
+function chooseSubject(id){
+
+    subject = subjects.find(function(s){
+
+        return s.id === id;
+
+    });
 
 
-$('subjectGrid').innerHTML =
-subjects.map(
-s =>
-`<div
-class="subject"
-onclick="choose('${s.id}')"
->
+    if(!subject){
 
-<strong>
-${esc(s.name)}
-</strong>
+        msg(
+            'subjectMsg',
+            'Unable to select this subject.',
+            'error'
+        );
 
-<span class="badge">
-${esc(s.code)}
-</span>
+        return;
 
-<div class="small">
-${s.duration_minutes||30} minutes
-</div>
-
-</div>`
-).join('');
+    }
 
 
-fillSelects();
+    $('codeTitle').textContent =
+        subject.name + ' - Access Code';
 
-}
+    $('codeCandidate').textContent =
+        'Candidate: ' + candidate;
 
+    $('accessCode').value = '';
 
-function choose(id){
+    msg('codeMsg','');
 
-subject =
-subjects.find(
-s => s.id===id
-);
+    show('code');
 
+    setTimeout(function(){
 
-$('codeTitle').textContent =
-subject.name +
-' - Access Code';
+        $('accessCode').focus();
 
-
-$('codeCandidate').textContent =
-'Candidate: ' +
-candidate;
-
-
-$('accessCode').value='';
-
-
-msg('codeMsg','');
-
-
-show('code');
-
-
-setTimeout(
-()=>$('accessCode').focus(),
-100
-);
+    },100);
 
 }
 
+
+/* ================================
+   VERIFY ACCESS CODE
+================================ */
 
 async function verifyCode(){
 
-let code =
-$('accessCode')
-.value
-.trim()
-.toUpperCase();
+    const code =
+        $('accessCode').value.trim().toUpperCase();
 
 
-if(!code){
+    if(!code){
 
-return msg(
-'codeMsg',
-'Enter your access code.',
-'error'
-);
+        msg(
+            'codeMsg',
+            'Enter your access code.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    if(!db){
+
+        msg(
+            'codeMsg',
+            'Database connection is unavailable. Please check your internet connection.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const result = await db
+            .from('access_codes')
+            .select('*')
+            .eq('code',code)
+            .eq('subject_id',subject.id)
+            .limit(1);
+
+
+        if(result.error){
+
+            console.error(result.error);
+
+            msg(
+                'codeMsg',
+                result.error.message,
+                'error'
+            );
+
+            return;
+
+        }
+
+
+        if(!result.data || !result.data.length){
+
+            msg(
+                'codeMsg',
+                'Invalid access code for this subject.',
+                'error'
+            );
+
+            return;
+
+        }
+
+
+        const access = result.data[0];
+
+
+        if(access.locked){
+
+            msg(
+                'codeMsg',
+                'This access code is locked. Contact the administrator.',
+                'error'
+            );
+
+            return;
+
+        }
+
+
+        if(
+            access.expires_at &&
+            new Date(access.expires_at) < new Date()
+        ){
+
+            msg(
+                'codeMsg',
+                'This access code has expired.',
+                'error'
+            );
+
+            return;
+
+        }
+
+
+        startExam();
+
+    }catch(error){
+
+        console.error(error);
+
+        msg(
+            'codeMsg',
+            'Unable to verify the access code. Please try again.',
+            'error'
+        );
+
+    }
 
 }
 
 
-let r =
-await db
-.from('access_codes')
-.select('*')
-.eq('code',code)
-.eq('subject_id',subject.id)
-.limit(1);
-
-
-if(r.error){
-
-return msg(
-'codeMsg',
-r.error.message,
-'error'
-);
-
-}
-
-
-if(!r.data?.length){
-
-return msg(
-'codeMsg',
-'Invalid access code for this subject.',
-'error'
-);
-
-}
-
-
-let row =
-r.data[0];
-
-
-if(row.locked){
-
-return msg(
-'codeMsg',
-'This access code is locked. Contact the administrator.',
-'error'
-);
-
-}
-
-
-if(
-row.expires_at &&
-new Date(row.expires_at)<new Date()
-){
-
-return msg(
-'codeMsg',
-'This access code has expired.',
-'error'
-);
-
-}
-
-
-currentCode =
-row;
-
-
-startExam();
-
-}
-
+/* ================================
+   START EXAM
+================================ */
 
 async function startExam(){
 
-let r =
-await db
-.from('questions')
-.select('*')
-.eq('subject_id',subject.id)
-.order(
-'question_year',
-{ascending:true}
-)
-.order(
-'created_at',
-{ascending:true}
-);
-
-
-if(r.error){
-
-return msg(
-'codeMsg',
-r.error.message,
-'error'
-);
-
-}
-
-
-if(!r.data?.length){
-
-return msg(
-'codeMsg',
-'No questions have been added for this subject yet.',
-'error'
-);
-
-}
-
-
-let allQuestions =
-r.data;
-
-
-if(
-allQuestions.length >
-EXAM_QUESTION_COUNT
-){
-
-questions =
-[...allQuestions]
-.sort(
-()=>Math.random()-0.5
-)
-.slice(
-0,
-EXAM_QUESTION_COUNT
-);
-
-}else{
-
-questions =
-[...allQuestions]
-.sort(
-()=>Math.random()-0.5
-);
-
-}
-
-
-answers={};
-
-index=0;
-
-seconds =
-(subject.duration_minutes||30)*60;
-
-
-$('examSubject').textContent =
-subject.name;
-
-
-show('exam');
-
-render();
-
-clearInterval(timer);
-
-
-timer =
-setInterval(
-()=>{
-seconds--;
-
-clock();
-
-if(seconds<=0){
-
-clearInterval(timer);
-
-alert(
-'Time is up. Your exam will be submitted automatically.'
-);
-
-submitExam();
-
-}
-
-},
-1000
-);
-
-
-clock();
-
-}
-
-
-function clock(){
-
-$('timer').textContent =
-String(
-Math.floor(seconds/60)
-).padStart(2,'0')
-+
-':'
-+
-String(
-seconds%60
-).padStart(2,'0');
-
-}
-
-
-function render(){
-
-let q =
-questions[index];
-
-
-$('examYear').textContent =
-q.question_year
-?
-'Past Question • '+
-q.question_year
-:
-'Mock Question';
-
-
-$('bar').style.width =
-(
-(index+1)/
-questions.length*
-100
-)+'%';
-
-
-let h =
-`<h3>
-Question ${index+1}
-of ${questions.length}
-</h3>`;
-
-
-if(q.passage){
-
-h +=
-`<div class="passage">
-
-<b>Passage</b>
-
-<br>
-
-${esc(q.passage)}
-
-</div>`;
-
-}
-
-
-h +=
-`<p>
-<b>
-${esc(q.question_text)}
-</b>
-</p>`;
-
-
-[
-'A',
-'B',
-'C',
-'D'
-].forEach(
-l => {
-
-let v =
-q[
-'option_'+
-l.toLowerCase()
-];
-
-
-h +=
-`<label
-class="option ${
-answers[q.id]===l
-?'selected'
-:''
-}"
->
-
-<input
-type="radio"
-name="answer"
-${
-answers[q.id]===l
-?'checked'
-:''
-}
-onchange="answer('${q.id}','${l}')"
->
-
-<b>${l}.</b>
-
-${esc(v)}
-
-</label>`;
-
-});
-
-
-$('questionArea').innerHTML =
-h;
-
-
-$('prev').disabled =
-index===0;
-
-
-$('next')
-.classList
-.toggle(
-'hidden',
-index===questions.length-1
-);
-
-
-$('submit')
-.classList
-.toggle(
-'hidden',
-index!==questions.length-1
-);
-
-}
-
-
-function answer(id,l){
-
-answers[id]=l;
-
-render();
-
-}
-
-
-function prevQ(){
-
-if(index){
-
-index--;
-
-render();
-
-}
-
-}
-
-
-function nextQ(){
-
-if(
-index <
-questions.length-1
-){
-
-index++;
-
-render();
-
-}
-
-}
-
-
-async function submitExam(){
-
-if(!questions.length)
-return;
-
-
-clearInterval(timer);
-
-
-let score =
-questions.reduce(
-(n,q)=>
-n+
-(
-answers[q.id]===
-q.correct_answer
-?1
-:0
-),
-0
-);
-
-
-let pct =
-Math.round(
-score/
-questions.length*
-100
-);
-
-
-let passed =
-pct>=PASS;
-
-
-let r =
-await db
-.from('exam_results')
-.insert({
-
-candidate_name:
-candidate,
-
-subject_id:
-subject.id,
-
-score:
-
-score,
-
-total_questions:
-questions.length,
-
-percentage:
-pct,
-
-passed:
-passed
-
-});
-
-
-if(r.error){
-
-return alert(
-'Result could not be saved: '+
-r.error.message
-);
-
-}
-
-
-$('rCandidate')
-.textContent =
-'Candidate: '+
-candidate;
-
-
-$('rSubject')
-.textContent =
-'Subject: '+
-subject.name;
-
-
-$('score')
-.textContent =
-`${score} / ${questions.length}`;
-
-
-$('details')
-.textContent =
-pct+'%';
-
-
-$('status').innerHTML =
-passed
-?
-'<h2 class="pass">PASS</h2><p>Congratulations. You met the 50% pass mark.</p>'
-:
-'<h2 class="fail">NOT PASSED</h2><p>The pass mark is 50%.</p>';
-
-
-show('result');
-
-}
-
-
-function resetApp(){
-
-candidate='';
-
-subject=null;
-
-questions=[];
-
-answers={};
-
-currentCode=null;
-
-show('login');
-
-}
-
-
-function adminLogin(){
-
-if(
-$('adminPass').value===
-ADMIN
-){
-
-$('adminPass').value='';
-
-show('admin');
-
-tab('bulk');
-
-}else{
-
-msg(
-'adminLoginMsg',
-'Incorrect admin password.',
-'error'
-);
-
-}
-
-}
-
-
-function tab(t){
-
-[
-'bulk',
-'single',
-'questions',
-'codes',
-'results'
-].forEach(
-x =>
-$(x).classList.add('hidden')
-);
-
-
-$(t).classList.remove('hidden');
-
-
-if(
-t==='single'||
-t==='codes'||
-t==='questions'
-){
-
-fillSelects();
-
-}
-
-
-if(t==='questions')
-loadQuestions();
-
-
-if(t==='codes')
-loadCodes();
-
-
-if(t==='results')
-loadResults();
-
-}
-
-
-function fillSelects(){
-
-let o =
-subjects.map(
-s =>
-`<option value="${s.id}">
-${esc(s.name)}
-</option>`
-).join('');
-
-
-if($('qSubject'))
-$('qSubject').innerHTML=o;
-
-
-if($('codeSubject'))
-$('codeSubject').innerHTML=o;
-
-
-if($('filterSubject'))
-$('filterSubject').innerHTML =
-'<option value="">All subjects</option>'+
-o;
-
-}
-
-
-function parseBulk(text){
-
-let lastSubject='';
-
-let lastYear='';
-
-
-return text
-.split(
-/\n\s*END\s*(?:\n|$)/i
-)
-.map(
-b=>b.trim()
-)
-.filter(Boolean)
-.map(
-b=>{
-
-let lines =
-b.split(/\r?\n/);
-
-
-let inline =
-l=>{
-
-let m =
-lines.find(
-x =>
-new RegExp(
-'^'+
-l+
-':\\s*',
-'i'
-).test(
-x.trim()
-)
-);
-
-return m
-?
-m.replace(
-new RegExp(
-'^'+
-l+
-':\\s*',
-'i'
-),
-''
-).trim()
-:'';
-
-};
-
-
-let block =
-l=>{
-
-let i =
-lines.findIndex(
-x =>
-x.trim()
-.toUpperCase()===
-l+':'
-);
-
-
-if(i<0)
-return '';
-
-
-let a=[];
-
-
-for(
-let j=i+1;
-j<lines.length;
-j++
-){
-
-if(
-/^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):\s*$/i
-.test(lines[j].trim())
-||
-/^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):\s*\S/i
-.test(lines[j].trim())
-)
-break;
-
-
-a.push(lines[j]);
-
-}
-
-
-return a.join('\n').trim();
-
-};
-
-
-let s =
-inline('SUBJECT') ||
-lastSubject;
-
-
-let y =
-inline('YEAR') ||
-lastYear;
-
-
-if(s)
-lastSubject=s;
-
-
-if(y)
-lastYear=y;
-
-
-return{
-
-subject:s,
-
-year:y,
-
-question:
-block('QUESTION')||
-inline('QUESTION'),
-
-a:block('A'),
-
-b:block('B'),
-
-c:block('C'),
-
-d:block('D'),
-
-answer:
-inline('ANSWER')
-.toUpperCase(),
-
-passage:
-block('PASSAGE')
-
-};
-
-});
-
-}
-
-
-function fingerprint(x){
-
-return [
-
-x.subject_id,
-
-x.question_text,
-
-x.option_a,
-
-x.option_b,
-
-x.option_c,
-
-x.option_d
-
-]
-.map(
-v =>
-String(v||'')
-.toLowerCase()
-.replace(/\s+/g,' ')
-.trim()
-)
-.join('|');
-
-}
-
-
-async function previewBulk(){
-
-let a =
-parseBulk(
-$('bulkText').value
-);
-
-
-if(!a.length){
-
-return msg(
-'bulkMsg',
-'No question blocks found.',
-'error'
-);
-
-}
-
-
-$('bulkPreview').innerHTML =
-
-`<p>
-<b>
-${a.length}
-question(s) detected.
-</b>
-</p>
-
-<div class="tablewrap">
-
-<table>
-
-<tr>
-<th>#</th>
-<th>Subject</th>
-<th>Year</th>
-<th>Question</th>
-<th>Answer</th>
-</tr>
-
-${
-a.map(
-(x,i)=>
-`<tr>
-
-<td>${i+1}</td>
-
-<td>
-${esc(x.subject)}
-</td>
-
-<td>
-${esc(x.year)}
-</td>
-
-<td>
-${esc(x.question)}
-</td>
-
-<td>
-${esc(x.answer)}
-</td>
-
-</tr>`
-).join('')
-}
-
-</table>
-
-</div>`;
-
-}
-
-
-async function importBulk(){
-
-let a =
-parseBulk(
-$('bulkText').value
-);
-
-
-let rows=[];
-
-let bad=[];
-
-
-a.forEach(
-(x,i)=>{
-
-let s =
-subjects.find(
-z =>
-z.name.toLowerCase()===
-x.subject.toLowerCase()
-||
-z.code.toLowerCase()===
-x.subject.toLowerCase()
-);
-
-
-if(!s){
-
-bad.push(
-`Q${i+1}: subject not found (${x.subject})`
-);
-
-}
-
-else if(
-!x.question||
-!x.a||
-!x.b||
-!x.c||
-!x.d
-){
-
-bad.push(
-`Q${i+1}: question/options incomplete`
-);
-
-}
-
-else if(
-!['A','B','C','D']
-.includes(x.answer)
-){
-
-bad.push(
-`Q${i+1}: ANSWER must be A-D`
-);
-
-}
-
-else{
-
-rows.push({
-
-subject_id:
-s.id,
-
-question_text:
-x.question,
-
-option_a:
-x.a,
-
-option_b:
-x.b,
-
-option_c:
-x.c,
-
-option_d:
-x.d,
-
-correct_answer:
-x.answer,
-
-passage:
-x.passage||null,
-
-question_year:
-x.year
-?
-parseInt(x.year,10)
-:null
-
-});
-
-}
-
-});
-
-
-if(bad.length){
-
-return msg(
-'bulkMsg',
-
-bad.slice(0,15).join(' | ')+
-(
-bad.length>15
-?
-` | +${bad.length-15} more`
-:''
-),
-
-'error'
-);
-
-}
-
-
-if(!rows.length){
-
-return msg(
-'bulkMsg',
-'Nothing to import.',
-'error'
-);
-
-}
-
-
-let existing=[];
-
-
-for(
-let i=0;
-i<rows.length;
-i+=500
-){
-
-let chunk =
-rows.slice(
-i,
-i+500
-);
-
-
-let subjectsIds =
-[
-...new Set(
-chunk.map(
-x=>x.subject_id
-)
-)
-];
-
-
-let r =
-await db
-.from('questions')
-.select(
-'subject_id,question_text,option_a,option_b,option_c,option_d'
-)
-.in(
-'subject_id',
-subjectsIds
-);
-
-
-if(r.error){
-
-return msg(
-'bulkMsg',
-r.error.message,
-'error'
-);
-
-}
-
-
-existing.push(
-...(r.data||[])
-);
-
-}
-
-
-let seen =
-new Set(
-existing.map(fingerprint)
-);
-
-
-let unique=[];
-
-let duplicates=0;
-
-
-for(
-let row of rows
-){
-
-let f =
-fingerprint(row);
-
-
-if(
-seen.has(f)
-){
-
-duplicates++;
-
-continue;
-
-}
-
-
-seen.add(f);
-
-unique.push(row);
-
-}
-
-
-if(
-!confirm(
-`Detected ${rows.length} question(s). ${duplicates} duplicate(s) will be skipped. Import ${unique.length} new question(s)?`
-)
-)
-return;
-
-
-if(!unique.length){
-
-return msg(
-'bulkMsg',
-'All detected questions are duplicates. Nothing imported.',
-'notice'
-);
-
-}
-
-
-let imported=0;
-
-
-for(
-let i=0;
-i<unique.length;
-i+=100
-){
-
-let r =
-await db
-.from('questions')
-.insert(
-unique.slice(
-i,
-i+100
-)
-);
-
-
-if(r.error){
-
-return msg(
-'bulkMsg',
-`Imported ${imported}; then stopped: ${r.error.message}`,
-'error'
-);
-
-}
-
-
-imported +=
-Math.min(
-100,
-unique.length-i
-);
-
-}
-
-
-msg(
-'bulkMsg',
-`${imported} question(s) imported. ${duplicates} duplicate(s) skipped.`,
-'success'
-);
-
-
-$('bulkText').value='';
-
-$('bulkPreview').innerHTML='';
-
-}
-
-
-async function addQuestion(){
-
-let row={
-
-subject_id:
-$('qSubject').value,
-
-question_text:
-$('qText').value.trim(),
-
-option_a:
-$('qA').value.trim(),
-
-option_b:
-$('qB').value.trim(),
-
-option_c:
-$('qC').value.trim(),
-
-option_d:
-$('qD').value.trim(),
-
-correct_answer:
-$('qAnswer').value,
-
-passage:
-$('qPassage').value.trim()||
-null,
-
-question_year:
-$('qYear').value
-?
-parseInt(
-$('qYear').value,
-10
-)
-:null
-
-};
-
-
-if(
-!row.question_text||
-!row.option_a||
-!row.option_b||
-!row.option_c||
-!row.option_d
-){
-
-return msg(
-'singleMsg',
-'Complete the question and all four options.',
-'error'
-);
-
-}
-
-
-let r =
-await db
-.from('questions')
-.select(
-'subject_id,question_text,option_a,option_b,option_c,option_d'
-)
-.eq(
-'subject_id',
-row.subject_id
-);
-
-
-if(r.error){
-
-return msg(
-'singleMsg',
-r.error.message,
-'error'
-);
-
-}
-
-
-if(
-(r.data||[])
-.some(
-x =>
-fingerprint(x)===
-fingerprint(row)
-)
-){
-
-return msg(
-'singleMsg',
-'This question already exists for this subject.',
-'error'
-);
-
-}
-
-
-let ins =
-await db
-.from('questions')
-.insert(row);
-
-
-if(ins.error){
-
-return msg(
-'singleMsg',
-ins.error.message,
-'error'
-);
-
-}
-
-
-msg(
-'singleMsg',
-'Question saved successfully.',
-'success'
-);
-
-
-[
-'qText',
-'qA',
-'qB',
-'qC',
-'qD',
-'qPassage'
-].forEach(
-id =>
-$(id).value=''
-);
-
-}
-
-
-async function loadQuestions(){
-
-let q =
-db
-.from('questions')
-.select(
-'id,question_text,question_year,correct_answer,subjects(name)'
-)
-.order(
-'created_at',
-{ascending:false}
-);
-
-
-if(
-$('filterSubject')?.value
-){
-
-q =
-q.eq(
-'subject_id',
-$('filterSubject').value
-);
-
-}
-
-
-if(
-$('filterYear')?.value
-){
-
-q =
-q.eq(
-'question_year',
-parseInt(
-$('filterYear').value,
-10
-)
-);
-
-}
-
-
-let r =
-await q.limit(500);
-
-
-if(r.error){
-
-return $('questionsList')
-.textContent =
-r.error.message;
-
-}
-
-
-$('questionsList').innerHTML =
-
-'<table>'+
-
-'<tr>'+
-
-'<th>Subject</th>'+
-
-'<th>Year</th>'+
-
-'<th>Question</th>'+
-
-'<th>Answer</th>'+
-
-'<th>Action</th>'+
-
-'</tr>'+
-
-(r.data||[])
-.map(
-x=>
-`<tr>
-
-<td>
-${esc(x.subjects?.name)}
-</td>
-
-<td>
-${esc(x.question_year||'—')}
-</td>
-
-<td>
-${esc(x.question_text)}
-</td>
-
-<td>
-${esc(x.correct_answer)}
-</td>
-
-<td>
-
-<button
-class="danger"
-onclick="deleteQuestion('${x.id}')"
->
-Delete
-</button>
-
-</td>
-
-</tr>`
-)
-.join('')+
-
-'</table>';
-
-}
-
-
-async function deleteQuestion(id){
-
-if(
-!confirm(
-'Delete this question?'
-)
-)
-return;
-
-
-let r =
-await db
-.from('questions')
-.delete()
-.eq(
-'id',
-id
-);
-
-
-if(r.error){
-
-alert(r.error.message);
-
-}else{
-
-loadQuestions();
-
-}
-
-}
-
-
-function generateCode(){
-
-$('newCode').value =
-'WT-'+
-Math.random()
-.toString(36)
-.substring(2,8)
-.toUpperCase();
-
-}
-
-
-async function createCode(){
-
-let row={
-
-code:
-$('newCode')
-.value
-.trim()
-.toUpperCase(),
-
-candidate_name:
-$('codeName')
-.value
-.trim(),
-
-subject_id:
-$('codeSubject')
-.value,
-
-used:false,
-
-failed_attempts:0,
-
-locked:false,
-
-expires_at:null
-
-};
-
-
-if(
-!row.code||
-!row.candidate_name
-){
-
-return msg(
-'codeAdminMsg',
-'Complete all fields.',
-'error'
-);
-
-}
-
-
-let r =
-await db
-.from('access_codes')
-.insert(row);
-
-
-if(r.error){
-
-return msg(
-'codeAdminMsg',
-r.error.message,
-'error'
-);
-
-}
-
-
-msg(
-'codeAdminMsg',
-'Access code created.',
-'success'
-);
-
-
-$('newCode').value='';
-
-
-loadCodes();
-
-}
-
-
-async function loadCodes(){
-
-let r =
-await db
-.from('access_codes')
-.select(
-'id,code,candidate_name,used,locked,subjects(name)'
-)
-.order(
-'created_at',
-{ascending:false}
-);
-
-
-if(r.error){
-
-return $('codesList')
-.textContent =
-r.error.message;
-
-}
-
-
-$('codesList').innerHTML =
-
-'<table>'+
-
-'<tr>'+
-
-'<th>Code</th>'+
-
-'<th>Candidate</th>'+
-
-'<th>Subject</th>'+
-
-'<th>Status</th>'+
-
-'<th>Action</th>'+
-
-'</tr>'+
-
-(r.data||[])
-.map(
-x =>
-`<tr>
-
-<td>
-<b>${esc(x.code)}</b>
-</td>
-
-<td>
-${esc(x.candidate_name)}
-</td>
-
-<td>
-${esc(x.subjects?.name)}
-</td>
-
-<td>
-${x.locked?'LOCKED':'ACTIVE'}
-</td>
-
-<td>
-
-<button
-onclick="resetCode('${x.id}')"
->
-Reset
-</button>
-
-<button
-class="danger"
-onclick="deleteCode('${x.id}')"
->
-Delete
-</button>
-
-</td>
-
-</tr>`
-)
-.join('')+
-
-'</table>';
-
-}
-
-
-async function resetCode(id){
-
-let r =
-await db
-.from('access_codes')
-.update({
-
-locked:false,
-
-failed_attempts:0,
-
-used:false
-
-})
-.eq(
-'id',
-id
-);
-
-
-if(r.error){
-
-alert(r.error.message);
-
-}else{
-
-loadCodes();
-
-}
-
-}
-
-
-async function deleteCode(id){
-
-if(
-!confirm(
-'Delete this access code?'
-)
-)
-return;
-
-
-let r =
-await db
-.from('access_codes')
-.delete()
-.eq(
-'id',
-id
-);
-
-
-if(r.error){
-
-alert(r.error.message);
-
-}else{
-
-loadCodes();
-
-}
-
-}
-
-
-async function loadResults(){
-
-let r =
-await db
-.from('exam_results')
-.select(
-'candidate_name,score,total_questions,percentage,passed,submitted_at,subjects(name)'
-)
-.order(
-'submitted_at',
-{ascending:false}
-)
-.limit(500);
-
-
-if(r.error){
-
-return $('resultsList')
-.textContent =
-r.error.message;
-
-}
-
-
-$('resultsList').innerHTML =
-
-'<table>'+
-
-'<tr>'+
-
-'<th>Candidate</th>'+
-
-'<th>Subject</th>'+
-
-'<th>Score</th>'+
-
-'<th>%</th>'+
-
-'<th>Status</th>'+
-
-'<th>Date</th>'+
-
-'</tr>'+
-
-(r.data||[])
-.map(
-x =>
-`<tr>
-
-<td>
-${esc(x.candidate_name)}
-</td>
-
-<td>
-${esc(x.subjects?.name)}
-</td>
-
-<td>
-${x.score}/${x.total_questions}
-</td>
-
-<td>
-${x.percentage}%
-</td>
-
-<td>
-${x.passed?'PASS':'NOT PASSED'}
-</td>
-
-<td>
-${new Date(
-x.submitted_at
-).toLocaleString()}
-</td>
-
-</tr>`
-)
-.join('')+
-
-'</table>';
-
-}
-
-
-loadSubjects().catch(
-()=>{}
-);
-
-</script>
-
-</body>
-</html>
+    if(!db){
+
+        msg(
+            'codeMsg',
+            'Database connection is unavailable.',
+            'error'
