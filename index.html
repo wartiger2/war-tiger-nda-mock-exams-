@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>WAR TIGERS COMPUTERS - NDA Mock Examination Portal</title>
 
@@ -12,234 +12,242 @@
 *{box-sizing:border-box}
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f3f6f8;
-    color:#17202a;
+margin:0;
+font-family:Arial,sans-serif;
+background:#f3f6f8;
+color:#17202a
 }
 
 header{
-    background:#0b3d2e;
-    color:white;
-    padding:20px;
-    text-align:center;
+background:#123b25;
+color:#fff;
+padding:18px;
+text-align:center
 }
 
 header h1{
-    margin:0;
-    font-size:25px;
-}
-
-header p{
-    margin:6px 0 0;
+margin:0;
+font-size:24px
 }
 
 .wrap{
-    max-width:1050px;
-    margin:20px auto;
-    padding:0 14px;
+max-width:1100px;
+margin:20px auto;
+padding:0 14px
 }
 
 .card{
-    background:white;
-    border-radius:14px;
-    padding:20px;
-    margin-bottom:18px;
-    box-shadow:0 4px 18px #0001;
+background:#fff;
+border-radius:14px;
+padding:20px;
+margin-bottom:18px;
+box-shadow:0 4px 18px #0001
 }
 
 .hidden{
-    display:none!important;
+display:none!important
 }
 
 input,select,textarea{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccd3d8;
-    border-radius:8px;
-    margin:7px 0 13px;
-    font-size:15px;
+width:100%;
+padding:12px;
+border:1px solid #ccd3d8;
+border-radius:8px;
+margin:7px 0 13px;
+font-size:15px
 }
 
 textarea{
-    min-height:120px;
-    resize:vertical;
+min-height:120px
 }
 
 button{
-    border:0;
-    border-radius:8px;
-    padding:12px 17px;
-    background:#176b3a;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    margin:4px;
+border:0;
+border-radius:8px;
+padding:12px 17px;
+background:#176b3a;
+color:#fff;
+font-weight:bold;
+cursor:pointer;
+margin:4px
 }
 
 button.secondary{
-    background:#52616b;
+background:#52616b
 }
 
 button.danger{
-    background:#a72828;
-}
-
-button:disabled{
-    opacity:.5;
-    cursor:not-allowed;
+background:#a72828
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-    gap:12px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:12px
 }
 
 .subject{
-    border:1px solid #d7dee3;
-    border-radius:10px;
-    padding:16px;
-    background:#fafafa;
-    cursor:pointer;
+border:1px solid #d7dee3;
+border-radius:10px;
+padding:15px;
+background:#fafafa;
+cursor:pointer
 }
 
 .subject:hover{
-    background:#eef8f1;
+background:#eef8f1
 }
 
 .subject strong{
-    display:block;
-    margin-bottom:6px;
+display:block;
+margin-bottom:5px
 }
 
 .badge{
-    display:inline-block;
-    padding:4px 8px;
-    border-radius:20px;
-    background:#e8f4ec;
-    color:#176b3a;
-    font-size:12px;
+display:inline-block;
+padding:4px 8px;
+border-radius:20px;
+background:#e8f4ec;
+color:#176b3a;
+font-size:12px
 }
 
 .small{
-    font-size:13px;
-    color:#5d6870;
+font-size:13px;
+color:#5d6870
 }
 
 .notice{
-    padding:12px;
-    border-radius:8px;
-    background:#fff7d6;
-    margin:10px 0;
+padding:12px;
+border-radius:8px;
+background:#fff7d6;
+margin:10px 0
 }
 
 .success{
-    background:#e8f7ed;
-    color:#176b3a;
+background:#e8f7ed;
+color:#176b3a
 }
 
 .error{
-    background:#fdecec;
-    color:#a72828;
+background:#fdecec;
+color:#a72828
 }
 
 .pass{
-    color:#176b3a;
+color:#176b3a
 }
 
 .fail{
-    color:#b3261e;
+color:#b3261e
 }
 
 .passage{
-    background:#f7f7f2;
-    border-left:4px solid #176b3a;
-    padding:14px;
-    border-radius:6px;
-    margin-bottom:15px;
-    white-space:pre-wrap;
+background:#f7f7f2;
+border-left:4px solid #176b3a;
+padding:14px;
+border-radius:6px;
+margin-bottom:15px;
+white-space:pre-wrap
 }
 
 .option{
-    display:block;
-    border:1px solid #d9dfe3;
-    border-radius:9px;
-    padding:13px;
-    margin:9px 0;
-    cursor:pointer;
+display:block;
+border:1px solid #d9dfe3;
+border-radius:9px;
+padding:13px;
+margin:9px 0;
+cursor:pointer
 }
 
 .option.selected{
-    border-color:#176b3a;
-    background:#eef8f1;
+border-color:#176b3a;
+background:#eef8f1
 }
 
 .option input{
-    width:auto;
-    margin:0 8px 0 0;
+width:auto;
+margin:0 8px 0 0
 }
 
 .top,.nav{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    align-items:center;
-    flex-wrap:wrap;
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:center;
+flex-wrap:wrap
 }
 
 .timer{
-    font-size:22px;
-    font-weight:bold;
+font-size:22px;
+font-weight:bold
 }
 
 .progress{
-    height:10px;
-    background:#e4e8eb;
-    border-radius:10px;
-    overflow:hidden;
-    margin:12px 0;
+height:10px;
+background:#e4e8eb;
+border-radius:10px;
+overflow:hidden;
+margin:12px 0
 }
 
 .progress>div{
-    height:100%;
-    background:#176b3a;
-    width:0;
+height:100%;
+background:#176b3a;
+width:0
 }
 
 .adminnav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-    margin-bottom:15px;
+display:flex;
+flex-wrap:wrap;
+gap:5px;
+margin-bottom:15px
 }
 
 .section{
-    border-top:1px solid #eee;
-    padding-top:15px;
+border-top:1px solid #eee;
+padding-top:15px
 }
 
 .tablewrap{
-    overflow:auto;
+overflow:auto
 }
 
 table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:14px;
+width:100%;
+border-collapse:collapse;
+font-size:14px
 }
 
 th,td{
-    border-bottom:1px solid #e4e7e9;
-    padding:9px;
-    text-align:left;
-    vertical-align:top;
+border-bottom:1px solid #e4e7e9;
+padding:9px;
+text-align:left;
+vertical-align:top
 }
 
 footer{
-    text-align:center;
-    padding:25px;
-    color:#667;
+text-align:center;
+padding:25px;
+color:#667
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px
+}
+
+.stat{
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+text-align:center
+}
+
+.stat b{
+font-size:25px;
+display:block
 }
 </style>
 </head>
@@ -247,425 +255,569 @@ footer{
 <body>
 
 <header>
-    <h1>WAR TIGERS COMPUTERS</h1>
-    <p>Mock Examination Portal</p>
+<h1>WAR TIGERS COMPUTERS</h1>
+<p>Mock Examination Portal</p>
 </header>
 
 <div class="wrap">
 
-<!-- LOGIN -->
+<!-- CANDIDATE LOGIN -->
+
 <section id="login" class="card">
-    <h2>Candidate Login</h2>
 
-    <label>Candidate Name</label>
+<h2>Candidate Login</h2>
 
-    <input
-        id="candidate"
-        type="text"
-        placeholder="Enter candidate name"
-    >
+<label>Candidate Name</label>
 
-    <button onclick="continueCandidate()">
-        CONTINUE
-    </button>
+<input
+id="candidate"
+placeholder="Enter candidate name"
+>
 
-    <button
-        class="secondary"
-        onclick="show('adminLogin')"
-    >
-        ADMIN PANEL
-    </button>
+<button onclick="continueCandidate()">
+CONTINUE
+</button>
 
-    <div id="loginMsg"></div>
+<button
+class="secondary"
+onclick="show('adminLogin')"
+>
+Admin Panel
+</button>
+
+<div id="loginMsg"></div>
+
 </section>
 
 
 <!-- SUBJECTS -->
+
 <section id="subjects" class="card hidden">
 
-    <h2>Select Subject</h2>
+<h2>Select Subject</h2>
 
-    <p class="small">
-        Candidate: <b id="subjectCandidate"></b>
-    </p>
+<div id="subjectGrid" class="grid"></div>
 
-    <div id="subjectGrid" class="grid"></div>
-
-    <div id="subjectMsg"></div>
-
-    <button
-        class="secondary"
-        onclick="show('login')"
-    >
-        BACK
-    </button>
+<button
+class="secondary"
+onclick="show('login')"
+>
+Back
+</button>
 
 </section>
 
 
 <!-- ACCESS CODE -->
+
 <section id="code" class="card hidden">
 
-    <h2 id="codeTitle">
-        Enter Access Code
-    </h2>
+<h2 id="codeTitle">
+Enter Access Code
+</h2>
 
-    <p id="codeCandidate" class="small"></p>
+<p
+id="codeCandidate"
+class="small"
+></p>
 
-    <input
-        id="accessCode"
-        type="text"
-        placeholder="Enter access code"
-        autocomplete="off"
-    >
+<input
+id="accessCode"
+placeholder="Example: WT-GKTEST01"
+>
 
-    <button onclick="verifyCode()">
-        START EXAM
-    </button>
+<button onclick="verifyCode()">
+START EXAM
+</button>
 
-    <button
-        class="secondary"
-        onclick="show('subjects')"
-    >
-        BACK
-    </button>
+<button
+class="secondary"
+onclick="show('subjects')"
+>
+Back
+</button>
 
-    <div id="codeMsg"></div>
+<div id="codeMsg"></div>
 
 </section>
 
 
 <!-- EXAM -->
+
 <section id="exam" class="card hidden">
 
-    <div class="top">
+<div class="top">
 
-        <div>
-            <b id="examSubject"></b>
-            <div id="examYear" class="small"></div>
-        </div>
+<div>
+<b id="examSubject"></b>
+</div>
 
-        <div class="timer">
-            ⏱ <span id="timer">30:00</span>
-        </div>
+<div class="timer">
+⏱ <span id="timer">30:00</span>
+</div>
 
-    </div>
+</div>
 
-    <div class="progress">
-        <div id="bar"></div>
-    </div>
+<div class="progress">
+<div id="bar"></div>
+</div>
 
-    <div id="questionArea"></div>
+<div id="questionArea"></div>
 
-    <div class="nav">
+<div class="nav">
 
-        <button
-            id="prev"
-            class="secondary"
-            onclick="prevQ()"
-        >
-            PREVIOUS
-        </button>
+<button
+id="prev"
+class="secondary"
+onclick="prevQ()"
+>
+PREVIOUS
+</button>
 
-        <button
-            id="next"
-            onclick="nextQ()"
-        >
-            NEXT
-        </button>
+<button
+id="next"
+onclick="nextQ()"
+>
+NEXT
+</button>
 
-    </div>
+</div>
 
-    <button
-        id="submit"
-        class="danger hidden"
-        onclick="submitExam()"
-    >
-        SUBMIT EXAM
-    </button>
+<button
+id="submit"
+class="danger hidden"
+onclick="submitExam()"
+>
+SUBMIT EXAM
+</button>
 
 </section>
 
 
 <!-- RESULT -->
-<section id="result" class="card hidden">
 
-    <div id="resultInner">
+<section
+id="result"
+class="card hidden"
+style="text-align:center"
+>
 
-        <h2>Examination Result</h2>
+<h2>
+Examination Result
+</h2>
 
-        <p id="rCandidate"></p>
+<p id="rCandidate"></p>
 
-        <p id="rSubject"></p>
+<p id="rSubject"></p>
 
-        <div
-            id="score"
-            style="font-size:45px;font-weight:bold"
-        ></div>
+<div
+id="score"
+style="font-size:45px;font-weight:bold"
+></div>
 
-        <p id="details"></p>
+<p id="details"></p>
 
-        <div id="status"></div>
+<div id="status"></div>
 
-        <button onclick="show('login')">
-            BACK TO HOME
-        </button>
-
-    </div>
+<button onclick="resetApp()">
+BACK TO HOME
+</button>
 
 </section>
 
 
 <!-- ADMIN LOGIN -->
+
 <section id="adminLogin" class="card hidden">
 
-    <h2>Admin Login</h2>
+<h2>Admin Login</h2>
 
-    <input
-        id="adminPass"
-        type="password"
-        placeholder="Admin password"
-    >
+<input
+id="adminPass"
+type="password"
+placeholder="Admin password"
+>
 
-    <button onclick="adminLogin()">
-        LOGIN
-    </button>
+<button onclick="adminLogin()">
+LOGIN
+</button>
 
-    <button
-        class="secondary"
-        onclick="show('login')"
-    >
-        BACK
-    </button>
+<button
+class="secondary"
+onclick="show('login')"
+>
+Back
+</button>
 
-    <div id="adminLoginMsg"></div>
+<div id="adminLoginMsg"></div>
 
 </section>
 
 
 <!-- ADMIN PANEL -->
+
 <section id="admin" class="card hidden">
 
-    <div class="top">
+<div class="top">
 
-        <div>
-            <h2>Admin Panel</h2>
-            <div class="small">
-                War Tigers Computers
-            </div>
-        </div>
+<div>
 
-        <button
-            class="secondary"
-            onclick="show('login')"
-        >
-            LOGOUT
-        </button>
+<h2>Admin Panel</h2>
 
-    </div>
+<div class="small">
+War Tigers Computers
+</div>
 
+</div>
 
-    <div class="adminnav">
+<button
+class="secondary"
+onclick="show('login')"
+>
+Logout
+</button>
 
-        <button onclick="tab('bulk')">
-            📥 Bulk Import
-        </button>
+</div>
 
-        <button onclick="tab('single')">
-            ➕ Add Question
-        </button>
 
-        <button onclick="tab('questions')">
-            📚 Questions
-        </button>
+<div class="adminnav">
 
-        <button onclick="tab('codes')">
-            🔑 Access Codes
-        </button>
+<button onclick="tab('bulk')">
+📥 Bulk Import
+</button>
 
-        <button onclick="tab('results')">
-            📊 Results
-        </button>
+<button onclick="tab('single')">
+➕ Add Question
+</button>
 
-    </div>
+<button onclick="tab('questions')">
+📚 Questions
+</button>
 
+<button onclick="tab('codes')">
+🔑 Access Codes
+</button>
 
-    <!-- BULK -->
-    <div id="bulk" class="section">
+<button onclick="tab('results')">
+📊 Results
+</button>
 
-        <h3>Bulk Question Import</h3>
+</div>
 
-        <p class="small">
-            Paste questions you are authorized to use.
-        </p>
 
-        <div class="notice">
+<!-- BULK IMPORT -->
 
-            <b>Format</b><br><br>
+<div
+id="bulk"
+class="section"
+>
 
-            SUBJECT: English Language<br>
-            YEAR: 2014<br>
-            QUESTION:<br>
-            Your question<br>
-            A:<br>
-            Option A<br>
-            B:<br>
-            Option B<br>
-            C:<br>
-            Option C<br>
-            D:<br>
-            Option D<br>
-            ANSWER: B<br>
-            PASSAGE:<br>
-            Optional passage<br>
-            END
+<h3>
+Bulk Question Import
+</h3>
 
-        </div>
+<p class="small">
+Paste only question material you are authorized to use.
+Subject may be written once and will carry forward to later blocks.
+</p>
 
 
-        <textarea
-            id="bulkText"
-            style="min-height:330px"
-            placeholder="Paste your authorized questions here..."
-        ></textarea>
+<div class="notice">
 
+<b>Format</b>
 
-        <button onclick="previewBulk()">
-            PREVIEW
-        </button>
+<br>
 
-        <button onclick="importBulk()">
-            IMPORT TO SUPABASE
-        </button>
+SUBJECT: English Language
 
-        <div id="bulkMsg"></div>
+<br>
 
-        <div id="bulkPreview"></div>
+QUESTION:
 
-    </div>
+<br>
 
+Your authorized question
 
-    <!-- SINGLE QUESTION -->
-    <div id="single" class="section hidden">
+<br>
 
-        <h3>Add One Question</h3>
+A:
 
-        <label>Subject</label>
-        <select id="qSubject"></select>
+<br>
 
-        <label>Year</label>
-        <input
-            id="qYear"
-            type="number"
-            value="2026"
-        >
+Option A
 
-        <label>Question</label>
-        <textarea id="qText"></textarea>
+<br>
 
-        <label>Option A</label>
-        <input id="qA">
+B:
 
-        <label>Option B</label>
-        <input id="qB">
+<br>
 
-        <label>Option C</label>
-        <input id="qC">
+Option B
 
-        <label>Option D</label>
-        <input id="qD">
+<br>
 
-        <label>Correct Answer</label>
+C:
 
-        <select id="qAnswer">
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-        </select>
+<br>
 
-        <label>Passage (optional)</label>
-        <textarea id="qPassage"></textarea>
+Option C
 
-        <button onclick="addQuestion()">
-            SAVE QUESTION
-        </button>
+<br>
 
-        <div id="singleMsg"></div>
+D:
 
-    </div>
+<br>
 
+Option D
 
-    <!-- QUESTIONS -->
-    <div id="questions" class="section hidden">
+<br>
 
-        <h3>Question Bank</h3>
+ANSWER: B
 
-        <button onclick="loadQuestions()">
-            REFRESH
-        </button>
+<br>
 
-        <div id="questionsList" class="tablewrap"></div>
+PASSAGE:
 
-    </div>
+<br>
 
+Optional passage
 
-    <!-- CODES -->
-    <div id="codes" class="section hidden">
+<br>
 
-        <h3>Create Access Code</h3>
+END
 
-        <label>Candidate Name</label>
-        <input id="codeName">
+</div>
 
-        <label>Subject</label>
-        <select id="codeSubject"></select>
 
-        <label>Code</label>
+<textarea
+id="bulkText"
+style="min-height:330px"
+></textarea>
 
-        <input
-            id="newCode"
-            placeholder="Example: WT-ENG001"
-        >
 
-        <button onclick="createCode()">
-            CREATE CODE
-        </button>
+<button onclick="previewBulk()">
+PREVIEW
+</button>
 
-        <button
-            class="secondary"
-            onclick="generateCode()"
-        >
-            GENERATE CODE
-        </button>
+<button onclick="importBulk()">
+IMPORT TO SUPABASE
+</button>
 
-        <div id="codeAdminMsg"></div>
+<div id="bulkMsg"></div>
 
-        <hr>
+<div id="bulkPreview"></div>
 
-        <h3>Access Codes</h3>
+</div>
 
-        <button onclick="loadCodes()">
-            REFRESH
-        </button>
 
-        <div id="codesList" class="tablewrap"></div>
+<!-- ADD ONE QUESTION -->
 
-    </div>
+<div
+id="single"
+class="section hidden"
+>
 
+<h3>
+Add One Question
+</h3>
 
-    <!-- RESULTS -->
-    <div id="results" class="section hidden">
+<label>
+Subject
+</label>
 
-        <h3>Exam Results</h3>
+<select id="qSubject"></select>
 
-        <button onclick="loadResults()">
-            REFRESH
-        </button>
 
-        <div id="resultsList" class="tablewrap"></div>
+<label>
+Question
+</label>
 
-    </div>
+<textarea id="qText"></textarea>
+
+
+<label>
+Option A
+</label>
+
+<input id="qA">
+
+
+<label>
+Option B
+</label>
+
+<input id="qB">
+
+
+<label>
+Option C
+</label>
+
+<input id="qC">
+
+
+<label>
+Option D
+</label>
+
+<input id="qD">
+
+
+<label>
+Correct Answer
+</label>
+
+<select id="qAnswer">
+
+<option>A</option>
+<option>B</option>
+<option>C</option>
+<option>D</option>
+
+</select>
+
+
+<label>
+Passage (optional)
+</label>
+
+<textarea id="qPassage"></textarea>
+
+
+<button onclick="addQuestion()">
+SAVE QUESTION
+</button>
+
+<div id="singleMsg"></div>
+
+</div>
+
+
+<!-- QUESTION BANK -->
+
+<div
+id="questions"
+class="section hidden"
+>
+
+<h3>
+Question Bank
+</h3>
+
+<div class="grid">
+
+<select
+id="filterSubject"
+onchange="loadQuestions()"
+>
+
+<option value="">
+All subjects
+</option>
+
+</select>
+
+</div>
+
+<button onclick="loadQuestions()">
+Refresh
+</button>
+
+<div
+id="questionsList"
+class="tablewrap"
+></div>
+
+</div>
+
+
+<!-- ACCESS CODES -->
+
+<div
+id="codes"
+class="section hidden"
+>
+
+<h3>
+Create Access Code
+</h3>
+
+
+<label>
+Candidate Name
+</label>
+
+<input id="codeName">
+
+
+<label>
+Subject
+</label>
+
+<select id="codeSubject"></select>
+
+
+<label>
+Code
+</label>
+
+<input id="newCode">
+
+
+<button onclick="createCode()">
+CREATE CODE
+</button>
+
+<button
+class="secondary"
+onclick="generateCode()"
+>
+GENERATE CODE
+</button>
+
+<div id="codeAdminMsg"></div>
+
+
+<hr>
+
+
+<h3>
+Access Codes
+</h3>
+
+<button onclick="loadCodes()">
+Refresh
+</button>
+
+<div
+id="codesList"
+class="tablewrap"
+></div>
+
+</div>
+
+
+<!-- RESULTS -->
+
+<div
+id="results"
+class="section hidden"
+>
+
+<h3>
+Exam Results
+</h3>
+
+<button onclick="loadResults()">
+Refresh
+</button>
+
+<div
+id="resultsList"
+class="tablewrap"
+></div>
+
+</div>
 
 </section>
 
@@ -673,2285 +825,2154 @@ footer{
 
 
 <footer>
-    © 2026 War Tigers Computers
+© 2026 War Tigers Computers
 </footer>
 
 
 <script>
 
-/* ================================
-   SUPABASE
-================================ */
-
-const SUPABASE_URL =
+const URL =
 'https://dmscnymhwnqdabvxuuce.supabase.co';
 
-const SUPABASE_KEY =
+const KEY =
 'sb_publishable_YLAhxNO3szVourvaQQ4jgw_KRQ9f0qc';
 
-let db = null;
 
-try {
-
-    if(window.supabase){
-
-        db = window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-    }
-
-} catch(error){
-
-    console.error(error);
-
-}
+const db =
+supabase.createClient(URL,KEY);
 
 
-/* ================================
-   SETTINGS
-================================ */
-
-const ADMIN_PASSWORD = 'WTADMIN2026';
-
-const PASS_MARK = 50;
-
-const MAX_QUESTIONS = 40;
+const ADMIN =
+'WTADMIN2026';
 
 
-/* ================================
-   VARIABLES
-================================ */
-
-let subjects = [];
-
-let subject = null;
-
-let candidate = '';
-
-let questions = [];
-
-let answers = {};
-
-let index = 0;
-
-let seconds = 1800;
-
-let timer = null;
+const PASS =
+50;
 
 
-/* ================================
-   FALLBACK SUBJECTS
-   These allow CONTINUE to work
-   even if Supabase temporarily fails.
-================================ */
+const EXAM_QUESTION_COUNT =
+40;
 
-const DEFAULT_SUBJECTS = [
+
+let subjects=[];
+
+let subject=null;
+
+let candidate='';
+
+let questions=[];
+
+let answers={};
+
+let index=0;
+
+let seconds=1800;
+
+let timer=null;
+
+let currentCode=null;
+
+
+const $ =
+id => document.getElementById(id);
+
+
+const esc =
+v =>
+String(v??'')
+.replace(
+/[&<>"']/g,
+m =>
+({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#039;'
+}[m])
+);
+
+
+const DEFAULT_SUBJECTS=[
 
 {
-    id:'english-local',
-    name:'English Language',
-    code:'ENG2026',
-    duration_minutes:30
+id:'English Language',
+name:'English Language',
+code:'ENG2026',
+duration_minutes:30
 },
 
 {
-    id:'math-local',
-    name:'Mathematics',
-    code:'MATH2026',
-    duration_minutes:30
+id:'Mathematics',
+name:'Mathematics',
+code:'MATH2026',
+duration_minutes:30
 },
 
 {
-    id:'government-local',
-    name:'Government',
-    code:'GOV2026',
-    duration_minutes:30
+id:'Government',
+name:'Government',
+code:'GOV2026',
+duration_minutes:30
 },
 
 {
-    id:'gk-local',
-    name:'General Knowledge',
-    code:'GK2026',
-    duration_minutes:30
+id:'General Knowledge',
+name:'General Knowledge',
+code:'GK2026',
+duration_minutes:30
 },
 
 {
-    id:'ca-local',
-    name:'Current Affairs',
-    code:'CA2026',
-    duration_minutes:30
+id:'Current Affairs',
+name:'Current Affairs',
+code:'CA2026',
+duration_minutes:30
 },
 
 {
-    id:'biology-local',
-    name:'Biology',
-    code:'BIO2026',
-    duration_minutes:30
+id:'Biology',
+name:'Biology',
+code:'BIO2026',
+duration_minutes:30
 },
 
 {
-    id:'chemistry-local',
-    name:'Chemistry',
-    code:'CHEM2026',
-    duration_minutes:30
+id:'Chemistry',
+name:'Chemistry',
+code:'CHEM2026',
+duration_minutes:30
 },
 
 {
-    id:'physics-local',
-    name:'Physics',
-    code:'PHY2026',
-    duration_minutes:30
+id:'Physics',
+name:'Physics',
+code:'PHY2026',
+duration_minutes:30
 },
 
 {
-    id:'economics-local',
-    name:'Economics',
-    code:'ECO2026',
-    duration_minutes:30
+id:'Economics',
+name:'Economics',
+code:'ECO2026',
+duration_minutes:30
 },
 
 {
-    id:'geography-local',
-    name:'Geography',
-    code:'GEO2026',
-    duration_minutes:30
+id:'Geography',
+name:'Geography',
+code:'GEO2026',
+duration_minutes:30
 },
 
 {
-    id:'history-local',
-    name:'History',
-    code:'HIST2026',
-    duration_minutes:30
+id:'History',
+name:'History',
+code:'HIST2026',
+duration_minutes:30
 }
 
 ];
 
 
-/* ================================
-   HELPER
-================================ */
+function renderSubjects(){
 
-function $(id){
+$('subjectGrid').innerHTML=
 
-    return document.getElementById(id);
+subjects.map(s=>`
+
+<div
+class="subject"
+onclick="choose('${s.id}')"
+>
+
+<strong>
+${esc(s.name)}
+</strong>
+
+<span class="badge">
+${esc(s.code)}
+</span>
+
+<div class="small">
+${s.duration_minutes||30} minutes
+</div>
+
+</div>
+
+`).join('');
 
 }
 
-
-/* ================================
-   SHOW SCREEN
-================================ */
 
 function show(id){
 
-    const screens = [
-        'login',
-        'subjects',
-        'code',
-        'exam',
-        'result',
-        'adminLogin',
-        'admin'
-    ];
+[
+'login',
+'subjects',
+'code',
+'exam',
+'result',
+'adminLogin',
+'admin'
+]
+.forEach(
+x=>$(x).classList.add('hidden')
+);
 
-    screens.forEach(screen => {
+$(id).classList.remove('hidden');
 
-        const element = $(screen);
-
-        if(element){
-
-            element.classList.add('hidden');
-
-        }
-
-    });
-
-
-    const target = $(id);
-
-    if(target){
-
-        target.classList.remove('hidden');
-
-    }
-
-    window.scrollTo(0,0);
+scrollTo(0,0);
 
 }
 
 
-/* ================================
-   MESSAGE
-================================ */
+function msg(id,t,c='notice'){
 
-function msg(id,text,type='notice'){
+$(id).innerHTML=
 
-    const element = $(id);
-
-    if(!element) return;
-
-    element.innerHTML = text
-        ? `<div class="${type} notice">${escapeHTML(text)}</div>`
-        : '';
+t
+?
+`<div class="${c} notice">${esc(t)}</div>`
+:'';
 
 }
 
-
-/* ================================
-   ESCAPE HTML
-================================ */
-
-function escapeHTML(value){
-
-    return String(value ?? '')
-        .replace(/[&<>"']/g,function(match){
-
-            return {
-                '&':'&amp;',
-                '<':'&lt;',
-                '>':'&gt;',
-                '"':'&quot;',
-                "'":'&#039;'
-            }[match];
-
-        });
-
-}
-
-
-/* ================================
-   CONTINUE
-================================ */
 
 async function continueCandidate(){
 
-    candidate = $('candidate').value.trim();
-
-    if(!candidate){
-
-        msg(
-            'loginMsg',
-            'Please enter the candidate name.',
-            'error'
-        );
-
-        return;
-
-    }
+candidate =
+$('candidate').value.trim();
 
 
-    /*
-       IMPORTANT:
-       Move forward immediately.
-       Do NOT wait for Supabase.
-    */
+if(!candidate){
 
-    $('subjectCandidate').textContent = candidate;
+msg(
+'loginMsg',
+'Please enter the candidate name.',
+'error'
+);
 
-    subjects = DEFAULT_SUBJECTS;
-
-    renderSubjects();
-
-    show('subjects');
-
-
-    /*
-       Load real subjects from Supabase
-       in the background.
-    */
-
-    await loadSubjects();
+return;
 
 }
 
 
-/* ================================
-   LOAD SUBJECTS
-================================ */
+subjects =
+[...DEFAULT_SUBJECTS];
+
+
+renderSubjects();
+
+show('subjects');
+
+
+loadSubjects().catch(()=>{});
+
+}
+
 
 async function loadSubjects(){
 
-    if(!db){
-
-        msg(
-            'subjectMsg',
-            'Supabase connection is not available. The subject list shown is the local backup.',
-            'error'
-        );
-
-        return;
-
-    }
+let r =
+await db
+.from('subjects')
+.select('*')
+.order('name');
 
 
-    try{
+if(r.error){
 
-        const result = await db
-            .from('subjects')
-            .select('*')
-            .order('name');
+msg(
+'loginMsg',
+r.error.message,
+'error'
+);
 
-
-        if(result.error){
-
-            console.error(result.error);
-
-            msg(
-                'subjectMsg',
-                'Could not connect to the Supabase subjects table. Please check your Supabase settings.',
-                'error'
-            );
-
-            return;
-
-        }
-
-
-        if(result.data && result.data.length){
-
-            subjects = result.data;
-
-            renderSubjects();
-
-            fillSelects();
-
-            msg(
-                'subjectMsg',
-                'Subjects loaded successfully.',
-                'success'
-            );
-
-        }
-
-    }catch(error){
-
-        console.error(error);
-
-        msg(
-            'subjectMsg',
-            'Unable to connect to the database. Please check your internet connection.',
-            'error'
-        );
-
-    }
+return;
 
 }
 
 
-/* ================================
-   DISPLAY SUBJECTS
-================================ */
+subjects =
+r.data||[];
 
-function renderSubjects(){
 
-    $('subjectGrid').innerHTML =
-        subjects.map(function(s){
+renderSubjects();
 
-            return `
-
-            <div
-                class="subject"
-                onclick="chooseSubject('${escapeHTML(s.id)}')"
-            >
-
-                <strong>
-                    ${escapeHTML(s.name)}
-                </strong>
-
-                <span class="badge">
-                    ${escapeHTML(s.code)}
-                </span>
-
-                <div class="small">
-                    ${s.duration_minutes || 30} minutes
-                </div>
-
-            </div>
-
-            `;
-
-        }).join('');
+fillSelects();
 
 }
 
 
-/* ================================
-   CHOOSE SUBJECT
-================================ */
+function choose(id){
 
-function chooseSubject(id){
-
-    subject = subjects.find(function(s){
-
-        return s.id === id;
-
-    });
+subject =
+subjects.find(
+s=>s.id===id
+);
 
 
-    if(!subject){
-
-        msg(
-            'subjectMsg',
-            'Unable to select this subject.',
-            'error'
-        );
-
-        return;
-
-    }
+$('codeTitle').textContent =
+subject.name +
+' - Access Code';
 
 
-    $('codeTitle').textContent =
-        subject.name + ' - Access Code';
+$('codeCandidate').textContent =
+'Candidate: ' +
+candidate;
 
-    $('codeCandidate').textContent =
-        'Candidate: ' + candidate;
 
-    $('accessCode').value = '';
+$('accessCode').value='';
 
-    msg('codeMsg','');
 
-    show('code');
+msg('codeMsg','');
 
-    setTimeout(function(){
 
-        $('accessCode').focus();
+show('code');
 
-    },100);
+
+setTimeout(
+()=>$('accessCode').focus(),
+100
+);
 
 }
 
-
-/* ================================
-   VERIFY ACCESS CODE
-================================ */
 
 async function verifyCode(){
 
-    const code =
-        $('accessCode').value.trim().toUpperCase();
+let code =
+$('accessCode')
+.value
+.trim()
+.toUpperCase();
 
 
-    if(!code){
+if(!code){
 
-        msg(
-            'codeMsg',
-            'Enter your access code.',
-            'error'
-        );
+msg(
+'codeMsg',
+'Enter your access code.',
+'error'
+);
 
-        return;
-
-    }
-
-
-    if(!db){
-
-        msg(
-            'codeMsg',
-            'Database connection is unavailable. Please check your internet connection.',
-            'error'
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const result = await db
-            .from('access_codes')
-            .select('*')
-            .eq('code',code)
-            .eq('subject_id',subject.id)
-            .limit(1);
-
-
-        if(result.error){
-
-            console.error(result.error);
-
-            msg(
-                'codeMsg',
-                result.error.message,
-                'error'
-            );
-
-            return;
-
-        }
-
-
-        if(!result.data || !result.data.length){
-
-            msg(
-                'codeMsg',
-                'Invalid access code for this subject.',
-                'error'
-            );
-
-            return;
-
-        }
-
-
-        const access = result.data[0];
-
-
-        if(access.locked){
-
-            msg(
-                'codeMsg',
-                'This access code is locked. Contact the administrator.',
-                'error'
-            );
-
-            return;
-
-        }
-
-
-        if(
-            access.expires_at &&
-            new Date(access.expires_at) < new Date()
-        ){
-
-            msg(
-                'codeMsg',
-                'This access code has expired.',
-                'error'
-            );
-
-            return;
-
-        }
-
-
-        startExam();
-
-    }catch(error){
-
-        console.error(error);
-
-        msg(
-            'codeMsg',
-            'Unable to verify the access code. Please try again.',
-            'error'
-        );
-
-    }
+return;
 
 }
 
 
-/* ================================
-   START EXAM
-================================ */
+let r =
+await db
+.from('access_codes')
+.select('*')
+.eq('code',code)
+.eq('subject_id',subject.id)
+.limit(1);
+
+
+if(r.error){
+
+msg(
+'codeMsg',
+r.error.message,
+'error'
+);
+
+return;
+
+}
+
+
+if(!r.data?.length){
+
+msg(
+'codeMsg',
+'Invalid access code for this subject.',
+'error'
+);
+
+return;
+
+}
+
+
+let row =
+r.data[0];
+
+
+if(row.locked){
+
+msg(
+'codeMsg',
+'This access code is locked. Contact the administrator.',
+'error'
+);
+
+return;
+
+}
+
+
+if(
+row.expires_at &&
+new Date(row.expires_at)<new Date()
+){
+
+msg(
+'codeMsg',
+'This access code has expired.',
+'error'
+);
+
+return;
+
+}
+
+
+currentCode=row;
+
+startExam();
+
+}
+
+
+function shuffle(a){
+
+a=[...a];
+
+for(
+let i=a.length-1;
+i>0;
+i--
+){
+
+let j =
+Math.floor(
+Math.random()*(i+1)
+);
+
+[a[i],a[j]] =
+[a[j],a[i]];
+
+}
+
+return a;
+
+}
+
 
 async function startExam(){
 
-    if(!db){
-
-        msg(
-            'codeMsg',
-            'Database connection is unavailable.',
-            'error'
-        );
-
-        return;
-
-    }
+let r =
+await db
+.from('questions')
+.select('*')
+.eq('subject_id',subject.id);
 
 
-    try{
+if(r.error){
 
-        const result = await db
-            .from('questions')
-            .select('*')
-            .eq('subject_id',subject.id)
-            .order(
-                'question_year',
-                {ascending:true}
-            )
-            .order(
-                'created_at',
-                {ascending:true}
-            );
+msg(
+'codeMsg',
+r.error.message,
+'error'
+);
 
-
-        if(result.error){
-
-            console.error(result.error);
-
-            msg(
-                'codeMsg',
-                result.error.message,
-                'error'
-            );
-
-            return;
-
-        }
-
-
-        if(!result.data || !result.data.length){
-
-            msg(
-                'codeMsg',
-                'No questions have been added for this subject yet.',
-                'error'
-            );
-
-            return;
-
-        }
-
-
-        questions = [...result.data];
-
-
-        /*
-           Randomize questions.
-        */
-
-        questions.sort(
-            () => Math.random() - 0.5
-        );
-
-
-        /*
-           Maximum 40 questions.
-        */
-
-        questions =
-            questions.slice(0,MAX_QUESTIONS);
-
-
-        answers = {};
-
-        index = 0;
-
-        seconds =
-            (subject.duration_minutes || 30) * 60;
-
-
-        $('examSubject').textContent =
-            subject.name;
-
-
-        show('exam');
-
-        renderQuestion();
-
-        clock();
-
-
-        clearInterval(timer);
-
-
-        timer = setInterval(function(){
-
-            seconds--;
-
-            clock();
-
-
-            if(seconds <= 0){
-
-                clearInterval(timer);
-
-                alert(
-                    'Time is up. Your exam will be submitted automatically.'
-                );
-
-                submitExam();
-
-            }
-
-        },1000);
-
-
-    }catch(error){
-
-        console.error(error);
-
-        msg(
-            'codeMsg',
-            'Unable to start the examination.',
-            'error'
-        );
-
-    }
+return;
 
 }
 
 
-/* ================================
-   CLOCK
-================================ */
+if(!r.data?.length){
+
+msg(
+'codeMsg',
+'No questions have been added for this subject yet.',
+'error'
+);
+
+return;
+
+}
+
+
+questions =
+shuffle(r.data)
+.slice(
+0,
+Math.min(
+EXAM_QUESTION_COUNT,
+r.data.length
+)
+);
+
+
+answers={};
+
+index=0;
+
+
+seconds =
+(subject.duration_minutes||30)*60;
+
+
+$('examSubject').textContent =
+subject.name;
+
+
+show('exam');
+
+render();
+
+
+clearInterval(timer);
+
+
+timer =
+setInterval(
+()=>{
+
+seconds--;
+
+clock();
+
+
+if(seconds<=0){
+
+clearInterval(timer);
+
+alert(
+'Time is up. Your exam will be submitted automatically.'
+);
+
+submitExam();
+
+}
+
+},
+1000
+);
+
+
+clock();
+
+}
+
 
 function clock(){
 
-    const minutes =
-        Math.floor(seconds / 60);
+$('timer').textContent =
 
-    const secs =
-        seconds % 60;
+String(
+Math.floor(seconds/60)
+).padStart(2,'0')
 
++
 
-    $('timer').textContent =
-        String(minutes).padStart(2,'0')
-        + ':'
-        +
-        String(secs).padStart(2,'0');
+':'+
 
-}
-
-
-/* ================================
-   RENDER QUESTION
-================================ */
-
-function renderQuestion(){
-
-    const q = questions[index];
-
-
-    if(!q) return;
-
-
-    $('examYear').textContent =
-        q.question_year
-        ? 'Past Question • ' + q.question_year
-        : 'Mock Question';
-
-
-    $('bar').style.width =
-        ((index + 1) / questions.length * 100)
-        + '%';
-
-
-    let html = `
-
-        <h3>
-            Question ${index + 1}
-            of
-            ${questions.length}
-        </h3>
-
-    `;
-
-
-    if(q.passage){
-
-        html += `
-
-            <div class="passage">
-
-                <b>Passage</b><br>
-
-                ${escapeHTML(q.passage)}
-
-            </div>
-
-        `;
-
-    }
-
-
-    html += `
-
-        <p>
-            <b>
-                ${escapeHTML(q.question_text)}
-            </b>
-        </p>
-
-    `;
-
-
-    ['A','B','C','D'].forEach(function(letter){
-
-        const option =
-            q['option_' + letter.toLowerCase()];
-
-
-        html += `
-
-        <label
-            class="option ${
-                answers[q.id] === letter
-                ? 'selected'
-                : ''
-            }"
-        >
-
-            <input
-                type="radio"
-                name="answer"
-                ${
-                    answers[q.id] === letter
-                    ? 'checked'
-                    : ''
-                }
-                onchange="answerQuestion(
-                    '${q.id}',
-                    '${letter}'
-                )"
-            >
-
-            <b>${letter}.</b>
-
-            ${escapeHTML(option)}
-
-        </label>
-
-        `;
-
-    });
-
-
-    $('questionArea').innerHTML = html;
-
-
-    $('prev').disabled =
-        index === 0;
-
-
-    $('next').classList.toggle(
-        'hidden',
-        index === questions.length - 1
-    );
-
-
-    $('submit').classList.toggle(
-        'hidden',
-        index !== questions.length - 1
-    );
+String(
+seconds%60
+).padStart(2,'0');
 
 }
 
 
-/* ================================
-   ANSWER
-================================ */
+function render(){
 
-function answerQuestion(id,letter){
+let q =
+questions[index];
 
-    answers[id] = letter;
 
-    renderQuestion();
+$('bar').style.width =
+((index+1)/
+questions.length*100)
++'%';
+
+
+let h =
+
+`<h3>
+Question ${index+1}
+of ${questions.length}
+</h3>`;
+
+
+if(q.passage)
+
+h +=
+
+`<div class="passage">
+
+<b>Passage</b>
+
+<br>
+
+${esc(q.passage)}
+
+</div>`;
+
+
+h +=
+
+`<p>
+<b>
+${esc(q.question_text)}
+</b>
+</p>`;
+
+
+['A','B','C','D']
+.forEach(l=>{
+
+let v =
+q[
+'option_'+
+l.toLowerCase()
+];
+
+
+h +=
+
+`<label
+class="option
+${answers[q.id]===l?'selected':''}"
+>
+
+<input
+type="radio"
+name="answer"
+${answers[q.id]===l?'checked':''}
+onchange="answer('${q.id}','${l}')"
+>
+
+<b>${l}.</b>
+
+${esc(v)}
+
+</label>`;
+
+});
+
+
+$('questionArea').innerHTML=h;
+
+
+$('prev').disabled =
+index===0;
+
+
+$('next').classList.toggle(
+'hidden',
+index===questions.length-1
+);
+
+
+$('submit').classList.toggle(
+'hidden',
+index!==questions.length-1
+);
 
 }
 
 
-/* ================================
-   PREVIOUS
-================================ */
+function answer(id,l){
+
+answers[id]=l;
+
+render();
+
+}
+
 
 function prevQ(){
 
-    if(index > 0){
+if(index){
 
-        index--;
+index--;
 
-        renderQuestion();
-
-    }
+render();
 
 }
 
+}
 
-/* ================================
-   NEXT
-================================ */
 
 function nextQ(){
 
-    if(index < questions.length - 1){
+if(
+index<
+questions.length-1
+){
 
-        index++;
+index++;
 
-        renderQuestion();
-
-    }
+render();
 
 }
 
+}
 
-/* ================================
-   SUBMIT
-================================ */
 
 async function submitExam(){
 
-    if(!questions.length) return;
+if(!questions.length)
+return;
 
 
-    clearInterval(timer);
+clearInterval(timer);
 
 
-    let score = 0;
+let score =
+questions.reduce(
+(n,q)=>
+n+
+(answers[q.id]===
+q.correct_answer
+?1:0),
+0
+);
 
 
-    questions.forEach(function(q){
-
-        if(
-            answers[q.id] ===
-            q.correct_answer
-        ){
-
-            score++;
-
-        }
-
-    });
+let pct =
+Math.round(
+score/
+questions.length*
+100
+);
 
 
-    const percentage =
-        Math.round(
-            score / questions.length * 100
-        );
+let passed =
+pct>=PASS;
 
 
-    const passed =
-        percentage >= PASS_MARK;
+let r =
+await db
+.from('exam_results')
+.insert({
+
+candidate_name:
+candidate,
+
+subject_id:
+subject.id,
+
+score:
+score,
+
+total_questions:
+questions.length,
+
+percentage:
+pct,
+
+passed:
+passed
+
+});
 
 
-    /*
-       Save result.
-    */
+if(r.error){
 
-    if(db){
+alert(
+'Result could not be saved: '+
+r.error.message
+);
 
-        try{
-
-            const result =
-                await db
-                .from('exam_results')
-                .insert({
-
-                    candidate_name:candidate,
-
-                    subject_id:subject.id,
-
-                    score:score,
-
-                    total_questions:questions.length,
-
-                    percentage:percentage,
-
-                    passed:passed
-
-                });
-
-
-            if(result.error){
-
-                console.error(result.error);
-
-                alert(
-                    'Result could not be saved: '
-                    + result.error.message
-                );
-
-                return;
-
-            }
-
-        }catch(error){
-
-            console.error(error);
-
-            alert(
-                'There was a problem saving your result.'
-            );
-
-            return;
-
-        }
-
-    }
-
-
-    $('rCandidate').textContent =
-        'Candidate: ' + candidate;
-
-
-    $('rSubject').textContent =
-        'Subject: ' + subject.name;
-
-
-    $('score').textContent =
-        score + ' / ' + questions.length;
-
-
-    $('details').textContent =
-        percentage + '%';
-
-
-    $('status').innerHTML =
-        passed
-
-        ?
-
-        `
-        <h2 class="pass">
-            PASS
-        </h2>
-
-        <p>
-            Congratulations. You met the
-            50% pass mark.
-        </p>
-        `
-
-        :
-
-        `
-        <h2 class="fail">
-            NOT PASSED
-        </h2>
-
-        <p>
-            The pass mark is 50%.
-        </p>
-        `;
-
-
-    show('result');
+return;
 
 }
 
 
-/* ================================
-   ADMIN LOGIN
-================================ */
+$('rCandidate').textContent =
+'Candidate: '+
+candidate;
+
+
+$('rSubject').textContent =
+'Subject: '+
+subject.name;
+
+
+$('score').textContent =
+`${score} / ${questions.length}`;
+
+
+$('details').textContent =
+pct+'%';
+
+
+$('status').innerHTML =
+
+passed
+
+?
+
+'<h2 class="pass">PASS</h2>'+
+'<p>Congratulations. You met the 50% pass mark.</p>'
+
+:
+
+'<h2 class="fail">NOT PASSED</h2>'+
+'<p>The pass mark is 50%.</p>';
+
+
+show('result');
+
+}
+
+
+function resetApp(){
+
+candidate='';
+
+subject=null;
+
+questions=[];
+
+answers={};
+
+currentCode=null;
+
+show('login');
+
+}
+
 
 function adminLogin(){
 
-    if(
-        $('adminPass').value ===
-        ADMIN_PASSWORD
-    ){
+if(
+$('adminPass').value===
+ADMIN
+){
 
-        $('adminPass').value = '';
+$('adminPass').value='';
 
-        show('admin');
+show('admin');
 
-        tab('bulk');
+tab('bulk');
 
-    }else{
+}
 
-        msg(
-            'adminLoginMsg',
-            'Incorrect admin password.',
-            'error'
-        );
+else{
 
-    }
+msg(
+'adminLoginMsg',
+'Incorrect admin password.',
+'error'
+);
+
+}
 
 }
 
 
-/* ================================
-   ADMIN TABS
-================================ */
+function tab(t){
 
-function tab(name){
-
-    [
-        'bulk',
-        'single',
-        'questions',
-        'codes',
-        'results'
-    ].forEach(function(x){
-
-        $(x).classList.add('hidden');
-
-    });
+[
+'bulk',
+'single',
+'questions',
+'codes',
+'results'
+]
+.forEach(
+x=>$(x).classList.add('hidden')
+);
 
 
-    $(name).classList.remove('hidden');
+$(t).classList.remove('hidden');
 
 
-    if(
-        name === 'single' ||
-        name === 'codes'
-    ){
+if(
+t==='single'||
+t==='codes'||
+t==='questions'
+)
 
-        fillSelects();
-
-    }
-
-
-    if(name === 'questions'){
-
-        loadQuestions();
-
-    }
+fillSelects();
 
 
-    if(name === 'codes'){
-
-        loadCodes();
-
-    }
+if(t==='questions')
+loadQuestions();
 
 
-    if(name === 'results'){
+if(t==='codes')
+loadCodes();
 
-        loadResults();
 
-    }
+if(t==='results')
+loadResults();
 
 }
 
-
-/* ================================
-   SELECT BOXES
-================================ */
 
 function fillSelects(){
 
-    const options =
-        subjects.map(function(s){
-
-            return `
-
-            <option value="${escapeHTML(s.id)}">
-
-                ${escapeHTML(s.name)}
-
-            </option>
-
-            `;
-
-        }).join('');
+let o =
+subjects.map(
+s=>
+`<option value="${s.id}">
+${esc(s.name)}
+</option>`
+).join('');
 
 
-    if($('qSubject')){
-
-        $('qSubject').innerHTML =
-            options;
-
-    }
+if($('qSubject'))
+$('qSubject').innerHTML=o;
 
 
-    if($('codeSubject')){
+if($('codeSubject'))
+$('codeSubject').innerHTML=o;
 
-        $('codeSubject').innerHTML =
-            options;
 
-    }
+if($('filterSubject'))
+
+$('filterSubject').innerHTML =
+
+'<option value="">All subjects</option>'+
+o;
 
 }
 
-
-/* ================================
-   BULK PARSER
-================================ */
 
 function parseBulk(text){
 
-    return text
-
-    .split(/\n\s*END\s*(?:\n|$)/i)
-
-    .map(function(block){
-
-        return block.trim();
-
-    })
-
-    .filter(Boolean)
-
-    .map(function(block){
-
-        const lines =
-            block.split(/\r?\n/);
+const lines =
+text.replace(/\r/g,'')
+.split('\n');
 
 
-        function inline(label){
-
-            const line =
-                lines.find(function(x){
-
-                    return new RegExp(
-                        '^' + label + ':\\s*',
-                        'i'
-                    ).test(x);
-
-                });
+const out=[];
 
 
-            return line
-
-                ?
-
-                line.replace(
-                    new RegExp(
-                        '^' + label + ':\\s*',
-                        'i'
-                    ),
-                    ''
-                ).trim()
-
-                : '';
-
-        }
+let currentSubject =
+'English Language';
 
 
-        function blockValue(label){
+let block=null;
 
-            const position =
-                lines.findIndex(function(x){
-
-                    return x.trim()
-                        .toUpperCase()
-                        === label + ':';
-
-                });
+let field=null;
 
 
-            if(position < 0){
+function finish(){
 
-                return '';
-
-            }
-
-
-            const result = [];
+if(!block)
+return;
 
 
-            for(
-                let i = position + 1;
-                i < lines.length;
-                i++
-            ){
+const q={
 
-                if(
-                    /^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):/i
-                    .test(lines[i].trim())
-                ){
+subject:
+(block.subject||
+currentSubject||
+'').trim(),
 
-                    break;
+question:
+(block.question||'').trim(),
 
-                }
+a:
+(block.a||'').trim(),
+
+b:
+(block.b||'').trim(),
+
+c:
+(block.c||'').trim(),
+
+d:
+(block.d||'').trim(),
+
+answer:
+(block.answer||'')
+.trim()
+.toUpperCase(),
+
+passage:
+(block.passage||'')
+.trim()
+
+};
 
 
-                result.push(lines[i]);
+if(
+q.question&&
+q.a&&
+q.b&&
+q.c&&
+q.d&&
+['A','B','C','D']
+.includes(q.answer)
+)
 
-            }
+out.push(q);
 
 
-            return result.join('\n').trim();
+block=null;
 
-        }
-
-
-        return {
-
-            subject:inline('SUBJECT'),
-
-            year:inline('YEAR'),
-
-            question:
-                blockValue('QUESTION')
-                || inline('QUESTION'),
-
-            a:blockValue('A'),
-
-            b:blockValue('B'),
-
-            c:blockValue('C'),
-
-            d:blockValue('D'),
-
-            answer:
-                inline('ANSWER').toUpperCase(),
-
-            passage:
-                blockValue('PASSAGE')
-
-        };
-
-    });
+field=null;
 
 }
 
 
-/* ================================
-   PREVIEW BULK
-================================ */
+for(
+const raw of lines
+){
 
-function previewBulk(){
-
-    const data =
-        parseBulk($('bulkText').value);
+const line =
+raw.trim();
 
 
-    if(!data.length){
-
-        msg(
-            'bulkMsg',
-            'No question blocks found.',
-            'error'
-        );
-
-        return;
-
-    }
+if(!line)
+continue;
 
 
-    $('bulkPreview').innerHTML = `
+if(
+/^END\s*$/i.test(line)
+){
 
-        <p>
-            <b>
-                ${data.length}
-                question(s) detected.
-            </b>
-        </p>
+finish();
 
-        <div class="tablewrap">
-
-        <table>
-
-        <tr>
-            <th>#</th>
-            <th>Subject</th>
-            <th>Year</th>
-            <th>Question</th>
-            <th>Answer</th>
-        </tr>
-
-        ${
-            data.map(function(x,i){
-
-                return `
-
-                <tr>
-
-                    <td>${i+1}</td>
-
-                    <td>
-                        ${escapeHTML(x.subject)}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(x.year)}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(x.question)}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(x.answer)}
-                    </td>
-
-                </tr>
-
-                `;
-
-            }).join('')
-        }
-
-        </table>
-
-        </div>
-
-    `;
+continue;
 
 }
 
 
-/* ================================
-   IMPORT BULK
-================================ */
+const m =
+line.match(
+/^(SUBJECT|QUESTION|A|B|C|D|ANSWER|PASSAGE)\s*:\s*(.*)$/i
+);
+
+
+if(m){
+
+const key =
+m[1].toUpperCase();
+
+
+const value =
+m[2].trim();
+
+
+if(key==='SUBJECT'){
+
+if(
+block &&
+block.question
+)
+
+block.subject=value;
+
+else
+
+currentSubject=value;
+
+continue;
+
+}
+
+
+if(key==='QUESTION'){
+
+if(block)
+finish();
+
+
+block={
+
+subject:
+currentSubject,
+
+question:'',
+
+a:'',
+
+b:'',
+
+c:'',
+
+d:'',
+
+answer:'',
+
+passage:''
+
+};
+
+
+field='question';
+
+
+if(value)
+block.question=value;
+
+
+continue;
+
+}
+
+
+if(!block)
+
+block={
+
+subject:
+currentSubject,
+
+question:'',
+
+a:'',
+
+b:'',
+
+c:'',
+
+d:'',
+
+answer:'',
+
+passage:''
+
+};
+
+
+field =
+key.toLowerCase();
+
+
+if(value)
+block[field]=value;
+
+
+continue;
+
+}
+
+
+if(
+block&&field
+){
+
+block[field] =
+
+block[field]
+
+?
+
+block[field]+
+'\n'+
+raw
+
+:
+
+raw;
+
+}
+
+}
+
+
+finish();
+
+
+return out;
+
+}
+
+
+function fingerprint(x){
+
+return [
+
+x.subject_id,
+
+x.question_text,
+
+x.option_a,
+
+x.option_b,
+
+x.option_c,
+
+x.option_d
+
+]
+
+.map(
+v=>
+String(v||'')
+.toLowerCase()
+.replace(/\s+/g,' ')
+.trim()
+)
+
+.join('|');
+
+}
+
+
+async function previewBulk(){
+
+let a =
+parseBulk(
+$('bulkText').value
+);
+
+
+if(!a.length)
+
+return msg(
+'bulkMsg',
+'No question blocks found.',
+'error'
+);
+
+
+$('bulkPreview').innerHTML =
+
+`<p>
+<b>
+${a.length}
+question(s) detected.
+</b>
+</p>
+
+<div class="tablewrap">
+
+<table>
+
+<tr>
+
+<th>#</th>
+
+<th>Subject</th>
+
+<th>Question</th>
+
+<th>Answer</th>
+
+</tr>
+
+${
+a.map(
+(x,i)=>
+`<tr>
+
+<td>${i+1}</td>
+
+<td>${esc(x.subject)}</td>
+
+<td>${esc(x.question)}</td>
+
+<td>${esc(x.answer)}</td>
+
+</tr>`
+).join('')
+}
+
+</table>
+
+</div>`;
+
+}
+
 
 async function importBulk(){
 
-    if(!db){
+const a =
+parseBulk(
+$('bulkText').value
+);
 
-        msg(
-            'bulkMsg',
-            'Supabase is not connected.',
-            'error'
-        );
 
-        return;
+if(!a.length)
 
-    }
+return msg(
+'bulkMsg',
+'No complete question blocks found.',
+'error'
+);
 
 
-    const data =
-        parseBulk($('bulkText').value);
+// Always get the real Supabase subject IDs.
 
+const sr =
+await db
+.from('subjects')
+.select('*')
+.order('name');
 
-    const rows = [];
 
-    const bad = [];
+if(sr.error)
 
+return msg(
+'bulkMsg',
+'Could not load subjects: '+
+sr.error.message,
+'error'
+);
 
-    data.forEach(function(x,i){
 
-        const foundSubject =
-            subjects.find(function(s){
+subjects =
+sr.data||[];
 
-                return (
 
-                    s.name.toLowerCase()
-                    === x.subject.toLowerCase()
+if(!subjects.length)
 
-                )
+return msg(
+'bulkMsg',
+'No subjects exist in Supabase yet.',
+'error'
+);
 
-                ||
 
-                (
+const rowsLocal=[];
 
-                    s.code.toLowerCase()
-                    === x.subject.toLowerCase()
+const bad=[];
 
-                );
 
-            });
+a.forEach(
+(x,i)=>{
 
+const wanted =
+(x.subject||'')
+.trim()
+.toLowerCase();
 
-        if(!foundSubject){
 
-            bad.push(
-                `Q${i+1}: subject not found`
-            );
+const s =
+subjects.find(
+z=>
 
-            return;
+String(z.name||'')
+.trim()
+.toLowerCase()
+===wanted
 
-        }
+||
 
+String(z.code||'')
+.trim()
+.toLowerCase()
+===wanted
+);
 
-        if(
-            !x.question ||
-            !x.a ||
-            !x.b ||
-            !x.c ||
-            !x.d
-        ){
 
-            bad.push(
-                `Q${i+1}: question/options incomplete`
-            );
+if(!s)
 
-            return;
+bad.push(
+`Q${i+1}: subject not found (${x.subject})`
+);
 
-        }
 
+else
 
-        if(
-            !['A','B','C','D']
-            .includes(x.answer)
-        ){
+rowsLocal.push({
 
-            bad.push(
-                `Q${i+1}: ANSWER must be A-D`
-            );
+subject_id:
+s.id,
 
-            return;
+question_text:
+x.question,
 
-        }
+option_a:
+x.a,
 
+option_b:
+x.b,
 
-        rows.push({
+option_c:
+x.c,
 
-            subject_id:foundSubject.id,
+option_d:
+x.d,
 
-            question_text:x.question,
+correct_answer:
+x.answer,
 
-            option_a:x.a,
+passage:
+x.passage||null,
 
-            option_b:x.b,
+question_year:
+null
 
-            option_c:x.c,
+});
 
-            option_d:x.d,
+});
 
-            correct_answer:x.answer,
 
-            passage:x.passage || null,
+if(bad.length){
 
-            question_year:
-                x.year
-                ? parseInt(x.year,10)
-                : null
+return msg(
+'bulkMsg',
 
-        });
+bad.slice(
+0,
+15
+).join(' | ')
 
-    });
++
 
+(
+bad.length>15
+?
+` | +${bad.length-15} more`
+:''
+),
 
-    if(bad.length){
-
-        msg(
-            'bulkMsg',
-            bad.join(' | '),
-            'error'
-        );
-
-        return;
-
-    }
-
-
-    if(!rows.length){
-
-        msg(
-            'bulkMsg',
-            'No valid questions found.',
-            'error'
-        );
-
-        return;
-
-    }
-
-
-    if(
-        !confirm(
-            `Import ${rows.length} question(s) into Supabase?`
-        )
-    ){
-
-        return;
-
-    }
-
-
-    const result =
-        await db
-        .from('questions')
-        .insert(rows);
-
-
-    if(result.error){
-
-        msg(
-            'bulkMsg',
-            result.error.message,
-            'error'
-        );
-
-    }else{
-
-        msg(
-            'bulkMsg',
-            rows.length +
-            ' question(s) imported successfully.',
-            'success'
-        );
-
-        $('bulkText').value = '';
-
-        $('bulkPreview').innerHTML = '';
-
-    }
+'error'
+);
 
 }
 
 
-/* ================================
-   ADD QUESTION
-================================ */
+if(!rowsLocal.length)
+
+return msg(
+'bulkMsg',
+'Nothing to import.',
+'error'
+);
+
+
+let existing=[];
+
+
+for(
+let i=0;
+i<rowsLocal.length;
+i+=500
+){
+
+const chunk =
+rowsLocal.slice(
+i,
+i+500
+);
+
+
+const subjectIds =
+[
+...new Set(
+chunk.map(
+x=>x.subject_id
+)
+)
+];
+
+
+const r =
+await db
+.from('questions')
+.select(
+'subject_id,question_text,option_a,option_b,option_c,option_d'
+)
+.in(
+'subject_id',
+subjectIds
+);
+
+
+if(r.error)
+
+return msg(
+'bulkMsg',
+r.error.message,
+'error'
+);
+
+
+existing.push(
+...(r.data||[])
+);
+
+}
+
+
+const seen =
+new Set(
+existing.map(fingerprint)
+);
+
+
+const unique=[];
+
+let duplicates=0;
+
+
+for(
+const row of rowsLocal
+){
+
+const f =
+fingerprint(row);
+
+
+if(seen.has(f)){
+
+duplicates++;
+
+continue;
+
+}
+
+
+seen.add(f);
+
+unique.push(row);
+
+}
+
+
+if(
+!confirm(
+`Detected ${rowsLocal.length} question(s). ${duplicates} duplicate(s) will be skipped. Import ${unique.length} new question(s)?`
+)
+)
+
+return;
+
+
+if(!unique.length)
+
+return msg(
+'bulkMsg',
+'All detected questions are duplicates. Nothing imported.',
+'notice'
+);
+
+
+let imported=0;
+
+
+for(
+let i=0;
+i<unique.length;
+i+=100
+){
+
+const batch =
+unique.slice(
+i,
+i+100
+);
+
+
+const r =
+await db
+.from('questions')
+.insert(batch);
+
+
+if(r.error)
+
+return msg(
+'bulkMsg',
+`Imported ${imported}; then stopped: ${r.error.message}`,
+'error'
+);
+
+
+imported +=
+batch.length;
+
+}
+
+
+msg(
+'bulkMsg',
+
+`${imported} question(s) imported. ${duplicates} duplicate(s) skipped.`,
+
+'success'
+);
+
+
+$('bulkText').value='';
+
+$('bulkPreview').innerHTML='';
+
+}
+
 
 async function addQuestion(){
 
-    if(!db){
+const row={
 
-        msg(
-            'singleMsg',
-            'Supabase is not connected.',
-            'error'
-        );
+subject_id:
+$('qSubject').value,
 
-        return;
+question_text:
+$('qText').value.trim(),
 
-    }
+option_a:
+$('qA').value.trim(),
 
+option_b:
+$('qB').value.trim(),
 
-    const row = {
+option_c:
+$('qC').value.trim(),
 
-        subject_id:$('qSubject').value,
+option_d:
+$('qD').value.trim(),
 
-        question_text:
-            $('qText').value.trim(),
+correct_answer:
+$('qAnswer').value,
 
-        option_a:
-            $('qA').value.trim(),
+passage:
+$('qPassage').value.trim()||
+null,
 
-        option_b:
-            $('qB').value.trim(),
+question_year:
+null
 
-        option_c:
-            $('qC').value.trim(),
-
-        option_d:
-            $('qD').value.trim(),
-
-        correct_answer:
-            $('qAnswer').value,
-
-        passage:
-            $('qPassage').value.trim()
-            || null,
-
-        question_year:
-            $('qYear').value
-            ? parseInt($('qYear').value,10)
-            : null
-
-    };
+};
 
 
-    if(
-        !row.question_text ||
-        !row.option_a ||
-        !row.option_b ||
-        !row.option_c ||
-        !row.option_d
-    ){
+if(
+!row.question_text||
+!row.option_a||
+!row.option_b||
+!row.option_c||
+!row.option_d
+)
 
-        msg(
-            'singleMsg',
-            'Complete the question and all four options.',
-            'error'
-        );
-
-        return;
-
-    }
+return msg(
+'singleMsg',
+'Complete the question and all four options.',
+'error'
+);
 
 
-    const result =
-        await db
-        .from('questions')
-        .insert(row);
+let r =
+await db
+.from('questions')
+.select(
+'subject_id,question_text,option_a,option_b,option_c,option_d'
+)
+.eq(
+'subject_id',
+row.subject_id
+);
 
 
-    if(result.error){
+if(r.error)
 
-        msg(
-            'singleMsg',
-            result.error.message,
-            'error'
-        );
-
-    }else{
-
-        msg(
-            'singleMsg',
-            'Question saved successfully.',
-            'success'
-        );
+return msg(
+'singleMsg',
+r.error.message,
+'error'
+);
 
 
-        [
-            'qText',
-            'qA',
-            'qB',
-            'qC',
-            'qD',
-            'qPassage'
-        ].forEach(function(id){
+if(
+(r.data||[])
+.some(
+x=>
+fingerprint(x)===
+fingerprint(row)
+)
+)
 
-            $(id).value = '';
+return msg(
+'singleMsg',
+'This question already exists for this subject.',
+'error'
+);
 
-        });
 
-    }
+const ins =
+await db
+.from('questions')
+.insert(row);
+
+
+if(ins.error)
+
+return msg(
+'singleMsg',
+ins.error.message,
+'error'
+);
+
+
+msg(
+'singleMsg',
+'Question saved successfully.',
+'success'
+);
+
+
+[
+'qText',
+'qA',
+'qB',
+'qC',
+'qD',
+'qPassage'
+]
+.forEach(
+id=>
+$(id).value=''
+);
 
 }
 
-
-/* ================================
-   LOAD QUESTIONS
-================================ */
 
 async function loadQuestions(){
 
-    if(!db){
-
-        $('questionsList').textContent =
-            'Supabase is not connected.';
-
-        return;
-
-    }
-
-
-    const result =
-        await db
-        .from('questions')
-        .select(
-            'id,question_text,question_year,correct_answer,subjects(name)'
-        )
-        .order(
-            'created_at',
-            {ascending:false}
-        );
+let q =
+db
+.from('questions')
+.select(
+'id,question_text,correct_answer,subjects(name)'
+)
+.order(
+'created_at',
+{
+ascending:false
+}
+);
 
 
-    if(result.error){
+if(
+$('filterSubject')?.value
+)
 
-        $('questionsList').textContent =
-            result.error.message;
+q =
+q.eq(
+'subject_id',
+$('filterSubject').value
+);
 
-        return;
 
-    }
+const r =
+await q.limit(500);
 
 
-    $('questionsList').innerHTML = `
+if(r.error){
 
-    <table>
+$('questionsList')
+.textContent =
+r.error.message;
 
-        <tr>
-            <th>Subject</th>
-            <th>Year</th>
-            <th>Question</th>
-            <th>Answer</th>
-            <th>Action</th>
-        </tr>
-
-        ${
-            (result.data || [])
-            .map(function(q){
-
-                return `
-
-                <tr>
-
-                    <td>
-                        ${escapeHTML(
-                            q.subjects?.name
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            q.question_year || '—'
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            q.question_text
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            q.correct_answer
-                        )}
-                    </td>
-
-                    <td>
-
-                        <button
-                            class="danger"
-                            onclick="deleteQuestion('${q.id}')"
-                        >
-                            Delete
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                `;
-
-            }).join('')
-        }
-
-    </table>
-
-    `;
+return;
 
 }
 
 
-/* ================================
-   DELETE QUESTION
-================================ */
+$('questionsList').innerHTML =
+
+'<table>'+
+'<tr>'+
+'<th>Subject</th>'+
+'<th>Question</th>'+
+'<th>Answer</th>'+
+'<th>Action</th>'+
+'</tr>'+
+
+(r.data||[])
+.map(
+x=>
+
+`<tr>
+
+<td>
+${esc(x.subjects?.name)}
+</td>
+
+<td>
+${esc(x.question_text)}
+</td>
+
+<td>
+${esc(x.correct_answer)}
+</td>
+
+<td>
+
+<button
+class="danger"
+onclick="deleteQuestion('${x.id}')"
+>
+Delete
+</button>
+
+</td>
+
+</tr>`
+
+)
+.join('')
+
++
+
+'</table>';
+
+}
+
 
 async function deleteQuestion(id){
 
-    if(
-        !confirm(
-            'Delete this question?'
-        )
-    ){
+if(
+!confirm(
+'Delete this question?'
+)
+)
 
-        return;
-
-    }
+return;
 
 
-    const result =
-        await db
-        .from('questions')
-        .delete()
-        .eq('id',id);
+let r =
+await db
+.from('questions')
+.delete()
+.eq(
+'id',
+id
+);
 
 
-    if(result.error){
+if(r.error)
 
-        alert(
-            result.error.message
-        );
+alert(
+r.error.message
+);
 
-    }else{
+else
 
-        loadQuestions();
-
-    }
+loadQuestions();
 
 }
 
-
-/* ================================
-   GENERATE CODE
-================================ */
 
 function generateCode(){
 
-    $('newCode').value =
-        'WT-' +
-        Math.random()
-        .toString(36)
-        .substring(2,8)
-        .toUpperCase();
+$('newCode').value =
+
+'WT-' +
+
+Math.random()
+.toString(36)
+.substring(2,8)
+.toUpperCase();
 
 }
 
-
-/* ================================
-   CREATE CODE
-================================ */
 
 async function createCode(){
 
-    if(!db){
+let row={
 
-        msg(
-            'codeAdminMsg',
-            'Supabase is not connected.',
-            'error'
-        );
+code:
+$('newCode')
+.value
+.trim()
+.toUpperCase(),
 
-        return;
+candidate_name:
+$('codeName')
+.value
+.trim(),
 
-    }
+subject_id:
+$('codeSubject')
+.value,
 
+used:false,
 
-    const row = {
+failed_attempts:0,
 
-        code:
-            $('newCode')
-            .value
-            .trim()
-            .toUpperCase(),
+locked:false,
 
-        candidate_name:
-            $('codeName')
-            .value
-            .trim(),
+expires_at:null
 
-        subject_id:
-            $('codeSubject')
-            .value,
-
-        used:false,
-
-        failed_attempts:0,
-
-        locked:false,
-
-        expires_at:null
-
-    };
+};
 
 
-    if(
-        !row.code ||
-        !row.candidate_name
-    ){
+if(
+!row.code||
+!row.candidate_name
+)
 
-        msg(
-            'codeAdminMsg',
-            'Complete all fields.',
-            'error'
-        );
-
-        return;
-
-    }
+return msg(
+'codeAdminMsg',
+'Complete all fields.',
+'error'
+);
 
 
-    const result =
-        await db
-        .from('access_codes')
-        .insert(row);
+let r =
+await db
+.from('access_codes')
+.insert(row);
 
 
-    if(result.error){
+if(r.error)
 
-        msg(
-            'codeAdminMsg',
-            result.error.message,
-            'error'
-        );
+return msg(
+'codeAdminMsg',
+r.error.message,
+'error'
+);
 
-    }else{
 
-        msg(
-            'codeAdminMsg',
-            'Access code created successfully.',
-            'success'
-        );
+msg(
+'codeAdminMsg',
+'Access code created.',
+'success'
+);
 
-        $('newCode').value = '';
 
-        $('codeName').value = '';
+$('newCode').value='';
 
-        loadCodes();
 
-    }
+loadCodes();
 
 }
 
-
-/* ================================
-   LOAD CODES
-================================ */
 
 async function loadCodes(){
 
-    if(!db){
-
-        $('codesList').textContent =
-            'Supabase is not connected.';
-
-        return;
-
-    }
-
-
-    const result =
-        await db
-        .from('access_codes')
-        .select(
-            'id,code,candidate_name,used,locked,subjects(name)'
-        )
-        .order(
-            'created_at',
-            {ascending:false}
-        );
+let r =
+await db
+.from('access_codes')
+.select(
+'id,code,candidate_name,used,locked,subjects(name)'
+)
+.order(
+'created_at',
+{
+ascending:false
+}
+);
 
 
-    if(result.error){
+if(r.error){
 
-        $('codesList').textContent =
-            result.error.message;
+$('codesList')
+.textContent =
+r.error.message;
 
-        return;
-
-    }
-
-
-    $('codesList').innerHTML = `
-
-    <table>
-
-        <tr>
-
-            <th>Code</th>
-            <th>Candidate</th>
-            <th>Subject</th>
-            <th>Status</th>
-            <th>Action</th>
-
-        </tr>
-
-        ${
-            (result.data || [])
-            .map(function(x){
-
-                return `
-
-                <tr>
-
-                    <td>
-                        <b>
-                            ${escapeHTML(x.code)}
-                        </b>
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            x.candidate_name
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            x.subjects?.name
-                        )}
-                    </td>
-
-                    <td>
-                        ${
-                            x.locked
-                            ? 'LOCKED'
-                            : 'ACTIVE'
-                        }
-                    </td>
-
-                    <td>
-
-                        <button
-                            onclick="resetCode('${x.id}')"
-                        >
-                            Reset
-                        </button>
-
-                        <button
-                            class="danger"
-                            onclick="deleteCode('${x.id}')"
-                        >
-                            Delete
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                `;
-
-            }).join('')
-        }
-
-    </table>
-
-    `;
+return;
 
 }
 
 
-/* ================================
-   RESET CODE
-================================ */
+$('codesList').innerHTML =
+
+'<table>'+
+'<tr>'+
+'<th>Code</th>'+
+'<th>Candidate</th>'+
+'<th>Subject</th>'+
+'<th>Status</th>'+
+'<th>Action</th>'+
+'</tr>'+
+
+(r.data||[])
+.map(
+x=>
+
+`<tr>
+
+<td>
+<b>${esc(x.code)}</b>
+</td>
+
+<td>
+${esc(x.candidate_name)}
+</td>
+
+<td>
+${esc(x.subjects?.name)}
+</td>
+
+<td>
+${x.locked?'LOCKED':'ACTIVE'}
+</td>
+
+<td>
+
+<button
+onclick="resetCode('${x.id}')"
+>
+Reset
+</button>
+
+<button
+class="danger"
+onclick="deleteCode('${x.id}')"
+>
+Delete
+</button>
+
+</td>
+
+</tr>`
+
+)
+.join('')
+
++
+
+'</table>';
+
+}
+
 
 async function resetCode(id){
 
-    const result =
-        await db
-        .from('access_codes')
-        .update({
+let r =
+await db
+.from('access_codes')
+.update({
 
-            locked:false,
+locked:false,
 
-            failed_attempts:0,
+failed_attempts:0,
 
-            used:false
+used:false
 
-        })
-        .eq('id',id);
+})
+.eq(
+'id',
+id
+);
 
 
-    if(result.error){
+if(r.error)
 
-        alert(
-            result.error.message
-        );
+alert(
+r.error.message
+);
 
-    }else{
+else
 
-        loadCodes();
-
-    }
+loadCodes();
 
 }
 
-
-/* ================================
-   DELETE CODE
-================================ */
 
 async function deleteCode(id){
 
-    if(
-        !confirm(
-            'Delete this access code?'
-        )
-    ){
+if(
+!confirm(
+'Delete this access code?'
+)
+)
 
-        return;
-
-    }
+return;
 
 
-    const result =
-        await db
-        .from('access_codes')
-        .delete()
-        .eq('id',id);
+let r =
+await db
+.from('access_codes')
+.delete()
+.eq(
+'id',
+id
+);
 
 
-    if(result.error){
+if(r.error)
 
-        alert(
-            result.error.message
-        );
+alert(
+r.error.message
+);
 
-    }else{
+else
 
-        loadCodes();
-
-    }
+loadCodes();
 
 }
 
-
-/* ================================
-   LOAD RESULTS
-================================ */
 
 async function loadResults(){
 
-    if(!db){
-
-        $('resultsList').textContent =
-            'Supabase is not connected.';
-
-        return;
-
-    }
-
-
-    const result =
-        await db
-        .from('exam_results')
-        .select(
-            'candidate_name,score,total_questions,percentage,passed,submitted_at,subjects(name)'
-        )
-        .order(
-            'submitted_at',
-            {ascending:false}
-        );
+let r =
+await db
+.from('exam_results')
+.select(
+'candidate_name,score,total_questions,percentage,passed,submitted_at,subjects(name)'
+)
+.order(
+'submitted_at',
+{
+ascending:false
+}
+)
+.limit(500);
 
 
-    if(result.error){
+if(r.error){
 
-        $('resultsList').textContent =
-            result.error.message;
+$('resultsList')
+.textContent =
+r.error.message;
 
-        return;
-
-    }
-
-
-    $('resultsList').innerHTML = `
-
-    <table>
-
-        <tr>
-
-            <th>Candidate</th>
-            <th>Subject</th>
-            <th>Score</th>
-            <th>%</th>
-            <th>Status</th>
-            <th>Date</th>
-
-        </tr>
-
-        ${
-            (result.data || [])
-            .map(function(x){
-
-                return `
-
-                <tr>
-
-                    <td>
-                        ${escapeHTML(
-                            x.candidate_name
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            x.subjects?.name
-                        )}
-                    </td>
-
-                    <td>
-                        ${x.score}/${x.total_questions}
-                    </td>
-
-                    <td>
-                        ${x.percentage}%
-                    </td>
-
-                    <td>
-                        ${
-                            x.passed
-                            ? 'PASS'
-                            : 'NOT PASSED'
-                        }
-                    </td>
-
-                    <td>
-                        ${new Date(
-                            x.submitted_at
-                        ).toLocaleString()}
-                    </td>
-
-                </tr>
-
-                `;
-
-            }).join('')
-        }
-
-    </table>
-
-    `;
+return;
 
 }
 
 
-/* ================================
-   INITIALIZE
-================================ */
+$('resultsList').innerHTML =
 
-window.addEventListener(
-    'DOMContentLoaded',
-    function(){
+'<table>'+
+'<tr>'+
+'<th>Candidate</th>'+
+'<th>Subject</th>'+
+'<th>Score</th>'+
+'<th>%</th>'+
+'<th>Status</th>'+
+'<th>Date</th>'+
+'</tr>'+
 
-        /*
-           Do not block the login page.
-           Subjects are loaded after CONTINUE.
-        */
+(r.data||[])
+.map(
+x=>
 
-        console.log(
-            'War Tigers Mock Exam Portal loaded.'
-        );
+`<tr>
 
-    }
-);
+<td>
+${esc(x.candidate_name)}
+</td>
+
+<td>
+${esc(x.subjects?.name)}
+</td>
+
+<td>
+${x.score}/${x.total_questions}
+</td>
+
+<td>
+${x.percentage}%
+</td>
+
+<td>
+${x.passed?'PASS':'NOT PASSED'}
+</td>
+
+<td>
+${new Date(x.submitted_at).toLocaleString()}
+</td>
+
+</tr>`
+
+)
+.join('')
+
++
+
+'</table>';
+
+}
+
+
+loadSubjects().catch(()=>{});
 
 </script>
 
