@@ -1259,3 +1259,1701 @@ async function startExam(){
             'codeMsg',
             'Database connection is unavailable.',
             'error'
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const result = await db
+            .from('questions')
+            .select('*')
+            .eq('subject_id',subject.id)
+            .order(
+                'question_year',
+                {ascending:true}
+            )
+            .order(
+                'created_at',
+                {ascending:true}
+            );
+
+
+        if(result.error){
+
+            console.error(result.error);
+
+            msg(
+                'codeMsg',
+                result.error.message,
+                'error'
+            );
+
+            return;
+
+        }
+
+
+        if(!result.data || !result.data.length){
+
+            msg(
+                'codeMsg',
+                'No questions have been added for this subject yet.',
+                'error'
+            );
+
+            return;
+
+        }
+
+
+        questions = [...result.data];
+
+
+        /*
+           Randomize questions.
+        */
+
+        questions.sort(
+            () => Math.random() - 0.5
+        );
+
+
+        /*
+           Maximum 40 questions.
+        */
+
+        questions =
+            questions.slice(0,MAX_QUESTIONS);
+
+
+        answers = {};
+
+        index = 0;
+
+        seconds =
+            (subject.duration_minutes || 30) * 60;
+
+
+        $('examSubject').textContent =
+            subject.name;
+
+
+        show('exam');
+
+        renderQuestion();
+
+        clock();
+
+
+        clearInterval(timer);
+
+
+        timer = setInterval(function(){
+
+            seconds--;
+
+            clock();
+
+
+            if(seconds <= 0){
+
+                clearInterval(timer);
+
+                alert(
+                    'Time is up. Your exam will be submitted automatically.'
+                );
+
+                submitExam();
+
+            }
+
+        },1000);
+
+
+    }catch(error){
+
+        console.error(error);
+
+        msg(
+            'codeMsg',
+            'Unable to start the examination.',
+            'error'
+        );
+
+    }
+
+}
+
+
+/* ================================
+   CLOCK
+================================ */
+
+function clock(){
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const secs =
+        seconds % 60;
+
+
+    $('timer').textContent =
+        String(minutes).padStart(2,'0')
+        + ':'
+        +
+        String(secs).padStart(2,'0');
+
+}
+
+
+/* ================================
+   RENDER QUESTION
+================================ */
+
+function renderQuestion(){
+
+    const q = questions[index];
+
+
+    if(!q) return;
+
+
+    $('examYear').textContent =
+        q.question_year
+        ? 'Past Question • ' + q.question_year
+        : 'Mock Question';
+
+
+    $('bar').style.width =
+        ((index + 1) / questions.length * 100)
+        + '%';
+
+
+    let html = `
+
+        <h3>
+            Question ${index + 1}
+            of
+            ${questions.length}
+        </h3>
+
+    `;
+
+
+    if(q.passage){
+
+        html += `
+
+            <div class="passage">
+
+                <b>Passage</b><br>
+
+                ${escapeHTML(q.passage)}
+
+            </div>
+
+        `;
+
+    }
+
+
+    html += `
+
+        <p>
+            <b>
+                ${escapeHTML(q.question_text)}
+            </b>
+        </p>
+
+    `;
+
+
+    ['A','B','C','D'].forEach(function(letter){
+
+        const option =
+            q['option_' + letter.toLowerCase()];
+
+
+        html += `
+
+        <label
+            class="option ${
+                answers[q.id] === letter
+                ? 'selected'
+                : ''
+            }"
+        >
+
+            <input
+                type="radio"
+                name="answer"
+                ${
+                    answers[q.id] === letter
+                    ? 'checked'
+                    : ''
+                }
+                onchange="answerQuestion(
+                    '${q.id}',
+                    '${letter}'
+                )"
+            >
+
+            <b>${letter}.</b>
+
+            ${escapeHTML(option)}
+
+        </label>
+
+        `;
+
+    });
+
+
+    $('questionArea').innerHTML = html;
+
+
+    $('prev').disabled =
+        index === 0;
+
+
+    $('next').classList.toggle(
+        'hidden',
+        index === questions.length - 1
+    );
+
+
+    $('submit').classList.toggle(
+        'hidden',
+        index !== questions.length - 1
+    );
+
+}
+
+
+/* ================================
+   ANSWER
+================================ */
+
+function answerQuestion(id,letter){
+
+    answers[id] = letter;
+
+    renderQuestion();
+
+}
+
+
+/* ================================
+   PREVIOUS
+================================ */
+
+function prevQ(){
+
+    if(index > 0){
+
+        index--;
+
+        renderQuestion();
+
+    }
+
+}
+
+
+/* ================================
+   NEXT
+================================ */
+
+function nextQ(){
+
+    if(index < questions.length - 1){
+
+        index++;
+
+        renderQuestion();
+
+    }
+
+}
+
+
+/* ================================
+   SUBMIT
+================================ */
+
+async function submitExam(){
+
+    if(!questions.length) return;
+
+
+    clearInterval(timer);
+
+
+    let score = 0;
+
+
+    questions.forEach(function(q){
+
+        if(
+            answers[q.id] ===
+            q.correct_answer
+        ){
+
+            score++;
+
+        }
+
+    });
+
+
+    const percentage =
+        Math.round(
+            score / questions.length * 100
+        );
+
+
+    const passed =
+        percentage >= PASS_MARK;
+
+
+    /*
+       Save result.
+    */
+
+    if(db){
+
+        try{
+
+            const result =
+                await db
+                .from('exam_results')
+                .insert({
+
+                    candidate_name:candidate,
+
+                    subject_id:subject.id,
+
+                    score:score,
+
+                    total_questions:questions.length,
+
+                    percentage:percentage,
+
+                    passed:passed
+
+                });
+
+
+            if(result.error){
+
+                console.error(result.error);
+
+                alert(
+                    'Result could not be saved: '
+                    + result.error.message
+                );
+
+                return;
+
+            }
+
+        }catch(error){
+
+            console.error(error);
+
+            alert(
+                'There was a problem saving your result.'
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    $('rCandidate').textContent =
+        'Candidate: ' + candidate;
+
+
+    $('rSubject').textContent =
+        'Subject: ' + subject.name;
+
+
+    $('score').textContent =
+        score + ' / ' + questions.length;
+
+
+    $('details').textContent =
+        percentage + '%';
+
+
+    $('status').innerHTML =
+        passed
+
+        ?
+
+        `
+        <h2 class="pass">
+            PASS
+        </h2>
+
+        <p>
+            Congratulations. You met the
+            50% pass mark.
+        </p>
+        `
+
+        :
+
+        `
+        <h2 class="fail">
+            NOT PASSED
+        </h2>
+
+        <p>
+            The pass mark is 50%.
+        </p>
+        `;
+
+
+    show('result');
+
+}
+
+
+/* ================================
+   ADMIN LOGIN
+================================ */
+
+function adminLogin(){
+
+    if(
+        $('adminPass').value ===
+        ADMIN_PASSWORD
+    ){
+
+        $('adminPass').value = '';
+
+        show('admin');
+
+        tab('bulk');
+
+    }else{
+
+        msg(
+            'adminLoginMsg',
+            'Incorrect admin password.',
+            'error'
+        );
+
+    }
+
+}
+
+
+/* ================================
+   ADMIN TABS
+================================ */
+
+function tab(name){
+
+    [
+        'bulk',
+        'single',
+        'questions',
+        'codes',
+        'results'
+    ].forEach(function(x){
+
+        $(x).classList.add('hidden');
+
+    });
+
+
+    $(name).classList.remove('hidden');
+
+
+    if(
+        name === 'single' ||
+        name === 'codes'
+    ){
+
+        fillSelects();
+
+    }
+
+
+    if(name === 'questions'){
+
+        loadQuestions();
+
+    }
+
+
+    if(name === 'codes'){
+
+        loadCodes();
+
+    }
+
+
+    if(name === 'results'){
+
+        loadResults();
+
+    }
+
+}
+
+
+/* ================================
+   SELECT BOXES
+================================ */
+
+function fillSelects(){
+
+    const options =
+        subjects.map(function(s){
+
+            return `
+
+            <option value="${escapeHTML(s.id)}">
+
+                ${escapeHTML(s.name)}
+
+            </option>
+
+            `;
+
+        }).join('');
+
+
+    if($('qSubject')){
+
+        $('qSubject').innerHTML =
+            options;
+
+    }
+
+
+    if($('codeSubject')){
+
+        $('codeSubject').innerHTML =
+            options;
+
+    }
+
+}
+
+
+/* ================================
+   BULK PARSER
+================================ */
+
+function parseBulk(text){
+
+    return text
+
+    .split(/\n\s*END\s*(?:\n|$)/i)
+
+    .map(function(block){
+
+        return block.trim();
+
+    })
+
+    .filter(Boolean)
+
+    .map(function(block){
+
+        const lines =
+            block.split(/\r?\n/);
+
+
+        function inline(label){
+
+            const line =
+                lines.find(function(x){
+
+                    return new RegExp(
+                        '^' + label + ':\\s*',
+                        'i'
+                    ).test(x);
+
+                });
+
+
+            return line
+
+                ?
+
+                line.replace(
+                    new RegExp(
+                        '^' + label + ':\\s*',
+                        'i'
+                    ),
+                    ''
+                ).trim()
+
+                : '';
+
+        }
+
+
+        function blockValue(label){
+
+            const position =
+                lines.findIndex(function(x){
+
+                    return x.trim()
+                        .toUpperCase()
+                        === label + ':';
+
+                });
+
+
+            if(position < 0){
+
+                return '';
+
+            }
+
+
+            const result = [];
+
+
+            for(
+                let i = position + 1;
+                i < lines.length;
+                i++
+            ){
+
+                if(
+                    /^(SUBJECT|YEAR|QUESTION|A|B|C|D|ANSWER|PASSAGE):/i
+                    .test(lines[i].trim())
+                ){
+
+                    break;
+
+                }
+
+
+                result.push(lines[i]);
+
+            }
+
+
+            return result.join('\n').trim();
+
+        }
+
+
+        return {
+
+            subject:inline('SUBJECT'),
+
+            year:inline('YEAR'),
+
+            question:
+                blockValue('QUESTION')
+                || inline('QUESTION'),
+
+            a:blockValue('A'),
+
+            b:blockValue('B'),
+
+            c:blockValue('C'),
+
+            d:blockValue('D'),
+
+            answer:
+                inline('ANSWER').toUpperCase(),
+
+            passage:
+                blockValue('PASSAGE')
+
+        };
+
+    });
+
+}
+
+
+/* ================================
+   PREVIEW BULK
+================================ */
+
+function previewBulk(){
+
+    const data =
+        parseBulk($('bulkText').value);
+
+
+    if(!data.length){
+
+        msg(
+            'bulkMsg',
+            'No question blocks found.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    $('bulkPreview').innerHTML = `
+
+        <p>
+            <b>
+                ${data.length}
+                question(s) detected.
+            </b>
+        </p>
+
+        <div class="tablewrap">
+
+        <table>
+
+        <tr>
+            <th>#</th>
+            <th>Subject</th>
+            <th>Year</th>
+            <th>Question</th>
+            <th>Answer</th>
+        </tr>
+
+        ${
+            data.map(function(x,i){
+
+                return `
+
+                <tr>
+
+                    <td>${i+1}</td>
+
+                    <td>
+                        ${escapeHTML(x.subject)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(x.year)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(x.question)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(x.answer)}
+                    </td>
+
+                </tr>
+
+                `;
+
+            }).join('')
+        }
+
+        </table>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ================================
+   IMPORT BULK
+================================ */
+
+async function importBulk(){
+
+    if(!db){
+
+        msg(
+            'bulkMsg',
+            'Supabase is not connected.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    const data =
+        parseBulk($('bulkText').value);
+
+
+    const rows = [];
+
+    const bad = [];
+
+
+    data.forEach(function(x,i){
+
+        const foundSubject =
+            subjects.find(function(s){
+
+                return (
+
+                    s.name.toLowerCase()
+                    === x.subject.toLowerCase()
+
+                )
+
+                ||
+
+                (
+
+                    s.code.toLowerCase()
+                    === x.subject.toLowerCase()
+
+                );
+
+            });
+
+
+        if(!foundSubject){
+
+            bad.push(
+                `Q${i+1}: subject not found`
+            );
+
+            return;
+
+        }
+
+
+        if(
+            !x.question ||
+            !x.a ||
+            !x.b ||
+            !x.c ||
+            !x.d
+        ){
+
+            bad.push(
+                `Q${i+1}: question/options incomplete`
+            );
+
+            return;
+
+        }
+
+
+        if(
+            !['A','B','C','D']
+            .includes(x.answer)
+        ){
+
+            bad.push(
+                `Q${i+1}: ANSWER must be A-D`
+            );
+
+            return;
+
+        }
+
+
+        rows.push({
+
+            subject_id:foundSubject.id,
+
+            question_text:x.question,
+
+            option_a:x.a,
+
+            option_b:x.b,
+
+            option_c:x.c,
+
+            option_d:x.d,
+
+            correct_answer:x.answer,
+
+            passage:x.passage || null,
+
+            question_year:
+                x.year
+                ? parseInt(x.year,10)
+                : null
+
+        });
+
+    });
+
+
+    if(bad.length){
+
+        msg(
+            'bulkMsg',
+            bad.join(' | '),
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    if(!rows.length){
+
+        msg(
+            'bulkMsg',
+            'No valid questions found.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            `Import ${rows.length} question(s) into Supabase?`
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+        .from('questions')
+        .insert(rows);
+
+
+    if(result.error){
+
+        msg(
+            'bulkMsg',
+            result.error.message,
+            'error'
+        );
+
+    }else{
+
+        msg(
+            'bulkMsg',
+            rows.length +
+            ' question(s) imported successfully.',
+            'success'
+        );
+
+        $('bulkText').value = '';
+
+        $('bulkPreview').innerHTML = '';
+
+    }
+
+}
+
+
+/* ================================
+   ADD QUESTION
+================================ */
+
+async function addQuestion(){
+
+    if(!db){
+
+        msg(
+            'singleMsg',
+            'Supabase is not connected.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    const row = {
+
+        subject_id:$('qSubject').value,
+
+        question_text:
+            $('qText').value.trim(),
+
+        option_a:
+            $('qA').value.trim(),
+
+        option_b:
+            $('qB').value.trim(),
+
+        option_c:
+            $('qC').value.trim(),
+
+        option_d:
+            $('qD').value.trim(),
+
+        correct_answer:
+            $('qAnswer').value,
+
+        passage:
+            $('qPassage').value.trim()
+            || null,
+
+        question_year:
+            $('qYear').value
+            ? parseInt($('qYear').value,10)
+            : null
+
+    };
+
+
+    if(
+        !row.question_text ||
+        !row.option_a ||
+        !row.option_b ||
+        !row.option_c ||
+        !row.option_d
+    ){
+
+        msg(
+            'singleMsg',
+            'Complete the question and all four options.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+        .from('questions')
+        .insert(row);
+
+
+    if(result.error){
+
+        msg(
+            'singleMsg',
+            result.error.message,
+            'error'
+        );
+
+    }else{
+
+        msg(
+            'singleMsg',
+            'Question saved successfully.',
+            'success'
+        );
+
+
+        [
+            'qText',
+            'qA',
+            'qB',
+            'qC',
+            'qD',
+            'qPassage'
+        ].forEach(function(id){
+
+            $(id).value = '';
+
+        });
+
+    }
+
+}
+
+
+/* ================================
+   LOAD QUESTIONS
+================================ */
+
+async function loadQuestions(){
+
+    if(!db){
+
+        $('questionsList').textContent =
+            'Supabase is not connected.';
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+        .from('questions')
+        .select(
+            'id,question_text,question_year,correct_answer,subjects(name)'
+        )
+        .order(
+            'created_at',
+            {ascending:false}
+        );
+
+
+    if(result.error){
+
+        $('questionsList').textContent =
+            result.error.message;
+
+        return;
+
+    }
+
+
+    $('questionsList').innerHTML = `
+
+    <table>
+
+        <tr>
+            <th>Subject</th>
+            <th>Year</th>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Action</th>
+        </tr>
+
+        ${
+            (result.data || [])
+            .map(function(q){
+
+                return `
+
+                <tr>
+
+                    <td>
+                        ${escapeHTML(
+                            q.subjects?.name
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            q.question_year || '—'
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            q.question_text
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            q.correct_answer
+                        )}
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="danger"
+                            onclick="deleteQuestion('${q.id}')"
+                        >
+                            Delete
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                `;
+
+            }).join('')
+        }
+
+    </table>
+
+    `;
+
+}
+
+
+/* ================================
+   DELETE QUESTION
+================================ */
+
+async function deleteQuestion(id){
+
+    if(
+        !confirm(
+            'Delete this question?'
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+        .from('questions')
+        .delete()
+        .eq('id',id);
+
+
+    if(result.error){
+
+        alert(
+            result.error.message
+        );
+
+    }else{
+
+        loadQuestions();
+
+    }
+
+}
+
+
+/* ================================
+   GENERATE CODE
+================================ */
+
+function generateCode(){
+
+    $('newCode').value =
+        'WT-' +
+        Math.random()
+        .toString(36)
+        .substring(2,8)
+        .toUpperCase();
+
+}
+
+
+/* ================================
+   CREATE CODE
+================================ */
+
+async function createCode(){
+
+    if(!db){
+
+        msg(
+            'codeAdminMsg',
+            'Supabase is not connected.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    const row = {
+
+        code:
+            $('newCode')
+            .value
+            .trim()
+            .toUpperCase(),
+
+        candidate_name:
+            $('codeName')
+            .value
+            .trim(),
+
+        subject_id:
+            $('codeSubject')
+            .value,
+
+        used:false,
+
+        failed_attempts:0,
+
+        locked:false,
+
+        expires_at:null
+
+    };
+
+
+    if(
+        !row.code ||
+        !row.candidate_name
+    ){
+
+        msg(
+            'codeAdminMsg',
+            'Complete all fields.',
+            'error'
+        );
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+        .from('access_codes')
+        .insert(row);
+
+
+    if(result.error){
+
+        msg(
+            'codeAdminMsg',
+            result.error.message,
+            'error'
+        );
+
+    }else{
+
+        msg(
+            'codeAdminMsg',
+            'Access code created successfully.',
+            'success'
+        );
+
+        $('newCode').value = '';
+
+        $('codeName').value = '';
+
+        loadCodes();
+
+    }
+
+}
+
+
+/* ================================
+   LOAD CODES
+================================ */
+
+async function loadCodes(){
+
+    if(!db){
+
+        $('codesList').textContent =
+            'Supabase is not connected.';
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+        .from('access_codes')
+        .select(
+            'id,code,candidate_name,used,locked,subjects(name)'
+        )
+        .order(
+            'created_at',
+            {ascending:false}
+        );
+
+
+    if(result.error){
+
+        $('codesList').textContent =
+            result.error.message;
+
+        return;
+
+    }
+
+
+    $('codesList').innerHTML = `
+
+    <table>
+
+        <tr>
+
+            <th>Code</th>
+            <th>Candidate</th>
+            <th>Subject</th>
+            <th>Status</th>
+            <th>Action</th>
+
+        </tr>
+
+        ${
+            (result.data || [])
+            .map(function(x){
+
+                return `
+
+                <tr>
+
+                    <td>
+                        <b>
+                            ${escapeHTML(x.code)}
+                        </b>
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            x.candidate_name
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            x.subjects?.name
+                        )}
+                    </td>
+
+                    <td>
+                        ${
+                            x.locked
+                            ? 'LOCKED'
+                            : 'ACTIVE'
+                        }
+                    </td>
+
+                    <td>
+
+                        <button
+                            onclick="resetCode('${x.id}')"
+                        >
+                            Reset
+                        </button>
+
+                        <button
+                            class="danger"
+                            onclick="deleteCode('${x.id}')"
+                        >
+                            Delete
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                `;
+
+            }).join('')
+        }
+
+    </table>
+
+    `;
+
+}
+
+
+/* ================================
+   RESET CODE
+================================ */
+
+async function resetCode(id){
+
+    const result =
+        await db
+        .from('access_codes')
+        .update({
+
+            locked:false,
+
+            failed_attempts:0,
+
+            used:false
+
+        })
+        .eq('id',id);
+
+
+    if(result.error){
+
+        alert(
+            result.error.message
+        );
+
+    }else{
+
+        loadCodes();
+
+    }
+
+}
+
+
+/* ================================
+   DELETE CODE
+================================ */
+
+async function deleteCode(id){
+
+    if(
+        !confirm(
+            'Delete this access code?'
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+        .from('access_codes')
+        .delete()
+        .eq('id',id);
+
+
+    if(result.error){
+
+        alert(
+            result.error.message
+        );
+
+    }else{
+
+        loadCodes();
+
+    }
+
+}
+
+
+/* ================================
+   LOAD RESULTS
+================================ */
+
+async function loadResults(){
+
+    if(!db){
+
+        $('resultsList').textContent =
+            'Supabase is not connected.';
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+        .from('exam_results')
+        .select(
+            'candidate_name,score,total_questions,percentage,passed,submitted_at,subjects(name)'
+        )
+        .order(
+            'submitted_at',
+            {ascending:false}
+        );
+
+
+    if(result.error){
+
+        $('resultsList').textContent =
+            result.error.message;
+
+        return;
+
+    }
+
+
+    $('resultsList').innerHTML = `
+
+    <table>
+
+        <tr>
+
+            <th>Candidate</th>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>%</th>
+            <th>Status</th>
+            <th>Date</th>
+
+        </tr>
+
+        ${
+            (result.data || [])
+            .map(function(x){
+
+                return `
+
+                <tr>
+
+                    <td>
+                        ${escapeHTML(
+                            x.candidate_name
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            x.subjects?.name
+                        )}
+                    </td>
+
+                    <td>
+                        ${x.score}/${x.total_questions}
+                    </td>
+
+                    <td>
+                        ${x.percentage}%
+                    </td>
+
+                    <td>
+                        ${
+                            x.passed
+                            ? 'PASS'
+                            : 'NOT PASSED'
+                        }
+                    </td>
+
+                    <td>
+                        ${new Date(
+                            x.submitted_at
+                        ).toLocaleString()}
+                    </td>
+
+                </tr>
+
+                `;
+
+            }).join('')
+        }
+
+    </table>
+
+    `;
+
+}
+
+
+/* ================================
+   INITIALIZE
+================================ */
+
+window.addEventListener(
+    'DOMContentLoaded',
+    function(){
+
+        /*
+           Do not block the login page.
+           Subjects are loaded after CONTINUE.
+        */
+
+        console.log(
+            'War Tigers Mock Exam Portal loaded.'
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
